@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
         // 땅에 닿으면 점프 가능한 상태로 설정
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = true;
+            isGrounded = false;
         }
     }
 
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         // 땅에서 떨어지면 점프 불가능한 상태로 설정
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = false;
+            isGrounded = true;
         }
     }
 }
