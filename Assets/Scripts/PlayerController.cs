@@ -8,13 +8,14 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 7.0f; // 점프 힘
     public float dashSpeed = 10.0f; // 대시 속도
     public float dashDuration = 0.5f; // 대시 지속 시간
-
+    public float maxJumpAngle = 30.0f; // 최대 점프 각도 (좌우로 움직일 수 있는 각도)
 
     private Rigidbody rb;
     private bool isGrounded = true; // 땅에 닿았는지 여부
     private int jumpCount = 0; // 점프 횟수
     private bool isDashing = false; // 대시 중인지 여부
     private float dashTimer = 0.0f; // 대시 타이머
+    
 
     private Transform mainCameraTransform;
 
@@ -52,16 +53,24 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-
             // 일반 이동: 이동 방향을 이용하여 이동
             movement *= speed;
+
+            if (!isGrounded)
+            {
+                float angle = Vector3.Angle(movement, transform.forward);
+                if (angle > maxJumpAngle)
+                {
+                    // 만약 현재 움직이는 각도가 제한된 각도보다 크면, 이동 벡터를 수정하여 원하는 각도 내에서 움직일 수 있도록 합니다.
+                    movement = Quaternion.Euler(0, maxJumpAngle, 0) * transform.forward * speed;
+                }
+            }
         }
 
         // 회전 처리: 이동 방향으로 캐릭터를 회전
         if (movement != Vector3.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(movement);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5.0f); // 회전을 부드럽게 보정
+            transform.forward = movement.normalized;
 
         }
 
