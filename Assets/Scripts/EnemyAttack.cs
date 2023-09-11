@@ -40,7 +40,7 @@ public class EnemyAttack : MonoBehaviour
         // Cube를 Player 방향으로 날립니다.
         Vector3 direction = (playerPosition - cube.transform.position).normalized;
         Rigidbody cubeRigidbody = cube.GetComponent<Rigidbody>();
-        cubeRigidbody.velocity = direction * 30.0f; // 10은 날아가는 속도입니다. 필요에 따라 조절할 수 있습니다.
+        cubeRigidbody.velocity = direction * 100.0f; // 10은 날아가는 속도입니다. 필요에 따라 조절할 수 있습니다.
     }
 
    
