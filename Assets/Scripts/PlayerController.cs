@@ -96,7 +96,15 @@ public class PlayerController : MonoBehaviour
             jumpCount++;
         }
     }
- 
+
+    void FreezeRotation()
+    {
+        rb.angularVelocity = Vector3.zero;
+    }
+    private void FixedUpdate()
+    {
+        FreezeRotation();
+    }
     void OnCollisionEnter(Collision collision)
     {
         // 땅에 닿으면 점프 가능한 상태로 설정
