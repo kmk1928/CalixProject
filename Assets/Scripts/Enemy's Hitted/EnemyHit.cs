@@ -20,8 +20,8 @@ public class EnemyHit : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Melee") {  //태그가 Melee일때 출력
             curHP -= 10;
-            StartCoroutine(OnDamage());
             Debug.Log("Enemy Hit!! curHP = " + curHP);
+            StartCoroutine(OnDamage());
         }
     }
 
