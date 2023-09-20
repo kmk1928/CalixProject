@@ -4,47 +4,51 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5.0f; // ÀÌµ¿ ¼Óµµ
-    public float jumpForce = 7.0f; // Á¡ÇÁ Èû
-    public float dashSpeed = 10.0f; // ´ë½Ã ¼Óµµ
-    public float dashDuration = 0.5f; // ´ë½Ã Áö¼Ó ½Ã°£
-    public float maxJumpAngle = 30.0f; // ÃÖ´ë Á¡ÇÁ °¢µµ (ÁÂ¿ì·Î ¿òÁ÷ÀÏ ¼ö ÀÖ´Â °¢µµ)
+    public float speed = 5.0f; // ï¿½Ìµï¿½ ï¿½Óµï¿½
+    public float jumpForce = 7.0f; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+    public float dashSpeed = 10.0f; // ï¿½ï¿½ï¿½ ï¿½Óµï¿½
+    public float dashDuration = 0.5f; // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
+    public float maxJumpAngle = 30.0f; // ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½Â¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½)
 
     private Rigidbody rb;
-    private bool isGrounded = true; // ¶¥¿¡ ´ê¾Ò´ÂÁö ¿©ºÎ
-    private int jumpCount = 0; // Á¡ÇÁ È½¼ö
-    private bool isDashing = false; // ´ë½Ã ÁßÀÎÁö ¿©ºÎ
-    private float dashTimer = 0.0f; // ´ë½Ã Å¸ÀÌ¸Ó
+    private bool isGrounded = true; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ò´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private int jumpCount = 0; // ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½
+    private bool isDashing = false; // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private float dashTimer = 0.0f; // ï¿½ï¿½ï¿½ Å¸ï¿½Ì¸ï¿½
     
 
     private Transform mainCameraTransform;
+
+    Animator anim;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
 
         mainCameraTransform = Camera.main.transform;
+
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
-        // ÀÌµ¿ Ã³¸®
+        // ï¿½Ìµï¿½ Ã³ï¿½ï¿½
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         Vector3 cameraForward = mainCameraTransform.forward;
         Vector3 cameraRight = mainCameraTransform.right;
-        cameraForward.y = 0f; // y Ãà È¸Àü ¹æÇâÀ» ¹«½ÃÇÕ´Ï´Ù.
+        cameraForward.y = 0f; // y ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
         cameraRight.y = 0f;
 
         Vector3 movement = (cameraForward * verticalInput + cameraRight * horizontalInput).normalized;
 
-        // ´ë½Ã ÁßÀÎ °æ¿ì ´ë½Ã ¼Óµµ·Î ÀÌµ¿
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½Ìµï¿½
         if (isDashing)
         {
             movement = transform.forward * dashSpeed;
             dashTimer += Time.deltaTime;
 
-            // ´ë½Ã Áö¼Ó ½Ã°£ÀÌ Áö³ª¸é ´ë½Ã Á¾·á
+            // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (dashTimer >= dashDuration)
             {
                 isDashing = false;
@@ -53,37 +57,42 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            // ÀÏ¹Ý ÀÌµ¿: ÀÌµ¿ ¹æÇâÀ» ÀÌ¿ëÇÏ¿© ÀÌµ¿
+            // ï¿½Ï¹ï¿½ ï¿½Ìµï¿½: ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½Ìµï¿½
             movement *= speed;
-
+            
             if (!isGrounded)
             {
                 float angle = Vector3.Angle(movement, transform.forward);
                 if (angle > maxJumpAngle)
                 {
-                    // ¸¸¾à ÇöÀç ¿òÁ÷ÀÌ´Â °¢µµ°¡ Á¦ÇÑµÈ °¢µµº¸´Ù Å©¸é, ÀÌµ¿ º¤ÅÍ¸¦ ¼öÁ¤ÇÏ¿© ¿øÇÏ´Â °¢µµ ³»¿¡¼­ ¿òÁ÷ÀÏ ¼ö ÀÖµµ·Ï ÇÕ´Ï´Ù.
+                    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½, ï¿½Ìµï¿½ ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ ï¿½Õ´Ï´ï¿½.
                     movement = Quaternion.Euler(0, maxJumpAngle, 0) * transform.forward * speed;
                 }
             }
         }
 
-        // È¸Àü Ã³¸®: ÀÌµ¿ ¹æÇâÀ¸·Î Ä³¸¯ÅÍ¸¦ È¸Àü
+        // È¸ï¿½ï¿½ Ã³ï¿½ï¿½: ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½Í¸ï¿½ È¸ï¿½ï¿½
         if (movement != Vector3.zero)
         {
             transform.forward = movement.normalized;
-
+            anim.SetBool("isRun",true);//run animation
+        }
+        else if (movement == Vector3.zero)
+        {
+            anim.SetBool("isRun",false);//able animation
         }
 
-        // Rigidbody¿¡ ÀÌµ¿ Àû¿ë (y ÃàÀº ÇöÀçÀÇ ¼Óµµ¸¦ ±×´ë·Î À¯Áö)
+        // Rigidbodyï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ (y ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½×´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
-        // ´ë½Ã Ã³¸®
+        // ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded)
         {
+            anim.SetTrigger("DashTrigger");//Dash animation
             isDashing = true;
         }
 
-        // Á¡ÇÁ Ã³¸®
+        // ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
         if (isGrounded)
         {
             jumpCount = 0;
@@ -91,9 +100,11 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing)
         {
-            // Á¡ÇÁ ÈûÀ» Àû¿ëÇÏ¿© Á¡ÇÁ
+            anim.SetTrigger("JumpTrigger");//Jump animation
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             jumpCount++;
+            
         }
     }
 
@@ -107,16 +118,17 @@ public class PlayerController : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        // ¶¥¿¡ ´êÀ¸¸é Á¡ÇÁ °¡´ÉÇÑ »óÅÂ·Î ¼³Á¤
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
+            
         }
     }
 
     void OnCollisionExit(Collision collision)
     {
-        // ¶¥¿¡¼­ ¶³¾îÁö¸é Á¡ÇÁ ºÒ°¡´ÉÇÑ »óÅÂ·Î ¼³Á¤
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
