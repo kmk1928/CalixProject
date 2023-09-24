@@ -22,8 +22,17 @@ public class PlayerController : MonoBehaviour
     Animator anim;//animation variable
 
     GameObject nearObject;
+    GameObject equipWeapon;
+
+
+    //weapon variable
     public GameObject[] weapons;
     public bool[] hasWeapons;
+    bool sDown1;
+    bool sDown2;
+    bool sDown3;
+    bool isSwap;
+    int equipWeaponIndex = -1;
 
     void Start()
     {
@@ -76,7 +85,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // ȸ�� ó��: �̵� �������� ĳ���͸� ȸ��
-        if (movement != Vector3.zero)
+        if (movement != Vector3.zero )
         {
             transform.forward = movement.normalized;
             anim.SetBool("isRun",true);//run animation
@@ -102,7 +111,7 @@ public class PlayerController : MonoBehaviour
             jumpCount = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap)
         {
             anim.SetTrigger("JumpTrigger");//Jump animation
             // ���� ���� �����Ͽ� ����
@@ -110,28 +119,22 @@ public class PlayerController : MonoBehaviour
             jumpCount++;
             
         }
-
-        if (Input.GetKeyDown("e")&&nearObject != null)
-        {
-            Debug.Log("e누름");
-            if(nearObject.tag == "weapon"){
-                Item item = nearObject.GetComponent<Item>();
-                int weaponIndex = item.value;
-                hasWeapons[weaponIndex] = true;
-
-                Destroy(nearObject);
-            }
-        }
+        //weapon
+        Interraction();
+        Swap();
+        
     }
 
     void FreezeRotation()
     {
         rb.angularVelocity = Vector3.zero;
     }
+
     private void FixedUpdate()
     {
         FreezeRotation();
     }
+
     void OnCollisionEnter(Collision collision)
     {
         // ���� ������ ���� ������ ���·� ����
@@ -163,5 +166,53 @@ public class PlayerController : MonoBehaviour
     {
         if(other.tag == "weapon")
             nearObject = null;
+    }
+    //weapon
+    void Swap()
+    {
+        if(Input.GetKeyDown("1") && (!hasWeapons[0]||equipWeaponIndex == 0))
+            return;
+        if(Input.GetKeyDown("2") && (!hasWeapons[1]||equipWeaponIndex == 1))
+            return;
+        if(Input.GetKeyDown("3") && (!hasWeapons[2]||equipWeaponIndex == 2))
+            return;
+
+        int weaponIndex = -1;
+        if(Input.GetKeyDown("1")) weaponIndex = 0;
+        if(Input.GetKeyDown("2")) weaponIndex = 1;
+        if(Input.GetKeyDown("3")) weaponIndex = 2;
+
+        if(Input.GetKeyDown("1")||Input.GetKeyDown("2")||Input.GetKeyDown("3"))
+        {
+            if(equipWeapon != null)
+                equipWeapon.SetActive(false);
+
+            equipWeaponIndex = weaponIndex;
+            equipWeapon = weapons[weaponIndex];
+            equipWeapon.SetActive(true);
+
+            anim.SetTrigger("doSwap");
+            isSwap = true;
+            Invoke("SwapOut",0.4f);
+        }
+    }
+    void SwapOut()
+    {
+        isSwap = false;
+    }
+
+    void Interraction()
+    {
+        if (Input.GetKeyDown("e")&&nearObject != null)
+        {
+            Debug.Log("e누름");
+            if(nearObject.tag == "weapon"){
+                Item item = nearObject.GetComponent<Item>();
+                int weaponIndex = item.value;
+                hasWeapons[weaponIndex] = true;
+
+                Destroy(nearObject);
+            }
+        }
     }
 }
