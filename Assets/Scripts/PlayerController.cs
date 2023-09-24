@@ -22,17 +22,18 @@ public class PlayerController : MonoBehaviour
     Animator anim;//animation variable
 
     GameObject nearObject;
-    GameObject equipWeapon;
+    Weapon equipWeapon;
 
 
     //weapon variable
     public GameObject[] weapons;
     public bool[] hasWeapons;
-    bool sDown1;
-    bool sDown2;
-    bool sDown3;
     bool isSwap;
     int equipWeaponIndex = -1;
+
+    //attack
+    bool isFireReady;
+    float fireDelay;
 
     void Start()
     {
@@ -123,6 +124,13 @@ public class PlayerController : MonoBehaviour
         Interraction();
         Swap();
         
+        //attack
+        Attack();
+
+        //HEEEEEEEEEEEEEEEEEEEEEEEEEEEEELLP
+        if(isSwap||isFireReady){
+            movement = Vector3.zero;
+        }
     }
 
     void FreezeRotation()
@@ -157,9 +165,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         if(other.tag == "weapon")
-            nearObject = other.gameObject;
-        
-        Debug.Log(nearObject.name);    
+            nearObject = other.gameObject;   
     }
 
     void OnTriggerExit(Collider other)
@@ -185,11 +191,11 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown("1")||Input.GetKeyDown("2")||Input.GetKeyDown("3"))
         {
             if(equipWeapon != null)
-                equipWeapon.SetActive(false);
+                equipWeapon.gameObject.SetActive(false);
 
             equipWeaponIndex = weaponIndex;
-            equipWeapon = weapons[weaponIndex];
-            equipWeapon.SetActive(true);
+            equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
+            equipWeapon.gameObject.SetActive(true);
 
             anim.SetTrigger("doSwap");
             isSwap = true;
@@ -213,6 +219,21 @@ public class PlayerController : MonoBehaviour
 
                 Destroy(nearObject);
             }
+        }
+    }
+    //attack
+    void Attack()
+    {
+        if(equipWeapon == null)
+            return;
+        fireDelay += Time.deltaTime;
+        isFireReady = equipWeapon.rate < fireDelay;
+
+        if(Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap)
+        {
+            equipWeapon.Use();
+            anim.SetTrigger("doSwing");
+            fireDelay = 0;
         }
     }
 }
