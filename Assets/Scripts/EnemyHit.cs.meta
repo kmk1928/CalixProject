@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/EnemyHit.cs.meta
+guid: f056c49979aea814586282d9457db2ed
+========
+guid: d951a83640e259145ba8c2940152520c
+timeCreated: 1511893746
+licenseType: Store
+>>>>>>>> 8a631a846207f62f06127117191717ba93199f8e:Assets/Dynamic Snow System/DEMO SCENE/SimpleCameraScript.cs.meta
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
