@@ -13,34 +13,30 @@ public class SandbagAttack : MonoBehaviour
         mat = GetComponentInChildren<MeshRenderer>().material; 
     }
 
-    void Targeting() {                  //ÀûÀ» ÀÎ½ÄÇÏ±â À§ÇÑ Å¸°ÙÆÃ
+    void Targeting() {                  //ï¿½ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½
         float targetRadius = 1.5f;
         float targetRange = 3f;
 
         RaycastHit[] rayHits =
             Physics.SphereCastAll(transform.position,
-                                  targetRadius,                     //¹üÀ§
-                                  transform.forward,              //Àü¹æÀÇ
-                                  targetRange,                    //ÃßÀû °Å¸®
-                                  LayerMask.GetMask("Player"));   //·¹ÀÌ¾î°¡ ÇÃ·¹ÀÌ¾îÀÎ ´ë»ó
+                                  targetRadius,                     //ï¿½ï¿½ï¿½ï¿½
+                                  transform.forward,              //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                                  targetRange,                    //ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½
+                                  LayerMask.GetMask("Player"));   //ï¿½ï¿½ï¿½Ì¾î°¡ ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 
-        if (rayHits.Length > 0 && !isAttack) {       //rayhitº¯¼ö¿¡ µ¥ÀÌÅÍ°¡ µé¾î¿À¸é °ø°Ý ÄÚ·çÆ¾ ½ÇÇà 
+        if (rayHits.Length > 0 && !isAttack) {       //rayhitï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½ 
             StartCoroutine(SandBag_Attack());
         }  
     }
 
-    private void FixedUpdate() {   //Å¸°ÙÆÃÀ» À§ÇÑ ÇÈ½ºµå¾÷µ¥ÀÌÆ®
+    private void FixedUpdate() {   //Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
         Targeting();
     }
 
     IEnumerator SandBag_Attack() {
         isAttack = true;
-
-        mat.color = Color.green;
         yield return new WaitForSeconds(0.5f);
-        mat.color = Color.yellow;
         yield return new WaitForSeconds(0.5f);
-        mat.color = Color.magenta;
         attackArea.enabled = true;
         yield return new WaitForSeconds(0.3f);
         attackArea.enabled = false;

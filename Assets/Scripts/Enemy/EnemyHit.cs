@@ -19,7 +19,8 @@ public class EnemyHit : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         if (other.tag == "melee") {  //�±װ� Melee�϶� ���
-            curHP -= 10;
+            Weapon weapon = other.GetComponent<Weapon>();
+            curHP -= weapon.damage;
             Debug.Log("Enemy Hit!! curHP = " + curHP);
             StartCoroutine(OnDamage());
         }
@@ -31,10 +32,13 @@ public class EnemyHit : MonoBehaviour
 
         if (curHP > 0) {
             mat.color = Color.white;        //ü���� ���������� �������
+            
         }
         else {
             mat.color = Color.gray;
             Destroy(gameObject, 4);      //ü���� ������ ȸ�� + 4�� �� ����
         }
+        
+
     }// Start is called before the first frame update
 }
