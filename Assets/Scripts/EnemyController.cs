@@ -6,18 +6,22 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public Transform[] patrolPoints; // ¼øÂû ÁöÁ¡ ¹è¿­
-    public Transform player; // ÇÃ·¹ÀÌ¾î ¿ÀºêÁ§Æ® ÂüÁ¶
+    public Transform[] patrolPoints; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
+    public Transform player; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
     private NavMeshAgent navMeshAgent;
     private Vector3 originalPosition;
     private bool isPatrolling = true;
-    public float detectionDistance = 10f; // ÇÃ·¹ÀÌ¾î °¨Áö °Å¸®
+    public float detectionDistance = 10f; // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½
+
+    Animator anim;//animation variable
 
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         originalPosition = transform.position;
         SetDestinationToNextPatrolPoint();
+
+        anim = GetComponentInChildren<Animator>();//animation
     }
 
     private void Update()
@@ -28,14 +32,16 @@ public class EnemyController : MonoBehaviour
 
             if (distanceToPlayer <= detectionDistance)
             {
-                // ÇÃ·¹ÀÌ¾î°¡ ÀÏÁ¤ °Å¸® ÀÌ³»¿¡ ÀÖÀ¸¸é ÃßÀû
+                // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½Ì³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 navMeshAgent.SetDestination(player.position);
                 isPatrolling = false;
+                anim.SetBool("isRun",true);//run animation
             }
             else if (!isPatrolling)
             {
-                // ÇÃ·¹ÀÌ¾î°¡ ÀÏÁ¤ °Å¸® ¹Û¿¡ ÀÖ°í ÃßÀû ÁßÀÌ¸é ¼øÂû ÁöÁ¡À¸·Î µ¹¾Æ°¡±â
+                // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½Û¿ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½
                 navMeshAgent.SetDestination(originalPosition);
+                anim.SetBool("isRun",false);//able animation
                 if (navMeshAgent.remainingDistance < 0.5f)
                 {
                     isPatrolling = true;
@@ -44,7 +50,7 @@ public class EnemyController : MonoBehaviour
         }
         else if (!isPatrolling)
         {
-            // ÇÃ·¹ÀÌ¾î°¡ ¾ø°í ÃßÀû ÁßÀÌ¸é ¼øÂû ÁöÁ¡À¸·Î µ¹¾Æ°¡±â
+            // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½
             navMeshAgent.SetDestination(originalPosition);
             if (navMeshAgent.remainingDistance < 0.5f)
             {
