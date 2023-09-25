@@ -202,11 +202,12 @@ public class PlayerController : MonoBehaviour
             Invoke("SwapOut",0.4f);
         }
     }
+    //swap out
     void SwapOut()
     {
         isSwap = false;
     }
-
+    //get weapon
     void Interraction()
     {
         if (Input.GetKeyDown("e")&&nearObject != null)
