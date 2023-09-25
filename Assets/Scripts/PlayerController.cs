@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public float dashDuration = 0.5f; // ��� ���� �ð�
     public float maxJumpAngle = 30.0f; // �ִ� ���� ���� (�¿�� ������ �� �ִ� ����)
 
+    
+
     private Rigidbody rb;
     private bool isGrounded = true; // ���� ��Ҵ��� ����
     private int jumpCount = 0; // ���� Ƚ��
@@ -22,17 +24,20 @@ public class PlayerController : MonoBehaviour
     Animator anim;//animation variable
 
     GameObject nearObject;
-    GameObject equipWeapon;
+    Weapon equipWeapon;
 
+    bool isDodge;
 
     //weapon variable
     public GameObject[] weapons;
     public bool[] hasWeapons;
-    bool sDown1;
-    bool sDown2;
-    bool sDown3;
     bool isSwap;
+    bool isAttack;
     int equipWeaponIndex = -1;
+
+    //attack
+    bool isFireReady;
+    float fireDelay;
 
     void Start()
     {
@@ -40,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
         mainCameraTransform = Camera.main.transform;
 
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponentInChildren<Animator>();//animation
     }
 
     void Update()
@@ -101,7 +106,7 @@ public class PlayerController : MonoBehaviour
         // ��� ó��
         if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded)
         {
-            anim.SetTrigger("DashTrigger");//Dash animation
+            //anim.SetTrigger("DashTrigger");//Dash animation
             isDashing = true;
         }
 
@@ -111,7 +116,7 @@ public class PlayerController : MonoBehaviour
             jumpCount = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap && !isDodge)
         {
             anim.SetTrigger("JumpTrigger");//Jump animation
             // ���� ���� �����Ͽ� ����
@@ -123,6 +128,10 @@ public class PlayerController : MonoBehaviour
         Interraction();
         Swap();
         
+        //attack
+        Attack();
+
+        Dodge();
     }
 
     void FreezeRotation()
@@ -157,9 +166,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         if(other.tag == "weapon")
-            nearObject = other.gameObject;
-        
-        Debug.Log(nearObject.name);    
+            nearObject = other.gameObject;   
     }
 
     void OnTriggerExit(Collider other)
@@ -185,19 +192,21 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown("1")||Input.GetKeyDown("2")||Input.GetKeyDown("3"))
         {
             if(equipWeapon != null)
-                equipWeapon.SetActive(false);
+                equipWeapon.gameObject.SetActive(false);
 
             equipWeaponIndex = weaponIndex;
-            equipWeapon = weapons[weaponIndex];
-            equipWeapon.SetActive(true);
+            equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
+            equipWeapon.gameObject.SetActive(true);
 
             anim.SetTrigger("doSwap");
             isSwap = true;
-            Invoke("SwapOut",0.4f);
+            speed = 0f;
+            Invoke("SwapOut",0.6f);
         }
     }
     void SwapOut()
     {
+        speed = 5.0f;
         isSwap = false;
     }
 
@@ -214,5 +223,49 @@ public class PlayerController : MonoBehaviour
                 Destroy(nearObject);
             }
         }
+    }
+    //attack
+    void Attack()
+    {
+        if(equipWeapon == null)
+            return;
+        fireDelay += Time.deltaTime;
+        isFireReady = equipWeapon.rate < fireDelay;
+
+        if(Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap)
+        {
+            equipWeapon.Use();
+            anim.SetTrigger("doSwing");
+            fireDelay = 0;
+            isAttack = true;
+            speed = 0;
+            Invoke("AttackOut",1.5f);
+        }
+    }
+
+    void AttackOut()
+    {
+        speed = 5.0f;
+        isAttack = false;
+    }
+
+    //Dodge
+    void Dodge()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCount < 1 && !isDashing && !isSwap && !isDodge)
+        {
+            speed *= 2;
+            anim.SetTrigger("DodgeTrigger");//Jump animation
+            // ���� ���� �����Ͽ� ����
+            isDodge = true;
+
+            Invoke("DodgeOut",0.5f);
+        }
+    }
+
+    void DodgeOut()
+    {
+        speed *=0.5f;
+        isDodge = false;
     }
 }
