@@ -62,15 +62,15 @@ public class PlayerParryGuard : MonoBehaviour {
                 CharStats targetStatus = other.GetComponentInParent<CharStats>();
                 if(targetStatus != null) {
                     combat.Guard(targetStatus);
-
                 }
+                Debug.Log("Guard!");
                 StartCoroutine(OnDamage());
             }
             else {
                 CharStats targetStatus = other.GetComponentInParent<CharStats>();
-                    combat.Attack(targetStatus); //null값이 나와서 오류남
+                    combat.Hitted(targetStatus);
+                Debug.Log("Damaged");
 
-                
                 StartCoroutine(OnDamage());
             }
 

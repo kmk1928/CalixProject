@@ -25,15 +25,15 @@ public class CharCombat : MonoBehaviour
     }
 
     public void Guard(CharStats targetStats) {
-            targetStats.TakeDamage(myStats.damage.GetStat());
+            targetStats.GuardDamage(myStats.damage.GetStat());
         }
+
+    public void Hitted(CharStats targetStats) {
+        myStats.TakeDamage(targetStats.damage.GetStat());
     }
-    /*
-       public void Attack(CharStats targetStats) {
-        if(atkCdw <= 0) {
-            targetStats.TakeDamage(myStats.damage.GetStat());
-            atkCdw = 1f / atkSpd;
-        }
-    }
-     */
+
+}
+
+
+
 
