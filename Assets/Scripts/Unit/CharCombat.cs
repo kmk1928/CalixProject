@@ -19,7 +19,7 @@ public class CharCombat : MonoBehaviour
         atkCdw -= Time.deltaTime;
     }*/
 
-    public void Attack(CharStats targetStats) {
+    public void Attack(CharStats targetStats) {     //공격 데미지를 줌
             targetStats.TakeDamage(myStats.damage.GetStat());
 
     }
@@ -28,7 +28,7 @@ public class CharCombat : MonoBehaviour
             targetStats.GuardDamage(myStats.damage.GetStat());
         }
 
-    public void Hitted(CharStats targetStats) {
+    public void Hitted(CharStats targetStats) {     //공격 데미지를 받음
         myStats.TakeDamage(targetStats.damage.GetStat());
     }
 
