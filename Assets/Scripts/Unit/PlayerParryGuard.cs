@@ -53,14 +53,13 @@ public class PlayerParryGuard : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        Transform target = other.transform;
         if (other.tag == "EnemyAttack" && !isHitted) {
             if (isParried) {
                 Debug.Log("PARRY!!!");                          //패링 성공
                 StartCoroutine(OnParried());
             }
             else if (isBlocked) {                                    //우클릭 가드로 인한 뎀감 실험
-                CharStats targetStatus = target.GetComponent<CharStats>();
+                CharStats targetStatus = other.GetComponentInParent<CharStats>();
                 if(targetStatus != null) {
                     combat.Guard(targetStatus);
 
@@ -68,8 +67,8 @@ public class PlayerParryGuard : MonoBehaviour {
                 StartCoroutine(OnDamage());
             }
             else {
-                CharStats targetStatus = target.GetComponent<CharStats>();
-                    combat.Attack(targetStatus);
+                CharStats targetStatus = other.GetComponentInParent<CharStats>();
+                    combat.Attack(targetStatus); //null값이 나와서 오류남
 
                 
                 StartCoroutine(OnDamage());

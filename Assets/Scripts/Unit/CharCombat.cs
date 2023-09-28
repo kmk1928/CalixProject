@@ -15,9 +15,9 @@ public class CharCombat : MonoBehaviour
         myStats = GetComponent<CharStats>();
     }
 
-    private void Update() {
-       // atkCdw -= Time.deltaTime;
-    }
+   /* private void Update() {
+        atkCdw -= Time.deltaTime;
+    }*/
 
     public void Attack(CharStats targetStats) {
             targetStats.TakeDamage(myStats.damage.GetStat());

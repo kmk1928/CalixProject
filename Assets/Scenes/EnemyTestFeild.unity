@@ -262,7 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42316a8dd1ee93c4bad6073e01b46727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkSpd: 1
 --- !u!114 &219649707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,7 +744,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42316a8dd1ee93c4bad6073e01b46727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkSpd: 1
 --- !u!1 &1318224342233914698
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,7 +838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42316a8dd1ee93c4bad6073e01b46727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkSpd: 1
 --- !u!4 &1318224342832167284
 Transform:
   m_ObjectHideFlags: 0
@@ -2044,7 +2041,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42316a8dd1ee93c4bad6073e01b46727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atkSpd: 1
 --- !u!114 &3935672061690146497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,7 +2057,7 @@ MonoBehaviour:
   curHealth: 0
   defense: 5
   damage:
-    baseStat: 0
+    baseStat: 5
 --- !u!1001 &3935672061954024384
 PrefabInstance:
   m_ObjectHideFlags: 0
