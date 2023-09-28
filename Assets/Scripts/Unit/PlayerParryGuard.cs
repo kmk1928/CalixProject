@@ -90,12 +90,12 @@ public class PlayerParryGuard : MonoBehaviour {
     IEnumerator OnDamage() {              //가드 또는 피격 시 쓰는 데미지 코루틴
         isHitted = true;    //연속피격방지
         AttackedPushed(0.3f);
-        if (isBlocked) {                                    //우클릭 가드로 인한 뎀감 실험
-            mat.color = Color.yellow;
+        /*if (isblocked) {                                    //우클릭 가드로 인한 뎀감 실험
+            mat.color = color.yellow;
         }
         else {
-            mat.color = Color.red;              //피격 시 빨간색으로 변경 후 
-        }
+            mat.color = color.red;              //피격 시 빨간색으로 변경 후 
+        }*/
         yield return new WaitForSeconds(0.4f);
         isHitted = false;    //연속피격방지
     }
