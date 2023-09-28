@@ -6,8 +6,8 @@ using UnityEngine;
 public class CharCombat : MonoBehaviour
 {
     [Header("전투에 관련된 행동 정리")]
-    public float atkSpd = 1f;           //공격 속도
-    private float atkCdw = 0f;          //공격 딜레이
+    //public float atkSpd = 1f;           //공격 속도
+   // private float atkCdw = 0f;          //공격 딜레이
 
     CharStats myStats;
 
@@ -16,13 +16,24 @@ public class CharCombat : MonoBehaviour
     }
 
     private void Update() {
-        atkCdw -= Time.deltaTime;
+       // atkCdw -= Time.deltaTime;
     }
 
     public void Attack(CharStats targetStats) {
+            targetStats.TakeDamage(myStats.damage.GetStat());
+
+    }
+
+    public void Guard(CharStats targetStats) {
+            targetStats.TakeDamage(myStats.damage.GetStat());
+        }
+    }
+    /*
+       public void Attack(CharStats targetStats) {
         if(atkCdw <= 0) {
             targetStats.TakeDamage(myStats.damage.GetStat());
             atkCdw = 1f / atkSpd;
         }
     }
-}
+     */
+
