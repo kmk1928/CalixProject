@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class EnemyHit : MonoBehaviour
 {
-    public int maxHP = 100;           //�ִ�ü��
-    public int curHP = 100;           //����ü��
+    public int maxHP = 100;           //최대체력
+    public int curHP = 100;           //현재체력
 
-    Rigidbody rigid;            //�ǰ�Ȯ���� ����
-    BoxCollider boxCollider;    //�ǰ�Ȯ���� ����
-    Material mat;               //�ǰ� �� ���󺯰� Ȯ��
+    Rigidbody rigid;            //피격확인을 위함
+    BoxCollider boxCollider;    //피격확인을 위함
+    Material mat;               //피격 시 색상변경 확인
 
     void Awake() {
-        rigid = GetComponent<Rigidbody>();              //�ǰ�Ȯ���� ����
-        boxCollider = GetComponent<BoxCollider>();      //�ǰ�Ȯ���� ����\
-        mat = GetComponentInChildren<MeshRenderer>().material;    //�ǰ� �� ���󺯰� Ȯ��
+        rigid = GetComponent<Rigidbody>();              //피격확인을 위함
+        boxCollider = GetComponent<BoxCollider>();      
+        mat = GetComponentInChildren<MeshRenderer>().material;    //피격 시 색상변경 확인
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "melee") {  //�±װ� Melee�϶� ���
+        if (other.tag == "melee") {  //태그가 Melee일때 출력
             Weapon weapon = other.GetComponent<Weapon>();
             curHP -= weapon.damage;
             Debug.Log("Enemy Hit!! curHP = " + curHP);
@@ -26,17 +26,18 @@ public class EnemyHit : MonoBehaviour
         }
     }
 
-    IEnumerator OnDamage() {
-        mat.color = Color.red;                  //�ǰ� �� ���������� ���� �� 
-        yield return new WaitForSeconds(0.1f);  // 0.1�� �� �Ʒ� ���ǹ��� ���� �� ���� 
+    IEnumerator OnDamage() 
+    {
+        mat.color = Color.red;                  //피격 시 빨간색으로 변경 후 
+        yield return new WaitForSeconds(0.1f);  // 0.1초 후 아래 조건문에 의해 색 변경 
 
         if (curHP > 0) {
-            mat.color = Color.white;        //ü���� ���������� �������
-            
+            mat.color = Color.white;        //체력이 남아있으면 흰색으로
+
         }
         else {
             mat.color = Color.gray;
-            Destroy(gameObject, 4);      //ü���� ������ ȸ�� + 4�� �� ����
+            Destroy(gameObject, 4);      //체력이 없으면 회색 + 4초 후 제거
         }
         
 
