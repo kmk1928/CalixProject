@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public Transform[] patrolPoints; // ���� ���� �迭
+    public Transform[] patrolPoints; // ���� ���� �迭 
     public Transform player; // �÷��̾� ������Ʈ ����
     private NavMeshAgent navMeshAgent;
     private Vector3 originalPosition;
