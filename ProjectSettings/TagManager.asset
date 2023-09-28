@@ -5,16 +5,20 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Melee
+  - weapon
+  - item
+  - melee
+  - Enemy
+  - EnemyAttack
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 
-  - 
+  - Bloking Layer
   - 
   - 
   - 
