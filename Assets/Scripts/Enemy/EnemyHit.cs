@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyHit : MonoBehaviour
 {
     CharCombat combat;
-
     Rigidbody rigid;            //피격확인을 위함
     BoxCollider boxCollider;    //피격확인을 위함
     Material mat;               //피격 시 색상변경 확인

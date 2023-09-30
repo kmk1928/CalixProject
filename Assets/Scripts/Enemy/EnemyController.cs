@@ -15,6 +15,16 @@ public class EnemyController : MonoBehaviour
 
     Animator anim;//animation variable
 
+    public float gizmosDrawRange = 5.0f;    //OnDrawGizmos() 범위 표시용 float(거리)
+    public float enemyAttackRange = 2.0f;    //OnDrawGizmos() 범위 표시용 float(거리)
+
+    void OnDrawGizmos() {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, gizmosDrawRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, enemyAttackRange);
+    }
+
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -57,6 +67,7 @@ public class EnemyController : MonoBehaviour
                 isPatrolling = true;
             }
         }
+
     }
 
     private void SetDestinationToNextPatrolPoint()
@@ -66,4 +77,5 @@ public class EnemyController : MonoBehaviour
 
         navMeshAgent.SetDestination(patrolPoints[Random.Range(0, patrolPoints.Length)].position);
     }
+
 }
