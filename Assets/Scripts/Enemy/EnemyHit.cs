@@ -19,9 +19,9 @@ public class EnemyHit : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (other.tag == "melee") {  //태그가 Melee일때 출력
             Weapon weapon = other.GetComponent<Weapon>();
+            Debug.Log("Enemy Hit!!");  
             CharStats targetStatus = other.transform.root.GetComponent<CharStats>();
             if (targetStatus != null) {
-                Debug.Log("Enemy Hit!!");
                 combat.Hitted(targetStatus);
             }
           

@@ -20,16 +20,16 @@ public class CharCombat : MonoBehaviour
     }*/
 
     public void Attack(CharStats targetStats) {     //공격 데미지를 줌
-            targetStats.TakeDamage(myStats.damage.GetStat());
+            targetStats.TakeADDamage(myStats.defaultDamage);
 
     }
 
     public void Guard(CharStats targetStats) {
-            targetStats.GuardDamage(myStats.damage.GetStat());
+            targetStats.GuardDamage(myStats.defaultDamage);
         }
 
     public void Hitted(CharStats targetStats) {     //공격 데미지를 받음
-        myStats.TakeDamage(targetStats.damage.GetStat());
+        myStats.TakeADDamage(targetStats.defaultDamage);
     }
 
 }
