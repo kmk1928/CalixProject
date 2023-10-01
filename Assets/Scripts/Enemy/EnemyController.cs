@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
 public class EnemyController : MonoBehaviour
 {
-    public Transform[] patrolPoints; // ���� ���� �迭 
-    public Transform player; // �÷��̾� ������Ʈ ����
+    public Transform[] patrolPoints; // 순찰 지점 배열
+    public Transform player; // 플레이어 게임 오브젝트
     private NavMeshAgent navMeshAgent;
     private Vector3 originalPosition;
     private bool isPatrolling = true;
-    public float detectionDistance = 10f; // �÷��̾� ���� �Ÿ�
+    public float detectionDistance = 10f; // 플레이어 감지 범위
 
-    Animator anim;//animation variable
+    Animator anim; // 애니메이션 변수
+
+    // 공격
+    bool isAttack = false;
+    float attackDelay = 1.3f; // 공격 딜레이 (초)
+
+    private float originalSpeed;
 
     private void Start()
     {
@@ -21,7 +26,8 @@ public class EnemyController : MonoBehaviour
         originalPosition = transform.position;
         SetDestinationToNextPatrolPoint();
 
-        anim = GetComponentInChildren<Animator>();//animation
+        anim = GetComponentInChildren<Animator>(); // 애니메이션
+        originalSpeed = navMeshAgent.speed; // AI 이동속도 저장
     }
 
     private void Update()
@@ -32,17 +38,23 @@ public class EnemyController : MonoBehaviour
 
             if (distanceToPlayer <= detectionDistance)
             {
-                // �÷��̾ ���� �Ÿ� �̳��� ������ ����
+                // 플레이어 따라가기
                 navMeshAgent.SetDestination(player.position);
                 isPatrolling = false;
-                anim.SetBool("isRun",true);//run animation
+                anim.SetBool("isRun", true); // 달리기 애니메이션
+
+                // 플레이어가 감지 범위 내에 있을 때 공격
+                if (distanceToPlayer <= 2.0f && !isAttack)
+                {
+                    Attack();
+                }
             }
             else if (!isPatrolling)
             {
-                // �÷��̾ ���� �Ÿ� �ۿ� �ְ� ���� ���̸� ���� �������� ���ư���
+                // 플레이어가 감지 범위 밖으로 나갔을 때 원래 위치로 돌아가기
                 navMeshAgent.SetDestination(originalPosition);
-                anim.SetBool("isRun",false);//able animation
-                if (navMeshAgent.remainingDistance < 0.5f)
+                anim.SetBool("isRun", false); // 대기 애니메이션
+                if (navMeshAgent.remainingDistance < 0.2f)
                 {
                     isPatrolling = true;
                 }
@@ -50,7 +62,7 @@ public class EnemyController : MonoBehaviour
         }
         else if (!isPatrolling)
         {
-            // �÷��̾ ���� ���� ���̸� ���� �������� ���ư���
+            // 플레이어가 없을 때 원래 위치로 돌아가기
             navMeshAgent.SetDestination(originalPosition);
             if (navMeshAgent.remainingDistance < 0.5f)
             {
@@ -65,5 +77,25 @@ public class EnemyController : MonoBehaviour
             return;
 
         navMeshAgent.SetDestination(patrolPoints[Random.Range(0, patrolPoints.Length)].position);
+    }
+
+    // 공격 메서드
+    void Attack()
+    {
+        // AI의 이동 속도를 0으로 설정
+        navMeshAgent.speed = 0f;
+        anim.SetTrigger("doSwing");
+        isAttack = true;
+        Invoke("AttackOut", attackDelay);
+    }
+
+    // 공격 종료 메서드
+    void AttackOut()
+    {
+        // AI의 이동 속도를 원래 값으로 복원
+        navMeshAgent.speed = originalSpeed;
+
+        isAttack = false;
+        Debug.Log("ATTACK"); // 디버그 로그 출력 (대문자 'Debug')
     }
 }
