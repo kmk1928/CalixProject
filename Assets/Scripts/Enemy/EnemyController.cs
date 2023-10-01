@@ -46,7 +46,16 @@ public class EnemyController : MonoBehaviour
                 // 플레이어가 감지 범위 내에 있을 때 공격
                 if (distanceToPlayer <= 2.0f && !isAttack)
                 {
-                    Attack();
+                    int randomAttack = Random.Range(0, 2);
+
+                    if (randomAttack == 0)
+                    {
+                        Attack();
+                    }
+                    else
+                    {
+                        Attack2();
+                    }
                 }
             }
             else if (!isPatrolling)
@@ -86,6 +95,7 @@ public class EnemyController : MonoBehaviour
         navMeshAgent.speed = 0f;
         anim.SetTrigger("doSwing");
         isAttack = true;
+        Debug.Log("ATTACK"); // 디버그 로그 출력 (대문자 'Debug')
         Invoke("AttackOut", attackDelay);
     }
 
@@ -96,6 +106,14 @@ public class EnemyController : MonoBehaviour
         navMeshAgent.speed = originalSpeed;
 
         isAttack = false;
-        Debug.Log("ATTACK"); // 디버그 로그 출력 (대문자 'Debug')
+        
+    }
+
+    void Attack2()
+    {
+        navMeshAgent.speed = 0f;
+        isAttack = true;
+        Debug.Log("ATTACK2");
+        Invoke("AttackOut", attackDelay);
     }
 }
