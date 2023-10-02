@@ -4,41 +4,36 @@ using UnityEngine;
 
 public class EnemyHit : MonoBehaviour
 {
-    public int maxHP = 100;           //�ִ�ü��
-    public int curHP = 100;           //����ü��
-
-    Rigidbody rigid;            //�ǰ�Ȯ���� ����
-    BoxCollider boxCollider;    //�ǰ�Ȯ���� ����
-    Material mat;               //�ǰ� �� ���󺯰� Ȯ��
+    CharCombat combat;
+    Rigidbody rigid;            //피격확인을 위함
+    BoxCollider boxCollider;    //피격확인을 위함
+    Material mat;               //피격 시 색상변경 확인
 
     void Awake() {
-        rigid = GetComponent<Rigidbody>();              //�ǰ�Ȯ���� ����
-        boxCollider = GetComponent<BoxCollider>();      //�ǰ�Ȯ���� ����\
-        mat = GetComponentInChildren<MeshRenderer>().material;    //�ǰ� �� ���󺯰� Ȯ��
+        combat = GetComponent<CharCombat>();
+        rigid = GetComponent<Rigidbody>();              //피격확인을 위함
+        boxCollider = GetComponent<BoxCollider>();      
+        mat = GetComponentInChildren<MeshRenderer>().material;    //피격 시 색상변경 확인
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "melee") {  //�±װ� Melee�϶� ���
+        if (other.tag == "melee") {  //태그가 Melee일때 출력
             Weapon weapon = other.GetComponent<Weapon>();
-            curHP -= weapon.damage;
-            Debug.Log("Enemy Hit!! curHP = " + curHP);
+            Debug.Log("Enemy Hit!!");  
+            CharStats targetStatus = other.transform.root.GetComponent<CharStats>();
+            if (targetStatus != null) {
+                combat.Hitted(targetStatus);
+            }
+          
             StartCoroutine(OnDamage());
         }
     }
 
-    IEnumerator OnDamage() {
-        mat.color = Color.red;                  //�ǰ� �� ���������� ���� �� 
-        yield return new WaitForSeconds(0.1f);  // 0.1�� �� �Ʒ� ���ǹ��� ���� �� ���� 
-
-        if (curHP > 0) {
-            mat.color = Color.white;        //ü���� ���������� �������
-            
-        }
-        else {
-            mat.color = Color.gray;
-            Destroy(gameObject, 4);      //ü���� ������ ȸ�� + 4�� �� ����
-        }
-        
+    IEnumerator OnDamage() 
+    {
+        mat.color = Color.red;                  //피격 시 빨간색으로 변경 후 
+        yield return new WaitForSeconds(0.1f);  // 0.1초 후 아래 조건문에 의해 색 변경    
+        mat.color = Color.white;
 
     }// Start is called before the first frame update
 }

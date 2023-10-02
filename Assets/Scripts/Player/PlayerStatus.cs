@@ -21,7 +21,7 @@ public class PlayerStatus : MonoBehaviour {
     [Tooltip("패링 성공 이펙트")]
     public ParticleSystem parryParticle;
     [Tooltip("패링시간 확인용 텍스트")]
-    public Text timeText;       //확인용 텍스트
+    public Text timeText;     
 
 
 
