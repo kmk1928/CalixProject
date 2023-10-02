@@ -7,11 +7,9 @@ public class ShopNPC : MonoBehaviour
 {
     public GameObject uiGroup;
     public SphereCollider recoRange;
+    public Image pressE;
 
     bool isOpenAble = false;
-    bool isOpen = false;
-
-    CharStats playerStats;
 
     public float shopRecoRange = 2.0f;    //OnDrawGizmos() 범위 표시용 float(거리)
     public Vector3 originTransform;
@@ -20,27 +18,27 @@ public class ShopNPC : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, shopRecoRange);
     }
+
     private void Start() {
-        
+        pressE.enabled = false;
     }
 
     private void Update() {
         if (isOpenAble) {
             if (Input.GetKeyDown(KeyCode.E)) {
                 uiGroup.SetActive(true);
+                pressE.enabled = false;
             }
         }
     }
 
-    void addStats() {
-
-    }
 
 
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Player") {
             Debug.Log("enter Player");
             isOpenAble = true;
+            pressE.enabled = true;
         }
     }
     private void OnTriggerExit(Collider other) {
@@ -48,6 +46,7 @@ public class ShopNPC : MonoBehaviour
             Debug.Log("exit Player");
             isOpenAble = false;
             uiGroup.SetActive(false);
+            pressE.enabled = false;
         }
     }
     
