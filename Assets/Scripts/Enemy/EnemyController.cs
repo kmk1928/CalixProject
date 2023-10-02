@@ -20,6 +20,16 @@ public class EnemyController : MonoBehaviour
 
     private float originalSpeed;
 
+    public float gizmosDrawRange = 5.0f;    //OnDrawGizmos() 범위 표시용 float(거리)
+    public float enemyAttackRange = 2.0f;    //OnDrawGizmos() 범위 표시용 float(거리)
+
+    void OnDrawGizmos() {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, gizmosDrawRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, enemyAttackRange);
+    }
+
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
