@@ -122,8 +122,9 @@ public class EnemyController : MonoBehaviour
     void Attack2()
     {
         navMeshAgent.speed = 0f;
+        anim.SetTrigger("doSwing2");
         isAttack = true;
         Debug.Log("ATTACK2");
-        Invoke("AttackOut", attackDelay);
+        Invoke("AttackOut", attackDelay + 1f);
     }
 }
