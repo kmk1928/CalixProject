@@ -5,9 +5,9 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     [SerializeField]
-    private float m_roughness;      //거칠기 정도
+    private float m_roughness = 5f;      //거칠기 정도
     [SerializeField]
-    private float m_magnitude;      //움직임 범위
+    private float m_magnitude = 5f;      //움직임 범위
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.C)) {

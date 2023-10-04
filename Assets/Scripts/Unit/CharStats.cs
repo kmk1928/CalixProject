@@ -13,9 +13,6 @@ public class CharStats : MonoBehaviour
     public float abillityPower = 10f;
 
     public int defaultDamage = 10;
-
-    public int nano = 100;
-
      
     private void Awake() {
         curHealth = maxHealth;

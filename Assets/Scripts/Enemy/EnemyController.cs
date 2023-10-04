@@ -21,11 +21,13 @@ public class EnemyController : MonoBehaviour
     private float originalSpeed;
 
     public float gizmosDrawRange = 5.0f;    //OnDrawGizmos() 범위 표시용 float(거리)
-    public float enemyAttackRange = 2.0f;    //OnDrawGizmos() 범위 표시용 float(거리)
+    public float enemyAttackRange = 1.4f;    //OnDrawGizmos() 범위 표시용 float(거리)
+
+    CharCombat combat;
 
     void OnDrawGizmos() {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, gizmosDrawRange);
+        //Gizmos.color = Color.yellow;
+        //Gizmos.DrawWireSphere(transform.position, gizmosDrawRange);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enemyAttackRange);
     }
@@ -38,6 +40,8 @@ public class EnemyController : MonoBehaviour
 
         anim = GetComponentInChildren<Animator>(); // 애니메이션
         originalSpeed = navMeshAgent.speed; // AI 이동속도 저장
+
+        combat = GetComponent<CharCombat>();
     }
 
     private void Update()
@@ -127,4 +131,6 @@ public class EnemyController : MonoBehaviour
         Debug.Log("ATTACK2");
         Invoke("AttackOut", attackDelay + 1f);
     }
+
+
 }
