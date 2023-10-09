@@ -229,12 +229,13 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap)
         {
+            Debug.Log("!---Click Mouse(0)---!");
             equipWeapon.Use();
             anim.SetTrigger("doSwing");
             fireDelay = 0;
             isAttack = true;
             speed = 0;
-            Invoke("AttackOut",1.5f);
+            //Invoke("AttackOut",1.5f);
         }
     }
 
