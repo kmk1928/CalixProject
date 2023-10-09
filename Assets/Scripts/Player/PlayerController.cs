@@ -56,6 +56,13 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
+        Vector3 lockOnMovement = new Vector3();  //락온 중 이동 변경을 위한 값
+        lockOnMovement.x = horizontalInput;
+        lockOnMovement.y = verticalInput;
+
+        anim.SetFloat("xDir", lockOnMovement.x);
+        anim.SetFloat("yDir", lockOnMovement.y);
+
         Vector3 cameraForward = mainCameraTransform.forward;
         Vector3 cameraRight = mainCameraTransform.right;
         cameraForward.y = 0f; // y 축 회전 방향을 무시합니다.
@@ -141,11 +148,13 @@ public class PlayerController : MonoBehaviour
             {
                 FindNearestEnemy();
                 isTargeting = true;
+                anim.SetBool("isLockOn", true);
                 Debug.Log("TargetLock ON");
             }
             else
             {
                 isTargeting = false;
+                anim.SetBool("isLockOn", false);
                 Debug.Log("TargetLock OFF");
             }
         }
