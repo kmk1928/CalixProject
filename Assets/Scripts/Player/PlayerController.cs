@@ -56,12 +56,12 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 lockOnMovement = new Vector3();  //락온 중 이동 변경을 위한 값
+        Vector2 lockOnMovement = new Vector2();  //락온 중 이동 변경을 위한 값
         lockOnMovement.x = horizontalInput;
         lockOnMovement.y = verticalInput;
 
-        anim.SetFloat("xDir", lockOnMovement.x);
-        anim.SetFloat("yDir", lockOnMovement.y);
+        anim.SetFloat("horizon", lockOnMovement.x);
+        anim.SetFloat("vertical", lockOnMovement.y);
 
         Vector3 cameraForward = mainCameraTransform.forward;
         Vector3 cameraRight = mainCameraTransform.right;
@@ -69,6 +69,8 @@ public class PlayerController : MonoBehaviour
         cameraRight.y = 0f;
 
         Vector3 movement = (cameraForward * verticalInput + cameraRight * horizontalInput).normalized;
+
+        anim.SetFloat("movement", Mathf.Abs(lockOnMovement.magnitude));
 
         // 회전 처리: 이동 방향으로 캐릭터를 갑작스럽게 회전
         if (movement != Vector3.zero)
@@ -148,13 +150,13 @@ public class PlayerController : MonoBehaviour
             {
                 FindNearestEnemy();
                 isTargeting = true;
-                anim.SetBool("isLockOn", true);
+                anim.SetLayerWeight(1, 1);
                 Debug.Log("TargetLock ON");
             }
             else
             {
                 isTargeting = false;
-                anim.SetBool("isLockOn", false);
+                anim.SetLayerWeight(1, 0); 
                 Debug.Log("TargetLock OFF");
             }
         }
@@ -336,6 +338,17 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 targetPosition = new Vector3(enemyToLookAt.position.x, transform.position.y, enemyToLookAt.position.z);
             transform.LookAt(targetPosition);
+        }
+    }
+
+    void test() {
+        if(anim.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.5f) {
+            //애니메이터의 레이어 -base부터 0,1,2,3 순으로 내림차순으로 된다.
+            //.normalizedTime은 애니메이션 플레이 시간을 0부터 1까지로 표현하는데
+            //위 내용은 현재 실행 중인 애니메이션이 절반 실행되었을 떄를 기준으로 한다
+            anim.SetLayerWeight(1, 0);
+            //그때 1번 레이어의 가중치를 0으로 한다 즉 안보이게 한다는 것
+            //tmep -=TimedeltaTime; 으로 가중치를 temp로 하면 자연스럽게 바꿀 수도있을것이다.
         }
     }
 }

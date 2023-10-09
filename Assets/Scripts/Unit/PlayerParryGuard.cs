@@ -23,11 +23,14 @@ public class PlayerParryGuard : MonoBehaviour {
 
     Animator anim;//animation variable
 
+    PlayerController playerController;
+
     // Start is called before the first frame update
     void Start() {
         combat = GetComponent<CharCombat>();
         mat = GetComponent<MeshRenderer>().material;
         anim = GetComponentInChildren<Animator>();//animation
+        playerController = GetComponent<PlayerController>();
 
     }
 
@@ -35,6 +38,7 @@ public class PlayerParryGuard : MonoBehaviour {
         if (Input.GetMouseButtonDown(1)) {                  //우클릭 키 다운 시 패링
             isParried = true;                   //패리중을 true로 변경
             anim.SetBool("isGuard", true);//able animation
+            playerController.speed /= 2;
         }
         if (Input.GetMouseButton(1)) {                       //우클릭 꾹 누를 시 가드
             isBlocked = true;                   //가드중을 true로 변경
@@ -51,6 +55,7 @@ public class PlayerParryGuard : MonoBehaviour {
         if (Input.GetMouseButtonUp(1)) {         //우클릭 해제 시 가드해제
             isBlocked = false;
             anim.SetBool("isGuard", false);//able animation
+            playerController.speed *= 2;
             Debug.Log("?-? Non blocked");
 
         }
