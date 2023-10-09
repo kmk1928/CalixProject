@@ -235,7 +235,7 @@ public class PlayerController : MonoBehaviour
             fireDelay = 0;
             isAttack = true;
             speed = 0;
-            //Invoke("AttackOut",1.5f);
+            Invoke("AttackOut",0.5f);
         }
     }
 
