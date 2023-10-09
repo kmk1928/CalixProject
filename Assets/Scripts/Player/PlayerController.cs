@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     private bool isDashing = false; // 대시 중인지 여부
     private float dashTimer = 0.0f; // 대시 타이머
 
+    private Transform enemyToLookAt; // 시선을 고정할 적 캐릭터
+    private bool isTargeting = false; // 플레이어가 바라보는 중인지 여부
+    private float maxDistanceForTargetLock = 15f; // 시선 고정을 위한 최대 거리
 
     private Transform mainCameraTransform;
 
@@ -49,15 +52,32 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // �̵� ó��
+        // WASD 키를 사용하여 캐릭터 이동
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
+
         Vector3 cameraForward = mainCameraTransform.forward;
         Vector3 cameraRight = mainCameraTransform.right;
         cameraForward.y = 0f; // y 축 회전 방향을 무시합니다.
         cameraRight.y = 0f;
 
         Vector3 movement = (cameraForward * verticalInput + cameraRight * horizontalInput).normalized;
+
+        // 회전 처리: 이동 방향으로 캐릭터를 갑작스럽게 회전
+        if (movement != Vector3.zero)
+        {
+            float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, targetAngle, 0);
+            anim.SetBool("isRun", true); // run animation
+        }
+        else
+        {
+            anim.SetBool("isRun", false); // idle animation
+        }
+
+        // Rigidbody를 사용하여 이동 처리
+        rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
+    
 
         // 대시 중인 경우 대시 속도로 이동
         if (isDashing)
@@ -83,20 +103,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
-        // 회전 처리: 이동 방향으로 캐릭터를 회전
-        if (movement != Vector3.zero )
-        {
-            transform.forward = movement.normalized;
-            anim.SetBool("isRun",true);//run animation
-        }
-        else if (movement == Vector3.zero)
-        {
-            anim.SetBool("isRun",false);//able animation
-        }
-
-        // Rigidbody�� �̵� ���� (y ���� ������ �ӵ��� �״�� ����)
-        rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
         // ��� ó��
         if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded)
@@ -127,6 +133,34 @@ public class PlayerController : MonoBehaviour
         Attack();
 
         Dodge();
+
+        // 탭 키가 눌렸을 때
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (!isTargeting)
+            {
+                FindNearestEnemy();
+                isTargeting = true;
+                Debug.Log("TargetLock ON");
+            }
+            else
+            {
+                isTargeting = false;
+                Debug.Log("TargetLock OFF");
+            }
+        }
+
+        // 일정 거리를 벗어나면 시선 고정 해제
+        if (isTargeting && enemyToLookAt != null)
+        {
+            float distanceToEnemy = Vector3.Distance(transform.position, enemyToLookAt.position);
+            if (distanceToEnemy > maxDistanceForTargetLock)
+            {
+                isTargeting = false;
+                Debug.Log("TargetLock OFF(Out of Range)");
+            }
+        }
+
     }
 
     void FreezeRotation()
@@ -263,5 +297,36 @@ public class PlayerController : MonoBehaviour
     {
         speed *=0.5f;
         isDodge = false;
+    }
+
+    void FindNearestEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        float nearestDistance = float.MaxValue;
+        Transform nearestEnemy = null;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distance < nearestDistance)
+            {
+                nearestDistance = distance;
+                nearestEnemy = enemy.transform;
+            }
+        }
+
+        if (nearestEnemy != null)
+        {
+            enemyToLookAt = nearestEnemy;
+        }
+    }
+    void LateUpdate()
+    {
+        // 시선을 고정한 적 오브젝트를 바라보도록 회전
+        if (isTargeting && enemyToLookAt != null)
+        {
+            Vector3 targetPosition = new Vector3(enemyToLookAt.position.x, transform.position.y, enemyToLookAt.position.z);
+            transform.LookAt(targetPosition);
+        }
     }
 }
