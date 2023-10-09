@@ -10,6 +10,7 @@ TagManager:
   - melee
   - Enemy
   - EnemyAttack
+  - EnemyPowerAttack
   layers:
   - Default
   - TransparentFX

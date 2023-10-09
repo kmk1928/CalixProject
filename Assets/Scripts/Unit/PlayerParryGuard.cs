@@ -57,7 +57,7 @@ public class PlayerParryGuard : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "EnemyAttack" && !isHitted) {
+        if (other.tag == "EnemyAttack" || other.tag == "EnemyPowerAttack" && !isHitted) {
             if (isParried) {
                 Debug.Log("PARRY!!!");                          //패링 성공
                 StartCoroutine(OnParried());
@@ -74,7 +74,12 @@ public class PlayerParryGuard : MonoBehaviour {
                 CharStats targetStatus = other.GetComponentInParent<CharStats>();
                     combat.Hitted(targetStatus);
                 Debug.Log("Damaged");
-
+                if(other.tag == "EnemyAttack") {
+                    anim.SetTrigger("doDamage");
+                }
+                else if(other.tag == "EnemyPowerAttack") {
+                    anim.SetTrigger("doDamage_Power");
+                }
                 StartCoroutine(OnDamage());
             }
 

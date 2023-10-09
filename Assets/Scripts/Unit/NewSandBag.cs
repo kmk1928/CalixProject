@@ -7,7 +7,9 @@ public class NewSandBag : MonoBehaviour
     CharCombat combat;
     Material mat;
     public BoxCollider attackArea;
+    public BoxCollider powerAttackArea;
     bool isAttack = false;
+    int attackCount = 0;
 
     private void Awake() {
         combat = GetComponent<CharCombat>();
@@ -37,14 +39,33 @@ public class NewSandBag : MonoBehaviour
     IEnumerator SandBag_Attack() {
         isAttack = true;
 
-        mat.color = Color.green;
-        yield return new WaitForSeconds(0.5f);
-        mat.color = Color.yellow;
-        yield return new WaitForSeconds(0.5f);
-        mat.color = Color.magenta;
-        attackArea.enabled = true;
-        yield return new WaitForSeconds(0.3f);
-        attackArea.enabled = false;
+        if (attackCount < 2) {             //enemyAttack 일반공격
+            mat.color = Color.green;
+            yield return new WaitForSeconds(0.5f);
+            mat.color = Color.yellow;
+            yield return new WaitForSeconds(0.5f);
+            mat.color = Color.magenta;
+            attackArea.enabled = true;
+            yield return new WaitForSeconds(0.3f);
+            attackArea.enabled = false;
+            attackCount++;
+        }
+        else if(attackCount >= 2) {         //enemyPowerAttack 강한공격
+            attackCount = 0;
+            mat.color = Color.yellow;
+            yield return new WaitForSeconds(0.2f);
+            mat.color = Color.magenta;
+            yield return new WaitForSeconds(0.2f);
+            mat.color = Color.yellow;
+            yield return new WaitForSeconds(0.2f);
+            mat.color = Color.magenta;
+            yield return new WaitForSeconds(0.2f);
+            powerAttackArea.enabled = true;
+            yield return new WaitForSeconds(0.3f);
+            powerAttackArea.enabled = false;
+
+        }
+
 
         isAttack = false;
     }
