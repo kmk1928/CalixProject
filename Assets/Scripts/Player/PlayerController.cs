@@ -17,8 +17,8 @@ public class PlayerController : MonoBehaviour
     private bool isDashing = false; // 대시 중인지 여부
     private float dashTimer = 0.0f; // 대시 타이머
 
-    private Transform enemyToLookAt; // 시선을 고정할 적 캐릭터
-    private bool isTargeting = false; // 플레이어가 바라보는 중인지 여부
+    public Transform enemyToLookAt; // 시선을 고정할 적 캐릭터
+    public bool isTargeting = false; // 플레이어가 바라보는 중인지 여부
     private float maxDistanceForTargetLock = 15f; // 시선 고정을 위한 최대 거리
 
     private Transform mainCameraTransform;

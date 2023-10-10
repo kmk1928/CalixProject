@@ -17,21 +17,44 @@ public class CameraController : MonoBehaviour
     //위 5개의 value는 개발자의 취향껏 알아서 설정해주자
     private Vector3 targetRotation;
     private Vector3 currentVel;
-
+    
     void LateUpdate()//Player가 움직이고 그 후 카메라가 따라가야 하므로 LateUpdate
     {
-        Yaxis = Yaxis + Input.GetAxis("Mouse X") * rotSensitive;//마우스 좌우움직임을 입력받아서 카메라의 Y축을 회전시킨다
-        Xaxis = Xaxis - Input.GetAxis("Mouse Y") * rotSensitive;//마우스 상하움직임을 입력받아서 카메라의 X축을 회전시킨다
-        //Xaxis는 마우스를 아래로 했을때(음수값이 입력 받아질때) 값이 더해져야 카메라가 아래로 회전한다 
+        bool isTargeting = target.GetComponent<PlayerController>().isTargeting; // PlayerScript에 시선 고정 상태 변수를 추가해야 합니다.
 
-        Xaxis = Mathf.Clamp(Xaxis, RotationMin, RotationMax);
-        //X축회전이 한계치를 넘지않게 제한해준다.
 
-        targetRotation = Vector3.SmoothDamp(targetRotation, new Vector3(Xaxis, Yaxis), ref currentVel, smoothTime);
-        this.transform.eulerAngles = targetRotation;
-        //SmoothDamp를 통해 부드러운 카메라 회전
+        // 시선이 고정된 대상이 있고 시선 고정 중이면 그 대상을 바라보도록 설정합니다.
+        if (isTargeting)
+        {
+            // Player 스크립트의 targetToLookAt 변수를 참조합니다.
+            Transform targetToLookAt = target.GetComponent<PlayerController>().enemyToLookAt;
 
-        transform.position = target.position - transform.forward * dis;
-        //카메라의 위치는 플레이어보다 설정한 값만큼 떨어져있게 계속 변경된다.
+            if (targetToLookAt != null)
+            {
+                // 카메라의 위치를 조절합니다.
+                Vector3 cameraPosition = target.position - transform.forward * 4f;
+                cameraPosition.y = target.position.y + 1.5f; // yourDesiredHeight에 원하는 높이 값을 대입합니다.
+
+                transform.position = cameraPosition;
+
+                transform.LookAt(targetToLookAt); // 카메라가 타겟 고정하게
+            }
+        }
+        else
+        {
+            Yaxis = Yaxis + Input.GetAxis("Mouse X") * rotSensitive;//마우스 좌우움직임을 입력받아서 카메라의 Y축을 회전시킨다
+            Xaxis = Xaxis - Input.GetAxis("Mouse Y") * rotSensitive;//마우스 상하움직임을 입력받아서 카메라의 X축을 회전시킨다
+                                                                    //Xaxis는 마우스를 아래로 했을때(음수값이 입력 받아질때) 값이 더해져야 카메라가 아래로 회전한다 
+
+            Xaxis = Mathf.Clamp(Xaxis, RotationMin, RotationMax);
+            //X축회전이 한계치를 넘지않게 제한해준다.
+
+            targetRotation = Vector3.SmoothDamp(targetRotation, new Vector3(Xaxis, Yaxis), ref currentVel, smoothTime);
+            this.transform.eulerAngles = targetRotation;
+            //SmoothDamp를 통해 부드러운 카메라 회전
+
+            transform.position = target.position - transform.forward * dis;
+            //카메라의 위치는 플레이어보다 설정한 값만큼 떨어져있게 계속 변경된다.
+        }
     }
 }
