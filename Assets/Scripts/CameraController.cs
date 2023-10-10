@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
@@ -17,7 +18,10 @@ public class CameraController : MonoBehaviour
     //위 5개의 value는 개발자의 취향껏 알아서 설정해주자
     private Vector3 targetRotation;
     private Vector3 currentVel;
-    
+
+    public Image diamondUI; //락온 표시할 UI
+
+
     void LateUpdate()//Player가 움직이고 그 후 카메라가 따라가야 하므로 LateUpdate
     {
         bool isTargeting = target.GetComponent<PlayerController>().isTargeting; // PlayerScript에 시선 고정 상태 변수를 추가해야 합니다.
@@ -38,6 +42,14 @@ public class CameraController : MonoBehaviour
                 transform.position = cameraPosition;
 
                 transform.LookAt(targetToLookAt); // 카메라가 타겟 고정하게
+
+                // 마름모 모양의 UI 위치 업데이트
+                Vector3 uiPosition = Camera.main.WorldToScreenPoint(targetToLookAt.position);
+                uiPosition.y += 10f;
+                diamondUI.transform.position = uiPosition;
+
+                // UI를 활성화합니다.
+                diamondUI.gameObject.SetActive(true);
             }
         }
         else
@@ -55,6 +67,9 @@ public class CameraController : MonoBehaviour
 
             transform.position = target.position - transform.forward * dis;
             //카메라의 위치는 플레이어보다 설정한 값만큼 떨어져있게 계속 변경된다.
+
+            diamondUI.gameObject.SetActive(false);
         }
     }
+   
 }
