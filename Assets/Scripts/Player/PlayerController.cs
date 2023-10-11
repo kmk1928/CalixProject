@@ -74,19 +74,16 @@ public class PlayerController : MonoBehaviour
 
 
         // 회전 처리: 이동 방향으로 캐릭터를 갑작스럽게 회전
-        if (movement != Vector3.zero)
-        {
+
             float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, targetAngle, 0);
             anim.SetBool("isRun", true); // run animation
-        }
-        else
-        {
-            anim.SetBool("isRun", false); // idle animation
-        }
+        
 
         // Rigidbody를 사용하여 이동 처리
         rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
+        
+
     
 
         // 대시 중인 경우 대시 속도로 이동
