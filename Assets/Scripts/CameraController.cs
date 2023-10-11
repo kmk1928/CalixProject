@@ -24,14 +24,13 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()//Player가 움직이고 그 후 카메라가 따라가야 하므로 LateUpdate
     {
-        bool isTargeting = target.GetComponent<PlayerController>().isTargeting; // PlayerScript에 시선 고정 상태 변수를 추가해야 합니다.
-
+        bool isTargeting = target.GetComponentInParent<PlayerController>().isTargeting; // PlayerScript에 시선 고정 상태 변수를 추가해야 합니다.
 
         // 시선이 고정된 대상이 있고 시선 고정 중이면 그 대상을 바라보도록 설정합니다.
         if (isTargeting)
         {
             // Player 스크립트의 targetToLookAt 변수를 참조합니다.
-            Transform targetToLookAt = target.GetComponent<PlayerController>().enemyToLookAt;
+            Transform targetToLookAt = target.GetComponentInParent<PlayerController>().enemyToLookAt;
 
             if (targetToLookAt != null)
             {

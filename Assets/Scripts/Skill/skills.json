@@ -1,0 +1,14 @@
+[
+    {
+        "skillName": "Fireball",
+        "damageCoefficient": 1.5,
+        "animationTrigger": "cast_fireball",
+        "description": "Launch a fireball at the target."
+    },
+    {
+        "skillName": "Lightning Bolt",
+        "damageCoefficient": 2.0,
+        "animationTrigger": "cast_lightning",
+        "description": "Summon a lightning bolt to strike the target."
+    }
+]

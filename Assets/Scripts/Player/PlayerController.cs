@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed = 10.0f; // 대시 속도
     public float dashDuration = 0.5f; // 대시 지속 시간
     public float maxJumpAngle = 30.0f; // 최대 점프 각도 (좌우로 움직일 수 있는 각도)
-
+    Vector2 lockOnMovement = new Vector2();  //락온 중 이동 변경을 위한 값
 
     private Rigidbody rb;
     private bool isGrounded = true; // 땅에 닿았는지 여부
@@ -56,12 +56,14 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Vector2 lockOnMovement = new Vector2();  //락온 중 이동 변경을 위한 값
-        lockOnMovement.x = horizontalInput;
-        lockOnMovement.y = verticalInput;
 
-        anim.SetFloat("horizon", lockOnMovement.x);
-        anim.SetFloat("vertical", lockOnMovement.y);
+        lockOnMovement.x = horizontalInput;         //기본이동 및 락온이동을 위한 입력값 받기
+        lockOnMovement.y = verticalInput;           //기본이동 및 락온이동을 위한 입력값 받기
+
+        anim.SetFloat("horizon", lockOnMovement.x);     //락온 중 이동 변경을 위한 값
+        anim.SetFloat("vertical", lockOnMovement.y);    //락온 중 이동 변경을 위한 값
+        anim.SetFloat("movement", Mathf.Abs(lockOnMovement.magnitude)); //기본idle상태를 입력값에 따라 달리는 애니메이션 출력
+
 
         Vector3 cameraForward = mainCameraTransform.forward;
         Vector3 cameraRight = mainCameraTransform.right;
@@ -70,7 +72,6 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = (cameraForward * verticalInput + cameraRight * horizontalInput).normalized;
 
-        anim.SetFloat("movement", Mathf.Abs(lockOnMovement.magnitude));
 
         // 회전 처리: 이동 방향으로 캐릭터를 갑작스럽게 회전
         if (movement != Vector3.zero)
@@ -168,6 +169,7 @@ public class PlayerController : MonoBehaviour
             if (distanceToEnemy > maxDistanceForTargetLock)
             {
                 isTargeting = false;
+                anim.SetLayerWeight(1, 0);
                 Debug.Log("TargetLock OFF(Out of Range)");
             }
         }
@@ -332,13 +334,18 @@ public class PlayerController : MonoBehaviour
         }
     }
     void LateUpdate()
-    {
+    { 
         // 시선을 고정한 적 오브젝트를 바라보도록 회전
         if (isTargeting && enemyToLookAt != null)
         {
             Vector3 targetPosition = new Vector3(enemyToLookAt.position.x, transform.position.y, enemyToLookAt.position.z);
             transform.LookAt(targetPosition);
         }
+    }
+
+    public void ActivateSkill(SOSkill skill) {
+        anim.Play(skill.animationName);
+        print(string.Format("적에게 스킬 {0} 로 {1} 의 피해를 주었습니다.", skill.name, skill.skillDamage));
     }
 
     void test() {
