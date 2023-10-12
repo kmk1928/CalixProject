@@ -45,6 +45,7 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        anim.SetFloat("enemySpeed", navMeshAgent.speed);
         isInteracting = anim.GetBool("isInteracting");
         if (player != null)
         {
@@ -112,17 +113,21 @@ public class EnemyController : MonoBehaviour
     // 공격 메서드
     void Attack()
     {
-        isAttack = true;
-        // AI의 이동 속도를 0으로 설정
-        navMeshAgent.speed = 0f;
         Debug.Log("ATTACK"); // 디버그 로그 출력 (대문자 'Debug')
         StartCoroutine(AttackOut("doSwing"));
+    }
+
+    void Attack2() {
+        Debug.Log("ATTACK2");
+        StartCoroutine(AttackOut("doSwing2"));
     }
 
     // 공격 종료 메서드
     IEnumerator AttackOut(string attackName)
     {
-        anim.SetTrigger(attackName);
+        isAttack = true;
+        anim.SetTrigger(attackName);            //공격에 맞는 트리거 발동
+        navMeshAgent.speed = 0f;                // AI의 이동 속도를 0으로 설정
         while (isInteracting) {
             yield return new WaitForSeconds(2f);
         }
@@ -131,13 +136,7 @@ public class EnemyController : MonoBehaviour
         isAttack = false;     
     }
 
-    void Attack2()
-    {
-        isAttack = true;
-        navMeshAgent.speed = 0f;
-        Debug.Log("ATTACK2");
-        StartCoroutine(AttackOut("doSwing2"));
-    }
+ 
    
    /*
       void Attack()
