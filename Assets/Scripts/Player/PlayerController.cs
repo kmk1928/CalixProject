@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
 
-        lockOnMovement.x = horizontalInput;         //기본이동 및 락온이동을 위한 입력값 받기
+        lockOnMovement.x = horizontalInput;         //기본이동 및 락온이동을 위한 입력값 패러미터로 받기
         lockOnMovement.y = verticalInput;           //기본이동 및 락온이동을 위한 입력값 받기
 
         anim.SetFloat("horizon", lockOnMovement.x);     //락온 중 이동 변경을 위한 값
@@ -75,16 +75,12 @@ public class PlayerController : MonoBehaviour
 
         // 회전 처리: 이동 방향으로 캐릭터를 갑작스럽게 회전
 
-            float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, targetAngle, 0);
-            anim.SetBool("isRun", true); // run animation
-        
+        float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, targetAngle, 0); 
 
         // Rigidbody를 사용하여 이동 처리
         rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
-        
 
-    
 
         // 대시 중인 경우 대시 속도로 이동
         if (isDashing)
