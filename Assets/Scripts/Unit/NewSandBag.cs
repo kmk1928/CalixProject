@@ -60,6 +60,7 @@ public class NewSandBag : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             mat.color = Color.magenta;
             yield return new WaitForSeconds(0.2f);
+            mat.color = Color.cyan;
             powerAttackArea.enabled = true;
             yield return new WaitForSeconds(0.3f);
             powerAttackArea.enabled = false;

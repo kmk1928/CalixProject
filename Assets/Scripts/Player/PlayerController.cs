@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     Animator anim;//animation variable
 
     GameObject nearObject;
-    Weapon equipWeapon;
+    public Weapon equipWeapon;
 
     bool isDodge;
 
@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     bool isSwap;
     bool isAttack;
     int equipWeaponIndex = -1;
+    MeleeAreaSetup meleeAreaSetup;
 
     //attack
     bool isFireReady;
@@ -48,6 +49,8 @@ public class PlayerController : MonoBehaviour
         mainCameraTransform = Camera.main.transform;
 
         anim = GetComponentInChildren<Animator>();//animation
+
+        meleeAreaSetup = GetComponentInChildren<MeleeAreaSetup>();
     }
 
     void Update()
@@ -232,6 +235,7 @@ public class PlayerController : MonoBehaviour
             equipWeaponIndex = weaponIndex;
             equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
             equipWeapon.gameObject.SetActive(true);
+            meleeAreaSetup.LoadWeaponDamageCollider();
 
             anim.SetTrigger("doSwap");
             isSwap = true;
@@ -270,7 +274,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap)
         {
             Debug.Log("!---Click Mouse(0)---!");
-            equipWeapon.Use();
+            //equipWeapon.Use();
             anim.SetTrigger("doSwing");
             fireDelay = 0;
             isAttack = true;

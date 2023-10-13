@@ -25,6 +25,7 @@ public class EnemyController : MonoBehaviour
     bool isInteracting = false; //애니메이션 실행중인지 확인하는 bool - attack에 사용
 
     CharCombat combat;
+    private int comboAttackCount = 0; 
 
     void OnDrawGizmos() {
         Gizmos.color = Color.red;
@@ -47,13 +48,15 @@ public class EnemyController : MonoBehaviour
     {
         anim.SetFloat("enemySpeed", navMeshAgent.speed);
         isInteracting = anim.GetBool("isInteracting");
+        isAttack = anim.GetBool("isAttack");
         if (player != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
             if (!isInteracting) {
-                if (distanceToPlayer <= detectionDistance)
+                if (distanceToPlayer <= detectionDistance)      //플레이어 발견 시
                 {
+                    
                     // 플레이어 따라가기
                     navMeshAgent.SetDestination(player.position);
                     isPatrolling = false;
@@ -61,12 +64,13 @@ public class EnemyController : MonoBehaviour
 
                     // 플레이어가 감지 범위 내에 있을 때 공격
                     if (distanceToPlayer <= 2.0f && !isAttack) {
+                        anim.SetBool("isInteracting", true); // 애니메이션 대기용 애니메이터 bool파라미터
+                        navMeshAgent.speed = 0f;                // AI의 이동 속도를 0으로 설정
                         anim.SetBool("isRun", false); // 대기 애니메이션
                         int randomAttack = Random.Range(0, 2);
-                        anim.SetBool("isInteracting", true); // 애니메이션 대기용 애니메이터 bool파라미터
-                        Debug.Log("testsee");
-                            Attack2();
-                    
+                        Debug.Log("---Find Player---");
+                        Attack2();
+
                         /*
                             if (randomAttack == 0) {
                             Attack();
@@ -85,7 +89,8 @@ public class EnemyController : MonoBehaviour
                     anim.SetBool("isRun", false); // 대기 애니메이션
                     if (navMeshAgent.remainingDistance < 0.2f)
                     {
-                        isPatrolling = true;
+                        isPatrolling = true;            //원래 위치로 돌아온 뒤 속도0으로 변경
+                        //navMeshAgent.speed = 0;
                     }
                 }
             }
@@ -101,6 +106,8 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
+
+
 
     private void SetDestinationToNextPatrolPoint()
     {
@@ -123,51 +130,60 @@ public class EnemyController : MonoBehaviour
     }
 
     // 공격 종료 메서드
-    IEnumerator AttackOut(string attackName)
-    {
+    IEnumerator AttackOut(string attackName) { 
         isAttack = true;
         anim.SetTrigger(attackName);            //공격에 맞는 트리거 발동
+        while (isAttack) {
+            yield return new WaitForSeconds(1f);  //공격 종료 후 idle의 지속 시간
+        }
+        isAttack = false;
+        // AI의 이동 속도를 원래 값으로 복원, 저장해둔 속도로 플레이어 추격
+        navMeshAgent.speed = originalSpeed;
+    }
+    IEnumerator ComboAttackOut(string attackName) {
+        isAttack = true;
         navMeshAgent.speed = 0f;                // AI의 이동 속도를 0으로 설정
-        while (isInteracting) {
-            yield return new WaitForSeconds(2f);
+        while (comboAttackCount < 3) {
+            anim.SetTrigger(attackName);            //공격에 맞는 트리거 발동
+            yield return new WaitForSeconds(0.5f);
+            comboAttackCount++;
         }
         // AI의 이동 속도를 원래 값으로 복원
         navMeshAgent.speed = originalSpeed;
-        isAttack = false;     
-    }
-
- 
-   
-   /*
-      void Attack()
-    {
-        // AI의 이동 속도를 0으로 설정
-        navMeshAgent.speed = 0f;
-        anim.SetTrigger("doSwing");
-        isAttack = true;
-        Debug.Log("ATTACK"); // 디버그 로그 출력 (대문자 'Debug')
-        Invoke("AttackOut", attackDelay);
-    }
-
-    // 공격 종료 메서드
-    void AttackOut()
-    {
-        
-        // AI의 이동 속도를 원래 값으로 복원
-        navMeshAgent.speed = originalSpeed;
-
         isAttack = false;
-        
     }
 
-    void Attack2()
-    {
-        navMeshAgent.speed = 0f;
-        anim.SetTrigger("doSwing2");
-        isAttack = true;
-        Debug.Log("ATTACK2");
-        Invoke("AttackOut", attackDelay + 2f);
-    }
-     */
+
+    /*
+       void Attack()
+     {
+         // AI의 이동 속도를 0으로 설정
+         navMeshAgent.speed = 0f;
+         anim.SetTrigger("doSwing");
+         isAttack = true;
+         Debug.Log("ATTACK"); // 디버그 로그 출력 (대문자 'Debug')
+         Invoke("AttackOut", attackDelay);
+     }
+
+     // 공격 종료 메서드
+     void AttackOut()
+     {
+
+         // AI의 이동 속도를 원래 값으로 복원
+         navMeshAgent.speed = originalSpeed;
+
+         isAttack = false;
+
+     }
+
+     void Attack2()
+     {
+         navMeshAgent.speed = 0f;
+         anim.SetTrigger("doSwing2");
+         isAttack = true;
+         Debug.Log("ATTACK2");
+         Invoke("AttackOut", attackDelay + 2f);
+     }
+      */
 
 }
