@@ -355,24 +355,4 @@ public class PlayerController : MonoBehaviour
             //tmep -=TimedeltaTime; 으로 가중치를 temp로 하면 자연스럽게 바꿀 수도있을것이다.
         }
     }
-
-    /*            IEnumerator SmoothPushed(Vector3 current, Vector3 target, float time) {      //캐릭터 z값만큼 뒤로 밀려남
-        Vector3 velocity = Vector3.zero;
-        Debug.Log("--------스무스 온");
-        this.transform.position = current;
-        float offset = 0.01f;
-        while (target.z + offset <= this.transform.position.z) {
-            this.transform.position
-                = Vector3.SmoothDamp(this.transform.position, target, ref velocity, time);
-            yield return null;
-        }
-
-        transform.position = target;
-
-        yield return null;
-    }
-    
-             StartCoroutine(SmoothPushed(original.position + new Vector3(0, 0, -4), 
-                                    original.position, 
-                                     smoothTime));*/
 }

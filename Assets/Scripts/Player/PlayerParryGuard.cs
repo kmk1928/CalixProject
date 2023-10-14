@@ -15,6 +15,7 @@ public class PlayerParryGuard : MonoBehaviour {
 
     public float smoothTime = 0.5f;
     Transform original;
+    SmoothMoved smoothMoved;
 
     [Header("Parry")]
     [Tooltip("플레이어 패링판정 범위")]
@@ -31,7 +32,7 @@ public class PlayerParryGuard : MonoBehaviour {
         combat = GetComponent<CharCombat>();
         anim = GetComponentInChildren<Animator>();//animation
         playerController = GetComponent<PlayerController>();
-
+        smoothMoved = GetComponent<SmoothMoved>();
     }
 
     void Update() {
@@ -81,69 +82,49 @@ public class PlayerParryGuard : MonoBehaviour {
                 Debug.Log("Damaged");
                 if(other.tag == "EnemyAttack") {
                     anim.SetTrigger("doDamage");
+                    OnDamage();
                 }
                 else if(other.tag == "EnemyPowerAttack") {
                     anim.SetTrigger("doDamage_Power");
+                    OnPowerDamage();
                 }
-                OnDamage();
+                
             }
 
         }
     }
 
     private void  OnParried() {
-        isHitted = true;    //연속피격방지
+        isHitted = true;                        //연속피격방지
         isParried = false;          
         parryArea.enabled = false;      
         parryTimer = 0f;    //패리가능시간 초기화
-
         Debug.Log("패리 온------");
-        original = this.transform;
-        //SmoothPushed(현재위치, 목표위치, 이동시간)을 받음
-        StartCoroutine(SmoothPushed(original.position,
-                                    original.position - new Vector3(0, 0, 0.3f),
-                                    smoothTime));
-        parryParticle.Play();
-        isHitted = false;    //연속피격방지
+
+        original = this.transform;      //부드럽게 밀려남
+        smoothMoved.SmoothMove_Parry(original);
+        
+        parryParticle.Play();           //패리 이펙트
+        Invoke("HittedOut", 0.1f);              //연속피격방지
     }
     private void OnDamage() {              //가드 또는 피격 시 쓰는 데미지 코루틴
-        isHitted = true;    //연속피격방지
-        StartCoroutine(SmoothPushed(original.position,
-                            original.position - new Vector3(0, 0, 1),
-                            smoothTime));
-        isHitted = false;    //연속피격방지
-    }
+        isHitted = true;                        //연속피격방지
 
-    IEnumerator SmoothPushed(Vector3 current, Vector3 target, float time) {      //캐릭터 z값만큼 뒤로 밀려남
-        Vector3 velocity = Vector3.zero;
-        Debug.Log("--------스무스 온");
-        this.transform.position = current;
-        float offset = 0.1f;
-        while (target.z + offset <= this.transform.position.z) {
-            this.transform.position
-                = Vector3.SmoothDamp(this.transform.position, target, ref velocity, time);
-            yield return null;
-        }
+        original = this.transform;
+        smoothMoved.SmoothMove_normalAttack(original);
 
-        yield return null;
+        Invoke("HittedOut", 0.2f);              //연속피격방지
     }
-    /*
-    IEnumerator OnParried() {
-        isHitted = true;    //연속피격방지
-        //AttackedPushed(0.1f);   //밀려남
-        parryParticle.Play();
-        yield return new WaitForSeconds(0.2f);
+    private void OnPowerDamage() {              //강한 공격 피격 시 쓰는 데미지 코루틴
+        isHitted = true;                        //연속피격방지
+
+        original = this.transform;
+        smoothMoved.SmoothMove_powerAttack(original);
+
+        Invoke("HittedOut", 0.2f);              //연속피격방지
+    }
+    private void HittedOut() {
         isHitted = false;    //연속피격방지
     }
-    IEnumerator OnDamage() {              //가드 또는 피격 시 쓰는 데미지 코루틴
-        isHitted = true;    //연속피격방지
-                            // AttackedPushed(0.2f);   //밀려남
-        yield return new WaitForSeconds(0.4f);
-        isHitted = false;    //연속피격방지
-    }
-   void AttackedPushed(float zFlow) {      //캐릭터 z값만큼 뒤로 밀려남
-        this.transform.position += new Vector3(0, 0, -zFlow);
-    }
- */
 
 }

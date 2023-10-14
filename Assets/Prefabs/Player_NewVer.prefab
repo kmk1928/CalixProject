@@ -314,6 +314,7 @@ GameObject:
   - component: {fileID: 2721926923998867456}
   - component: {fileID: 2721926923998867458}
   - component: {fileID: 2721926923998867459}
+  - component: {fileID: 4387737048312850188}
   - component: {fileID: 2721926923998867569}
   - component: {fileID: 2721926923998867568}
   - component: {fileID: 2721926923998867470}
@@ -440,6 +441,19 @@ MonoBehaviour:
   - {fileID: 2721926923924075745}
   - {fileID: 0}
   hasWeapons: 010100
+--- !u!114 &4387737048312850188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2721926923998867468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f1d2da624fc73499341ae5f9970a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothTime: 0.2
 --- !u!114 &2721926923998867569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parryTimer: 0
+  smoothTime: 0.5
   parryArea: {fileID: 1393981726454021418}
   parryParticle: {fileID: 2721926923674684180}
 --- !u!1 &2721926924102220817
@@ -1325,6 +1340,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: df515fe1248a5234b8c83771ea2ea776, type: 3}
+--- !u!114 &1393981726266022524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2721926923924075745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26382e6f34c1a82469517ec6a20fb1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2721926925308753011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,18 +1369,6 @@ MonoBehaviour:
   rate: 0.4
   meleeArea: {fileID: 2721926925308753010}
   trailEffect: {fileID: 2721926923828075307}
---- !u!114 &1393981726266022524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2721926923924075745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26382e6f34c1a82469517ec6a20fb1e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2721926923924498625 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4f354ba23c3e35741885729ce4a3a3b3, type: 3}
@@ -1454,19 +1469,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 217c7773b7f791347bb9cd7d97480c52, type: 3}
   m_PrefabInstance: {fileID: 2721926924749714388}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &2721926923748457847
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2721926924749682036}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.55867916, y: 1.6234374, z: 0.25993538}
-  m_Center: {x: -0.000028735629, y: 0.45495564, z: -0.0010209337}
 --- !u!64 &2721926923748457843
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1481,6 +1483,31 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 4fb60c94d0610084fbdc47d366ab4f29, type: 3}
+--- !u!65 &2721926923748457847
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2721926924749682036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.55867916, y: 1.6234374, z: 0.25993538}
+  m_Center: {x: -0.000028735629, y: 0.45495564, z: -0.0010209337}
+--- !u!114 &1393981726958094484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2721926924749682036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26382e6f34c1a82469517ec6a20fb1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2721926923748457844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1498,15 +1525,3 @@ MonoBehaviour:
   rate: 0.4
   meleeArea: {fileID: 2721926923748457847}
   trailEffect: {fileID: 2721926924102220823}
---- !u!114 &1393981726958094484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2721926924749682036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26382e6f34c1a82469517ec6a20fb1e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -46,7 +46,7 @@ public class SandBagAttack : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             mat.color = Color.magenta;
             attackArea.enabled = true;
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.1f);
             attackArea.enabled = false;
             attackCount++;
         }
@@ -62,7 +62,7 @@ public class SandBagAttack : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             mat.color = Color.cyan;
             powerAttackArea.enabled = true;
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.1f);
             powerAttackArea.enabled = false;
 
         }
