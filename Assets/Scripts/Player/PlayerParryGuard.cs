@@ -16,6 +16,7 @@ public class PlayerParryGuard : MonoBehaviour {
     public float smoothTime = 0.5f;
     Transform original;
     SmoothMoved smoothMoved;
+    GameObject nearObject;
 
     [Header("Parry")]
     [Tooltip("플레이어 패링판정 범위")]
@@ -64,6 +65,7 @@ public class PlayerParryGuard : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "EnemyAttack" || other.tag == "EnemyPowerAttack" && !isHitted) {
+            nearObject = other.gameObject;
             if (isParried) {
                 Debug.Log("PARRY!!!");                          //패링 성공
                 OnParried();
@@ -93,7 +95,10 @@ public class PlayerParryGuard : MonoBehaviour {
 
         }
     }
-
+    void OnTriggerExit(Collider other) {
+        if (other.tag == "EnemyAttack" && other.tag == "EnemyPowerAttack")
+            nearObject = null;
+    }
     private void  OnParried() {
         isHitted = true;                        //연속피격방지
         isParried = false;          
@@ -102,16 +107,15 @@ public class PlayerParryGuard : MonoBehaviour {
         Debug.Log("패리 온------");
 
         original = this.transform;      //부드럽게 밀려남
-        smoothMoved.SmoothMove_Parry(original);
-        
+        smoothMoved.SmoothMove_Parry(original, nearObject.transform);
+
         parryParticle.Play();           //패리 이펙트
-        Invoke("HittedOut", 0.1f);              //연속피격방지
+        Invoke("HittedOut", 0.2f);              //연속피격방지
     }
     private void OnDamage() {              //가드 또는 피격 시 쓰는 데미지 코루틴
         isHitted = true;                        //연속피격방지
-
         original = this.transform;
-        smoothMoved.SmoothMove_normalAttack(original);
+        smoothMoved.SmoothMove_normalAttack(original, nearObject.transform);
 
         Invoke("HittedOut", 0.2f);              //연속피격방지
     }
@@ -119,7 +123,7 @@ public class PlayerParryGuard : MonoBehaviour {
         isHitted = true;                        //연속피격방지
 
         original = this.transform;
-        smoothMoved.SmoothMove_powerAttack(original);
+        smoothMoved.SmoothMove_powerAttack(original, nearObject.transform);
 
         Invoke("HittedOut", 0.2f);              //연속피격방지
     }
