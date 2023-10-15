@@ -28,5 +28,15 @@ public class MeleeAreaSetup : MonoBehaviour
         damageCollider.DisableMeleeArea();
     }
 
+    private void OpenDamageCllider_Corutin() {
+        StartCoroutine(FixedOpenDamageCllider());
+    }
+
+    IEnumerator FixedOpenDamageCllider() {
+        damageCollider.EnableMeleeArea();
+        yield return new WaitForSeconds(0.1f);
+        damageCollider.DisableMeleeArea();
+    }
+
 
 }

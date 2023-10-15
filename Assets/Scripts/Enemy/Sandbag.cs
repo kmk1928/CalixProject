@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Sandbag : MonoBehaviour
 {
-    CharCombat combat;
     Material mat;
     public BoxCollider attackArea;
     public BoxCollider powerAttackArea;
@@ -12,7 +11,6 @@ public class Sandbag : MonoBehaviour
     int attackCount = 0;
 
     private void Awake() {
-        combat = GetComponent<CharCombat>();
         mat = GetComponentInChildren<MeshRenderer>().material;
     }
 

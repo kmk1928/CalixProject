@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class EnemyHit : MonoBehaviour
 {
+    /* 스크립트 설명 적의 피해입는 기능
+     
+     */
     CharCombat combat;
     Material mat;               //피격 시 색상변경 확인
     Animator anim; // 애니메이션 변수
+    PlayerController playerController;
+    GameObject nearObject;
     void Awake() {
         combat = GetComponent<CharCombat>();     
         mat = GetComponentInChildren<MeshRenderer>().material;    //피격 시 색상변경 확인
@@ -15,7 +20,6 @@ public class EnemyHit : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         if (other.tag == "melee") {  //태그가 Melee일때 출력
-            Weapon weapon = other.GetComponent<Weapon>();
             Debug.Log("Enemy Hit!!");  
             CharStats targetStatus = other.transform.root.GetComponent<CharStats>();
             if (targetStatus != null) {

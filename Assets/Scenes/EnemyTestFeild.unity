@@ -2681,6 +2681,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2396945216049117228, guid: 0b88124c0a3f92543a1a15cd6dde09d8, type: 3}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 2396945216049117238, guid: 0b88124c0a3f92543a1a15cd6dde09d8, type: 3}
       propertyPath: m_Name
       value: Enemy_AttackSandbag
@@ -2727,6 +2731,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2396945216049117239, guid: 0b88124c0a3f92543a1a15cd6dde09d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555993925471729618, guid: 0b88124c0a3f92543a1a15cd6dde09d8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7495
+      objectReference: {fileID: 0}
+    - target: {fileID: 3286083403341191642, guid: 0b88124c0a3f92543a1a15cd6dde09d8, type: 3}
+      propertyPath: m_Size.x
+      value: 0.917535
+      objectReference: {fileID: 0}
+    - target: {fileID: 3286083403341191642, guid: 0b88124c0a3f92543a1a15cd6dde09d8, type: 3}
+      propertyPath: m_Size.z
+      value: 0.72188234
+      objectReference: {fileID: 0}
+    - target: {fileID: 3286083403341191642, guid: 0b88124c0a3f92543a1a15cd6dde09d8, type: 3}
+      propertyPath: m_Center.x
+      value: 0.34467408
+      objectReference: {fileID: 0}
+    - target: {fileID: 3286083403341191642, guid: 0b88124c0a3f92543a1a15cd6dde09d8, type: 3}
+      propertyPath: m_Center.z
+      value: 0.003647609
+      objectReference: {fileID: 0}
+    - target: {fileID: 8998185997438843908, guid: 0b88124c0a3f92543a1a15cd6dde09d8, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3407,7 +3435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 181047349368296062, guid: d70b6fb0a05bb25429ec422ee1a5c21a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d70b6fb0a05bb25429ec422ee1a5c21a, type: 3}
@@ -3469,6 +3497,14 @@ PrefabInstance:
     - target: {fileID: 2721926923998867469, guid: 9aa79047d90349c4cb7da01dc7d6cdbd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721926923998867569, guid: 9aa79047d90349c4cb7da01dc7d6cdbd, type: 3}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721926923998867569, guid: 9aa79047d90349c4cb7da01dc7d6cdbd, type: 3}
+      propertyPath: criticalChance
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9aa79047d90349c4cb7da01dc7d6cdbd, type: 3}

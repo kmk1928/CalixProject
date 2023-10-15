@@ -9,9 +9,10 @@ public class PlayerParryGuard : MonoBehaviour {
 
     [SerializeField]
     private float parryTimer = 0f;
-    bool isBlocked = false;     //우클릭 가드 확인용
-    bool isParried = false;     //패리 가능 상태 확인용
-    bool isHitted = false;      //데미지를 연속으로 입는 것을 방지하기 위한 bool 트리거, OnDamage코루틴에 사용
+    private bool isBlocked = false;     //우클릭 가드 확인용
+    private bool isParried = false;     //패리 가능 상태 확인용
+    private bool isHitted = false;      //데미지를 연속으로 입는 것을 방지하기 위한 bool 트리거, OnDamage코루틴에 사용
+    public bool isHittedMotioning = false;
 
     public float smoothTime = 0.5f;
     Transform original;
@@ -37,7 +38,7 @@ public class PlayerParryGuard : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetMouseButtonDown(1)) {                  //우클릭 키 다운 시 패링
+        if (Input.GetMouseButtonDown(1) && !isHittedMotioning) {                  //우클릭 키 다운 시 패링
             isParried = true;                   //패리중을 true로 변경
             anim.SetBool("isGuard", true);//able animation
             playerController.speed /= 2;
@@ -45,7 +46,7 @@ public class PlayerParryGuard : MonoBehaviour {
         if (Input.GetMouseButton(1)) {                       //우클릭 꾹 누를 시 가드
             isBlocked = true;                   //가드중을 true로 변경
         }
-        if (isParried) {                        //패리중이 true일때 패리 영역을활성화하고 패리시간이 지나면 다시 꺼지는 코드
+        if (isParried && !isHittedMotioning) {                        //패리중이 true일때 패리 영역을활성화하고 패리시간이 지나면 다시 꺼지는 코드
             parryArea.enabled = true;
             parryTimer += Time.deltaTime;
             if (parryTimer > 0.3f) {
@@ -114,21 +115,29 @@ public class PlayerParryGuard : MonoBehaviour {
     }
     private void OnDamage() {              //가드 또는 피격 시 쓰는 데미지 코루틴
         isHitted = true;                        //연속피격방지
+        isHittedMotioning = true;           //피격 직후 60프레임 내 패링 가능 방지
+
         original = this.transform;
         smoothMoved.SmoothMove_normalAttack(original, nearObject.transform);
-
-        Invoke("HittedOut", 0.2f);              //연속피격방지
+        Invoke("HittedMotioningOut", 0.1f);
+        Invoke("HittedOut", 0.1f);              
     }
     private void OnPowerDamage() {              //강한 공격 피격 시 쓰는 데미지 코루틴
         isHitted = true;                        //연속피격방지
+        isHittedMotioning = true;           //피격 직후 60프레임 내 패링 가능 방지
 
         original = this.transform;
         smoothMoved.SmoothMove_powerAttack(original, nearObject.transform);
-
-        Invoke("HittedOut", 0.2f);              //연속피격방지
+        Invoke("HittedMotioningOut", 0.1f);
+        Invoke("HittedOut", 0.1f);            
     }
     private void HittedOut() {
         isHitted = false;    //연속피격방지
     }
+
+    private void HittedMotioningOut() {
+        isHittedMotioning = false;    //연속피격방지
+    }
+
 
 }
