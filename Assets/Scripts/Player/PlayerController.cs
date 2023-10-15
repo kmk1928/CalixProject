@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : MonoBehaviour {
     public float speed = 5.0f; // 이동 속도 
     public float jumpForce = 7.0f; // 점프 힘
     public float dashSpeed = 10.0f; // 대시 속도
@@ -42,8 +41,7 @@ public class PlayerController : MonoBehaviour
     bool isFireReady;
     float fireDelay;
 
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody>();
 
         mainCameraTransform = Camera.main.transform;
@@ -53,8 +51,7 @@ public class PlayerController : MonoBehaviour
         meleeAreaSetup = GetComponentInChildren<MeleeAreaSetup>();
     }
 
-    void Update()
-    {
+    void Update() {
         // WASD 키를 사용하여 캐릭터 이동
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -78,16 +75,22 @@ public class PlayerController : MonoBehaviour
 
         // 회전 처리: 이동 방향으로 캐릭터를 갑작스럽게 회전
 
-        float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
+        /*float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, targetAngle, 0); 
-
+        */
         // Rigidbody를 사용하여 이동 처리
         rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
 
+        if (movement != Vector3.zero) {
+            transform.forward = movement.normalized;
+            anim.SetBool("isRun", true);//run animation
+        }
+        else if (movement == Vector3.zero) {
+            anim.SetBool("isRun", false);//able animation
+        }
 
         // 대시 중인 경우 대시 속도로 이동
-        if (isDashing)
-        {
+        if (isDashing) {
             movement = transform.forward * dashSpeed;
             dashTimer += Time.deltaTime;
 
@@ -110,60 +113,52 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // ��� ó��
-        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded)
-        {
+        //     ó  
+        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded) {
             //anim.SetTrigger("DashTrigger");//Dash animation
             isDashing = true;
         }
 
-        // ���� ó��
-        if (isGrounded)
-        {
+        //      ó  
+        if (isGrounded) {
             jumpCount = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap && !isDodge)
-        {
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap && !isDodge) {
             anim.SetTrigger("JumpTrigger");//Jump animation
-            // ���� ���� �����Ͽ� ����
+            //                Ͽ      
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             jumpCount++;
-            
+
         }
         //weapon
         Interraction();
         Swap();
-        
+
         //attack
         Attack();
 
         Dodge();
 
         // 탭 키가 눌렸을 때
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            if (!isTargeting)
-            {
+        if (Input.GetKeyDown(KeyCode.Tab)) {
+            if (!isTargeting) {
                 FindNearestEnemy();
                 isTargeting = true;
                 anim.SetLayerWeight(1, 1);
                 Debug.Log("TargetLock ON");
             }
-            else
-            {
+            else {
                 isTargeting = false;
-                anim.SetLayerWeight(1, 0); 
+                anim.SetLayerWeight(1, 0);
                 Debug.Log("TargetLock OFF");
             }
         }
 
         // 일정 거리를 벗어나면 시선 고정 해제
-        if (isTargeting && enemyToLookAt != null)
-        {
+        if (isTargeting && enemyToLookAt != null) {
             float distanceToEnemy = Vector3.Distance(transform.position, enemyToLookAt.position);
-            if (distanceToEnemy > maxDistanceForTargetLock)
-            {
+            if (distanceToEnemy > maxDistanceForTargetLock) {
                 isTargeting = false;
                 anim.SetLayerWeight(1, 0);
                 Debug.Log("TargetLock OFF(Out of Range)");
@@ -172,64 +167,54 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void FreezeRotation()
-    {
+    void FreezeRotation() {
         rb.angularVelocity = Vector3.zero;
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         FreezeRotation();
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        // ���� ������ ���� ������ ���·� ����
-        if (collision.gameObject.CompareTag("Ground"))
-        {
+    void OnCollisionEnter(Collision collision) {
+        //                            ·      
+        if (collision.gameObject.CompareTag("Ground")) {
             isGrounded = false;
-            
+
         }
     }
 
-    void OnCollisionExit(Collision collision)
-    {
-        // ������ �������� ���� �Ұ����� ���·� ����
-        if (collision.gameObject.CompareTag("Ground"))
-        {
+    void OnCollisionExit(Collision collision) {
+        //                       Ұ         ·      
+        if (collision.gameObject.CompareTag("Ground")) {
             isGrounded = true;
         }
     }
 
-    void OnTriggerStay(Collider other)
-    {
-        if(other.tag == "weapon")
-            nearObject = other.gameObject;   
+    void OnTriggerStay(Collider other) {
+        if (other.tag == "weapon")
+            nearObject = other.gameObject;
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if(other.tag == "weapon")
+    void OnTriggerExit(Collider other) {
+        if (other.tag == "weapon")
             nearObject = null;
     }
     //weapon
-    void Swap()
-    {
-        if(Input.GetKeyDown("1") && (!hasWeapons[0]||equipWeaponIndex == 0))
+    void Swap() {
+        if (Input.GetKeyDown("1") && (!hasWeapons[0] || equipWeaponIndex == 0))
             return;
-        if(Input.GetKeyDown("2") && (!hasWeapons[1]||equipWeaponIndex == 1))
+        if (Input.GetKeyDown("2") && (!hasWeapons[1] || equipWeaponIndex == 1))
             return;
-        if(Input.GetKeyDown("3") && (!hasWeapons[2]||equipWeaponIndex == 2))
+        if (Input.GetKeyDown("3") && (!hasWeapons[2] || equipWeaponIndex == 2))
             return;
 
         int weaponIndex = -1;
-        if(Input.GetKeyDown("1")) weaponIndex = 0;
-        if(Input.GetKeyDown("2")) weaponIndex = 1;
-        if(Input.GetKeyDown("3")) weaponIndex = 2;
+        if (Input.GetKeyDown("1")) weaponIndex = 0;
+        if (Input.GetKeyDown("2")) weaponIndex = 1;
+        if (Input.GetKeyDown("3")) weaponIndex = 2;
 
-        if(Input.GetKeyDown("1")||Input.GetKeyDown("2")||Input.GetKeyDown("3"))
-        {
-            if(equipWeapon != null)
+        if (Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3")) {
+            if (equipWeapon != null)
                 equipWeapon.gameObject.SetActive(false);
 
             equipWeaponIndex = weaponIndex;
@@ -240,21 +225,18 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("doSwap");
             isSwap = true;
             speed = 0f;
-            Invoke("SwapOut",0.6f);
+            Invoke("SwapOut", 0.6f);
         }
     }
-    void SwapOut()
-    {
+    void SwapOut() {
         speed = 5.0f;
         isSwap = false;
     }
 
-    void Interraction()
-    {
-        if (Input.GetKeyDown("e")&&nearObject != null)
-        {
+    void Interraction() {
+        if (Input.GetKeyDown("e") && nearObject != null) {
             Debug.Log("e누름");
-            if(nearObject.tag == "weapon"){
+            if (nearObject.tag == "weapon") {
                 Item item = nearObject.GetComponent<Item>();
                 int weaponIndex = item.value;
                 hasWeapons[weaponIndex] = true;
@@ -264,77 +246,65 @@ public class PlayerController : MonoBehaviour
         }
     }
     //attack
-    void Attack()
-    {
-        if(equipWeapon == null)
+    void Attack() {
+        if (equipWeapon == null)
             return;
         fireDelay += Time.deltaTime;
         isFireReady = equipWeapon.rate < fireDelay;
 
-        if(Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap)
-        {
+        if (Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap) {
             Debug.Log("!---Click Mouse(0)---!");
             //equipWeapon.Use();
             anim.SetTrigger("doSwing");
             fireDelay = 0;
             isAttack = true;
             speed = 0;
-            Invoke("AttackOut",0.5f);
+            Invoke("AttackOut", 0.5f);
         }
     }
 
-    void AttackOut()
-    {
+    void AttackOut() {
         speed = 5.0f;
         isAttack = false;
     }
 
     //Dodge
-    void Dodge()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCount < 1 && !isDashing && !isSwap && !isDodge)
-        {
+    void Dodge() {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCount < 1 && !isDashing && !isSwap && !isDodge) {
             speed *= 2;
             anim.SetTrigger("DodgeTrigger");//Jump animation
-            // ���� ���� �����Ͽ� ����
+            //                Ͽ      
             isDodge = true;
 
-            Invoke("DodgeOut",0.5f);
+            Invoke("DodgeOut", 0.5f);
         }
     }
 
-    void DodgeOut()
-    {
-        speed *=0.5f;
+    void DodgeOut() {
+        speed *= 0.5f;
         isDodge = false;
     }
 
-    void FindNearestEnemy()
-    {
+    void FindNearestEnemy() {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float nearestDistance = float.MaxValue;
         Transform nearestEnemy = null;
 
-        foreach (GameObject enemy in enemies)
-        {
+        foreach (GameObject enemy in enemies) {
             float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < nearestDistance)
-            {
+            if (distance < nearestDistance) {
                 nearestDistance = distance;
                 nearestEnemy = enemy.transform;
             }
         }
 
-        if (nearestEnemy != null)
-        {
+        if (nearestEnemy != null) {
             enemyToLookAt = nearestEnemy;
         }
     }
-    void LateUpdate()
-    { 
+    void LateUpdate() {
         // 시선을 고정한 적 오브젝트를 바라보도록 회전
-        if (isTargeting && enemyToLookAt != null)
-        {
+        if (isTargeting && enemyToLookAt != null) {
             Vector3 targetPosition = new Vector3(enemyToLookAt.position.x, transform.position.y, enemyToLookAt.position.z);
             transform.LookAt(targetPosition);
         }
@@ -346,7 +316,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void test() {
-        if(anim.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.5f) {
+        if (anim.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.5f) {
             //애니메이터의 레이어 -base부터 0,1,2,3 순으로 내림차순으로 된다.
             //.normalizedTime은 애니메이션 플레이 시간을 0부터 1까지로 표현하는데
             //위 내용은 현재 실행 중인 애니메이션이 절반 실행되었을 떄를 기준으로 한다
