@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
     public float dashDuration = 0.5f; // 대시 지속 시간
     public float maxJumpAngle = 30.0f; // 최대 점프 각도 (좌우로 움직일 수 있는 각도)
     Vector2 lockOnMovement = new Vector2();  //락온 중 이동 변경을 위한 값
+    Vector3 movement;
 
     public Rigidbody rb;
     private bool isGrounded = true; // 땅에 닿았는지 여부
@@ -42,6 +43,10 @@ public class PlayerController : MonoBehaviour {
     bool isFireReady;
     float fireDelay;
 
+    //hitted
+    PlayerParryGuard playerParryG;
+    public bool isHitted_pc = false;
+
     void Start() {
         rb = GetComponent<Rigidbody>();
 
@@ -50,9 +55,12 @@ public class PlayerController : MonoBehaviour {
         anim = GetComponentInChildren<Animator>();//animation
 
         meleeAreaSetup = GetComponentInChildren<MeleeAreaSetup>();
+
+       playerParryG = GetComponent<PlayerParryGuard>();
     }
 
     void Update() {
+        #region Update속 이동관련 코드 
         // WASD 키를 사용하여 캐릭터 이동
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -71,8 +79,12 @@ public class PlayerController : MonoBehaviour {
         cameraForward.y = 0f; // y 축 회전 방향을 무시합니다.
         cameraRight.y = 0f;
 
-        Vector3 movement = (cameraForward * verticalInput + cameraRight * horizontalInput).normalized;
+        movement = (cameraForward * verticalInput + cameraRight * horizontalInput).normalized;
 
+        isHitted_pc = playerParryG.isLockPlayerMoved;
+        if (isHitted_pc) {
+            movement = Vector3.zero;        
+        }
 
         // 회전 처리: 이동 방향으로 캐릭터를 갑작스럽게 회전
 
@@ -89,7 +101,7 @@ public class PlayerController : MonoBehaviour {
         else if (movement == Vector3.zero) {
             anim.SetBool("isRun", false);//able animation
         }
-
+        /*
         // 대시 중인 경우 대시 속도로 이동
         if (isDashing) {
             movement = transform.forward * dashSpeed;
@@ -103,7 +115,7 @@ public class PlayerController : MonoBehaviour {
         }
         else {
             // 일반 이동: 이동 방향을 이용하여 이동
-            movement *= speed;
+            //movement *= speed;
 
             if (!isGrounded) {
                 float angle = Vector3.Angle(movement, transform.forward);
@@ -113,7 +125,7 @@ public class PlayerController : MonoBehaviour {
                 }
             }
         }
-
+        */
         //     ó  
         if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded) {
             //anim.SetTrigger("DashTrigger");//Dash animation
@@ -131,6 +143,7 @@ public class PlayerController : MonoBehaviour {
             jumpCount++;
 
         }
+        #endregion
         //weapon
         Interraction();
         Swap();
@@ -314,6 +327,7 @@ public class PlayerController : MonoBehaviour {
     public void ActivateSkill(SOSkill skill) {
         anim.Play(skill.animationName);
         print(string.Format("적에게 스킬 {0} 로 {1} 의 피해를 주었습니다.", skill.name, skill.skillDamage));
+        
     }
 
     void test() {

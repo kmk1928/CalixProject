@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(CharStats))]
 public class CharCombat : MonoBehaviour
 {
+    //캐릭터들의 데미지를 계산한다. 계산한 값을 자신의 CharStats로 넘겨서 체력을 깎음
+    // 즉 받는 쪽에서 데미지를 계산한다.
     CharStats myStats;
 
     /*[Header("전투에 관련된 행동 정리")]
