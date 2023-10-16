@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.91753495, y: 1, z: 1.0614697}
-  m_Center: {x: 0.34467405, y: 0, z: 0.00047370623}
+  m_Size: {x: 0.81307304, y: 1, z: 1.0614697}
+  m_Center: {x: 0.29244304, y: 0, z: 0.00047370623}
 --- !u!1 &2396945214094310206
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,8 +90,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 2.7264917, y: 1, z: 1}
-  m_Center: {x: 0.8632493, y: 0, z: 0}
+  m_Size: {x: 2.6065576, y: 1, z: 1}
+  m_Center: {x: 0.8032822, y: 0, z: 2.842171e-14}
 --- !u!1 &2396945214114451847
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +482,8 @@ MonoBehaviour:
   defense: 5
   attackDamage: 10
   abillityPower: 10
-  defaultDamage: 10
+  criticalChance: 0.5
+  criticalDamage: 1.5
 --- !u!114 &6851462634326585949
 MonoBehaviour:
   m_ObjectHideFlags: 0

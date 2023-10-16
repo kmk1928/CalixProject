@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour {
 
         meleeAreaSetup = GetComponentInChildren<MeleeAreaSetup>();
 
-       playerParryG = GetComponent<PlayerParryGuard>();
+        playerParryG = GetComponent<PlayerParryGuard>();
     }
 
     void Update() {

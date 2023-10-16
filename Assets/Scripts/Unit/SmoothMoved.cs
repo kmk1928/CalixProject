@@ -29,7 +29,7 @@ public class SmoothMoved : MonoBehaviour
         //SmoothPushed(현재위치, 공격자의 위치 , 이동시간, 이동거리)을 받음
         StartCoroutine(SmoothPushed(original.position,
                                     enemy.position,
-                                    smoothTime,
+                                    smoothTime - 0.1f,
                                     0.3f));
     }
     public void SmoothMove_normalAttack(Transform original, Transform enemy) {

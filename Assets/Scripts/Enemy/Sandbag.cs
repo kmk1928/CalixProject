@@ -19,8 +19,8 @@ public class Sandbag : MonoBehaviour
     }
 
     void Targeting() {              // 적을 인식하기 위한 타겟팅 함수
-        float targetRadius = 3f;  // 탐지 스피어의 반지름 설정
-        float targetRange = 5f;     // 탐지 스피어 캐스트의 최대 거리 설정
+        float targetRadius = 5f;  // 탐지 스피어의 반지름 설정
+        float targetRange = 8f;     // 탐지 스피어 캐스트의 최대 거리 설정
 
         // 스피어 캐스트를 통해 플레이어를 탐지
         RaycastHit[] rayHits = Physics.SphereCastAll(
@@ -43,9 +43,9 @@ public class Sandbag : MonoBehaviour
 
         if (attackCount < 2) {             //enemyAttack 일반공격
             mat.color = Color.green;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
             mat.color = Color.yellow;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
             mat.color = Color.magenta;
             attackArea.enabled = true;
             yield return new WaitForSeconds(0.1f);

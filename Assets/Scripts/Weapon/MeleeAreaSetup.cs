@@ -16,7 +16,13 @@ public class MeleeAreaSetup : MonoBehaviour
         //플레이어가 1,2,3 으로 무기 스왑시(장착) 무기 콜라이더 damageCollider이 받아옴
         damageCollider = playerCtrl.equipWeapon.GetComponent<DamageCollider>();
     }
+    IEnumerator FixedOpenDamageCllider() {
+        damageCollider.EnableMeleeArea();
+        yield return new WaitForSeconds(0.1f);
+        damageCollider.DisableMeleeArea();
+    }
 
+    #region 예전버전
 
     private void OpenDamageCollider() {         
         //받아온 damageCollider 활성화
@@ -31,10 +37,6 @@ public class MeleeAreaSetup : MonoBehaviour
     private void OpenDamageCllider_Corutin() {
         StartCoroutine(FixedOpenDamageCllider());
     }
-
-    IEnumerator FixedOpenDamageCllider() {
-        damageCollider.EnableMeleeArea();
-        yield return new WaitForSeconds(0.1f);
-        damageCollider.DisableMeleeArea();
-    }
+    #endregion
+ 
 }
