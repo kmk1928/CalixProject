@@ -26,21 +26,21 @@ public class SmoothMoved : MonoBehaviour
     }
 
     public void SmoothMove_Parry(Transform original, Transform enemy) {
-        //SmoothPushed(현재위치, 목표위치(현재위치 - 0.3f의 Z값) , 이동시간)을 받음
+        //SmoothPushed(현재위치, 공격자의 위치 , 이동시간, 이동거리)을 받음
         StartCoroutine(SmoothPushed(original.position,
                                     enemy.position,
                                     smoothTime,
                                     0.3f));
     }
     public void SmoothMove_normalAttack(Transform original, Transform enemy) {
-        //SmoothPushed(현재위치, 목표위치(현재위치 - 0.3f의 Z값) , 이동시간)을 받음
+        //SmoothPushed(현재위치, 공격자의 위치 , 이동시간, 이동거리)을 받음
         StartCoroutine(SmoothPushed(original.position,
                                     enemy.position,
                                     smoothTime,
                                     1f));
     }
     public void SmoothMove_powerAttack(Transform original, Transform enemy) {
-        //SmoothPushed(현재위치, 목표위치(현재위치 - 0.3f의 Z값) , 이동시간)을 받음
+        //SmoothPushed(현재위치, 공격자의 위치 , 이동시간, 이동거리)을 받음
         StartCoroutine(SmoothPushed(original.position,
                                     enemy.position,
                                     smoothTime,

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+    public float defaultSpeed = 5.0f;  //기본 이동속도
     public float speed = 5.0f; // 이동 속도 
     public float jumpForce = 7.0f; // 점프 힘
     public float dashSpeed = 10.0f; // 대시 속도
@@ -10,7 +11,7 @@ public class PlayerController : MonoBehaviour {
     public float maxJumpAngle = 30.0f; // 최대 점프 각도 (좌우로 움직일 수 있는 각도)
     Vector2 lockOnMovement = new Vector2();  //락온 중 이동 변경을 위한 값
 
-    private Rigidbody rb;
+    public Rigidbody rb;
     private bool isGrounded = true; // 땅에 닿았는지 여부
     private int jumpCount = 0; // 점프 횟수
     private bool isDashing = false; // 대시 중인지 여부

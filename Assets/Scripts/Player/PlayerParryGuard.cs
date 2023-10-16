@@ -116,9 +116,11 @@ public class PlayerParryGuard : MonoBehaviour {
     private void OnDamage() {              //가드 또는 피격 시 쓰는 데미지 코루틴
         isHitted = true;                        //연속피격방지
         isHittedMotioning = true;           //피격 직후 60프레임 내 패링 가능 방지
+        StartCoroutine(LockPlayerMoveInput());
 
         original = this.transform;
         smoothMoved.SmoothMove_normalAttack(original, nearObject.transform);
+
         Invoke("HittedMotioningOut", 0.1f);
         Invoke("HittedOut", 0.1f);              
     }
@@ -128,6 +130,7 @@ public class PlayerParryGuard : MonoBehaviour {
 
         original = this.transform;
         smoothMoved.SmoothMove_powerAttack(original, nearObject.transform);
+
         Invoke("HittedMotioningOut", 0.1f);
         Invoke("HittedOut", 0.1f);            
     }
@@ -136,8 +139,15 @@ public class PlayerParryGuard : MonoBehaviour {
     }
 
     private void HittedMotioningOut() {
-        isHittedMotioning = false;    //연속피격방지
+        isHittedMotioning = false;    // 피격 직후 60프레임 내 패링 가능 방지
     }
 
-
+    IEnumerator LockPlayerMoveInput() {
+        //playerController.speed = playerController.defaultSpeed;
+        while (isHittedMotioning) {
+            playerController.rb.velocity = Vector3.zero;
+            yield return null;
+        }
+        yield return null;
+    }
 }
