@@ -125,9 +125,8 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap && !isDodge) {
-            anim.SetTrigger("JumpTrigger");//Jump animation
-            //                Ͽ      
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            anim.SetTrigger("JumpTrigger");
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); //점프 힘
             jumpCount++;
 
         }
@@ -176,16 +175,17 @@ public class PlayerController : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision collision) {
-        //                            ·      
+        //점프 애니메이션 관리 
         if (collision.gameObject.CompareTag("Ground")) {
-            isGrounded = false;
-
+            anim.SetBool("isJumping", false);//Jump to Land animation
+            isGrounded = false; 
         }
     }
 
     void OnCollisionExit(Collision collision) {
-        //                       Ұ         ·      
-        if (collision.gameObject.CompareTag("Ground")) {
+        //점프 애니메이션 관리    
+        if (collision.gameObject.CompareTag("Ground")) {   
+            anim.SetBool("isJumping", true);//Jump animation
             isGrounded = true;
         }
     }
