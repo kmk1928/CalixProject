@@ -46,6 +46,11 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.isGameover) {      
+            //플레이어 사망 시 인식 거리를 줄여 원래 위치로 돌아가게 함
+            detectionDistance = 0.1f;
+        }
+
         anim.SetFloat("enemySpeed", navMeshAgent.speed);
         isInteracting = anim.GetBool("isInteracting");
         isAttack = anim.GetBool("isAttack");

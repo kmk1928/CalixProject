@@ -89,7 +89,7 @@ public class PlayerParryGuard : MonoBehaviour {
             }
             else {
                 CharStats targetStatus = other.GetComponentInParent<CharStats>();
-                    combat.Hitted(targetStatus);
+                    combat.PlayerHitted(targetStatus);
                 Debug.Log("Damaged");
                 if(other.tag == "EnemyAttack") {
                     anim.SetTrigger("doDamage");
@@ -114,8 +114,7 @@ public class PlayerParryGuard : MonoBehaviour {
         isHitted = true;                        //연속피격방지
         isParried = false;     
         parryTimer = 0f;    //패리가능시간 초기화
-        Debug.Log("패리 온------");
-        Debug.Log("2"); //추적추적추적추적
+       /// Debug.Log("2"); //추적추적추적추적
         original = this.transform;      //부드럽게 밀려남
         smoothMoved.SmoothMove_Parry(original, nearObject.transform);
 
@@ -128,7 +127,7 @@ public class PlayerParryGuard : MonoBehaviour {
         isHitted = true;                        //연속피격방지
         isHittedMotioning = true;           //피격 직후 60프레임 내 패링 가능 방지
 
-        Debug.Log("3"); //추적추적추적추적
+        //Debug.Log("3"); //추적추적추적추적
         original = this.transform;
         smoothMoved.SmoothMove_normalAttack(original, nearObject.transform);
 
@@ -140,7 +139,7 @@ public class PlayerParryGuard : MonoBehaviour {
         isHitted = true;                        //연속피격방지
         isHittedMotioning = true;           //피격 직후 60프레임 내 패링 가능 방지
         powerHittedParticle.Play();
-        Debug.Log("4"); //추적추적추적추적
+       // Debug.Log("4"); //추적추적추적추적
         original = this.transform;
         smoothMoved.SmoothMove_powerAttack(original, nearObject.transform);
 
@@ -150,17 +149,17 @@ public class PlayerParryGuard : MonoBehaviour {
     }
     private void HittedOut() {
         isHitted = false;    //연속피격방지
-        Debug.Log("5"); //추적추적추적추적
+        //Debug.Log("5"); //추적추적추적추적
     }
 
     private void HittedMotioningOut() {
         isHittedMotioning = false;    // 피격 직후 60프레임 내 패링 가능 방지
-        Debug.Log("6"); //추적추적추적추적
+        //Debug.Log("6"); //추적추적추적추적
     }
 
     private void LockPlayerInput() {
         isLockPlayerMoved = false;    //피격 중 이동 방지
-        Debug.Log("7"); //추적추적추적추적
+        //Debug.Log("7"); //추적추적추적추적
     }
 
     IEnumerator LockPlayerMoveInput() {

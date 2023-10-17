@@ -21,9 +21,9 @@ public class EnemyHit : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (other.tag == "melee") {  //태그가 Melee일때 출력
             Debug.Log("Enemy Hit!!");  
-            CharStats targetStatus = other.transform.root.GetComponent<CharStats>();
+            PlayerStats targetStatus = other.transform.root.GetComponent<PlayerStats>();
             if (targetStatus != null) {
-                combat.Hitted(targetStatus);
+                combat.EnemyHitted(targetStatus);
             }
                               //애님 트리거  doDamage 발동
             StartCoroutine(OnDamage());

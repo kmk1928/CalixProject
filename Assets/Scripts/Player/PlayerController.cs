@@ -47,6 +47,9 @@ public class PlayerController : MonoBehaviour {
     PlayerParryGuard playerParryG;
     public bool isHitted_pc = false;
 
+    //die
+    private bool isDead = false;
+
     void Start() {
         rb = GetComponent<Rigidbody>();
 
@@ -328,6 +331,13 @@ public class PlayerController : MonoBehaviour {
         anim.Play(skill.animationName);
         print(string.Format("적에게 스킬 {0} 로 {1} 의 피해를 주었습니다.", skill.name, skill.skillDamage));
         
+    }
+
+    private void Die() {
+        isDead = true;
+        rb.velocity = Vector3.zero; //이동제한
+        movement = Vector3.zero;    //이동제한 둘 중 하나로 되면 하나만 쓸 예정
+        GameManager.instance.OnPlayerDead();
     }
 
     void test() {

@@ -25,12 +25,18 @@ public class CharCombat : MonoBehaviour
 
     #region 피해를 받는 쪽에서 데미지 계산
     //targetStats은 상대방의 스탯이다. 즉 데미지를 자신에게 주는 오브젝트의 스탯 
-    public void Hitted(CharStats targetStats) {     //공격 데미지를 받음
+    public void EnemyHitted(PlayerStats targetStats) {     //공격 데미지를 받음
         finalDamage = targetStats.attackDamage;
         float randomValue = Random.Range(0f, 1f);
         if(randomValue < targetStats.criticalChance) {
             finalDamage *= targetStats.criticalDamage;
+            Debug.Log("Critical!! - CharCombat");
         }
+        myStats.TakeADDamage(finalDamage);
+    }
+    public void PlayerHitted(CharStats targetStats) {     //공격 데미지를 받음
+        finalDamage = targetStats.attackDamage;
+        float randomValue = Random.Range(0f, 1f);
         myStats.TakeADDamage(finalDamage);
     }
 
