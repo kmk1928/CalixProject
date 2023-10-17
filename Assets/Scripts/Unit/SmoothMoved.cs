@@ -5,7 +5,8 @@ using UnityEngine;
 public class SmoothMoved : MonoBehaviour
 {
 
-    public float smoothTime = 0.2f;
+    private float smoothTime = 0.1f;
+    private float temp = 0.0f;      //오브젝트에 막혔을 때 탈출용 float
 
     #region 적의 반대 방향으로 날리는 함수
     IEnumerator SmoothPushed(Vector3 currentPosition, Vector3 enemyPosition, float time, float shovedDistance) {      //캐릭터 z값만큼 뒤로 밀려남
@@ -16,12 +17,19 @@ public class SmoothMoved : MonoBehaviour
         Vector3 targetPosition = transform.position + awayFromPlayerVector * shovedDistance;    //shovedDistance만큼 밀려남
 
         this.transform.position = currentPosition; //시작위치
-        while (Vector3.Distance(this.transform.position, targetPosition) > offset) {
+        
+        while (Vector3.Distance(this.transform.position, targetPosition) > offset ) {
             this.transform.position
                 = Vector3.SmoothDamp(this.transform.position, targetPosition, ref velocity, time);
+            temp += Time.deltaTime;
+            if (temp > 0.3f) {
+                //while문이 끝나지 않을 때 탈출 = 코루틴 강제 종료
+                break;
+            }
             yield return null;
         }
-
+        
+         temp = 0.0f;
         yield return null;
     }
 
