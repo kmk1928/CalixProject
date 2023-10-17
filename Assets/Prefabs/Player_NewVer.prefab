@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &353841346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 353841347}
+  m_Layer: 7
+  m_Name: base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &353841347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353841346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0, z: -21.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2721926923924498625}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1516617414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1516617415}
+  m_Layer: 7
+  m_Name: tip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1516617415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516617414}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -1.7, z: 54}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2721926923924498625}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1393981726454021416
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f1d2da624fc73499341ae5f9970a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothTime: 0.2
 --- !u!114 &4755647457650097079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,7 +396,7 @@ MonoBehaviour:
   attackDamage: 15
   abillityPower: 10
   isDead: 0
-  nanoDropAmount: 10
+  nanoDropAmount: 0
   criticalChance: 0.5
   criticalDamage: 1.5
 --- !u!114 &2721926923998867568
@@ -1621,11 +1682,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -104578136787704052, guid: b78a8aa8ae349394187459c9200c4753, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.02621335
+      value: -0.026213352
       objectReference: {fileID: 0}
     - target: {fileID: -104578136787704052, guid: b78a8aa8ae349394187459c9200c4753, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.057829067
+      value: 0.05782907
       objectReference: {fileID: 0}
     - target: {fileID: -76546954072915012, guid: b78a8aa8ae349394187459c9200c4753, type: 3}
       propertyPath: m_Layer
@@ -2189,6 +2250,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: katana
       objectReference: {fileID: 0}
+    - target: {fileID: 8976049435994142680, guid: 7ab2cf3f87667084cb21025695a05533, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ab2cf3f87667084cb21025695a05533, type: 3}
 --- !u!1 &2721926923924075745 stripped
@@ -2212,6 +2277,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &943354340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2721926923924075745}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ceb339997c8304e9354d4ce5ddc9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _emit: 1
+  _emitTime: 0
+  _material: {fileID: 2100000, guid: a7c5edd6e1697504d95dca793b81864c, type: 2}
+  _lifeTime: 0.46
+  _colors:
+  - {r: 0.9528302, g: 0, b: 0, a: 1}
+  - {r: 0.9529412, g: 0.57646465, b: 0, a: 0.9647059}
+  - {r: 0, g: 0.8181166, b: 0.9529412, a: 0.8}
+  _sizes: []
+  _minVertexDistance: 0.1
+  _maxVertexDistance: 10
+  _maxAngle: 3
+  _autoDestruct: 0
+  subdivisions: 1
+  _base: {fileID: 353841347}
+  _tip: {fileID: 1516617415}
 --- !u!4 &2721926923924498625 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8976049435993779192, guid: 7ab2cf3f87667084cb21025695a05533, type: 3}

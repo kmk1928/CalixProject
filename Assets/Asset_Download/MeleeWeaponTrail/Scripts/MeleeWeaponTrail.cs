@@ -13,22 +13,29 @@ using System.Collections.Generic;
 
 public class MeleeWeaponTrail : MonoBehaviour
 {
+	[Header("활성화 관련")]
+	[Tooltip("true면 트레일 활성화 false면 비활성화")]
 	[SerializeField]
 	bool _emit = true;
+
 	public bool Emit { set{_emit = value;} }
 
 	bool _use = true;
 	public bool Use { set{_use = value;} }
-
+ 
+	[Tooltip("default가 0일땐 무한유지 시간을 올리면 자동으로 줄어들고 0이 되면 Emit 을 false로")]
 	[SerializeField]
 	float _emitTime = 0.0f;
 
+	[Tooltip("트레일용 네모난 마테리얼")]
 	[SerializeField]
 	Material _material;
 
+	[Header("잔상 유지시간")]
 	[SerializeField]
 	float _lifeTime = 1.0f;
 
+	[Header("차례로 변하는 색 0,1,2 내림차순")]
 	[SerializeField]
 	Color[] _colors;
 
@@ -43,6 +50,8 @@ public class MeleeWeaponTrail : MonoBehaviour
 	float _minVertexDistanceSqr = 0.0f;
 	float _maxVertexDistanceSqr = 0.0f;
 
+
+	[Header("클 수록 각짐")]
 	[SerializeField]
 	float _maxAngle = 3.00f;
 
@@ -54,8 +63,10 @@ public class MeleeWeaponTrail : MonoBehaviour
 	int subdivisions = 4;
 #endif
 
+	[Tooltip("손잡이")]
 	[SerializeField]
 	Transform _base;
+	[Tooltip("칼 끝")]
 	[SerializeField]
 	Transform _tip;
 
