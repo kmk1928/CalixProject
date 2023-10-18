@@ -154,6 +154,14 @@ public class PlayerController : MonoBehaviour {
         //attack
         Attack();
 
+        #region 요네 궁 제작기
+
+        if (Input.GetKeyDown(KeyCode.R)) {
+
+        }
+
+        #endregion
+
         Dodge();
 
         // 탭 키가 눌렸을 때
@@ -298,7 +306,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void DodgeOut() {
-        speed *= 0.5f;
+        speed = defaultSpeed;
         isDodge = false;
     }
 
