@@ -24,8 +24,12 @@ public class EnemyController : MonoBehaviour
 
     bool isInteracting = false; //애니메이션 실행중인지 확인하는 bool - attack에 사용
 
+    CharStats myStats;
     CharCombat combat;
-    private int comboAttackCount = 0; 
+    private int comboAttackCount = 0;
+    private int deathCount = 0;
+
+    CapsuleCollider enemyCollider;
 
     void OnDrawGizmos() {
         Gizmos.color = Color.red;
@@ -42,77 +46,82 @@ public class EnemyController : MonoBehaviour
         originalSpeed = navMeshAgent.speed; // AI 이동속도 저장
 
         combat = GetComponent<CharCombat>();
+        myStats = GetComponent<CharStats>();
+        enemyCollider = GetComponent<CapsuleCollider>();
     }
 
     private void Update()
     {
-        if (GameManager.instance.isGameover) {      
-            //플레이어 사망 시 인식 거리를 줄여 원래 위치로 돌아가게 함
-            detectionDistance = 0.1f;
-        }
-
-        anim.SetFloat("enemySpeed", navMeshAgent.speed);
-        isInteracting = anim.GetBool("isInteracting");
-        isAttack = anim.GetBool("isAttack");
-        if (player != null)
-        {
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
-            if (!isInteracting) {
-                if (distanceToPlayer <= detectionDistance)      //플레이어 발견 시
-                {
-                    
-                    // 플레이어 따라가기
-                    navMeshAgent.SetDestination(player.position);
-                    isPatrolling = false;
-                    anim.SetBool("isRun", true); // 달리기 애니메이션
-
-                    // 플레이어가 감지 범위 내에 있을 때 공격
-                    if (distanceToPlayer <= 2.0f && !isAttack) {
-                        anim.SetBool("isInteracting", true); // 애니메이션 대기용 애니메이터 bool파라미터
-                        navMeshAgent.speed = 0f;                // AI의 이동 속도를 0으로 설정
-                        anim.SetBool("isRun", false); // 대기 애니메이션
-                        int randomAttack = Random.Range(0, 2);
-                        Debug.Log("---Find Player---");
-                        Attack2();
-
-                        /*
-                            if (randomAttack == 0) {
-                            Attack();
-                        }
-                        else {
-                            Attack2();
-                        }
-                            */
-                    }
-
-                }
-                else if (!isPatrolling)
-                {
-                    // 플레이어가 감지 범위 밖으로 나갔을 때 원래 위치로 돌아가기
-                    navMeshAgent.SetDestination(originalPosition);
-                    anim.SetBool("isRun", false); // 대기 애니메이션
-                    if (navMeshAgent.remainingDistance < 0.2f)
-                    {
-                        isPatrolling = true;            //원래 위치로 돌아온 뒤 속도0으로 변경
-                        //navMeshAgent.speed = 0;
-                    }
-                }
+        if (!myStats.isDead) {      //enemy 사망 시 이동 제한
+            if (GameManager.instance.isGameover) {
+                //플레이어 사망 시 인식 거리를 줄여 원래 위치로 돌아가게 함
+                detectionDistance = 0.1f;
             }
 
+            anim.SetFloat("enemySpeed", navMeshAgent.speed);
+            isInteracting = anim.GetBool("isInteracting");
+            isAttack = anim.GetBool("isAttack");
+            if (player != null) {
+                float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+                if (!isInteracting) {
+                    if (distanceToPlayer <= detectionDistance)      //플레이어 발견 시
+                    {
+
+                        // 플레이어 따라가기
+                        navMeshAgent.SetDestination(player.position);
+                        isPatrolling = false;
+                        anim.SetBool("isRun", true); // 달리기 애니메이션
+
+                        // 플레이어가 감지 범위 내에 있을 때 공격
+                        if (distanceToPlayer <= 2.0f && !isAttack) {
+                            anim.SetBool("isInteracting", true); // 애니메이션 대기용 애니메이터 bool파라미터
+                            navMeshAgent.speed = 0f;                // AI의 이동 속도를 0으로 설정
+                            anim.SetBool("isRun", false); // 대기 애니메이션
+                            int randomAttack = Random.Range(0, 2);
+                            Debug.Log("---Find Player---");
+                            Attack2();
+
+                            /*
+                                if (randomAttack == 0) {
+                                Attack();
+                            }
+                            else {
+                                Attack2();
+                            }
+                                */
+                        }
+
+                    }
+                    else if (!isPatrolling) {
+                        // 플레이어가 감지 범위 밖으로 나갔을 때 원래 위치로 돌아가기
+                        navMeshAgent.SetDestination(originalPosition);
+                        anim.SetBool("isRun", false); // 대기 애니메이션
+                        if (navMeshAgent.remainingDistance < 0.2f) {
+                            isPatrolling = true;            //원래 위치로 돌아온 뒤 속도0으로 변경
+                                                            //navMeshAgent.speed = 0;
+                        }
+                    }
+                }
+
+            }
+            else if (!isPatrolling) {
+                // 플레이어가 없을 때 원래 위치로 돌아가기
+                navMeshAgent.SetDestination(originalPosition);
+                if (navMeshAgent.remainingDistance < 0.5f) {
+                    isPatrolling = true;
+                }
+            }
         }
-        else if (!isPatrolling)
-        {
-            // 플레이어가 없을 때 원래 위치로 돌아가기
-            navMeshAgent.SetDestination(originalPosition);
-            if (navMeshAgent.remainingDistance < 0.5f)
-            {
-                isPatrolling = true;
+        else {
+            if(deathCount == 0) {
+                deathCount = 1;
+                enemyCollider.enabled = false;
+                anim.SetTrigger("enemyDeathTrg");
+                Destroy(this.gameObject, 3f);
             }
         }
     }
-
-
 
     private void SetDestinationToNextPatrolPoint()
     {

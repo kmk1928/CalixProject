@@ -22,18 +22,25 @@ public class CharStats : MonoBehaviour
         curHealth = maxHealth;
     }
 
-
     public void TakeADDamage(float damage) {
         curHealth -= damage;
+        if(curHealth <= 0.9f) {
+            isDead = true;
+        }
     }
 
     public void TakeAPDamage(float damage) {
         curHealth -= damage;
+        if (curHealth <= 0.9f) {
+            isDead = true;
+        }
     }
 
     public void GuardDamage(float damage) {
         curHealth -= (damage - defense);
+        if (curHealth <= 0.9f) {
+            isDead = true;
+        }
     }
-
 
 }
