@@ -71,13 +71,11 @@ public class EnemyController : MonoBehaviour
                         // 플레이어 따라가기
                         navMeshAgent.SetDestination(player.position);
                         isPatrolling = false;
-                        anim.SetBool("isRun", true); // 달리기 애니메이션
 
                         // 플레이어가 감지 범위 내에 있을 때 공격
                         if (distanceToPlayer <= 2.0f && !isAttack) {
                             anim.SetBool("isInteracting", true); // 애니메이션 대기용 애니메이터 bool파라미터
                             navMeshAgent.speed = 0f;                // AI의 이동 속도를 0으로 설정
-                            anim.SetBool("isRun", false); // 대기 애니메이션
                             int randomAttack = Random.Range(0, 2);
                             Debug.Log("---Find Player---");
                             Attack2();
@@ -96,7 +94,6 @@ public class EnemyController : MonoBehaviour
                     else if (!isPatrolling) {
                         // 플레이어가 감지 범위 밖으로 나갔을 때 원래 위치로 돌아가기
                         navMeshAgent.SetDestination(originalPosition);
-                        anim.SetBool("isRun", false); // 대기 애니메이션
                         if (navMeshAgent.remainingDistance < 0.2f) {
                             isPatrolling = true;            //원래 위치로 돌아온 뒤 속도0으로 변경
                                                             //navMeshAgent.speed = 0;
