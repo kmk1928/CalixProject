@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
     public float defaultSpeed = 5.0f;  //기본 이동속도
     public float speed = 5.0f; // 이동 속도 
     public float jumpForce = 7.0f; // 점프 힘
@@ -10,7 +11,8 @@ public class PlayerController : MonoBehaviour {
     public float dashDuration = 0.5f; // 대시 지속 시간
     public float maxJumpAngle = 30.0f; // 최대 점프 각도 (좌우로 움직일 수 있는 각도)
     Vector2 lockOnMovement = new Vector2();  //락온 중 이동 변경을 위한 값
-    Vector3 movement;
+
+    private Vector3 movement = Vector3.zero;
 
     public Rigidbody rb;
     private bool isGrounded = true; // 땅에 닿았는지 여부
@@ -50,7 +52,10 @@ public class PlayerController : MonoBehaviour {
     //die
     private bool isDead = false;
 
-    void Start() {
+    bool canRotate = true; // 회전 가능 여부를 제어하는 플래그 (Dodge에서 연동해서 씀)
+
+    void Start()
+    {
         rb = GetComponent<Rigidbody>();
 
         mainCameraTransform = Camera.main.transform;
@@ -62,48 +67,46 @@ public class PlayerController : MonoBehaviour {
         playerParryG = GetComponent<PlayerParryGuard>();
     }
 
-    void Update() {
-        #region Update속 이동관련 코드 
-        // WASD 키를 사용하여 캐릭터 이동
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+    void Update()
+    {
+        if (canRotate) // Dodge 할때 정지 시켜서 
+        {
+            #region Update속 이동관련 코드 
+            // WASD 키를 사용하여 캐릭터 이동
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+
+            Vector3 cameraForward = mainCameraTransform.forward;
+            Vector3 cameraRight = mainCameraTransform.right;
+            cameraForward.y = 0f; // y 축 회전 방향을 무시합니다.
+            cameraRight.y = 0f;
+
+            movement = (cameraForward * verticalInput + cameraRight * horizontalInput).normalized;
 
 
-        lockOnMovement.x = horizontalInput;         //기본이동 및 락온이동을 위한 입력값 패러미터로 받기
-        lockOnMovement.y = verticalInput;           //기본이동 및 락온이동을 위한 입력값 받기
+            // Rigidbody를 사용하여 이동 처리
+            rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
+            //콜라이더의 좌표상의 이동 담당
 
-        anim.SetFloat("horizon", lockOnMovement.x);     //락온 중 이동 변경을 위한 값
-        anim.SetFloat("vertical", lockOnMovement.y);    //락온 중 이동 변경을 위한 값
-        anim.SetFloat("movement", Mathf.Abs(lockOnMovement.magnitude)); //기본idle상태를 입력값에 따라 달리는 애니메이션 출력
+            if (movement != Vector3.zero)
+            {
+                transform.forward = movement.normalized; //콜라이더의 회전담당
+            }
 
+            lockOnMovement.x = horizontalInput;         //기본이동 및 락온이동을 위한 입력값 패러미터로 받기
+            lockOnMovement.y = verticalInput;           //기본이동 및 락온이동을 위한 입력값 받기
 
-        Vector3 cameraForward = mainCameraTransform.forward;
-        Vector3 cameraRight = mainCameraTransform.right;
-        cameraForward.y = 0f; // y 축 회전 방향을 무시합니다.
-        cameraRight.y = 0f;
+            anim.SetFloat("horizon", lockOnMovement.x);     //락온 중 이동 변경을 위한 값
+            anim.SetFloat("vertical", lockOnMovement.y);    //락온 중 이동 변경을 위한 값
+            anim.SetFloat("movement", Mathf.Abs(lockOnMovement.magnitude)); //기본idle상태를 입력값에 따라 달리는 애니메이션 출력
 
-        movement = (cameraForward * verticalInput + cameraRight * horizontalInput).normalized;
-
-        isHitted_pc = playerParryG.isLockPlayerMoved;
-        if (isHitted_pc) {
-            movement = Vector3.zero;        
+            isHitted_pc = playerParryG.isLockPlayerMoved;
+            if (isHitted_pc)
+            {
+                movement = Vector3.zero;
+            }
         }
 
-        // 회전 처리: 이동 방향으로 캐릭터를 갑작스럽게 회전
-
-        /*float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, targetAngle, 0); 
-        */
-        // Rigidbody를 사용하여 이동 처리
-        rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
-
-        if (movement != Vector3.zero) {
-            transform.forward = movement.normalized;
-            anim.SetBool("isRun", true);//run animation
-        }
-        else if (movement == Vector3.zero) {
-            anim.SetBool("isRun", false);//able animation
-        }
         /*
         // 대시 중인 경우 대시 속도로 이동
         if (isDashing) {
@@ -130,21 +133,24 @@ public class PlayerController : MonoBehaviour {
         }
         */
         //     ó  
-        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded) {
+        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded)
+        {
             //anim.SetTrigger("DashTrigger");//Dash animation
             isDashing = true;
         }
 
         //      ó  
-        if (isGrounded) {
+        if (isGrounded)
+        {
             jumpCount = 0;
+
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap && !isDodge) {
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap && !isDodge)
+        {
             anim.SetTrigger("JumpTrigger");
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); //점프 힘
             jumpCount++;
-
         }
         #endregion
         //weapon
@@ -154,25 +160,23 @@ public class PlayerController : MonoBehaviour {
         //attack
         Attack();
 
-        #region 요네 궁 제작기
-
-        if (Input.GetKeyDown(KeyCode.R)) {
-
+        //구르기
+        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCount < 1 && !isDashing && !isSwap && !isDodge)
+        {
+            Dodge();
         }
-
-        #endregion
-
-        Dodge();
-
         // 탭 키가 눌렸을 때
-        if (Input.GetKeyDown(KeyCode.Tab)) {
-            if (!isTargeting) {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (!isTargeting)
+            {
                 FindNearestEnemy();
                 isTargeting = true;
                 anim.SetLayerWeight(1, 1);
                 Debug.Log("TargetLock ON");
             }
-            else {
+            else
+            {
                 isTargeting = false;
                 anim.SetLayerWeight(1, 0);
                 Debug.Log("TargetLock OFF");
@@ -180,9 +184,11 @@ public class PlayerController : MonoBehaviour {
         }
 
         // 일정 거리를 벗어나면 시선 고정 해제
-        if (isTargeting && enemyToLookAt != null) {
+        if (isTargeting && enemyToLookAt != null)
+        {
             float distanceToEnemy = Vector3.Distance(transform.position, enemyToLookAt.position);
-            if (distanceToEnemy > maxDistanceForTargetLock) {
+            if (distanceToEnemy > maxDistanceForTargetLock)
+            {
                 isTargeting = false;
                 anim.SetLayerWeight(1, 0);
                 Debug.Log("TargetLock OFF(Out of Range)");
@@ -191,41 +197,54 @@ public class PlayerController : MonoBehaviour {
 
     }
 
-    void FreezeRotation() {
+    void FreezeRotation()
+    {
         rb.angularVelocity = Vector3.zero;
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         FreezeRotation();
     }
 
-    void OnCollisionEnter(Collision collision) {
+    void OnCollisionEnter(Collision collision)
+    {
         //점프 애니메이션 관리 
-        if (collision.gameObject.CompareTag("Ground")) {
+        // Ground 태그에 닿았는지 판별해서 닿았으면 땅에 닿음 상태 전달
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+
+            isGrounded = false; //땅에 닿음
             anim.SetBool("isJumping", false);//Jump to Land animation
-            isGrounded = false; 
         }
     }
 
-    void OnCollisionExit(Collision collision) {
+    void OnCollisionExit(Collision collision)
+    {
         //점프 애니메이션 관리    
-        if (collision.gameObject.CompareTag("Ground")) {   
+        // Ground 태그에 닿았는지 판별해서 공중에 있는지 판별
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+
+            isGrounded = true; //땅에 닿지 않음
             anim.SetBool("isJumping", true);//Jump animation
-            isGrounded = true;
         }
     }
 
-    void OnTriggerStay(Collider other) {
+    void OnTriggerStay(Collider other)
+    {
         if (other.tag == "weapon")
             nearObject = other.gameObject;
     }
 
-    void OnTriggerExit(Collider other) {
+    void OnTriggerExit(Collider other)
+    {
         if (other.tag == "weapon")
             nearObject = null;
     }
     //weapon
-    void Swap() {
+    void Swap()
+    {
         if (Input.GetKeyDown("1") && (!hasWeapons[0] || equipWeaponIndex == 0))
             return;
         if (Input.GetKeyDown("2") && (!hasWeapons[1] || equipWeaponIndex == 1))
@@ -238,7 +257,8 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown("2")) weaponIndex = 1;
         if (Input.GetKeyDown("3")) weaponIndex = 2;
 
-        if (Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3")) {
+        if (Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3"))
+        {
             if (equipWeapon != null)
                 equipWeapon.gameObject.SetActive(false);
 
@@ -253,15 +273,19 @@ public class PlayerController : MonoBehaviour {
             Invoke("SwapOut", 0.6f);
         }
     }
-    void SwapOut() {
+    void SwapOut()
+    {
         speed = 5.0f;
         isSwap = false;
     }
 
-    void Interraction() {
-        if (Input.GetKeyDown("e") && nearObject != null) {
+    void Interraction()
+    {
+        if (Input.GetKeyDown("e") && nearObject != null)
+        {
             Debug.Log("e누름");
-            if (nearObject.tag == "weapon") {
+            if (nearObject.tag == "weapon")
+            {
                 Item item = nearObject.GetComponent<Item>();
                 int weaponIndex = item.value;
                 hasWeapons[weaponIndex] = true;
@@ -271,31 +295,74 @@ public class PlayerController : MonoBehaviour {
         }
     }
     //attack
-    void Attack() {
+    void Attack()
+    {
         if (equipWeapon == null)
             return;
         fireDelay += Time.deltaTime;
         isFireReady = equipWeapon.rate < fireDelay;
 
-        if (Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap) {
+        if (Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap)
+        {
             Debug.Log("!---Click Mouse(0)---!");
             //equipWeapon.Use();
             anim.SetTrigger("doSwing");
             fireDelay = 0;
             isAttack = true;
             speed = 0;
-            Invoke("AttackOut", 0.5f);
+            movement = Vector3.zero;
+            Invoke("AttackOut", 1.0f);
         }
     }
 
-    void AttackOut() {
+    void AttackOut()
+    {
         speed = 5.0f;
         isAttack = false;
     }
+    #region 구르기하는 부분 Dodge
+    void Dodge()  // 0.5초 동안 강제로 이동함
+    {
+        // 현재 속도를 저장하여 나중에 복원할 수 있도록 합니다.
+        float originalSpeed = speed;
 
-    //Dodge
-    void Dodge() {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCount < 1 && !isDashing && !isSwap && !isDodge) {
+        // Dodge 동작을 시작합니다.
+        speed *= 1.6f;
+        anim.SetTrigger("DodgeTrigger"); // Dodge 애니메이션
+        isDodge = true;
+
+        canRotate = false; // 회전 비활성화
+
+        // 플레이어의 forward 방향으로 설정
+        Vector3 forwardDirection = transform.forward;
+
+        // Dodge 동작 중에는 forward 방향으로만 전진합니다.
+        float horizontalInput = forwardDirection.x;
+        float verticalInput = forwardDirection.z;
+
+        rb.velocity = new Vector3(horizontalInput * speed, rb.velocity.y, verticalInput * speed);
+
+        // Coroutine을 시작하여 Dodge를 일정 시간 후에 종료합니다.
+        StartCoroutine(EndDodgeAfterDelay(0.5f, originalSpeed));
+    }
+
+    // Dodge 동작을 0.5초 후 종료하는 코루틴
+    IEnumerator EndDodgeAfterDelay(float delay, float originalSpeed)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Dodge 동작 종료
+        isDodge = false;
+        speed = originalSpeed; // 속도를 원래 값으로 복원
+
+        canRotate = true; // 회전 활성화
+    }
+
+    /*  ------------- 속도만 조절 하는 부분 -------------------
+    void Dodge()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCount < 1 && !isDashing && !isSwap && !isDodge)
+        {
             speed *= 2;
             anim.SetTrigger("DodgeTrigger");//Jump animation
             //                Ͽ      
@@ -305,51 +372,68 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void DodgeOut() {
+    void DodgeOut()
+    {
         speed = defaultSpeed;
         isDodge = false;
     }
+    */
+    #endregion
 
-    void FindNearestEnemy() {
+
+    void FindNearestEnemy()
+    {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float nearestDistance = float.MaxValue;
         Transform nearestEnemy = null;
 
-        foreach (GameObject enemy in enemies) {
+        foreach (GameObject enemy in enemies)
+        {
             float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < nearestDistance) {
+            if (distance < nearestDistance)
+            {
                 nearestDistance = distance;
                 nearestEnemy = enemy.transform;
             }
         }
 
-        if (nearestEnemy != null) {
+        if (nearestEnemy != null)
+        {
             enemyToLookAt = nearestEnemy;
         }
     }
-    void LateUpdate() {
-        // 시선을 고정한 적 오브젝트를 바라보도록 회전
-        if (isTargeting && enemyToLookAt != null) {
-            Vector3 targetPosition = new Vector3(enemyToLookAt.position.x, transform.position.y, enemyToLookAt.position.z);
-            transform.LookAt(targetPosition);
+    void LateUpdate()
+    {
+        if (canRotate)
+        {
+            // 시선을 고정한 적 오브젝트를 바라보도록 회전
+            if (isTargeting && enemyToLookAt != null)
+            {
+                Vector3 targetPosition = new Vector3(enemyToLookAt.position.x, transform.position.y, enemyToLookAt.position.z);
+                transform.LookAt(targetPosition);
+            }
         }
     }
 
-    public void ActivateSkill(SOSkill skill) {
+    public void ActivateSkill(SOSkill skill)
+    {
         anim.Play(skill.animationName);
         print(string.Format("적에게 스킬 {0} 로 {1} 의 피해를 주었습니다.", skill.name, skill.skillDamage));
-        
+
     }
 
-    private void Die() {
+    private void Die()
+    {
         isDead = true;
         rb.velocity = Vector3.zero; //이동제한
         movement = Vector3.zero;    //이동제한 둘 중 하나로 되면 하나만 쓸 예정
         GameManager.instance.OnPlayerDead();
     }
 
-    void test() {
-        if (anim.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.5f) {
+    void test()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.5f)
+        {
             //애니메이터의 레이어 -base부터 0,1,2,3 순으로 내림차순으로 된다.
             //.normalizedTime은 애니메이션 플레이 시간을 0부터 1까지로 표현하는데
             //위 내용은 현재 실행 중인 애니메이션이 절반 실행되었을 떄를 기준으로 한다
