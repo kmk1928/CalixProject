@@ -55,7 +55,7 @@ public class PlayerParryGuard : MonoBehaviour {
         if (isParried && !isHittedMotioning) {                        //패리중이 true일때 패리 영역을활성화하고 패리시간이 지나면 다시 꺼지는 코드
             parryArea.enabled = true;
             parryTimer += Time.deltaTime;
-            if (parryTimer > 0.3f) {
+            if (parryTimer > 0.6f) {
                 parryTimer = 0;
                 isParried = false;
                 parryArea.enabled = false;
@@ -71,7 +71,7 @@ public class PlayerParryGuard : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (!isHitted && other.tag == "EnemyAttack" || other.tag == "EnemyPowerAttack") {
+        if (!isHitted && (other.tag == "EnemyAttack" || other.tag == "EnemyPowerAttack")) {
             Debug.Log("1"); //추적추적추적추적
             nearObject = other.gameObject;
             isLockPlayerMoved = true;           //피격중 이동 제한
@@ -160,14 +160,5 @@ public class PlayerParryGuard : MonoBehaviour {
     private void LockPlayerInput() {
         isLockPlayerMoved = false;    //피격 중 이동 방지
         //Debug.Log("7"); //추적추적추적추적
-    }
-
-    IEnumerator LockPlayerMoveInput() {
-        //playerController.speed = playerController.defaultSpeed;
-        while (isHittedMotioning) {
-            playerController.rb.velocity = Vector3.zero;
-            yield return null;
-        }
-        yield return null;
     }
 }
