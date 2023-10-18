@@ -80,7 +80,7 @@ public class CameraController : MonoBehaviour
             targetRotation = Vector3.SmoothDamp(targetRotation, new Vector3(Xaxis, Yaxis), ref currentVel, smoothTime);
             this.transform.eulerAngles = targetRotation;
 
-            
+
             cameraPosition = target.position - transform.forward * dis;
             transform.position = cameraPosition;
 
@@ -90,9 +90,9 @@ public class CameraController : MonoBehaviour
 
         }
 
-        
 
-       
+
+
     }
     IEnumerator RotateCamera()
     {
