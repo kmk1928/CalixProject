@@ -9,11 +9,13 @@ public class MeleeAreaSetup : MonoBehaviour
 
     private void Start() {
         //장착 무기 콜라이더 받기 위한 플레이어컨트롤러 
-        playerCtrl = GetComponentInParent<PlayerController>();
+        //플레이어 위치 확인
+        playerCtrl = GetComponent<PlayerController>();
     }
 
-    public void LoadWeaponDamageCollider() {        
+    public void LoadWeaponDamageCollider() {
         //플레이어가 1,2,3 으로 무기 스왑시(장착) 무기 콜라이더 damageCollider이 받아옴
+        //플레이어 위치 확인
         damageCollider = playerCtrl.equipWeapon.GetComponent<DamageCollider>();
     }
     IEnumerator FixedOpenDamageCllider() {

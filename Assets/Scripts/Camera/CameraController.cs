@@ -10,11 +10,11 @@ public class CameraController : MonoBehaviour
 
     public Transform target;//Player
 
-    private float rotSensitive = 3f;//카메라 회전 감도
-    private float dis = 3.5f;//카메라와 플레이어사이의 거리
-    private float RotationMin = -10f;//카메라 회전각도 최소
-    private float RotationMax = 80f;//카메라 회전각도 최대
-    private float smoothTime = 0.12f;//카메라가 회전하는데 걸리는 시간
+    public float rotSensitive = 3f;//카메라 회전 감도
+    public float dis = 3.5f;//카메라와 플레이어사이의 거리
+    public float RotationMin = -10f;//카메라 회전각도 최소
+    public float RotationMax = 80f;//카메라 회전각도 최대
+    public float smoothTime = 0.12f;//카메라가 회전하는데 걸리는 시간
     //위 5개의 value는 개발자의 취향껏 알아서 설정해주자
     private Vector3 targetRotation;
     private Vector3 currentVel;

@@ -13,12 +13,13 @@ public class PlayerController : MonoBehaviour
     Vector2 lockOnMovement = new Vector2();  //락온 중 이동 변경을 위한 값
 
     private Vector3 movement = Vector3.zero;
-
-    public Rigidbody rb;
+    [SerializeField]
     private bool isGrounded = true; // 땅에 닿았는지 여부
+    [SerializeField]
     private int jumpCount = 0; // 점프 횟수
     private bool isDashing = false; // 대시 중인지 여부
     private float dashTimer = 0.0f; // 대시 타이머
+    public Rigidbody rb;
 
     public Transform enemyToLookAt; // 시선을 고정할 적 캐릭터
     public bool isTargeting = false; // 플레이어가 바라보는 중인지 여부
@@ -60,9 +61,9 @@ public class PlayerController : MonoBehaviour
 
         mainCameraTransform = Camera.main.transform;
 
-        anim = GetComponentInChildren<Animator>();//animation
+        anim = GetComponent<Animator>();//animation
 
-        meleeAreaSetup = GetComponentInChildren<MeleeAreaSetup>();
+        meleeAreaSetup = GetComponent<MeleeAreaSetup>();
 
         playerParryG = GetComponent<PlayerParryGuard>();
     }
@@ -71,7 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canRotate) // Dodge 할때 정지 시켜서 
         {
-            #region Update속 이동관련 코드 
+            #region Update속 이동입력을 받는 곳
             // WASD 키를 사용하여 캐릭터 이동
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
@@ -105,8 +106,9 @@ public class PlayerController : MonoBehaviour
             {
                 movement = Vector3.zero;
             }
+            #endregion
         }
-
+        #region     제거 대기중인 예전 대시
         /*
         // 대시 중인 경우 대시 속도로 이동
         if (isDashing) {
@@ -132,39 +134,23 @@ public class PlayerController : MonoBehaviour
             }
         }
         */
-        //     ó  
-        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded)
-        {
-            //anim.SetTrigger("DashTrigger");//Dash animation
-            isDashing = true;
-        }
-
-        //      ó  
-        if (isGrounded)
-        {
-            jumpCount = 0;
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap && !isDodge)
-        {
-            anim.SetTrigger("JumpTrigger");
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); //점프 힘
-            jumpCount++;
-        }
         #endregion
+
+        //if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded) {
+        //    anim.SetTrigger("DashTrigger");//Dash animation
+        //    isDashing = true;
+        //}
+
+
+
+
+        Jump();
         //weapon
         Interraction();
         Swap();
-
-        //attack
         Attack();
-
-        //구르기
-        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCount < 1 && !isDashing && !isSwap && !isDodge)
-        {
-            Dodge();
-        }
+        Dodge();
+        #region ---Targeting Function----
         // 탭 키가 눌렸을 때
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -194,9 +180,8 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("TargetLock OFF(Out of Range)");
             }
         }
-
+        #endregion
     }
-
     void FreezeRotation()
     {
         rb.angularVelocity = Vector3.zero;
@@ -206,7 +191,7 @@ public class PlayerController : MonoBehaviour
     {
         FreezeRotation();
     }
-
+    #region OnCollisionEnter, OnCollisionExit, OnTriggerStay, OnTriggerExit
     void OnCollisionEnter(Collision collision)
     {
         //점프 애니메이션 관리 
@@ -214,8 +199,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
 
-            isGrounded = false; //땅에 닿음
-            anim.SetBool("isJumping", false);//Jump to Land animation
+            isGrounded = true; //땅에 닿음
         }
     }
 
@@ -225,9 +209,7 @@ public class PlayerController : MonoBehaviour
         // Ground 태그에 닿았는지 판별해서 공중에 있는지 판별
         if (collision.gameObject.CompareTag("Ground"))
         {
-
-            isGrounded = true; //땅에 닿지 않음
-            anim.SetBool("isJumping", true);//Jump animation
+            isGrounded = false; //땅에 닿지 않음
         }
     }
 
@@ -241,6 +223,25 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "weapon")
             nearObject = null;
+    }
+    #endregion
+    void Jump() {
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap && !isDodge && isGrounded) {
+            // 만약 스페이스 바를 누르고, 아직 점프 횟수가 1 미만이며 대시 중이 아니며, 무기 교체나 회피 중이 아니라면:
+            anim.SetTrigger("JumpTrigger"); // JumpTrigger
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // 점프 힘을 Rigidbody에 추가
+            jumpCount++; // 점프 횟수를 증가
+            Invoke("JumptoFallen", 0.1f);
+        }
+        if (isGrounded) //땅에 닿을 시 jumpCount = 0;
+        {
+            jumpCount = 0;
+
+            anim.SetBool("isJumping", false);//Jump to Land animation
+        }
+    }
+    void JumptoFallen() {
+        anim.SetBool("isJumping", true);
     }
     //weapon
     void Swap()
@@ -323,27 +324,30 @@ public class PlayerController : MonoBehaviour
     #region 구르기하는 부분 Dodge
     void Dodge()  // 0.5초 동안 강제로 이동함
     {
-        // 현재 속도를 저장하여 나중에 복원할 수 있도록 합니다.
-        float originalSpeed = speed;
+        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCount < 1 && !isDashing && !isSwap && !isDodge) {
+            // 현재 속도를 저장하여 나중에 복원할 수 있도록 합니다.
+            float originalSpeed = speed;
 
-        // Dodge 동작을 시작합니다.
-        speed *= 1.6f;
-        anim.SetTrigger("DodgeTrigger"); // Dodge 애니메이션
-        isDodge = true;
+            // Dodge 동작을 시작합니다.
+            speed *= 1.6f;
+            anim.SetTrigger("DodgeTrigger"); // Dodge 애니메이션
+            isDodge = true;
 
-        canRotate = false; // 회전 비활성화
+            canRotate = false; // 회전 비활성화
 
-        // 플레이어의 forward 방향으로 설정
-        Vector3 forwardDirection = transform.forward;
+            // 플레이어의 forward 방향으로 설정
+            Vector3 forwardDirection = transform.forward;
 
-        // Dodge 동작 중에는 forward 방향으로만 전진합니다.
-        float horizontalInput = forwardDirection.x;
-        float verticalInput = forwardDirection.z;
+            // Dodge 동작 중에는 forward 방향으로만 전진합니다.
+            float horizontalInput = forwardDirection.x;
+            float verticalInput = forwardDirection.z;
 
-        rb.velocity = new Vector3(horizontalInput * speed, rb.velocity.y, verticalInput * speed);
+            rb.velocity = new Vector3(horizontalInput * speed, rb.velocity.y, verticalInput * speed);
 
-        // Coroutine을 시작하여 Dodge를 일정 시간 후에 종료합니다.
-        StartCoroutine(EndDodgeAfterDelay(0.5f, originalSpeed));
+            // Coroutine을 시작하여 Dodge를 일정 시간 후에 종료합니다.
+            StartCoroutine(EndDodgeAfterDelay(0.5f, originalSpeed));
+        }
+
     }
 
     // Dodge 동작을 0.5초 후 종료하는 코루틴
