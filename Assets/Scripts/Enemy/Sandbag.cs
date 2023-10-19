@@ -43,9 +43,9 @@ public class Sandbag : MonoBehaviour
 
         if (attackCount < 2) {             //enemyAttack 일반공격
             mat.color = Color.green;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             mat.color = Color.yellow;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             mat.color = Color.magenta;
             attackArea.enabled = true;
             yield return new WaitForSeconds(0.1f);

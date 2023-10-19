@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     //die
     private bool isDead = false;
 
-    bool canRotate = true; // 회전 가능 여부를 제어하는 플래그 (Dodge에서 연동해서 씀)
+    public bool canRotate = true; // 회전 가능 여부를 제어하는 플래그 (Dodge에서 연동해서 씀)
 
     void Start()
     {
@@ -421,16 +421,21 @@ public class PlayerController : MonoBehaviour
 
     public void ActivateSkill(SOSkill skill)
     {
+        canRotate = false;
+        anim.applyRootMotion = true;
         anim.Play(skill.animationName);
-        print(string.Format("적에게 스킬 {0} 로 {1} 의 피해를 주었습니다.", skill.name, skill.skillDamage));
-
+        print(string.Format("스킬 {0} 사용 ---- {1} 의 피해를 주었습니다.", skill.name, skill.skillDamage));
+        Invoke("PlayerNoInput", 2f);
+    }
+    void PlayerNoInput() {
+        anim.applyRootMotion = false;
+        canRotate = true;
     }
 
     private void Die()
     {
         isDead = true;
-        rb.velocity = Vector3.zero; //이동제한
-        movement = Vector3.zero;    //이동제한 둘 중 하나로 되면 하나만 쓸 예정
+        canRotate = false;
         GameManager.instance.OnPlayerDead();
     }
 
