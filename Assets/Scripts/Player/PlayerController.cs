@@ -70,118 +70,122 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (canRotate) // Dodge 할때 정지 시켜서 
+        if(GameManager.canPlayerMove)
         {
-            #region Update속 이동입력을 받는 곳
-            // WASD 키를 사용하여 캐릭터 이동
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
-
-            Vector3 cameraForward = mainCameraTransform.forward;
-            Vector3 cameraRight = mainCameraTransform.right;
-            cameraForward.y = 0f; // y 축 회전 방향을 무시합니다.
-            cameraRight.y = 0f;
-
-            movement = (cameraForward * verticalInput + cameraRight * horizontalInput).normalized;
-
-
-            // Rigidbody를 사용하여 이동 처리
-            rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
-            //콜라이더의 좌표상의 이동 담당
-
-            if (movement != Vector3.zero)
+            if (canRotate) // Dodge 할때 정지 시켜서 
             {
-                transform.forward = movement.normalized; //콜라이더의 회전담당
+                #region Update속 이동입력을 받는 곳
+                // WASD 키를 사용하여 캐릭터 이동
+                float horizontalInput = Input.GetAxis("Horizontal");
+                float verticalInput = Input.GetAxis("Vertical");
+
+                Vector3 cameraForward = mainCameraTransform.forward;
+                Vector3 cameraRight = mainCameraTransform.right;
+                cameraForward.y = 0f; // y 축 회전 방향을 무시합니다.
+                cameraRight.y = 0f;
+
+                movement = (cameraForward * verticalInput + cameraRight * horizontalInput).normalized;
+
+
+                // Rigidbody를 사용하여 이동 처리
+                rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
+                //콜라이더의 좌표상의 이동 담당
+
+                if (movement != Vector3.zero)
+                {
+                    transform.forward = movement.normalized; //콜라이더의 회전담당
+                }
+
+                lockOnMovement.x = horizontalInput;         //기본이동 및 락온이동을 위한 입력값 패러미터로 받기
+                lockOnMovement.y = verticalInput;           //기본이동 및 락온이동을 위한 입력값 받기
+
+                anim.SetFloat("horizon", lockOnMovement.x);     //락온 중 이동 변경을 위한 값
+                anim.SetFloat("vertical", lockOnMovement.y);    //락온 중 이동 변경을 위한 값
+                anim.SetFloat("movement", Mathf.Abs(lockOnMovement.magnitude)); //기본idle상태를 입력값에 따라 달리는 애니메이션 출력
+
+                isHitted_pc = playerParryG.isLockPlayerMoved;
+                if (isHitted_pc)
+                {
+                    movement = Vector3.zero;
+                }
+                #endregion
+            }
+            #region     제거 대기중인 예전 대시
+            /*
+            // 대시 중인 경우 대시 속도로 이동
+            if (isDashing) {
+                movement = transform.forward * dashSpeed;
+                dashTimer += Time.deltaTime;
+
+                // 대시 지속 시간이 지나면 대시 종료
+                if (dashTimer >= dashDuration) {
+                    isDashing = false;
+                    dashTimer = 0.0f;
+                }
+            }
+            else {
+                // 일반 이동: 이동 방향을 이용하여 이동
+                //movement *= speed;
+
+                if (!isGrounded) {
+                    float angle = Vector3.Angle(movement, transform.forward);
+                    if (angle > maxJumpAngle) {
+                        // 만약 현재 움직이는 각도가 제한된 각도보다 크면, 이동 벡터를 수정하여 원하는 각도 내에서 움직일 수 있도록 합니다.
+                        movement = Quaternion.Euler(0, maxJumpAngle, 0) * transform.forward * speed;
+                    }
+                }
+            }
+            */
+            #endregion
+
+            //if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded) {
+            //    anim.SetTrigger("DashTrigger");//Dash animation
+            //    isDashing = true;
+            //}
+
+
+
+
+            Jump();
+            //weapon
+            Interraction();
+            Swap();
+            Attack();
+            Dodge();
+            #region ---Targeting Function----
+            // 탭 키가 눌렸을 때
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                if (!isTargeting)
+                {
+                    FindNearestEnemy();
+                    isTargeting = true;
+                    anim.SetLayerWeight(1, 1);
+                    Debug.Log("TargetLock ON");
+                }
+                else
+                {
+                    isTargeting = false;
+                    anim.SetLayerWeight(1, 0);
+                    Debug.Log("TargetLock OFF");
+                }
             }
 
-            lockOnMovement.x = horizontalInput;         //기본이동 및 락온이동을 위한 입력값 패러미터로 받기
-            lockOnMovement.y = verticalInput;           //기본이동 및 락온이동을 위한 입력값 받기
-
-            anim.SetFloat("horizon", lockOnMovement.x);     //락온 중 이동 변경을 위한 값
-            anim.SetFloat("vertical", lockOnMovement.y);    //락온 중 이동 변경을 위한 값
-            anim.SetFloat("movement", Mathf.Abs(lockOnMovement.magnitude)); //기본idle상태를 입력값에 따라 달리는 애니메이션 출력
-
-            isHitted_pc = playerParryG.isLockPlayerMoved;
-            if (isHitted_pc)
+            // 일정 거리를 벗어나면 시선 고정 해제
+            if (isTargeting && enemyToLookAt != null)
             {
-                movement = Vector3.zero;
+                float distanceToEnemy = Vector3.Distance(transform.position, enemyToLookAt.position);
+                if (distanceToEnemy > maxDistanceForTargetLock)
+                {
+                    isTargeting = false;
+                    anim.SetLayerWeight(1, 0);
+                    Debug.Log("TargetLock OFF(Out of Range)");
+                }
             }
             #endregion
         }
-        #region     제거 대기중인 예전 대시
-        /*
-        // 대시 중인 경우 대시 속도로 이동
-        if (isDashing) {
-            movement = transform.forward * dashSpeed;
-            dashTimer += Time.deltaTime;
-
-            // 대시 지속 시간이 지나면 대시 종료
-            if (dashTimer >= dashDuration) {
-                isDashing = false;
-                dashTimer = 0.0f;
-            }
-        }
-        else {
-            // 일반 이동: 이동 방향을 이용하여 이동
-            //movement *= speed;
-
-            if (!isGrounded) {
-                float angle = Vector3.Angle(movement, transform.forward);
-                if (angle > maxJumpAngle) {
-                    // 만약 현재 움직이는 각도가 제한된 각도보다 크면, 이동 벡터를 수정하여 원하는 각도 내에서 움직일 수 있도록 합니다.
-                    movement = Quaternion.Euler(0, maxJumpAngle, 0) * transform.forward * speed;
-                }
-            }
-        }
-        */
-        #endregion
-
-        //if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded) {
-        //    anim.SetTrigger("DashTrigger");//Dash animation
-        //    isDashing = true;
-        //}
-
-
-
-
-        Jump();
-        //weapon
-        Interraction();
-        Swap();
-        Attack();
-        Dodge();
-        #region ---Targeting Function----
-        // 탭 키가 눌렸을 때
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            if (!isTargeting)
-            {
-                FindNearestEnemy();
-                isTargeting = true;
-                anim.SetLayerWeight(1, 1);
-                Debug.Log("TargetLock ON");
-            }
-            else
-            {
-                isTargeting = false;
-                anim.SetLayerWeight(1, 0);
-                Debug.Log("TargetLock OFF");
-            }
-        }
-
-        // 일정 거리를 벗어나면 시선 고정 해제
-        if (isTargeting && enemyToLookAt != null)
-        {
-            float distanceToEnemy = Vector3.Distance(transform.position, enemyToLookAt.position);
-            if (distanceToEnemy > maxDistanceForTargetLock)
-            {
-                isTargeting = false;
-                anim.SetLayerWeight(1, 0);
-                Debug.Log("TargetLock OFF(Out of Range)");
-            }
-        }
-        #endregion
     }
+    
     void FreezeRotation()
     {
         rb.angularVelocity = Vector3.zero;
