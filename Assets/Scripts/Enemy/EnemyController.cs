@@ -53,7 +53,7 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         if (!myStats.isDead) {      //enemy 사망 시 이동 제한
-            if (GameManager.instance.isGameover) {
+            if (GameManager.isGameover) {
                 //플레이어 사망 시 인식 거리를 줄여 원래 위치로 돌아가게 함
                 detectionDistance = 0.1f;
             }

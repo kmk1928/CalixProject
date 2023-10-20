@@ -51,9 +51,11 @@ public class PlayerController : MonoBehaviour
     public bool isHitted_pc = false;
 
     //die
-    private bool isDead = false;
+    PlayerStats playerStats;
+    public bool isDead = false;
 
-    public bool canRotate = true; // 회전 가능 여부를 제어하는 플래그 (Dodge에서 연동해서 씀)
+    //movement Lock/Unlock
+    public bool canMovePlayer = true; // 회전 가능 여부를 제어하는 플래그 (Dodge에서 연동해서 씀)
 
     void Start()
     {
@@ -66,14 +68,15 @@ public class PlayerController : MonoBehaviour
         meleeAreaSetup = GetComponent<MeleeAreaSetup>();
 
         playerParryG = GetComponent<PlayerParryGuard>();
+
+        playerStats = GetComponent<PlayerStats>();
     }
 
     void Update()
     {
-        if(GameManager.canPlayerMove)
-        {
-            if (canRotate) // Dodge 할때 정지 시켜서 
-            {
+        if (!isDead) {
+            if (canMovePlayer) // Dodge 할때 정지 시켜서 
+{
                 #region Update속 이동입력을 받는 곳
                 // WASD 키를 사용하여 캐릭터 이동
                 float horizontalInput = Input.GetAxis("Horizontal");
@@ -91,8 +94,7 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
                 //콜라이더의 좌표상의 이동 담당
 
-                if (movement != Vector3.zero)
-                {
+                if (movement != Vector3.zero) {
                     transform.forward = movement.normalized; //콜라이더의 회전담당
                 }
 
@@ -103,11 +105,6 @@ public class PlayerController : MonoBehaviour
                 anim.SetFloat("vertical", lockOnMovement.y);    //락온 중 이동 변경을 위한 값
                 anim.SetFloat("movement", Mathf.Abs(lockOnMovement.magnitude)); //기본idle상태를 입력값에 따라 달리는 애니메이션 출력
 
-                isHitted_pc = playerParryG.isLockPlayerMoved;
-                if (isHitted_pc)
-                {
-                    movement = Vector3.zero;
-                }
                 #endregion
             }
             #region     제거 대기중인 예전 대시
@@ -135,15 +132,12 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-            */
-            #endregion
-
             //if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded) {
             //    anim.SetTrigger("DashTrigger");//Dash animation
             //    isDashing = true;
             //}
-
-
+            */
+            #endregion
 
 
             Jump();
@@ -152,19 +146,20 @@ public class PlayerController : MonoBehaviour
             Swap();
             Attack();
             Dodge();
+            if(playerStats.curHealth < 1) {
+                Die();
+            }
+
             #region ---Targeting Function----
             // 탭 키가 눌렸을 때
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                if (!isTargeting)
-                {
+            if (Input.GetKeyDown(KeyCode.Tab)) {
+                if (!isTargeting) {
                     FindNearestEnemy();
                     isTargeting = true;
                     anim.SetLayerWeight(1, 1);
                     Debug.Log("TargetLock ON");
                 }
-                else
-                {
+                else {
                     isTargeting = false;
                     anim.SetLayerWeight(1, 0);
                     Debug.Log("TargetLock OFF");
@@ -172,11 +167,9 @@ public class PlayerController : MonoBehaviour
             }
 
             // 일정 거리를 벗어나면 시선 고정 해제
-            if (isTargeting && enemyToLookAt != null)
-            {
+            if (isTargeting && enemyToLookAt != null) {
                 float distanceToEnemy = Vector3.Distance(transform.position, enemyToLookAt.position);
-                if (distanceToEnemy > maxDistanceForTargetLock)
-                {
+                if (distanceToEnemy > maxDistanceForTargetLock) {
                     isTargeting = false;
                     anim.SetLayerWeight(1, 0);
                     Debug.Log("TargetLock OFF(Out of Range)");
@@ -185,7 +178,6 @@ public class PlayerController : MonoBehaviour
             #endregion
         }
     }
-    
     void FreezeRotation()
     {
         rb.angularVelocity = Vector3.zero;
@@ -195,7 +187,7 @@ public class PlayerController : MonoBehaviour
     {
         FreezeRotation();
     }
-    #region OnCollisionEnter, OnCollisionExit, OnTriggerStay, OnTriggerExit
+    #region 트리거들 OnCollisionEnter, OnCollisionExit, OnTriggerStay, OnTriggerExit---------------
     void OnCollisionEnter(Collision collision)
     {
         //점프 애니메이션 관리 
@@ -337,7 +329,7 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("DodgeTrigger"); // Dodge 애니메이션
             isDodge = true;
 
-            canRotate = false; // 회전 비활성화
+            canMovePlayer = false; // 회전 비활성화
 
             // 플레이어의 forward 방향으로 설정
             Vector3 forwardDirection = transform.forward;
@@ -353,6 +345,13 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    private void Die() {
+        isDead = true;
+        canMovePlayer = false;
+        //Destroy(this, 2f);
+        anim.SetTrigger("doDie");
+        GameManager.instance.OnPlayerDead();
+    }
 
     // Dodge 동작을 0.5초 후 종료하는 코루틴
     IEnumerator EndDodgeAfterDelay(float delay, float originalSpeed)
@@ -363,7 +362,7 @@ public class PlayerController : MonoBehaviour
         isDodge = false;
         speed = originalSpeed; // 속도를 원래 값으로 복원
 
-        canRotate = true; // 회전 활성화
+        canMovePlayer = true; // 회전 활성화
     }
 
     /*  ------------- 속도만 조절 하는 부분 -------------------
@@ -412,7 +411,7 @@ public class PlayerController : MonoBehaviour
     }
     void LateUpdate()
     {
-        if (canRotate)
+        if (canMovePlayer)
         {
             // 시선을 고정한 적 오브젝트를 바라보도록 회전
             if (isTargeting && enemyToLookAt != null)
@@ -423,25 +422,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     public void ActivateSkill(SOSkill skill)
     {
-        canRotate = false;
-        anim.applyRootMotion = true;
+        LockPlayerInput_ForAnimRootMotion();
         anim.Play(skill.animationName);
         print(string.Format("스킬 {0} 사용 ---- {1} 의 피해를 주었습니다.", skill.name, skill.skillDamage));
-        Invoke("PlayerNoInput", 2f);
-    }
-    void PlayerNoInput() {
-        anim.applyRootMotion = false;
-        canRotate = true;
+        Invoke("UnlockPlayerInput_ForAnimRootMotion", 1f);
     }
 
-    private void Die()
-    {
-        isDead = true;
-        canRotate = false;
-        GameManager.instance.OnPlayerDead();
+    #region 플레이어 이동 제한 발동함수 +애님 루트모션 활성화도 추가
+    //플레이어 이동제한/해제
+    public void LockPlayerInput() {
+        canMovePlayer = false;
     }
+    public void UnlockPlayerInput() {
+        canMovePlayer = true;
+    }
+    //애니메이터 루트모션 활성화/비활성화 + 플레이어 이동제한/해제
+    public void LockPlayerInput_ForAnimRootMotion() {
+        anim.applyRootMotion = true;
+        canMovePlayer = false;
+    }
+    public void UnlockPlayerInput_ForAnimRootMotion() {
+        anim.applyRootMotion = false;
+        canMovePlayer = true;
+    }
+    #endregion
+
 
     void test()
     {

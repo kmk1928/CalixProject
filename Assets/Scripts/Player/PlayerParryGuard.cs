@@ -12,8 +12,10 @@ public class PlayerParryGuard : MonoBehaviour {
     private bool isBlocked = false;     //우클릭 가드 확인용
     private bool isParried = false;     //패리 가능 상태 확인용
     private bool isHitted = false;      //데미지를 연속으로 입는 것을 방지하기 위한 bool 트리거, OnDamage코루틴에 사용
-    private bool isHittedMotioning = false;
-    public bool isLockPlayerMoved = false;
+    private bool isHittedMotioning = false;     //맞는 모션중 패링 방지
+    private float parryRecovery_Time = 0.3f;        //이동가능까지 걸리는 시간
+    private float hitRecovery_Time = 0.5f;
+    private float powerHitRecovery_Time = 1.0f;
 
     public float smoothTime = 0.5f;
     Transform original;
@@ -71,10 +73,10 @@ public class PlayerParryGuard : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (!isHitted && (other.tag == "EnemyAttack" || other.tag == "EnemyPowerAttack")) {
+        if (!isHitted && (other.tag == "EnemyAttack" || other.tag == "EnemyPowerAttack") && !playerController.isDead) {
             Debug.Log("1"); //추적추적추적추적
             nearObject = other.gameObject;
-            isLockPlayerMoved = true;           //피격중 이동 제한
+            playerController.LockPlayerInput();  //피격중 이동 제한
             if (isParried) {
                 Debug.Log("PARRY!!!");                          //패링 성공
                 OnParried();
@@ -121,7 +123,7 @@ public class PlayerParryGuard : MonoBehaviour {
         parryParticle.Play();           //패리 이펙트
         Invoke("HittedOut", 0.2f);              //연속피격방지
         parryArea.enabled = false;
-        Invoke("LockPlayerInput", 0.3f);
+        playerController.Invoke("UnlockPlayerInput", parryRecovery_Time);
     }
     private void OnDamage() {              //가드 또는 피격 시 쓰는 데미지 코루틴
         isHitted = true;                        //연속피격방지
@@ -133,7 +135,7 @@ public class PlayerParryGuard : MonoBehaviour {
 
         Invoke("HittedMotioningOut", 0.1f);
         Invoke("HittedOut", 0.2f);
-        Invoke("LockPlayerInput", 0.5f);
+        playerController.Invoke("UnlockPlayerInput", hitRecovery_Time);
     }
     private void OnPowerDamage() {              //강한 공격 피격 시 쓰는 데미지 코루틴
         isHitted = true;                        //연속피격방지
@@ -145,7 +147,7 @@ public class PlayerParryGuard : MonoBehaviour {
 
         Invoke("HittedMotioningOut", 0.1f);
         Invoke("HittedOut", 0.2f);
-        Invoke("LockPlayerInput", 1f);      //플레이어 이동 불가 해제
+        playerController.Invoke("UnlockPlayerInput", powerHitRecovery_Time);
     }
     private void HittedOut() {
         isHitted = false;    //연속피격방지
@@ -155,10 +157,5 @@ public class PlayerParryGuard : MonoBehaviour {
     private void HittedMotioningOut() {
         isHittedMotioning = false;    // 피격 직후 60프레임 내 패링 가능 방지
         //Debug.Log("6"); //추적추적추적추적
-    }
-
-    private void LockPlayerInput() {
-        isLockPlayerMoved = false;    //피격 중 이동 방지
-        //Debug.Log("7"); //추적추적추적추적
     }
 }
