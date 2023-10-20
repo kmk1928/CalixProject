@@ -26,8 +26,8 @@ public class SmoothMoved : MonoBehaviour
                 //while문이 끝나지 않을 때 탈출 = 코루틴 강제 종료
                 break;
             }
-            //yield return null;
-            yield return new WaitForFixedUpdate();
+            yield return null;
+            ////yield return new WaitForFixedUpdate();
         }
         
          temp = 0.0f;

@@ -77,6 +77,7 @@ public class PlayerParryGuard : MonoBehaviour {
             Debug.Log("1"); //추적추적추적추적
             nearObject = other.gameObject;
             playerController.LockPlayerInput();  //피격중 이동 제한
+            playerController.rb.velocity = Vector3.zero; 
             if (isParried) {
                 Debug.Log("PARRY!!!");                          //패링 성공
                 OnParried();
@@ -121,7 +122,7 @@ public class PlayerParryGuard : MonoBehaviour {
         smoothMoved.SmoothMove_Parry(original, nearObject.transform);
 
         parryParticle.Play();           //패리 이펙트
-        Invoke("HittedOut", 0.2f);              //연속피격방지
+        Invoke("HittedOut", 0.2f);              //연속피격방지   
         parryArea.enabled = false;
         playerController.Invoke("UnlockPlayerInput", parryRecovery_Time);
     }
