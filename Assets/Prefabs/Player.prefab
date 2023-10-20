@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1191465245011681577}
   - component: {fileID: 1191465245011681572}
   - component: {fileID: 1191465245011681574}
+  - component: {fileID: 1128348089664677789}
   - component: {fileID: 1191465245011681575}
   - component: {fileID: 696521750386652712}
   - component: {fileID: 8408679433847319187}
@@ -75,6 +76,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &1128348089664677789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191465245011681576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca0d105bfb64ea54288f8959a64bfd92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPatterns:
+  - {fileID: 11400000, guid: 8d14301d8712eaf4baf2863f0d67ffc8, type: 2}
+  - {fileID: 11400000, guid: 2a867f365b436ee4693746866f835b04, type: 2}
+  - {fileID: 11400000, guid: 7dc4c6d1bce15794f93cbe004bcdce68, type: 2}
+  - {fileID: 11400000, guid: 0c2623695c9c24d47a97396d7c98c0c0, type: 2}
 --- !u!114 &1191465245011681575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,7 +122,10 @@ MonoBehaviour:
   - {fileID: 5517861458018596869}
   - {fileID: 0}
   hasWeapons: 010100
+  canDoCombo: 0
   isHitted_pc: 0
+  isDead: 0
+  canMovePlayer: 1
 --- !u!114 &696521750386652712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c03b9aa1d028f4994245ce1e5fdc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
   curHealth: 0
   defense: 5
   attackDamage: 10
@@ -163,7 +184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parryTimer: 0
-  isLockPlayerMoved: 0
   smoothTime: 0.5
   parryArea: {fileID: 2744591789021096974}
   parryParticle: {fileID: 1191465244632848944}
@@ -1963,6 +1983,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 217c7773b7f791347bb9cd7d97480c52, type: 3}
   m_PrefabInstance: {fileID: 5517861458018696869}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &5517861458018696888
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5517861458018596869}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.55867916, y: 1.6234374, z: 0.25993538}
+  m_Center: {x: -0.000028735629, y: 0.45495564, z: -0.0010209337}
 --- !u!64 &5517861458018696895
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1977,19 +2010,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 4fb60c94d0610084fbdc47d366ab4f29, type: 3}
---- !u!65 &5517861458018696888
-BoxCollider:
+--- !u!114 &5517861458018696889
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5517861458018596869}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.55867916, y: 1.6234374, z: 0.25993538}
-  m_Center: {x: -0.000028735629, y: 0.45495564, z: -0.0010209337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26382e6f34c1a82469517ec6a20fb1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5517861458018696890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2004,21 +2036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   damage: 20
-  rate: 0.4
-  meleeArea: {fileID: 5517861458018696888}
   trailEffect: {fileID: 5517861457445044259}
---- !u!114 &5517861458018696889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5517861458018596869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26382e6f34c1a82469517ec6a20fb1e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5517861458155427498
 PrefabInstance:
   m_ObjectHideFlags: 0

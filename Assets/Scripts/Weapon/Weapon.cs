@@ -7,17 +7,17 @@ public class Weapon : MonoBehaviour
     public enum Type{Melee, Range};
     public Type type;
     public int damage;
-    public float rate;
-    public BoxCollider meleeArea;
+    //public float rate;
+    //public BoxCollider meleeArea;
     public TrailRenderer trailEffect;
 
 
-    public void EnableMeleeArea() {
-        meleeArea.enabled = true;
-    }
-    public void DisableMeleeArea() {
-        meleeArea.enabled = false;
-    }
+    //public void EnableMeleeArea() {
+    //    meleeArea.enabled = true;
+    //}
+    //public void DisableMeleeArea() {
+    //    meleeArea.enabled = false;
+    //}
     
 
     /*

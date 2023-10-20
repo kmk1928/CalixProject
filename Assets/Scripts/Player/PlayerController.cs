@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     //attack
     bool isFireReady;
     float fireDelay;
+    public bool canDoCombo;
 
     //hitted
     PlayerParryGuard playerParryG;
@@ -144,12 +145,11 @@ public class PlayerController : MonoBehaviour
             //weapon
             Interraction();
             Swap();
-            Attack();
+            //Attack();
             Dodge();
             if(playerStats.curHealth < 1) {
                 Die();
             }
-
             #region ---Targeting Function----
             // 탭 키가 눌렸을 때
             if (Input.GetKeyDown(KeyCode.Tab)) {
@@ -296,27 +296,23 @@ public class PlayerController : MonoBehaviour
     {
         if (equipWeapon == null)
             return;
-        fireDelay += Time.deltaTime;
-        isFireReady = equipWeapon.rate < fireDelay;
+        //fireDelay += Time.deltaTime;
+        //isFireReady = equipWeapon.rate < fireDelay;
 
-        if (Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap)
-        {
-            Debug.Log("!---Click Mouse(0)---!");
-            //equipWeapon.Use();
-            anim.SetTrigger("doSwing");
-            fireDelay = 0;
-            isAttack = true;
-            speed = 0;
-            movement = Vector3.zero;
-            Invoke("AttackOut", 1.0f);
-        }
+        //if (Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap)
+        //{
+        //    Debug.Log("!---Click Mouse(0)---!");
+        //    /////equipWeapon.Use();
+        //    ///anim.SetTrigger("doSwing");
+        //    fireDelay = 0;
+        //    //isAttack = true;
+        //    //isAttack = false;
+        //    movement = Vector3.zero;
+        //    Invoke("AttackOut", 1.0f);
+
+        //}
     }
 
-    void AttackOut()
-    {
-        speed = 5.0f;
-        isAttack = false;
-    }
     #region 구르기하는 부분 Dodge
     void Dodge()  // 0.5초 동안 강제로 이동함
     {
@@ -362,7 +358,7 @@ public class PlayerController : MonoBehaviour
         isDodge = false;
         speed = originalSpeed; // 속도를 원래 값으로 복원
 
-        canMovePlayer = true; // 회전 활성화
+        canMovePlayer = true; // 이동 활성화
     }
 
     /*  ------------- 속도만 조절 하는 부분 -------------------
