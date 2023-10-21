@@ -5,13 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AttackPattern", menuName = "PlayerAttack/Attack Pattern")]
 public class SOAttackPattern : ScriptableObject {
     public string attackName;
-    public float damage;
-    public float cooldown;
-    public float range;
-    //public AnimationClip attackAnimation;
+    public float damageMultiplier;  //데미지 계수
+    public float cooldown;          //연속입력 방지시간 ex) 0.3f면 애니메이션 실행 후 0.3초 이후에 다음 입력가능
+
     public AnimatorOverrideController animatorOV;
-    // 추가: 파티클 프리팹
+
+    [Header("파티클 관련")]
     public GameObject particleEffectPrefab;
-    // 추가: 다음 콤보 공격을 참조할 AttackPattern
-    public SOAttackPattern nextComboAttack;
+    public Vector3 particlePosition;
+    public Vector3 particleRotation;
+    public Vector3 particleScale = Vector3.one;
+    [Tooltip("애니메이션 시작 후 몇 초 뒤에 파티클을 생성할 지")]
+    public float particleStartTime = 0.1f;
+    [Tooltip("파티클을 생성 후 제거까지 걸리는 시간")]
+    public float particleEndTime = 1f;
+
 }

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttacker : MonoBehaviour {
-    ///public List<SOAttackPattern> attackPatterns;
-    public SOAttackPattern[] attackPatterns;
+    ///public List<SOAttackPattern> attackPatterns_NA;
+    public SOAttackPattern[] attackPatterns_NA;
 
     private float lastComboEnd;
     private float lastClickTime;
@@ -15,10 +15,14 @@ public class PlayerAttacker : MonoBehaviour {
     int maxIndex;
 
     Animator anim;
+    Transform playerTransform;
+    PlayerController playerController;
 
     private void Start() {
         anim = GetComponent<Animator>();
-        maxIndex = attackPatterns.Length - 1;
+        playerTransform = GetComponent<Transform>();
+        playerController = GetComponent<PlayerController>();
+        maxIndex = attackPatterns_NA.Length - 1;
     }
     private void Update() {
         if (Input.GetButtonDown("Fire1")) {
@@ -28,19 +32,25 @@ public class PlayerAttacker : MonoBehaviour {
     }
 
     private void Attack() { //현재시간 - 마지막 입력 시간이 쿨다운(보통 0.4f~0.2f)보다 클때 && 현재 인덱스가 최대 인덱스보다 작거나 같을 때  
-        if (Time.time - lastComboEnd > attackPatterns[currentAttackIndex].cooldown && currentAttackIndex <= maxIndex) {
+        if (Time.time - lastComboEnd > 0.1f && currentAttackIndex <= maxIndex) {
             // 공격 애니메이션 재생 및 데미지 적용 로직
             Debug.Log("1111");
+            playerController.LockPlayerInput_ForAnimRootMotion();
             CancelInvoke("EndCombo");
-
-            if(Time.time - lastClickTime >= attackPatterns[currentAttackIndex].cooldown) {
+            if(Time.time - lastClickTime >= attackPatterns_NA[currentAttackIndex].cooldown) {
                 Debug.Log("attackgogo");
-                anim.runtimeAnimatorController = attackPatterns[currentAttackIndex].animatorOV;
+                anim.runtimeAnimatorController = attackPatterns_NA[currentAttackIndex].animatorOV;
                 anim.Play("NormalAttack", 0, 0);
                 #region 파티클 효과 생성
-                SOAttackPattern currentAttack = attackPatterns[currentAttackIndex];
+                SOAttackPattern currentAttack = attackPatterns_NA[currentAttackIndex];
+                Vector3 position = playerTransform.position + currentAttack.particlePosition;
+                Quaternion rotation = playerTransform.rotation * Quaternion.Euler(currentAttack.particleRotation);
+                Vector3 scale = currentAttack.particleScale;
                 if (currentAttack.particleEffectPrefab != null) {
-                    Instantiate(currentAttack.particleEffectPrefab, transform.position, Quaternion.identity);
+                    //GameObject particleInstance = Instantiate(currentAttack.particleEffectPrefab, position, rotation);//.transform.localScale = scale;
+                    //StartCoroutine(DestroyParticleAfterTime(particleInstance, currentAttack.particleEndTime)); 
+                    StartCoroutine(SpawnParticleLifecycle(currentAttack.particleEffectPrefab, position, rotation, scale,
+                                                            currentAttack.particleStartTime, currentAttack.particleEndTime));
                 }
                 #endregion
                 currentAttackIndex++;
@@ -49,9 +59,21 @@ public class PlayerAttacker : MonoBehaviour {
                 if(currentAttackIndex > maxIndex) {
                     currentAttackIndex = 0;
                     Debug.Log("------------초기화!");
+                    playerController.UnlockPlayerInput_ForAnimRootMotion();
                 }
             }
         }
+    }
+
+    private IEnumerator SpawnParticleLifecycle(GameObject prefab, Vector3 position, Quaternion rotation, Vector3 scale, float delay, float endTime) {
+        yield return new WaitForSeconds(delay);
+        GameObject particleInstance = Instantiate(prefab, position, rotation);
+        particleInstance.transform.localScale = scale;
+
+        // 지정된 endTime 시간 후에 파티클을 파괴하는 대기
+        yield return new WaitForSeconds(endTime);
+        // endTime 시간이 지난 후에 파티클 파괴
+        Destroy(particleInstance);
     }
 
     void ExitAttack() {
@@ -59,13 +81,14 @@ public class PlayerAttacker : MonoBehaviour {
             && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f  
             ){
             Debug.Log("-------------ExitAttack------------");
-            Invoke("EndCombo", 0.2f); // 0.2초의 콤보이어가기 가능 시간
+            Invoke("EndCombo", 0.01f); // 0.2초의 콤보이어가기 가능 시간
         }
     }
     void EndCombo() {       //콤보 종료
         Debug.Log("EndCombo------------");
         currentAttackIndex = 0;
         lastComboEnd = Time.time;
+        playerController.UnlockPlayerInput_ForAnimRootMotion();
     }
 
 }

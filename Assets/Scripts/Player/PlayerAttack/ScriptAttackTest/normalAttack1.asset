@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: normalAttack1
   m_EditorClassIdentifier: 
   attackName: 
-  damage: 0
-  cooldown: 0.3
-  range: 0
+  damageMultiplier: 0
+  cooldown: 0.4
   animatorOV: {fileID: 22100000, guid: 9cacbd03a2dbc1d49a17ce69f6378713, type: 2}
-  particleEffectPrefab: {fileID: 0}
-  nextComboAttack: {fileID: 0}
+  particleEffectPrefab: {fileID: 1872147318604286, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
+  particlePosition: {x: 0.061171867, y: 0.39702415, z: 0.022123225}
+  particleRotation: {x: 1.1930848, y: 356.34436, z: 237.13916}
+  particleScale: {x: 1, y: 1, z: 1}
+  particleStartTime: 0.1
+  particleEndTime: 1
