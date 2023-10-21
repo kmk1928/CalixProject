@@ -13,14 +13,25 @@ public class MeleeAreaSetup : MonoBehaviour
         playerCtrl = GetComponent<PlayerController>();
     }
 
+    //private void Update() {
+    //    if (Input.GetKeyDown(KeyCode.L)) {
+    //        OpenDamageCllider_Corutin();
+    //    }
+    //}
+
     public void LoadWeaponDamageCollider() {
         //플레이어가 1,2,3 으로 무기 스왑시(장착) 무기 콜라이더 damageCollider이 받아옴
         //플레이어 위치 확인
         damageCollider = playerCtrl.equipWeapon.GetComponent<DamageCollider>();
     }
+    public void OpenDamageCllider_Corutin(){       //0.1초동안 공격범위 활성화
+        Debug.Log("함수 불러옴");
+        StartCoroutine(FixedOpenDamageCllider());
+    }
     IEnumerator FixedOpenDamageCllider() {
+        Debug.Log("공격범위 온 코루틴 실행");
         damageCollider.EnableMeleeArea();
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
         damageCollider.DisableMeleeArea();
     }
 
@@ -36,9 +47,6 @@ public class MeleeAreaSetup : MonoBehaviour
         damageCollider.DisableMeleeArea();
     }
 
-    private void OpenDamageCllider_Corutin() {
-        StartCoroutine(FixedOpenDamageCllider());
-    }
     #endregion
  
 }

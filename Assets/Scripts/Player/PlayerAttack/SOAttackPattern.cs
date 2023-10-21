@@ -5,8 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AttackPattern", menuName = "PlayerAttack/Attack Pattern")]
 public class SOAttackPattern : ScriptableObject {
     public string attackName;
-    public float damageMultiplier;  //데미지 계수
-    public float cooldown;          //연속입력 방지시간 ex) 0.3f면 애니메이션 실행 후 0.3초 이후에 다음 입력가능
+    public float damageMultiplier = 1.0f;  //데미지 계수
+    public float cooldown = 0.4f;          //연속입력 방지시간 ex) 0.3f면 애니메이션 실행 후 0.3초 이후에 다음 입력가능
+    [Tooltip("애니메이션의 진행도가 몇%일때 공격 콜라이더를 활성화 할건지")]
+    public float attackCollider_ActiveTime = 0.25f;
 
     public AnimatorOverrideController animatorOV;
 

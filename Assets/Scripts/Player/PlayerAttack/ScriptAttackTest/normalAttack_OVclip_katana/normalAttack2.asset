@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66823841ae2f9e24aad67ad8a42af99a, type: 3}
-  m_Name: normalAttack1
+  m_Name: normalAttack2
   m_EditorClassIdentifier: 
   attackName: 
   damageMultiplier: 0
-  cooldown: 0.4
-  animatorOV: {fileID: 22100000, guid: 9cacbd03a2dbc1d49a17ce69f6378713, type: 2}
+  cooldown: 0.3
+  attackCollider_ActiveTime: 0.5
+  animatorOV: {fileID: 22100000, guid: 8ba067eb076527041a2c7581e575661b, type: 2}
   particleEffectPrefab: {fileID: 1872147318604286, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
-  particlePosition: {x: 0.061171867, y: 0.39702415, z: 0.022123225}
-  particleRotation: {x: 1.1930848, y: 356.34436, z: 237.13916}
+  particlePosition: {x: -0.33, y: -0.22, z: 0.11}
+  particleRotation: {x: 358.5727, y: 3.57082, z: 60.848026}
   particleScale: {x: 1, y: 1, z: 1}
-  particleStartTime: 0.1
+  particleStartTime: 0.2
   particleEndTime: 1

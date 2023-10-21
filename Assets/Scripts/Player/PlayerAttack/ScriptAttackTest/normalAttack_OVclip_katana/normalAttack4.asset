@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: 
   damageMultiplier: 0
-  cooldown: 0.5
+  cooldown: 0.4
+  attackCollider_ActiveTime: 0.5
   animatorOV: {fileID: 22100000, guid: 85bd6c228e5fe5e4a83c408bc345a3db, type: 2}
-  particleEffectPrefab: {fileID: 0}
-  particlePosition: {x: 0, y: 0, z: 0}
-  particleRotation: {x: 0, y: 0, z: 0}
-  particleScale: {x: 1, y: 1, z: 1}
-  particleStartTime: 0.1
+  particleEffectPrefab: {fileID: 7699698589382392644, guid: ce614ff6f5639fb4ab201b6b5b437127, type: 3}
+  particlePosition: {x: 0.33, y: 0.34, z: 0.63434887}
+  particleRotation: {x: 8.792521, y: -6.71, z: 0}
+  particleScale: {x: 0.7, y: 0.7, z: 0.7}
+  particleStartTime: 0.03
   particleEndTime: 1

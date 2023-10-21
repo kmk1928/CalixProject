@@ -145,7 +145,6 @@ public class PlayerController : MonoBehaviour
             //weapon
             Interraction();
             Swap();
-            //Attack();
             Dodge();
             if(playerStats.curHealth < 1) {
                 Die();
@@ -292,26 +291,26 @@ public class PlayerController : MonoBehaviour
         }
     }
     //attack
-    void Attack()
-    {
-        if (equipWeapon == null)
-            return;
-        //fireDelay += Time.deltaTime;
-        //isFireReady = equipWeapon.rate < fireDelay;
+    //void Attack()
+    //{
+    //    if (equipWeapon == null)
+    //        return;
+    //    //fireDelay += Time.deltaTime;
+    //    //isFireReady = equipWeapon.rate < fireDelay;
 
-        //if (Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap)
-        //{
-        //    Debug.Log("!---Click Mouse(0)---!");
-        //    /////equipWeapon.Use();
-        //    ///anim.SetTrigger("doSwing");
-        //    fireDelay = 0;
-        //    //isAttack = true;
-        //    //isAttack = false;
-        //    movement = Vector3.zero;
-        //    Invoke("AttackOut", 1.0f);
+    //    //if (Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap)
+    //    //{
+    //    //    Debug.Log("!---Click Mouse(0)---!");
+    //    //    /////equipWeapon.Use();
+    //    //    ///anim.SetTrigger("doSwing");
+    //    //    fireDelay = 0;
+    //    //    //isAttack = true;
+    //    //    //isAttack = false;
+    //    //    movement = Vector3.zero;
+    //    //    Invoke("AttackOut", 1.0f);
 
-        //}
-    }
+    //    //}
+    //}
 
     #region 구르기하는 부분 Dodge
     void Dodge()  // 0.5초 동안 강제로 이동함
