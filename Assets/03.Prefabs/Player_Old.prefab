@@ -476,6 +476,7 @@ MonoBehaviour:
   isHitted_pc: 0
   isDead: 0
   canMovePlayer: 1
+  canPlayerRotate: 0
 --- !u!114 &4387737048312850188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3695,6 +3696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a4d45a2e1acde46a6b594e038f2cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultDamageCollider: {fileID: 0}
 --- !u!4 &4355991118125941432 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: b78a8aa8ae349394187459c9200c4753, type: 3}
