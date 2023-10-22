@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+[CreateAssetMenu(fileName = "New Item", menuName = "New Item/Item")]
+public class Item : ScriptableObject
 {
-    public enum Type{Magic, Reward, Weapon};
-    public Type type;
+    public string itemName; // 아이템의 이름
+    public ItemType itemtype; // 아이템의 유형
+    public Sprite itemImage; // 아이템의 이미지
+    public GameObject itemPrefab; // 아이템의 프리팹
+
+
+    public string weaponType; // 무기 유형
+
     public int value;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
+    public enum ItemType
+    {   
+        Magic,
+        Reward,
+        Used,
+        Weapon
+    };
 }
