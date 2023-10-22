@@ -48,9 +48,11 @@ public class PlayerAttacker : MonoBehaviour {
             Debug.Log("-------------ㄴㅅㅁㄳtAttack------------");
             maxIndex = attackPatterns.Length - 1;
             playerController.LockPlayerInput_ForAnimRootMotion();   //플레이어 이동제한
-                //공격범위 활성
-                //AttackAreaActive(attackPatterns);
-                StartCoroutine(AttackAreaActive_Cour(attackPatterns));
+            //공격범위 활성    
+            StartCoroutine(AttackAreaActive_Cour(attackPatterns));
+            playerController.StartAnimRotation();
+            StartCoroutine(playerController.EndAnimRotation());
+
             CancelInvoke("EndCombo");
             if(Time.time - lastClickTime >= attackPatterns[currentAttackIndex].cooldown) {
                 Debug.Log("attackgogo");
