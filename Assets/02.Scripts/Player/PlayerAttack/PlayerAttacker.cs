@@ -49,15 +49,13 @@ public class PlayerAttacker : MonoBehaviour {
         if (Time.time - lastComboEnd > 0.1f && currentAttackIndex <= maxIndex) {
             // 공격 애니메이션 재생 로직
             endCount = 0;
-            //Debug.Log("-------------RotateAttack-----------");
-            //playerController.StartStopRotation();
             Debug.Log("-------------ㄴㅅㅁㄳtAttack------------");
             maxIndex = attackPatterns.Length - 1;
             playerController.LockPlayerInput_ForAnimRootMotion();   //플레이어 이동제한
             //공격범위 활성    
             StartCoroutine(AttackAreaActive_Cour(attackPatterns));
-            playerController.StartAnimRotation();
-            StartCoroutine(playerController.EndAnimRotation());
+            //공격중 회전 활성화
+            StartCoroutine(playerController.AnimationingRotation());
 
             CancelInvoke("EndCombo");
             if(Time.time - lastClickTime >= attackPatterns[currentAttackIndex].cooldown) {
@@ -87,12 +85,10 @@ public class PlayerAttacker : MonoBehaviour {
 
     private IEnumerator SpawnParticleLifecycle(GameObject prefab, Vector3 position, Quaternion rotation, Vector3 scale, float delay, float endTime) {
         yield return new WaitForSeconds(delay);
-        //Transform playerTransform = GameObject.Find("Player").transform; // 플레이어 오브젝트를 찾거나 지정합니다. 테스트
-
         GameObject particleInstance = Instantiate(prefab, position, rotation);
+        Transform playerTransform = GameObject.Find("Player").transform;
+        particleInstance.transform.parent = playerTransform;  //테스트
         particleInstance.transform.localScale = scale;
-        //particleInstance.transform.parent = playerTransform; // 테스트
-
         // 지정된 endTime 시간 후에 파티클을 파괴하는 대기
         yield return new WaitForSeconds(endTime);
         // endTime 시간이 지난 후에 파티클 파괴
