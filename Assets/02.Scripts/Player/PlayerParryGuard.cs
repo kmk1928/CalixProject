@@ -76,8 +76,8 @@ public class PlayerParryGuard : MonoBehaviour {
         if (!isHitted && (other.tag == "EnemyAttack" || other.tag == "EnemyPowerAttack") && !playerController.isDead) {
             Debug.Log("1"); //추적추적추적추적
             nearObject = other.gameObject;
-            playerController.LockPlayerInput();  //피격중 이동 제한
-            playerController.rb.velocity = Vector3.zero; 
+            playerController.LockPlayerInput_ForAnimRootMotion();  //피격중 이동 제한
+            TestAnimationEndPlayerVelocityZero();
             if (isParried) {
                 Debug.Log("PARRY!!!");                          //패링 성공
                 OnParried();
@@ -124,7 +124,7 @@ public class PlayerParryGuard : MonoBehaviour {
         parryParticle.Play();           //패리 이펙트
         Invoke("HittedOut", 0.2f);              //연속피격방지   
         parryArea.enabled = false;
-        playerController.Invoke("UnlockPlayerInput", parryRecovery_Time);
+        playerController.Invoke("UnlockPlayerInput_ForAnimRootMotion", parryRecovery_Time);
     }
     private void OnDamage() {              //가드 또는 피격 시 쓰는 데미지 코루틴
         isHitted = true;                        //연속피격방지
@@ -136,7 +136,8 @@ public class PlayerParryGuard : MonoBehaviour {
 
         Invoke("HittedMotioningOut", 0.1f);
         Invoke("HittedOut", 0.2f);
-        playerController.Invoke("UnlockPlayerInput", hitRecovery_Time);
+        playerController.Invoke("UnlockPlayerInput_ForAnimRootMotion", hitRecovery_Time);
+        TestAnimationEndPlayerVelocityZero();
     }
     private void OnPowerDamage() {              //강한 공격 피격 시 쓰는 데미지 코루틴
         isHitted = true;                        //연속피격방지
@@ -148,7 +149,7 @@ public class PlayerParryGuard : MonoBehaviour {
 
         Invoke("HittedMotioningOut", 0.1f);
         Invoke("HittedOut", 0.2f);
-        playerController.Invoke("UnlockPlayerInput", powerHitRecovery_Time);
+        playerController.Invoke("UnlockPlayerInput_ForAnimRootMotion", powerHitRecovery_Time);
     }
     private void HittedOut() {
         isHitted = false;    //연속피격방지
@@ -158,5 +159,9 @@ public class PlayerParryGuard : MonoBehaviour {
     private void HittedMotioningOut() {
         isHittedMotioning = false;    // 피격 직후 60프레임 내 패링 가능 방지
         //Debug.Log("6"); //추적추적추적추적
+    }
+
+    private void TestAnimationEndPlayerVelocityZero() {
+        playerController.rb.velocity = Vector3.zero; 
     }
 }

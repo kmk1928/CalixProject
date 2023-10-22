@@ -58,6 +58,11 @@ public class PlayerController : MonoBehaviour
     //movement Lock/Unlock
     public bool canMovePlayer = true; // 회전 가능 여부를 제어하는 플래그 (Dodge에서 연동해서 씀)
 
+    //canRotate
+    public bool isRotation = false;
+    public float rotationSpeed = 3000.0f; // 회전 속도
+    private float animatableRotationTime = 0.3f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -144,11 +149,17 @@ public class PlayerController : MonoBehaviour
             #endregion
 
 
+            #region ----------------------------------------------업데이트에 쓰는 실시간 함수들--------------------------------------
             Jump();
             //weapon
             Interraction();
             Swap();
             Dodge();
+            OnlyRotation();
+
+            #endregion
+
+
             if (playerStats.curHealth <= 0)
             {
                 Die();
@@ -193,7 +204,7 @@ public class PlayerController : MonoBehaviour
             {
                 isTargeting = false;
                 anim.SetLayerWeight(1, 0);
-                Debug.Log("TargetLock OFF(Target is null)");
+                //Debug.Log("TargetLock OFF(Target is null)");
             }
 
             
@@ -506,6 +517,38 @@ public class PlayerController : MonoBehaviour
         canMovePlayer = true;
     }
     #endregion
+
+    public void StartAnimRotation() {
+            isRotation = true;
+    }
+    public IEnumerator EndAnimRotation() {
+        float canRotate = 0;
+        while (canRotate < animatableRotationTime) {
+            canRotate += Time.deltaTime;
+            yield return null;
+        }
+        yield return null;    
+        isRotation = false;
+    }
+    public void OnlyRotation() {
+        if (isRotation && !canMovePlayer) {
+            // 회전 입력을 받아 플레이어를 회전시킴
+            float rotationInput = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
+
+            // 회전을 제한
+            float currentRotation = transform.localEulerAngles.y;
+            float newRotation = currentRotation + rotationInput;
+            transform.localEulerAngles = new Vector3(0.0f, newRotation, 0.0f);
+        }
+    }
+
+    public void StartRotation() {
+        isRotation = true;
+    }
+
+    public void StopRotation() {
+        isRotation = false;
+    }
 
 
     void test()
