@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
     //canRotate
     public bool isRotation = false;
-    public float rotationSpeed = 3000.0f; // 회전 속도
+    public float rotationSpeed = 10.0f; // 회전 속도
     private float animatableRotationTime = 0.3f;
 
     void Start()
