@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
     public float defaultSpeed = 5.0f;  //기본 이동속도
     public float speed = 5.0f; // 이동 속도 
     public float jumpForce = 7.0f; // 점프 힘
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour {
     public Transform enemyToLookAt; // 시선을 고정할 적 캐릭터
     public bool isTargeting = false; // 플레이어가 바라보는 중인지 여부
     private float maxDistanceForTargetLock = 15f; // 시선 고정을 위한 최대 거리
-
+    private Camera mainCamera; // 시야를 체크할 카메라
     private Transform mainCameraTransform;
 
     Animator anim;//animation variable
@@ -57,10 +58,12 @@ public class PlayerController : MonoBehaviour {
     //movement Lock/Unlock
     public bool canMovePlayer = true; // 회전 가능 여부를 제어하는 플래그 (Dodge에서 연동해서 씀)
 
-    void Start() {
+    void Start()
+    {
         rb = GetComponent<Rigidbody>();
 
         mainCameraTransform = Camera.main.transform;
+        mainCamera = Camera.main;
 
         anim = GetComponent<Animator>();//animation
 
@@ -71,10 +74,12 @@ public class PlayerController : MonoBehaviour {
         playerStats = GetComponent<PlayerStats>();
     }
 
-    void Update() {
-        if (!isDead) {
+    void Update()
+    {
+        if (!isDead)
+        {
             if (canMovePlayer) // Dodge 할때 정지 시켜서 
-{
+            {
                 #region Update속 이동입력을 받는 곳
                 // WASD 키를 사용하여 캐릭터 이동
                 float horizontalInput = Input.GetAxis("Horizontal");
@@ -92,7 +97,8 @@ public class PlayerController : MonoBehaviour {
                 rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
                 //콜라이더의 좌표상의 이동 담당
 
-                if (movement != Vector3.zero) {
+                if (movement != Vector3.zero)
+                {
                     transform.forward = movement.normalized; //콜라이더의 회전담당
                 }
 
@@ -143,21 +149,26 @@ public class PlayerController : MonoBehaviour {
             Interraction();
             Swap();
             Dodge();
-            if (playerStats.curHealth < 1) {
+            if (playerStats.curHealth <= 0)
+            {
                 Die();
             }
             #region ---Targeting Function----
             // 탭 키가 눌렸을 때
-            if (Input.GetKeyDown(KeyCode.Tab)) {
-                if (!isTargeting) {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                if (!isTargeting)
+                {
                     FindNearestEnemy();
-                    if (enemyToLookAt != null) {
+                    if (enemyToLookAt != null && IsInCameraView(enemyToLookAt))
+                    {
                         isTargeting = true;
                         anim.SetLayerWeight(1, 1);
                         Debug.Log("TargetLock ON");
                     }
                 }
-                else {
+                else
+                {
                     isTargeting = false;
                     anim.SetLayerWeight(1, 0);
                     Debug.Log("TargetLock OFF");
@@ -165,9 +176,12 @@ public class PlayerController : MonoBehaviour {
             }
 
             // 일정 거리를 벗어나면 시선 고정 해제
-            if (isTargeting && enemyToLookAt != null) {
+            if (isTargeting && enemyToLookAt != null)
+            {
                 float distanceToEnemy = Vector3.Distance(transform.position, enemyToLookAt.position);
-                if (distanceToEnemy > maxDistanceForTargetLock) {
+                // 대상과의 거리를 검사하여 시선고정 여부를 결정 또는 카메라의 범위밖이면 동작X
+                if (distanceToEnemy > maxDistanceForTargetLock)
+                {
                     isTargeting = false;
                     anim.SetLayerWeight(1, 0);
                     Debug.Log("TargetLock OFF(Out of Range)");
@@ -175,52 +189,82 @@ public class PlayerController : MonoBehaviour {
             }
 
             // 대상이 파괴되었을 때 시선고정 해제
-            if (enemyToLookAt == null) {
+            if (enemyToLookAt == null)
+            {
                 isTargeting = false;
                 anim.SetLayerWeight(1, 0);
-                Debug.Log("TargetLock OFF(Target Destroyed)");
+                Debug.Log("TargetLock OFF(Target is null)");
             }
 
-            #endregion
+            bool IsInCameraView(Transform target) //카메라 시야범위 
+            {
+                if (mainCamera == null)
+                {
+                    Debug.LogError("Main camera not assigned.");
+                    return false;
+                }
+
+                Vector3 targetPosition = mainCamera.WorldToViewportPoint(target.position);
+                if (targetPosition.x >= 0.1 && targetPosition.x <= 0.9 && targetPosition.y >= 0.05 && targetPosition.y <= 1 && targetPosition.z >= 0)
+                {
+                    return true; // 시야 범위 내에 있음
+                }
+                else
+                {
+                    Debug.Log("TargetLock OFF(Out of view)");
+                    return false; // 시야 범위 밖에 있음
+                }
+                #endregion
+            }
         }
     }
-    void FreezeRotation() {
+    void FreezeRotation()
+    {
         rb.angularVelocity = Vector3.zero;
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         FreezeRotation();
     }
     #region 트리거들 OnCollisionEnter, OnCollisionExit, OnTriggerStay, OnTriggerExit---------------
-    void OnCollisionEnter(Collision collision) {
+    void OnCollisionEnter(Collision collision)
+    {
         //점프 애니메이션 관리 
         // Ground 태그에 닿았는지 판별해서 닿았으면 땅에 닿음 상태 전달
-        if (collision.gameObject.CompareTag("Ground")) {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
 
             isGrounded = true; //땅에 닿음
         }
     }
 
-    void OnCollisionExit(Collision collision) {
+    void OnCollisionExit(Collision collision)
+    {
         //점프 애니메이션 관리    
         // Ground 태그에 닿았는지 판별해서 공중에 있는지 판별
-        if (collision.gameObject.CompareTag("Ground")) {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
             isGrounded = false; //땅에 닿지 않음
         }
     }
 
-    void OnTriggerStay(Collider other) {
+    void OnTriggerStay(Collider other)
+    {
         if (other.tag == "weapon")
             nearObject = other.gameObject;
     }
 
-    void OnTriggerExit(Collider other) {
+    void OnTriggerExit(Collider other)
+    {
         if (other.tag == "weapon")
             nearObject = null;
     }
     #endregion
-    void Jump() {
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap && !isDodge && isGrounded) {
+    void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap && !isDodge && isGrounded)
+        {
             // 만약 스페이스 바를 누르고, 아직 점프 횟수가 1 미만이며 대시 중이 아니며, 무기 교체나 회피 중이 아니라면:
             anim.SetTrigger("JumpTrigger"); // JumpTrigger
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // 점프 힘을 Rigidbody에 추가
@@ -234,11 +278,13 @@ public class PlayerController : MonoBehaviour {
             anim.SetBool("isJumping", false);//Jump to Land animation
         }
     }
-    void JumptoFallen() {
+    void JumptoFallen()
+    {
         anim.SetBool("isJumping", true);
     }
     //weapon
-    void Swap() {
+    void Swap()
+    {
         if (Input.GetKeyDown("1") && (!hasWeapons[0] || equipWeaponIndex == 0))
             return;
         if (Input.GetKeyDown("2") && (!hasWeapons[1] || equipWeaponIndex == 1))
@@ -251,7 +297,8 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKeyDown("2")) weaponIndex = 1;
         if (Input.GetKeyDown("3")) weaponIndex = 2;
 
-        if (Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3")) {
+        if (Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3"))
+        {
             if (equipWeapon != null)
                 equipWeapon.gameObject.SetActive(false);
 
@@ -266,15 +313,19 @@ public class PlayerController : MonoBehaviour {
             Invoke("SwapOut", 0.6f);
         }
     }
-    void SwapOut() {
+    void SwapOut()
+    {
         speed = 5.0f;
         isSwap = false;
     }
 
-    void Interraction() {
-        if (Input.GetKeyDown("e") && nearObject != null) {
+    void Interraction()
+    {
+        if (Input.GetKeyDown("e") && nearObject != null)
+        {
             Debug.Log("e누름");
-            if (nearObject.tag == "weapon") {
+            if (nearObject.tag == "weapon")
+            {
                 Item item = nearObject.GetComponent<Item>();
                 int weaponIndex = item.value;
                 hasWeapons[weaponIndex] = true;
@@ -308,7 +359,8 @@ public class PlayerController : MonoBehaviour {
     #region 구르기하는 부분 Dodge
     void Dodge()  // 0.5초 동안 강제로 이동함
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCount < 1 && !isDashing && !isSwap && !isDodge) {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCount < 1 && !isDashing && !isSwap && !isDodge)
+        {
             // 현재 속도를 저장하여 나중에 복원할 수 있도록 합니다.
             float originalSpeed = speed;
 
@@ -333,7 +385,8 @@ public class PlayerController : MonoBehaviour {
         }
 
     }
-    private void Die() {
+    private void Die()
+    {
         isDead = true;
         canMovePlayer = false;
         //Destroy(this, 2f);
@@ -342,7 +395,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     // Dodge 동작을 0.5초 후 종료하는 코루틴
-    IEnumerator EndDodgeAfterDelay(float delay, float originalSpeed) {
+    IEnumerator EndDodgeAfterDelay(float delay, float originalSpeed)
+    {
         yield return new WaitForSeconds(delay);
 
         // Dodge 동작 종료
@@ -375,27 +429,34 @@ public class PlayerController : MonoBehaviour {
     #endregion
 
 
-    void FindNearestEnemy() {
+    void FindNearestEnemy()
+    {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float nearestDistance = float.MaxValue;
         Transform nearestEnemy = null;
 
-        foreach (GameObject enemy in enemies) {
+        foreach (GameObject enemy in enemies)
+        {
             float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < nearestDistance) {
+            if (distance < nearestDistance)
+            {
                 nearestDistance = distance;
                 nearestEnemy = enemy.transform;
             }
         }
 
-        if (nearestEnemy != null) {
+        if (nearestEnemy != null)
+        {
             enemyToLookAt = nearestEnemy;
         }
     }
-    void LateUpdate() {
-        if (canMovePlayer) {
+    void LateUpdate()
+    {
+        if (canMovePlayer)
+        {
             // 시선을 고정한 적 오브젝트를 바라보도록 회전
-            if (isTargeting && enemyToLookAt != null) {
+            if (isTargeting && enemyToLookAt != null)
+            {
                 Vector3 targetPosition = new Vector3(enemyToLookAt.position.x, transform.position.y, enemyToLookAt.position.z);
                 transform.LookAt(targetPosition);
             }
@@ -403,7 +464,8 @@ public class PlayerController : MonoBehaviour {
     }
 
 
-    public void ActivateSkill(SOSkill skill) {
+    public void ActivateSkill(SOSkill skill)
+    {
         LockPlayerInput_ForAnimRootMotion();
         anim.Play(skill.animationName);
         print(string.Format("스킬 {0} 사용 ---- {1} 의 피해를 주었습니다.", skill.name, skill.skillDamage));
@@ -412,26 +474,32 @@ public class PlayerController : MonoBehaviour {
 
     #region 플레이어 이동 제한 발동함수 +애님 루트모션 활성화도 추가
     //플레이어 이동제한/해제
-    public void LockPlayerInput() {
+    public void LockPlayerInput()
+    {
         canMovePlayer = false;
     }
-    public void UnlockPlayerInput() {
+    public void UnlockPlayerInput()
+    {
         canMovePlayer = true;
     }
     //애니메이터 루트모션 활성화/비활성화 + 플레이어 이동제한/해제
-    public void LockPlayerInput_ForAnimRootMotion() {
+    public void LockPlayerInput_ForAnimRootMotion()
+    {
         anim.applyRootMotion = true;
         canMovePlayer = false;
     }
-    public void UnlockPlayerInput_ForAnimRootMotion() {
+    public void UnlockPlayerInput_ForAnimRootMotion()
+    {
         anim.applyRootMotion = false;
         canMovePlayer = true;
     }
     #endregion
 
 
-    void test() {
-        if (anim.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.5f) {
+    void test()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.5f)
+        {
             //애니메이터의 레이어 -base부터 0,1,2,3 순으로 내림차순으로 된다.
             //.normalizedTime은 애니메이션 플레이 시간을 0부터 1까지로 표현하는데
             //위 내용은 현재 실행 중인 애니메이션이 절반 실행되었을 떄를 기준으로 한다
