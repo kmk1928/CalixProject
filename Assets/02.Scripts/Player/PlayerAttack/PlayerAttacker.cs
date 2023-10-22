@@ -21,6 +21,7 @@ public class PlayerAttacker : MonoBehaviour {
     public bool skill_1_Equipped = true;
     public bool skill_2_Equipped = false;
 
+    private bool cooldownActive = false; // 쿨다운 중임을 나타내는 변수 추가
 
 
     Animator anim;
@@ -46,7 +47,7 @@ public class PlayerAttacker : MonoBehaviour {
     }
     private void Update() {
 
-        if (Input.GetButtonDown("Fire1")) {
+        if (Input.GetButtonDown("Fire1") && !cooldownActive) {
             Attack(attackPatterns_void);
         }
         ExitAttack(attackPatterns_void);
@@ -61,7 +62,11 @@ public class PlayerAttacker : MonoBehaviour {
             //Debug.Log("-------------ㄴㅅㅁㄳtAttack------------");
             playerController.LockPlayerInput_ForAnimRootMotion();   //플레이어 이동제한
 
-            StartCoroutine(PreviousIndex(attackPatterns));
+            if (!cooldownActive)
+            { // 쿨다운 중이 아닐 때만 처리
+                cooldownActive = true; // 쿨다운 시작
+                StartCoroutine(PreviousIndex(attackPatterns));
+            }
             //공격범위 활성    
             StartCoroutine(AttackAreaActive_Cour(attackPatterns));
             //공격중 회전 활성화
@@ -93,13 +98,16 @@ public class PlayerAttacker : MonoBehaviour {
         }
     }
 
-    IEnumerator PreviousIndex(SOAttackPattern[] attackPatterns) {
+    IEnumerator PreviousIndex(SOAttackPattern[] attackPatterns)
+    {
         indexValueForCalculation = currentAttackIndex;
         yield return new WaitForSeconds(attackPatterns[indexValueForCalculation].cooldown + 0.2f);
         indexValueForCalculation++;
-        if(indexValueForCalculation >= attackPatterns.Length) {
+        if (indexValueForCalculation >= attackPatterns.Length)
+        {
             indexValueForCalculation = 0;
         }
+        cooldownActive = false; // 쿨다운 종료
     }
 
     private IEnumerator SpawnParticleLifecycle(GameObject prefab, Vector3 position, Quaternion rotation, Vector3 scale, float delay, float endTime) {
