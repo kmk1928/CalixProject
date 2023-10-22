@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : MonoBehaviour {
     public float defaultSpeed = 5.0f;  //기본 이동속도
     public float speed = 5.0f; // 이동 속도 
     public float jumpForce = 7.0f; // 점프 힘
@@ -58,12 +57,7 @@ public class PlayerController : MonoBehaviour
     //movement Lock/Unlock
     public bool canMovePlayer = true; // 회전 가능 여부를 제어하는 플래그 (Dodge에서 연동해서 씀)
 
-
-    [SerializeField]
-    private Inventory theInventory;
-
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody>();
 
         mainCameraTransform = Camera.main.transform;
@@ -77,11 +71,10 @@ public class PlayerController : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
     }
 
-    void Update()
-    {
+    void Update() {
         if (!isDead) {
             if (canMovePlayer) // Dodge 할때 정지 시켜서 
-            {
+{
                 #region Update속 이동입력을 받는 곳
                 // WASD 키를 사용하여 캐릭터 이동
                 float horizontalInput = Input.GetAxis("Horizontal");
@@ -150,7 +143,7 @@ public class PlayerController : MonoBehaviour
             Interraction();
             Swap();
             Dodge();
-            if(playerStats.curHealth < 1) {
+            if (playerStats.curHealth < 1) {
                 Die();
             }
             #region ---Targeting Function----
@@ -158,9 +151,11 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab)) {
                 if (!isTargeting) {
                     FindNearestEnemy();
-                    isTargeting = true;
-                    anim.SetLayerWeight(1, 1);
-                    Debug.Log("TargetLock ON");
+                    if (enemyToLookAt != null) {
+                        isTargeting = true;
+                        anim.SetLayerWeight(1, 1);
+                        Debug.Log("TargetLock ON");
+                    }
                 }
                 else {
                     isTargeting = false;
@@ -178,48 +173,48 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("TargetLock OFF(Out of Range)");
                 }
             }
+
+            // 대상이 파괴되었을 때 시선고정 해제
+            if (enemyToLookAt == null) {
+                isTargeting = false;
+                anim.SetLayerWeight(1, 0);
+                Debug.Log("TargetLock OFF(Target Destroyed)");
+            }
+
             #endregion
         }
     }
-    void FreezeRotation()
-    {
+    void FreezeRotation() {
         rb.angularVelocity = Vector3.zero;
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         FreezeRotation();
     }
     #region 트리거들 OnCollisionEnter, OnCollisionExit, OnTriggerStay, OnTriggerExit---------------
-    void OnCollisionEnter(Collision collision)
-    {
+    void OnCollisionEnter(Collision collision) {
         //점프 애니메이션 관리 
         // Ground 태그에 닿았는지 판별해서 닿았으면 땅에 닿음 상태 전달
-        if (collision.gameObject.CompareTag("Ground"))
-        {
+        if (collision.gameObject.CompareTag("Ground")) {
 
             isGrounded = true; //땅에 닿음
         }
     }
 
-    void OnCollisionExit(Collision collision)
-    {
+    void OnCollisionExit(Collision collision) {
         //점프 애니메이션 관리    
         // Ground 태그에 닿았는지 판별해서 공중에 있는지 판별
-        if (collision.gameObject.CompareTag("Ground"))
-        {
+        if (collision.gameObject.CompareTag("Ground")) {
             isGrounded = false; //땅에 닿지 않음
         }
     }
 
-    void OnTriggerStay(Collider other)
-    {
+    void OnTriggerStay(Collider other) {
         if (other.tag == "weapon")
             nearObject = other.gameObject;
     }
 
-    void OnTriggerExit(Collider other)
-    {
+    void OnTriggerExit(Collider other) {
         if (other.tag == "weapon")
             nearObject = null;
     }
@@ -243,8 +238,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isJumping", true);
     }
     //weapon
-    void Swap()
-    {
+    void Swap() {
         if (Input.GetKeyDown("1") && (!hasWeapons[0] || equipWeaponIndex == 0))
             return;
         if (Input.GetKeyDown("2") && (!hasWeapons[1] || equipWeaponIndex == 1))
@@ -257,8 +251,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("2")) weaponIndex = 1;
         if (Input.GetKeyDown("3")) weaponIndex = 2;
 
-        if (Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3"))
-        {
+        if (Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3")) {
             if (equipWeapon != null)
                 equipWeapon.gameObject.SetActive(false);
 
@@ -273,55 +266,23 @@ public class PlayerController : MonoBehaviour
             Invoke("SwapOut", 0.6f);
         }
     }
-    
-    void SwapOut()
-    {
+    void SwapOut() {
         speed = 5.0f;
         isSwap = false;
     }
 
+    void Interraction() {
+        if (Input.GetKeyDown("e") && nearObject != null) {
+            Debug.Log("e누름");
+            if (nearObject.tag == "weapon") {
+                Item item = nearObject.GetComponent<Item>();
+                int weaponIndex = item.value;
+                hasWeapons[weaponIndex] = true;
 
-    void Interraction()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && nearObject != null)
-        {
-            ItemPickUp itemPickUp = nearObject.GetComponent<ItemPickUp>();
-            if (itemPickUp != null)
-            {
-                Item item = itemPickUp.item;
-
-                // GameObject 파괴
                 Destroy(nearObject);
-
-
-                //theInventory 변수를 통해 아이템을 인벤토리에 추가
-                theInventory.AcquireItem(item);
-
-                if (item.itemtype == Item.ItemType.Weapon)
-                {
-                    int weaponIndex = item.value;
-                    hasWeapons[weaponIndex] = true;
-
-                    Debug.Log("무기 아이템을 획득하셨습니다.");
-                }
-
-                else if (item.itemtype == Item.ItemType.Used)
-                {
-                
-                    Debug.Log("소비 아이템을 획득하셨습니다.");
-                }
-
-                // 'nearObject'를 null로 초기화
-                nearObject = null;
-            }
-
-            else
-            {
-                Debug.LogWarning("근처 오브젝트에 'ItemPickUp' 컴포넌트가 없거나 아이템이 아닙니다.");
             }
         }
     }
-
     //attack
     //void Attack()
     //{
@@ -381,8 +342,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Dodge 동작을 0.5초 후 종료하는 코루틴
-    IEnumerator EndDodgeAfterDelay(float delay, float originalSpeed)
-    {
+    IEnumerator EndDodgeAfterDelay(float delay, float originalSpeed) {
         yield return new WaitForSeconds(delay);
 
         // Dodge 동작 종료
@@ -415,34 +375,27 @@ public class PlayerController : MonoBehaviour
     #endregion
 
 
-    void FindNearestEnemy()
-    {
+    void FindNearestEnemy() {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float nearestDistance = float.MaxValue;
         Transform nearestEnemy = null;
 
-        foreach (GameObject enemy in enemies)
-        {
+        foreach (GameObject enemy in enemies) {
             float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < nearestDistance)
-            {
+            if (distance < nearestDistance) {
                 nearestDistance = distance;
                 nearestEnemy = enemy.transform;
             }
         }
 
-        if (nearestEnemy != null)
-        {
+        if (nearestEnemy != null) {
             enemyToLookAt = nearestEnemy;
         }
     }
-    void LateUpdate()
-    {
-        if (canMovePlayer)
-        {
+    void LateUpdate() {
+        if (canMovePlayer) {
             // 시선을 고정한 적 오브젝트를 바라보도록 회전
-            if (isTargeting && enemyToLookAt != null)
-            {
+            if (isTargeting && enemyToLookAt != null) {
                 Vector3 targetPosition = new Vector3(enemyToLookAt.position.x, transform.position.y, enemyToLookAt.position.z);
                 transform.LookAt(targetPosition);
             }
@@ -450,8 +403,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void ActivateSkill(SOSkill skill)
-    {
+    public void ActivateSkill(SOSkill skill) {
         LockPlayerInput_ForAnimRootMotion();
         anim.Play(skill.animationName);
         print(string.Format("스킬 {0} 사용 ---- {1} 의 피해를 주었습니다.", skill.name, skill.skillDamage));
@@ -478,10 +430,8 @@ public class PlayerController : MonoBehaviour
     #endregion
 
 
-    void test()
-    {
-        if (anim.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.5f)
-        {
+    void test() {
+        if (anim.GetCurrentAnimatorStateInfo(1).normalizedTime > 0.5f) {
             //애니메이터의 레이어 -base부터 0,1,2,3 순으로 내림차순으로 된다.
             //.normalizedTime은 애니메이션 플레이 시간을 0부터 1까지로 표현하는데
             //위 내용은 현재 실행 중인 애니메이션이 절반 실행되었을 떄를 기준으로 한다

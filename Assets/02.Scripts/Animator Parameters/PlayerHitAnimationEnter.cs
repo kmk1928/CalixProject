@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerHitAnimationEnter : StateMachineBehaviour
 {
-    PlayerController playerController;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-        playerController.UnlockPlayerInput();
-        playerController.UnlockPlayerInput_ForAnimRootMotion();
+    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+    //    playerController.UnlockPlayerInput_ForAnimRootMotion();
+    //}
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        animator.SetBool("isDamaged", false);
     }
-
- 
 }

@@ -88,15 +88,15 @@ public class PlayerAttacker : MonoBehaviour {
         yield return new WaitForSeconds(endTime);
         // endTime 시간이 지난 후에 파티클 파괴
         Destroy(particleInstance);
-    }
+    } 
 
-    void AttackAreaActive(SOAttackPattern[] attackPatterns) {       //공격범위 활성화 - meleeAreaSetup 사용한 버전
-        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > attackPatterns[currentAttackIndex].attackCollider_ActiveTime
-                && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > attackPatterns[currentAttackIndex].attackCollider_ActiveTime + 0.1f) {
-            Debug.Log("-----AttackAreaAvtive!!!!----------!!!!!--");
-            meleeAreaSetup.OpenDamageCllider_Corutin();
-        }
-    }
+    //void AttackAreaActive(SOAttackPattern[] attackPatterns) {       //공격범위 활성화 - meleeAreaSetup 사용한 버전
+    //    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > attackPatterns[currentAttackIndex].attackCollider_ActiveTime
+    //            && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > attackPatterns[currentAttackIndex].attackCollider_ActiveTime + 0.1f) {
+    //        Debug.Log("-----AttackAreaAvtive!!!!----------!!!!!--");
+    //        meleeAreaSetup.OpenDamageCllider_Corutin();
+    //    }
+    //}
     float temp = 0;
     IEnumerator AttackAreaActive_Cour(SOAttackPattern[] attackPatterns) {
         while(temp < 0.2f) {
