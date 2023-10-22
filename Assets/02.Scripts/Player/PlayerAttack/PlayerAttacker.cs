@@ -49,15 +49,13 @@ public class PlayerAttacker : MonoBehaviour {
         if (Time.time - lastComboEnd > 0.1f && currentAttackIndex <= maxIndex) {
             // 공격 애니메이션 재생 로직
             endCount = 0;
-            //Debug.Log("-------------RotateAttack-----------");
-            //playerController.StartStopRotation();
             Debug.Log("-------------ㄴㅅㅁㄳtAttack------------");
             maxIndex = attackPatterns.Length - 1;
             playerController.LockPlayerInput_ForAnimRootMotion();   //플레이어 이동제한
             //공격범위 활성    
             StartCoroutine(AttackAreaActive_Cour(attackPatterns));
-            playerController.StartAnimRotation();
-            StartCoroutine(playerController.EndAnimRotation());
+            //공격중 회전 활성화
+            StartCoroutine(playerController.AnimationingRotation());
 
             CancelInvoke("EndCombo");
             if(Time.time - lastClickTime >= attackPatterns[currentAttackIndex].cooldown) {
@@ -70,8 +68,6 @@ public class PlayerAttacker : MonoBehaviour {
                 Quaternion rotation = playerTransform.rotation * Quaternion.Euler(currentAttack.particleRotation);
                 Vector3 scale = currentAttack.particleScale;
                 if (currentAttack.particleEffectPrefab != null) {
-                    //GameObject particleInstance = Instantiate(currentAttack.particleEffectPrefab, position, rotation);//.transform.localScale = scale;
-                    //StartCoroutine(DestroyParticleAfterTime(particleInstance, currentAttack.particleEndTime)); 
                     StartCoroutine(SpawnParticleLifecycle(currentAttack.particleEffectPrefab, position, rotation, scale,
                                                             currentAttack.particleStartTime, currentAttack.particleEndTime));
                 }
@@ -89,9 +85,11 @@ public class PlayerAttacker : MonoBehaviour {
 
     private IEnumerator SpawnParticleLifecycle(GameObject prefab, Vector3 position, Quaternion rotation, Vector3 scale, float delay, float endTime) {
         yield return new WaitForSeconds(delay);
+        // 플레이어 오브젝트를 찾거나 지정합니다. 테스트
+        Transform playerTransform = GameObject.Find("Player").transform;
         GameObject particleInstance = Instantiate(prefab, position, rotation);
         particleInstance.transform.localScale = scale;
-
+        particleInstance.transform.parent = playerTransform;  //테스트
         // 지정된 endTime 시간 후에 파티클을 파괴하는 대기
         yield return new WaitForSeconds(endTime);
         // endTime 시간이 지난 후에 파티클 파괴

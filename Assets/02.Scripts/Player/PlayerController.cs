@@ -59,9 +59,10 @@ public class PlayerController : MonoBehaviour
     public bool canMovePlayer = true; // 회전 가능 여부를 제어하는 플래그 (Dodge에서 연동해서 씀)
 
     //canRotate
-    public bool isRotation = false;
-    public float rotationSpeed = 3000.0f; // 회전 속도
-    private float animatableRotationTime = 0.3f;
+    public bool canPlayerRotate = false;
+    public float rotationSpeed = 60.0f; // 회전 속도
+    public float maxRotation = 120.0f;
+    private float animatableRotationTime = 0.1f;
 
     void Start()
     {
@@ -83,18 +84,18 @@ public class PlayerController : MonoBehaviour
     {
         if (!isDead)
         {
-            if (canMovePlayer) // Dodge 할때 정지 시켜서 
-            {
-                #region Update속 이동입력을 받는 곳
-                // WASD 키를 사용하여 캐릭터 이동
-                float horizontalInput = Input.GetAxis("Horizontal");
-                float verticalInput = Input.GetAxis("Vertical");
+            #region Update속 이동입력을 받는 곳
+            // WASD 키를 사용하여 캐릭터 이동
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
 
-                Vector3 cameraForward = mainCameraTransform.forward;
-                Vector3 cameraRight = mainCameraTransform.right;
-                cameraForward.y = 0f; // y 축 회전 방향을 무시합니다.
-                cameraRight.y = 0f;
+            Vector3 cameraForward = mainCameraTransform.forward;
+            Vector3 cameraRight = mainCameraTransform.right;
+            cameraForward.y = 0f; // y 축 회전 방향을 무시합니다.
+            cameraRight.y = 0f;
 
+                if (canMovePlayer) // Dodge 할때 정지 시켜서 
+                {
                 movement = (cameraForward * verticalInput + cameraRight * horizontalInput).normalized;
 
 
@@ -115,39 +116,14 @@ public class PlayerController : MonoBehaviour
                 anim.SetFloat("movement", Mathf.Abs(lockOnMovement.magnitude)); //기본idle상태를 입력값에 따라 달리는 애니메이션 출력
 
                 #endregion
-            }
-            #region     제거 대기중인 예전 대시
-            /*
-            // 대시 중인 경우 대시 속도로 이동
-            if (isDashing) {
-                movement = transform.forward * dashSpeed;
-                dashTimer += Time.deltaTime;
-
-                // 대시 지속 시간이 지나면 대시 종료
-                if (dashTimer >= dashDuration) {
-                    isDashing = false;
-                    dashTimer = 0.0f;
                 }
-            }
-            else {
-                // 일반 이동: 이동 방향을 이용하여 이동
-                //movement *= speed;
-
-                if (!isGrounded) {
-                    float angle = Vector3.Angle(movement, transform.forward);
-                    if (angle > maxJumpAngle) {
-                        // 만약 현재 움직이는 각도가 제한된 각도보다 크면, 이동 벡터를 수정하여 원하는 각도 내에서 움직일 수 있도록 합니다.
-                        movement = Quaternion.Euler(0, maxJumpAngle, 0) * transform.forward * speed;
+                else if (canPlayerRotate && !isTargeting) {
+                    movement = (cameraForward * verticalInput + cameraRight * horizontalInput).normalized;
+                    //콜라이더의 좌표상의 이동 담당
+                    if (movement != Vector3.zero) {
+                        transform.forward = movement.normalized; //콜라이더의 회전담당
                     }
                 }
-            }
-            //if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded) {
-            //    anim.SetTrigger("DashTrigger");//Dash animation
-            //    isDashing = true;
-            //}
-            */
-            #endregion
-
 
             #region ----------------------------------------------업데이트에 쓰는 실시간 함수들--------------------------------------
             Jump();
@@ -155,7 +131,6 @@ public class PlayerController : MonoBehaviour
             Interraction();
             Swap();
             Dodge();
-            OnlyRotation();
 
             #endregion
 
@@ -327,27 +302,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    //attack
-    //void Attack()
-    //{
-    //    if (equipWeapon == null)
-    //        return;
-    //    //fireDelay += Time.deltaTime;
-    //    //isFireReady = equipWeapon.rate < fireDelay;
 
-    //    //if (Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap)
-    //    //{
-    //    //    Debug.Log("!---Click Mouse(0)---!");
-    //    //    /////equipWeapon.Use();
-    //    //    ///anim.SetTrigger("doSwing");
-    //    //    fireDelay = 0;
-    //    //    //isAttack = true;
-    //    //    //isAttack = false;
-    //    //    movement = Vector3.zero;
-    //    //    Invoke("AttackOut", 1.0f);
-
-    //    //}
-    //}
 
     #region 구르기하는 부분 Dodge
     void Dodge()  // 0.5초 동안 강제로 이동함
@@ -518,38 +473,16 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    public void StartAnimRotation() {
-            isRotation = true;
-    }
-    public IEnumerator EndAnimRotation() {
+    public IEnumerator AnimationingRotation() {
+        canPlayerRotate = true;
         float canRotate = 0;
         while (canRotate < animatableRotationTime) {
             canRotate += Time.deltaTime;
             yield return null;
         }
         yield return null;    
-        isRotation = false;
+        canPlayerRotate = false;
     }
-    public void OnlyRotation() {
-        if (isRotation && !canMovePlayer) {
-            // 회전 입력을 받아 플레이어를 회전시킴
-            float rotationInput = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
-
-            // 회전을 제한
-            float currentRotation = transform.localEulerAngles.y;
-            float newRotation = currentRotation + rotationInput;
-            transform.localEulerAngles = new Vector3(0.0f, newRotation, 0.0f);
-        }
-    }
-
-    public void StartRotation() {
-        isRotation = true;
-    }
-
-    public void StopRotation() {
-        isRotation = false;
-    }
-
 
     void test()
     {
@@ -563,4 +496,62 @@ public class PlayerController : MonoBehaviour
             //tmep -=TimedeltaTime; 으로 가중치를 temp로 하면 자연스럽게 바꿀 수도있을것이다.
         }
     }
+
+
+
+
+    #region     제거 대기중인 예전 대시
+    /*
+    // 대시 중인 경우 대시 속도로 이동
+    if (isDashing) {
+        movement = transform.forward * dashSpeed;
+        dashTimer += Time.deltaTime;
+
+        // 대시 지속 시간이 지나면 대시 종료
+        if (dashTimer >= dashDuration) {
+            isDashing = false;
+            dashTimer = 0.0f;
+        }
+    }
+    else {
+        // 일반 이동: 이동 방향을 이용하여 이동
+        //movement *= speed;
+
+        if (!isGrounded) {
+            float angle = Vector3.Angle(movement, transform.forward);
+            if (angle > maxJumpAngle) {
+                // 만약 현재 움직이는 각도가 제한된 각도보다 크면, 이동 벡터를 수정하여 원하는 각도 내에서 움직일 수 있도록 합니다.
+                movement = Quaternion.Euler(0, maxJumpAngle, 0) * transform.forward * speed;
+            }
+        }
+    }
+    //if (Input.GetKeyDown(KeyCode.Space) && !isDashing && isGrounded) {
+    //    anim.SetTrigger("DashTrigger");//Dash animation
+    //    isDashing = true;
+    //}
+    */
+    #endregion
+
+    //attack
+    //void Attack()
+    //{
+    //    if (equipWeapon == null)
+    //        return;
+    //    //fireDelay += Time.deltaTime;
+    //    //isFireReady = equipWeapon.rate < fireDelay;
+
+    //    //if (Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap)
+    //    //{
+    //    //    Debug.Log("!---Click Mouse(0)---!");
+    //    //    /////equipWeapon.Use();
+    //    //    ///anim.SetTrigger("doSwing");
+    //    //    fireDelay = 0;
+    //    //    //isAttack = true;
+    //    //    //isAttack = false;
+    //    //    movement = Vector3.zero;
+    //    //    Invoke("AttackOut", 1.0f);
+
+    //    //}
+    //}
+
 }
