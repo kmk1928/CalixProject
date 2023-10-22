@@ -196,26 +196,8 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("TargetLock OFF(Target is null)");
             }
 
-            bool IsInCameraView(Transform target) //카메라 시야범위 
-            {
-                if (mainCamera == null)
-                {
-                    Debug.LogError("Main camera not assigned.");
-                    return false;
-                }
-
-                Vector3 targetPosition = mainCamera.WorldToViewportPoint(target.position);
-                if (targetPosition.x >= 0.1 && targetPosition.x <= 0.9 && targetPosition.y >= 0.05 && targetPosition.y <= 1 && targetPosition.z >= 0)
-                {
-                    return true; // 시야 범위 내에 있음
-                }
-                else
-                {
-                    Debug.Log("TargetLock OFF(Out of view)");
-                    return false; // 시야 범위 밖에 있음
-                }
-                #endregion
-            }
+            
+            #endregion
         }
     }
     void FreezeRotation()
@@ -428,27 +410,57 @@ public class PlayerController : MonoBehaviour
     */
     #endregion
 
+    bool IsInCameraView(Transform target) //카메라 시야범위 
+    {
+        if (mainCamera == null)
+        {
+            Debug.LogError("Main camera not assigned.");
+            return false;
+        }
+
+        Vector3 targetPosition = mainCamera.WorldToViewportPoint(target.position);
+        if (targetPosition.x >= 0.06 && targetPosition.x <= 0.94 && targetPosition.y >= 0.05 && targetPosition.y <= 1 && targetPosition.z >= 0)
+        {
+            return true; // 시야 범위 내에 있음
+        }
+        else
+        {
+            Debug.Log("TargetLock OFF(Out of view)");
+            return false; // 시야 범위 밖에 있음
+        }
+
+    }
 
     void FindNearestEnemy()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        float nearestDistance = float.MaxValue;
         Transform nearestEnemy = null;
 
         foreach (GameObject enemy in enemies)
         {
-            float distance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distance < nearestDistance)
+            Transform enemyTransform = enemy.transform;
+            float distance = Vector3.Distance(transform.position, enemyTransform.position);
+
+            // 최대 거리 이내에 있고 시야에 있으면
+            if (distance <= maxDistanceForTargetLock && IsInCameraView(enemyTransform))
             {
-                nearestDistance = distance;
-                nearestEnemy = enemy.transform;
+                if (nearestEnemy == null)
+                {
+                    nearestEnemy = enemyTransform;
+                }
+                else
+                {
+                    // 이미 선택한 적이 있다면, 가장 가까운 적으로 교체
+                    float nearestDistance = Vector3.Distance(transform.position, nearestEnemy.position);
+                    if (distance < nearestDistance)
+                    {
+                        nearestEnemy = enemyTransform;
+                    }
+                }
             }
         }
 
-        if (nearestEnemy != null)
-        {
-            enemyToLookAt = nearestEnemy;
-        }
+        enemyToLookAt = nearestEnemy;
     }
     void LateUpdate()
     {
