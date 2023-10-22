@@ -14,9 +14,12 @@ public class PlayerAttacker : MonoBehaviour {
     private bool canCombo = false; // 콤보 가능 여부
     private int maxIndex;
     private int endCount = 0;
+    private float temp = 0;
 
     public bool skill_1_Equipped = true;
     public bool skill_2_Equipped = false;
+
+
 
     Animator anim;
     Transform playerTransform;
@@ -39,12 +42,15 @@ public class PlayerAttacker : MonoBehaviour {
             }
         }
         ExitAttack();
+
     }
 
     private void Attack(SOAttackPattern[] attackPatterns) { //현재시간 - 마지막 입력 시간이 쿨다운(보통 0.4f~0.2f)보다 클때 && 현재 인덱스가 최대 인덱스보다 작거나 같을 때  
         if (Time.time - lastComboEnd > 0.1f && currentAttackIndex <= maxIndex) {
             // 공격 애니메이션 재생 로직
             endCount = 0;
+            //Debug.Log("-------------RotateAttack-----------");
+            //playerController.StartStopRotation();
             Debug.Log("-------------ㄴㅅㅁㄳtAttack------------");
             maxIndex = attackPatterns.Length - 1;
             playerController.LockPlayerInput_ForAnimRootMotion();   //플레이어 이동제한
@@ -92,18 +98,11 @@ public class PlayerAttacker : MonoBehaviour {
         Destroy(particleInstance);
     } 
 
-    //void AttackAreaActive(SOAttackPattern[] attackPatterns) {       //공격범위 활성화 - meleeAreaSetup 사용한 버전
-    //    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > attackPatterns[currentAttackIndex].attackCollider_ActiveTime
-    //            && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > attackPatterns[currentAttackIndex].attackCollider_ActiveTime + 0.1f) {
-    //        Debug.Log("-----AttackAreaAvtive!!!!----------!!!!!--");
-    //        meleeAreaSetup.OpenDamageCllider_Corutin();
-    //    }
-    //}
-    float temp = 0;
+
     IEnumerator AttackAreaActive_Cour(SOAttackPattern[] attackPatterns) {
         while(temp < 0.2f) {
-            temp += Time.deltaTime;
-            Debug.Log(temp);
+           temp += Time.deltaTime;
+           // Debug.Log(temp);
             yield return null;  
         }
         meleeAreaSetup.OpenDamageCllider_Corutin();
@@ -131,4 +130,16 @@ public class PlayerAttacker : MonoBehaviour {
         playerController.UnlockPlayerInput_ForAnimRootMotion();
     }
 
+
+
+
+
+
+    //void AttackAreaActive(SOAttackPattern[] attackPatterns) {       //공격범위 활성화 - meleeAreaSetup 사용한 버전
+    //    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > attackPatterns[currentAttackIndex].attackCollider_ActiveTime
+    //            && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > attackPatterns[currentAttackIndex].attackCollider_ActiveTime + 0.1f) {
+    //        Debug.Log("-----AttackAreaAvtive!!!!----------!!!!!--");
+    //        meleeAreaSetup.OpenDamageCllider_Corutin();
+    //    }
+    //}
 }
