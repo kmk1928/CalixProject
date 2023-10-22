@@ -12,6 +12,8 @@ public class SOAttackPattern : ScriptableObject {
 
     public AnimatorOverrideController animatorOV;
 
+    public string AnimTag;
+
     [Header("파티클 관련")]
     public GameObject particleEffectPrefab;
     public Vector3 particlePosition;

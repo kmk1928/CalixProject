@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class PlayerStats : CharStats
 {
+    PlayerAttacker playerAk;
 
     [Header("플레이어용 치명타 스탯")]
     [Tooltip("치명타 확률 0.0~1.0")]
     public float criticalChance = 0.5f; // 50%의 크리티컬 확률
     [Tooltip("치명타 피해 증가량 기본 1.5배")]
     public float criticalDamage = 1.5f;
+    public float curDamageCal = 1.0f;       //데미지 계수
 
+    private void Start() {
+        playerAk = GetComponent<PlayerAttacker>();
+    }
 
+    private void LateUpdate() {
+        curDamageCal = playerAk.attackPatterns_void[playerAk.indexValueForCalculation].damageMultiplier;
+        //Debug.Log("현재 pl스가 받는 index값");
+    }
 }

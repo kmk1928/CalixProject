@@ -66,22 +66,22 @@ AnimatorStateMachine:
     m_Position: {x: 540, y: 150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 322176470335610223}
-    m_Position: {x: 870, y: 210, z: 0}
+    m_Position: {x: 850, y: 610, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1201776235737393409}
-    m_Position: {x: 280, y: 490, z: 0}
+    m_Position: {x: 280, y: 50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4889967044636225388}
-    m_Position: {x: 1090, y: 210, z: 0}
+    m_Position: {x: 1070, y: 610, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2561098726348772155}
-    m_Position: {x: 280, y: 150, z: 0}
+    m_Position: {x: 540, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4967359426886142826}
-    m_Position: {x: -10, y: 150, z: 0}
+    m_Position: {x: 60, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4501443997583411973}
-    m_Position: {x: 280, y: 100, z: 0}
+    m_Position: {x: 540, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3538122734360934902}
     m_Position: {x: 0, y: 360, z: 0}
@@ -96,23 +96,23 @@ AnimatorStateMachine:
     m_Position: {x: 540, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7270333775989386869}
-    m_Position: {x: 1130, y: 100, z: 0}
+    m_Position: {x: 1120, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3600436854280168638}
-    m_Position: {x: 590, y: 460, z: 0}
+    m_Position: {x: 560, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4595464201374519041}
-    m_Position: {x: 790, y: 670, z: 0}
+    m_Position: {x: 810, y: 940, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8749215173817366747}
-    m_Position: {x: 790, y: 720, z: 0}
+    m_Position: {x: 810, y: 990, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3417950240044150715}
-    m_Position: {x: 790, y: 760, z: 0}
+    m_Position: {x: 810, y: 1030, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 4719220863345084467}
-    m_Position: {x: -20, y: 560, z: 0}
+    m_Position: {x: 0, y: 480, z: 0}
   m_AnyStateTransitions:
   - {fileID: 513839922477018328}
   - {fileID: -943039762038859360}
@@ -126,9 +126,9 @@ AnimatorStateMachine:
   - first: {fileID: 4719220863345084467}
     second: []
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 870, y: 110, z: 0}
+  m_AnyStatePosition: {x: 860, y: 390, z: 0}
   m_EntryPosition: {x: -510, y: 270, z: 0}
-  m_ExitPosition: {x: 890, y: 380, z: 0}
+  m_ExitPosition: {x: 870, y: 780, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 6382285205608117518}
 --- !u!1102 &-7747162328146317868
@@ -719,109 +719,109 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isGuard
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: JumpTrigger
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isJumping
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: DashTrigger
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: DodgeTrigger
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: doSwing
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: doSwing2
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: doSwap
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: ReactTrigger
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: doDamage
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: doDamage_Power
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: vertical
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: horizon
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: movement
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: doDie
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: canDoCombo
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isDamaged
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

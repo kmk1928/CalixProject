@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: normalAttack3
   m_EditorClassIdentifier: 
   attackName: 
-  damageMultiplier: 0
+  damageMultiplier: 3
   cooldown: 0.3
   attackCollider_ActiveTime: 0.5
   animatorOV: {fileID: 22100000, guid: 1be4bf7729e981142bc4564cf1e78e3c, type: 2}
+  AnimTag: NormalAttack
   particleEffectPrefab: {fileID: 1872147318604286, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
   particlePosition: {x: -0.058937848, y: 0.58, z: 0.399}
   particleRotation: {x: 353.2912, y: 10.648307, z: 93.36677}

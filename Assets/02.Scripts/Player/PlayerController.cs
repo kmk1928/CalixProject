@@ -43,8 +43,6 @@ public class PlayerController : MonoBehaviour
     MeleeAreaSetup meleeAreaSetup;
 
     //attack
-    bool isFireReady;
-    float fireDelay;
     public bool canDoCombo;
 
     //hitted
