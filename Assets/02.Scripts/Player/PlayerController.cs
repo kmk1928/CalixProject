@@ -58,6 +58,10 @@ public class PlayerController : MonoBehaviour
     //movement Lock/Unlock
     public bool canMovePlayer = true; // 회전 가능 여부를 제어하는 플래그 (Dodge에서 연동해서 씀)
 
+
+    [SerializeField]
+    private Inventory theInventory;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -77,7 +81,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isDead) {
             if (canMovePlayer) // Dodge 할때 정지 시켜서 
-{
+            {
                 #region Update속 이동입력을 받는 곳
                 // WASD 키를 사용하여 캐릭터 이동
                 float horizontalInput = Input.GetAxis("Horizontal");
@@ -269,27 +273,55 @@ public class PlayerController : MonoBehaviour
             Invoke("SwapOut", 0.6f);
         }
     }
+    
     void SwapOut()
     {
         speed = 5.0f;
         isSwap = false;
     }
 
+
     void Interraction()
     {
-        if (Input.GetKeyDown("e") && nearObject != null)
+        if (Input.GetKeyDown(KeyCode.E) && nearObject != null)
         {
-            Debug.Log("e누름");
-            if (nearObject.tag == "weapon")
+            ItemPickUp itemPickUp = nearObject.GetComponent<ItemPickUp>();
+            if (itemPickUp != null)
             {
-                Item item = nearObject.GetComponent<Item>();
-                int weaponIndex = item.value;
-                hasWeapons[weaponIndex] = true;
+                Item item = itemPickUp.item;
 
+                // GameObject 파괴
                 Destroy(nearObject);
+
+
+                //theInventory 변수를 통해 아이템을 인벤토리에 추가
+                theInventory.AcquireItem(item);
+
+                if (item.itemtype == Item.ItemType.Weapon)
+                {
+                    int weaponIndex = item.value;
+                    hasWeapons[weaponIndex] = true;
+
+                    Debug.Log("무기 아이템을 획득하셨습니다.");
+                }
+
+                else if (item.itemtype == Item.ItemType.Used)
+                {
+                
+                    Debug.Log("소비 아이템을 획득하셨습니다.");
+                }
+
+                // 'nearObject'를 null로 초기화
+                nearObject = null;
+            }
+
+            else
+            {
+                Debug.LogWarning("근처 오브젝트에 'ItemPickUp' 컴포넌트가 없거나 아이템이 아닙니다.");
             }
         }
     }
+
     //attack
     //void Attack()
     //{
