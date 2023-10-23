@@ -16,7 +16,7 @@ public class CharStats : MonoBehaviour
     public bool isDead = false;
 
     [Header("적이 드랍하는 나노")]
-    public int nanoDropAmount = 10;
+    public int nanoDropAmount = 100;
 
     private void Awake() {
         curHealth = maxHealth;
@@ -39,7 +39,8 @@ public class CharStats : MonoBehaviour
     private void DeadCheck() {
         if (curHealth <= 0.9f) {
             isDead = true;
-        }
+            GameManager.instance.AddNano(nanoDropAmount);
+        } 
     }
 
 }

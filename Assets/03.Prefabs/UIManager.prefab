@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3953022460023994480}
   - component: {fileID: 3953022460023994483}
-  - component: {fileID: 3156979844725670427}
-  - component: {fileID: 8486329728162964085}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -48,33 +46,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameoverUI: {fileID: 0}
   nanoText: {fileID: 0}
---- !u!114 &3156979844725670427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3953022460023994481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8bd4c3717ef89849ae0bf8e2e05e9b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InventoryActivated: 0
-  go_InventoryBase: {fileID: 0}
-  go_SlotsParent: {fileID: 0}
---- !u!114 &8486329728162964085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3953022460023994481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb93bd6f7a9f357468a411cd30910255, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 0}
-  itemImage: {fileID: 0}
-  itemCount: 0
