@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject gameoverUI;   // 게임 오버시 활성화 할 UI 게임 오브젝트
     public TMP_Text nanoText;          // 보유한 나노를 출력할 UI 텍스트
 
-    public Slider playerHPBar;
+
 
     void Awake() {
         // 싱글톤 변수 instance가 비어있는가?

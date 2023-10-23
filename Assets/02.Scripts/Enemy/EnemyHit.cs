@@ -13,7 +13,7 @@ public class EnemyHit : MonoBehaviour
     GameObject nearObject;
     BoxCollider enemyCollider;
     
-    private float noHitTime = 0.23f;
+    private float noHitTime = 0.1f;
     private bool isHitted = false;
     private bool deathAnim = false;
     void Awake() {
@@ -56,7 +56,7 @@ public class EnemyHit : MonoBehaviour
         isHitted = true;
         mat.color = Color.red;      //피격 시 빨간색으로 변경 후 
         Damaged();
-        yield return new WaitForSeconds(noHitTime);  // 0.1초 후 아래 조건문에 의해 색 변경
+        yield return new WaitForSeconds(0.2f);  // 0.1초 후 아래 조건문에 의해 색 변경
         isHitted = false;
         mat.color = Color.white;
 
