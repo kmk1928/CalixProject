@@ -10,7 +10,7 @@ public class CharCombat : MonoBehaviour
 
     [Header("전투에 관련된 행동 정리")]
     public float atkSpd = 1f;           //공격 속도
-    private float atkCdw = 0f;          //공격 딜레이\
+   // private float atkCdw = 0f;          //공격 딜레이\
 
     private float finalDamage;
 
