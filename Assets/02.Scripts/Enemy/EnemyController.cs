@@ -29,8 +29,8 @@ public class EnemyController : MonoBehaviour
     private int comboAttackCount = 0;
     private int deathCount = 0;
 
-    CapsuleCollider enemyCollider;
-
+    public BoxCollider attackArea;
+ 
     void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enemyAttackRange);
@@ -47,12 +47,10 @@ public class EnemyController : MonoBehaviour
 
         combat = GetComponent<CharCombat>();
         myStats = GetComponent<CharStats>();
-        enemyCollider = GetComponent<CapsuleCollider>();
     }
 
     private void Update()
     {
-        if (!myStats.isDead) {      //enemy 사망 시 이동 제한
             if (GameManager.isGameover) {
                 //플레이어 사망 시 인식 거리를 줄여 원래 위치로 돌아가게 함
                 detectionDistance = 0.1f;
@@ -76,7 +74,7 @@ public class EnemyController : MonoBehaviour
                         if (distanceToPlayer <= 2.0f && !isAttack) {
                             anim.SetBool("isInteracting", true); // 애니메이션 대기용 애니메이터 bool파라미터
                             navMeshAgent.speed = 0f;                // AI의 이동 속도를 0으로 설정
-                            int randomAttack = Random.Range(0, 2);
+                            //int randomAttack = Random.Range(0, 2);
                             Debug.Log("---Find Player---");
                             Attack2();
 
@@ -109,15 +107,8 @@ public class EnemyController : MonoBehaviour
                     isPatrolling = true;
                 }
             }
-        }
-        else {
-            if(deathCount == 0) {
-                deathCount = 1;
-                enemyCollider.enabled = false;
-                anim.SetTrigger("enemyDeathTrg");
-                Destroy(this.gameObject, 3f);
-            }
-        }
+        
+        
     }
 
     private void SetDestinationToNextPatrolPoint()

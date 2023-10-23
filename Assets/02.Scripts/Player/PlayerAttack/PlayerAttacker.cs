@@ -42,6 +42,7 @@ public class PlayerAttacker : MonoBehaviour {
         playerTransform = GetComponent<Transform>();
         playerController = GetComponent<PlayerController>();
         meleeAreaSetup = GetComponent<MeleeAreaSetup>();
+
     }
     private void FixedUpdate() {
         if (NA_Equipped) {
@@ -60,14 +61,14 @@ public class PlayerAttacker : MonoBehaviour {
     }
     private void Update() {
 
-        if (Input.GetButtonDown("Fire1") && !cooldownActive && !isSkill_1ing) {
+        if (Input.GetButtonDown("Fire1") && !cooldownActive && !isSkill_1ing && !PlayerFlag.isInteracting) {
             Attack(attackPatterns_void_normalAk);
             isNAing = true;
         }
         if (isNAing) {
             ExitAttack(attackPatterns_void_normalAk);
         }
-        if (Input.GetKeyDown(KeyCode.F) && !cooldownActive && !isNAing) {
+        if (Input.GetKeyDown(KeyCode.F) && !cooldownActive && !isNAing && !PlayerFlag.isInteracting) {
             Attack(attackPatterns_void_Skill_1);
             isSkill_1ing = true;
         }
@@ -76,11 +77,12 @@ public class PlayerAttacker : MonoBehaviour {
         }
 
 
-        Debug.Log("지금 인덱스" + indexValueForCalculation);
+        //Debug.Log("지금 인덱스" + indexValueForCalculation);
     }
 
     private void Attack(SOAttackPattern[] attackPatterns) { //현재시간 - 마지막 입력 시간이 쿨다운(보통 0.4f~0.2f)보다 클때 && 현재 인덱스가 최대 인덱스보다 작거나 같을 때  
         if (Time.time - lastComboEnd > 0.1f && currentAttackIndex <= maxIndex) {
+            PlayerFlag.isAttacking = true;     //플래그 설정
             maxIndex = attackPatterns.Length - 1; //최대 인덱스 설정
             // 공격 애니메이션 재생 로직
             endCount = 0;
@@ -155,7 +157,7 @@ public class PlayerAttacker : MonoBehaviour {
     IEnumerator AttackAreaActive_Cour(SOAttackPattern[] attackPatterns) {   //공격범위 활성화
         colliderCoroutineIsRunning = true;
         yield return new WaitForSeconds(attackPatterns[currentAttackIndex].attackCollider_ActiveTime);
-        meleeAreaSetup.OpenDamageCllider_Corutin();
+        meleeAreaSetup.OpenDamageCollider_Corutin();
         colliderCoroutineIsRunning = false;
         yield return null;
     }
@@ -178,6 +180,7 @@ public class PlayerAttacker : MonoBehaviour {
         currentAttackIndex = 0;
         lastComboEnd = Time.time;
         playerController.UnlockPlayerInput_ForAnimRootMotion();
+        PlayerFlag.isAttacking = false;     //플래그 설정
     }
 
     

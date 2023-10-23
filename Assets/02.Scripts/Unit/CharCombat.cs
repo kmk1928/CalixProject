@@ -17,9 +17,9 @@ public class CharCombat : MonoBehaviour
     private void Start() {
         myStats = GetComponent<CharStats>();
     }
-    private void Update() {
-        atkCdw -= Time.deltaTime;
-    }
+    //private void Update() {
+    //    atkCdw -= Time.deltaTime;
+   // }
 
     #region 피해를 받는 쪽에서 데미지 계산
     //targetStats은 상대방의 스탯이다. 즉 데미지를 자신에게 주는 오브젝트의 스탯 

@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.81307304, y: 1, z: 1.0614697}
-  m_Center: {x: 0.29244304, y: 0, z: 0.00047370623}
+  m_Size: {x: 0.917535, y: 1, z: 0.72188234}
+  m_Center: {x: 0.34467408, y: 0, z: 0.003647609}
 --- !u!1 &2396945214094310206
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +413,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2396945216049117238}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.263844, y: 0.1500001, z: 7.34657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -465,6 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42316a8dd1ee93c4bad6073e01b46727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  atkSpd: 1
 --- !u!114 &2396945216049117228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,13 +478,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccc59a6dba778e499fa971d5463364f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
   curHealth: 0
   defense: 5
   attackDamage: 10
   abillityPower: 10
-  criticalChance: 0.5
-  criticalDamage: 1.5
+  isDead: 0
+  nanoDropAmount: 10
 --- !u!114 &6851462634326585949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,7 +544,7 @@ Transform:
   m_GameObject: {fileID: 3662945902085635696}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.299, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.7495}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6094925290345298800}

@@ -376,10 +376,10 @@ BlendTree:
     m_DirectBlendParameter: enemySpeed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 5a2162966fe3af24b96f64bded96730c, type: 2}
+    m_Motion: {fileID: 7400000, guid: 38e94f084e0111341a0ef6ac60f43052, type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 1
+    m_TimeScale: 0.6
     m_CycleOffset: 0
     m_DirectBlendParameter: enemySpeed
     m_Mirror: 0
@@ -873,8 +873,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: enemyAttack2
-  m_Speed: 1
+  m_Name: enemyAttack_Blow
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1909553026415994222}

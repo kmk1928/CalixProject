@@ -128,11 +128,14 @@ public class PlayerController : MonoBehaviour
                 }
 
             #region ----------------------------------------------업데이트에 쓰는 실시간 함수들--------------------------------------
-            Jump();
-            //weapon
-            Interraction();
-            Swap();
-            Dodge();
+            if (!PlayerFlag.isAttacking) { //공격중일때 불가능
+
+                Jump();
+                //weapon
+                Interraction();
+                Swap();
+                Dodge();
+            }
 
             #endregion
 
@@ -236,6 +239,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap && !isDodge && isGrounded)
         {
+            PlayerFlag.isInteracting = true;
             // 만약 스페이스 바를 누르고, 아직 점프 횟수가 1 미만이며 대시 중이 아니며, 무기 교체나 회피 중이 아니라면:
             anim.SetTrigger("JumpTrigger"); // JumpTrigger
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // 점프 힘을 Rigidbody에 추가
@@ -247,6 +251,7 @@ public class PlayerController : MonoBehaviour
             jumpCount = 0;
 
             anim.SetBool("isJumping", false);//Jump to Land animation
+            PlayerFlag.isInteracting = false;
         }
     }
     void JumptoFallen()
@@ -270,6 +275,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3"))
         {
+            PlayerFlag.isInteracting = true; //플래그 설정
             if (equipWeapon != null)
                 equipWeapon.gameObject.SetActive(false);
 
@@ -281,6 +287,7 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("doSwap");
             isSwap = true;
             speed = 0f;
+            PlayerFlag.isInteracting = false; //플래그 설정
             Invoke("SwapOut", 0.6f);
         }
     }
@@ -545,26 +552,5 @@ public class PlayerController : MonoBehaviour
     */
     #endregion
 
-    //attack
-    //void Attack()
-    //{
-    //    if (equipWeapon == null)
-    //        return;
-    //    //fireDelay += Time.deltaTime;
-    //    //isFireReady = equipWeapon.rate < fireDelay;
-
-    //    //if (Input.GetMouseButtonDown(0) && isFireReady && !isDashing && !isSwap)
-    //    //{
-    //    //    Debug.Log("!---Click Mouse(0)---!");
-    //    //    /////equipWeapon.Use();
-    //    //    ///anim.SetTrigger("doSwing");
-    //    //    fireDelay = 0;
-    //    //    //isAttack = true;
-    //    //    //isAttack = false;
-    //    //    movement = Vector3.zero;
-    //    //    Invoke("AttackOut", 1.0f);
-
-    //    //}
-    //}
 
 }

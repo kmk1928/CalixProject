@@ -14,12 +14,6 @@ public class MeleeAreaSetup : MonoBehaviour
         playerCtrl = GetComponent<PlayerController>();
     }
 
-    //private void Update() {
-    //    if (Input.GetKeyDown(KeyCode.L)) {
-    //        OpenDamageCllider_Corutin();
-    //    }
-    //}
-
     public void LoadWeaponDamageCollider() {
         //플레이어가 1,2,3 으로 무기 스왑시(장착) 무기 콜라이더 damageCollider이 받아옴
         //플레이어 위치 확인
@@ -31,15 +25,30 @@ public class MeleeAreaSetup : MonoBehaviour
         damageCollider = defaultDamageCollider;
     }
 
-    public void OpenDamageCllider_Corutin(){       //0.1초동안 공격범위 활성화
+    public void OpenDamageCollider_Corutin(){       //0.1초동안 공격범위 활성화
         Debug.Log("함수 불러옴");
-        StartCoroutine(FixedOpenDamageCllider());
+        StartCoroutine(FixedOpenDamageCollider());
     }
-    IEnumerator FixedOpenDamageCllider() {
+    IEnumerator FixedOpenDamageCollider() {
         Debug.Log("공격범위 온 코루틴 실행");
         damageCollider.EnableMeleeArea();
         yield return new WaitForSeconds(0.2f);
         damageCollider.DisableMeleeArea();
+    }
+
+    public void EneyDamageColliderOn() {       //0.1초동안 공격범위 활성화
+        StartCoroutine(FixedEnemyOpenDamageCollider());
+    }
+
+    IEnumerator FixedEnemyOpenDamageCollider() {
+        if (defaultDamageCollider == null) {
+            Debug.LogWarning("Enemy 공격 범위 지정 안됨!!!");
+            yield break;
+        }
+        Debug.Log("Enemy 공격 코루틴 실행");
+        defaultDamageCollider.EnableMeleeArea();
+        yield return new WaitForSeconds(0.1f);
+        defaultDamageCollider.DisableMeleeArea();
     }
 
     #region 예전버전

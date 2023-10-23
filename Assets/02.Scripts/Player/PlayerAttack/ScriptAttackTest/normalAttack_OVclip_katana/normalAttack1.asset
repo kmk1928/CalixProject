@@ -15,7 +15,7 @@ MonoBehaviour:
   attackName: 
   damageMultiplier: 1
   cooldown: 0.35
-  attackCollider_ActiveTime: 0.1
+  attackCollider_ActiveTime: 0.2
   animatorOV: {fileID: 22100000, guid: 9cacbd03a2dbc1d49a17ce69f6378713, type: 2}
   AnimTag: NormalAttack
   particleEffectPrefab: {fileID: 1872147318604286, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
