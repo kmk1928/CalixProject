@@ -384,7 +384,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(horizontalInput * speed, rb.velocity.y, verticalInput * speed);
 
             // Coroutine을 시작하여 Dodge를 일정 시간 후에 종료합니다.
-            StartCoroutine(EndDodgeAfterDelay(0.5f, originalSpeed));
+            StartCoroutine(EndDodgeAfterDelay(0.75f, originalSpeed));
         }
 
     }

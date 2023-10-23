@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66823841ae2f9e24aad67ad8a42af99a, type: 3}
-  m_Name: NormalAttack_GS 4
+  m_Name: powerAttack_1
   m_EditorClassIdentifier: 
   attackName: 
   damageMultiplier: 1
-  cooldown: 0.4
-  attackCollider_ActiveTime: 0.25
-  animatorOV: {fileID: 0}
-  AnimTag: 
-  particleEffectPrefab: {fileID: 0}
-  particlePosition: {x: 0, y: 0, z: 0}
-  particleRotation: {x: 0, y: 0, z: 0}
+  cooldown: 0.35
+  attackCollider_ActiveTime: 0.2
+  animatorOV: {fileID: 22100000, guid: 72e504d71ca84ed4f9c63b6704063e94, type: 2}
+  AnimTag: NormalAttack
+  particleEffectPrefab: {fileID: 1872147318604286, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
+  particlePosition: {x: 0.061171867, y: 0.39702415, z: 0.022123225}
+  particleRotation: {x: 1.1930848, y: 356.34436, z: 237.13916}
   particleScale: {x: 1, y: 1, z: 1}
-  particleStartTime: 0.1
+  particleStartTime: 0.3
   particleEndTime: 1

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66823841ae2f9e24aad67ad8a42af99a, type: 3}
-  m_Name: normalAttack4
+  m_Name: powerAttack_4
   m_EditorClassIdentifier: 
   attackName: 
   damageMultiplier: 4
   cooldown: 0.4
   attackCollider_ActiveTime: 0.03
-  animatorOV: {fileID: 22100000, guid: 85bd6c228e5fe5e4a83c408bc345a3db, type: 2}
+  animatorOV: {fileID: 22100000, guid: eb453812edb8c9845b3b7e66e3ff446e, type: 2}
   AnimTag: NormalAttack
   particleEffectPrefab: {fileID: 7699698589382392644, guid: ce614ff6f5639fb4ab201b6b5b437127, type: 3}
   particlePosition: {x: 0.33, y: 0.34, z: 0.63434887}
