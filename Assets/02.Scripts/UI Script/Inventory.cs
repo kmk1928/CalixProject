@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -27,17 +28,13 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        TryOpenInventory();
-    }
-
-    private void TryOpenInventory()
-    {
-        if(Input.GetButtonDown("I"))
+        if(Input.GetButtonDown("V"))
         {
             InventoryActivated = !InventoryActivated;
 
-            if(InventoryActivated)
+            if(InventoryActivated == true)
                 OpenInventory();
+
             else
                 CloseInventory();
         }
