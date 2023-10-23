@@ -92,4 +92,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("03_EnemyTestFeild");
     }
 
+    public void SceneLoad_normalMap(int portalNum) {
+        ///SceneManager.LoadScene("SampleScene");
+        ///
+        if(portalNum == 0) {
+            SceneManager.LoadScene("04_Normal Stage");
+        }
+        
+    }
+
 }

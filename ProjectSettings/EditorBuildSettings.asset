@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/03_EnemyTestFeild.unity
     guid: 92ce711c98049f24cae611911a1160d1
+  - enabled: 1
+    path: Assets/01.Scenes/04_Normal Stage.unity
+    guid: b2bdd69f7afd06a478aa51ddfcb8a61a
+  - enabled: 1
+    path: Assets/01.Scenes/05_BossStage.unity
+    guid: ade95226926b4d5448eae7c2ade93f1e
   m_configObjects: {}

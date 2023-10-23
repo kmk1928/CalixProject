@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - EnemyAttack
   - EnemyPowerAttack
+  - FxTemporaire
+  - Portal
   layers:
   - Default
   - TransparentFX

@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
             }
 
             #endregion
-
+            PortalEnter();
 
             if (playerStats.curHealth <= 0)
             {
@@ -228,15 +228,31 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "item")
             nearObject = other.gameObject;
+        if (other.tag == "Portal")
+            nearObject = other.gameObject;
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.tag == "item")
             nearObject = null;
+        if (other.tag == "Portal")
+            nearObject = null;
     }
 
     #endregion
+
+    void PortalEnter() {
+        if(nearObject == null) {
+            return;
+        }
+        if (nearObject.tag == "Portal") {
+            if(Input.GetKeyDown(KeyCode.E)) {
+                Portal portal = nearObject.GetComponent<Portal>();
+                GameManager.instance.SceneLoad_normalMap(portal.portalNumber);  
+            }
+        }
+    }
     void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap && !isDodge && isGrounded)
