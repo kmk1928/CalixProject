@@ -80,6 +80,8 @@ public class PlayerController : MonoBehaviour
         playerStats = GetComponent<PlayerStats>();
 
         theInventory = FindObjectOfType<Inventory>();
+
+        Invoke("StartSwap",2f);
     }
 
     void Update()
@@ -119,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
                 #endregion
                 }
-                else if (canPlayerRotate && !isTargeting) {
+                else if (canPlayerRotate) {
                     movement = (cameraForward * verticalInput + cameraRight * horizontalInput).normalized;
                     //콜라이더의 좌표상의 이동 담당
                     if (movement != Vector3.zero) {
@@ -295,6 +297,23 @@ public class PlayerController : MonoBehaviour
     {
         speed = 5.0f;
         isSwap = false;
+    }
+    void StartSwap() {
+        int weaponIndex = 1;
+        PlayerFlag.isInteracting = true; //플래그 설정
+        if (equipWeapon != null)
+            equipWeapon.gameObject.SetActive(false);
+
+        equipWeaponIndex = weaponIndex;
+        equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
+        equipWeapon.gameObject.SetActive(true);
+        meleeAreaSetup.LoadWeaponDamageCollider();
+
+        anim.SetTrigger("doSwap");
+        isSwap = true;
+        speed = 0f;
+        PlayerFlag.isInteracting = false; //플래그 설정
+        Invoke("SwapOut", 0.6f);
     }
 
     void Interraction()

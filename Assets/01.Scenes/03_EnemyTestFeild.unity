@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 83401c3d87a7f4a42a6ee09fdcce7cc4, type: 2}
+--- !u!198 &22236258 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 252306853455233808, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+  m_PrefabInstance: {fileID: 1768231015}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &23060698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -908,6 +913,30 @@ PrefabInstance:
       propertyPath: go_InventoryBase
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 252306853455233808, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252306853455233838, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 252306853455233838, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 252306853455233838, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 252306853455233838, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.472
+      objectReference: {fileID: 0}
+    - target: {fileID: 252306853455233838, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.483
+      objectReference: {fileID: 0}
     - target: {fileID: 1191465245011681575, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
       propertyPath: theInventory
       value: 
@@ -960,6 +989,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1191465245011681578, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: parryParticle
+      value: 
+      objectReference: {fileID: 22236258}
     m_RemovedComponents:
     - {fileID: 1768231027, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 579326447ea176244af2ace7d5f60a08, type: 3}

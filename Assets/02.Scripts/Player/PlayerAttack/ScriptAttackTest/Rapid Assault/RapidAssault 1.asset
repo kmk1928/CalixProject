@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RapidAssault 1
   m_EditorClassIdentifier: 
   attackName: RapidAssault
-  damageMultiplier: 5
+  damageMultiplier: 6
   cooldown: 0.3
   attackCollider_ActiveTime: 0.3
   animatorOV: {fileID: 22100000, guid: 5f80a5b6505ef7d4fa061dc0e5b188cf, type: 2}
