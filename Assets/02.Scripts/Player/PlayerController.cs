@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
         theInventory = FindObjectOfType<Inventory>();
 
-        Invoke("StartSwap",2f);
+        Invoke("StartSwap",1f);
     }
 
     void Update()
