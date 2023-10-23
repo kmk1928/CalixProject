@@ -2987,6 +2987,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3156979844725670427, guid: fb4b10bc932e2de4ba3150154a99ab70, type: 3}
+      propertyPath: go_SlotsParent
+      value: 
+      objectReference: {fileID: 32564805}
+    - target: {fileID: 3156979844725670427, guid: fb4b10bc932e2de4ba3150154a99ab70, type: 3}
+      propertyPath: go_InventoryBase
+      value: 
+      objectReference: {fileID: 823636887}
     - target: {fileID: 3953022460023994480, guid: fb4b10bc932e2de4ba3150154a99ab70, type: 3}
       propertyPath: m_RootOrder
       value: 12
