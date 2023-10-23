@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
 
-    public static bool InventoryActivated = false;
+    public bool InventoryActivated = false;
 
 
     //필요한 컴포넌트
@@ -28,15 +28,19 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("V"))
+        if(Input.GetKeyDown(KeyCode.K))
         {
-            InventoryActivated = !InventoryActivated;
-
-            if(InventoryActivated == true)
+            if (!InventoryActivated) {
                 OpenInventory();
+                InventoryActivated = true;
+            }
+            else {
 
-            else
                 CloseInventory();
+                InventoryActivated = false;
+            }
+
+
         }
     }
 

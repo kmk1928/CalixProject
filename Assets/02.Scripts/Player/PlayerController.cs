@@ -298,9 +298,6 @@ public class PlayerController : MonoBehaviour
             {
                 Item item = itemPickUp.item;
 
-                //theInventory 변수를 통해 아이템을 인벤토리에 추가
-                theInventory.AcquireItem(item);
-
                 if (item.itemtype == Item.ItemType.Weapon)
                 {
                     int weaponIndex = item.value;
@@ -314,6 +311,22 @@ public class PlayerController : MonoBehaviour
                 
                     Debug.Log("소비 아이템을 획득하셨습니다.");
                 }
+                
+                else if (item.itemtype == Item.ItemType.Magic)
+                {
+                
+                    Debug.Log("마법을 획득하셨습니다.");
+                }
+
+                else if (item.itemtype == Item.ItemType.Reward)
+                {
+                
+                    Debug.Log("보상을 획득하셨습니다.");
+                }
+
+
+                //theInventory 변수를 통해 아이템을 인벤토리에 추가
+                theInventory.AcquireItem(item);
 
                 // GameObject 파괴
                 Destroy(nearObject);
