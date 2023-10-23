@@ -7,8 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Mat_metal.032
+    second: {fileID: 2100000, guid: 32397cff1f035384faece7fb317686cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Monster.007
     second: {fileID: 2100000, guid: 8663d1932f5e14fa992c53301a36b827, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Orc_Leather
+    second: {fileID: 2100000, guid: aa521d957c9f3274ea5a76ca555d7193, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Orc_metal
+    second: {fileID: 2100000, guid: 32397cff1f035384faece7fb317686cb, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
