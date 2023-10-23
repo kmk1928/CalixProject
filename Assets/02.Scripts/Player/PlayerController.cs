@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private int jumpCount = 0; // 점프 횟수
     private bool isDashing = false; // 대시 중인지 여부
-    private float dashTimer = 0.0f; // 대시 타이머
+    //private float dashTimer = 0.0f; // 대시 타이머
     public Rigidbody rb;
 
     public Transform enemyToLookAt; // 시선을 고정할 적 캐릭터

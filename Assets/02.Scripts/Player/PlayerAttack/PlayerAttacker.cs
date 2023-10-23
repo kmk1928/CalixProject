@@ -14,8 +14,7 @@ public class PlayerAttacker : MonoBehaviour {
     public int currentAttackIndex = 0; //배열의 현재인덱스
     public int maxIndex;           //현재 배열의 최대인덱스
     private int endCount = 0;       //EndCombo 1번 실행용 변수
-    private float temp = 0;         //시간 계산용 증가시키는 변수
-
+    
     public int indexValueForCalculation = 0;
 
     public bool NA_Equipped = true;

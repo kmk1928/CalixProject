@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
 
     // 공격
     bool isAttack = false;
-    float attackDelay = 1.3f; // 공격 딜레이 (초)
+    //float attackDelay = 1.3f; // 공격 딜레이 (초)
 
     private float originalSpeed;
 
@@ -27,7 +27,6 @@ public class EnemyController : MonoBehaviour
     CharStats myStats;
     CharCombat combat;
     private int comboAttackCount = 0;
-    private int deathCount = 0;
 
     public BoxCollider attackArea;
  
