@@ -18,7 +18,13 @@ public class PlayerStats : CharStats
     }
 
     private void LateUpdate() {
-        curDamageCal = playerAk.attackPatterns_void[playerAk.indexValueForCalculation].damageMultiplier;
+        if (playerAk.isNAing) {
+            curDamageCal = playerAk.attackPatterns_void_normalAk[playerAk.indexValueForCalculation].damageMultiplier;
+        }else if (playerAk.isSkill_1ing) {
+            curDamageCal = playerAk.attackPatterns_void_Skill_1[playerAk.indexValueForCalculation].damageMultiplier;
+        }
+
+
         //Debug.Log("현재 pl스가 받는 index값");
     }
 }

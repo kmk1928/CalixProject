@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66823841ae2f9e24aad67ad8a42af99a, type: 3}
-  m_Name: normalAttack2
+  m_Name: RapidAssault 1
   m_EditorClassIdentifier: 
-  attackName: 
-  damageMultiplier: 2
+  attackName: RapidAssault
+  damageMultiplier: 5
   cooldown: 0.3
-  attackCollider_ActiveTime: 0.2
-  animatorOV: {fileID: 22100000, guid: 8ba067eb076527041a2c7581e575661b, type: 2}
-  AnimTag: NormalAttack
-  particleEffectPrefab: {fileID: 1872147318604286, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
-  particlePosition: {x: -0.33, y: -0.22, z: 0.11}
-  particleRotation: {x: 358.5727, y: 3.57082, z: 60.848026}
+  attackCollider_ActiveTime: 0.3
+  animatorOV: {fileID: 22100000, guid: 5f80a5b6505ef7d4fa061dc0e5b188cf, type: 2}
+  AnimTag: RapidAssault
+  particleEffectPrefab: {fileID: 1044528419629608, guid: 3be98662c9e7ef5468cb9c4e11010dc7, type: 3}
+  particlePosition: {x: -0.06, y: -0.111, z: 0.218}
+  particleRotation: {x: 0, y: 302.05176, z: 0}
   particleScale: {x: 1, y: 1, z: 1}
-  particleStartTime: 0.2
+  particleStartTime: 0.35
   particleEndTime: 1
