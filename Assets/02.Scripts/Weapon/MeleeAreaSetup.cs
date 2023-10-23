@@ -38,7 +38,7 @@ public class MeleeAreaSetup : MonoBehaviour
     IEnumerator FixedOpenDamageCllider() {
         Debug.Log("공격범위 온 코루틴 실행");
         damageCollider.EnableMeleeArea();
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
         damageCollider.DisableMeleeArea();
     }
 
