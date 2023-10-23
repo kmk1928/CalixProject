@@ -221,15 +221,16 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "weapon")
+        if (other.tag == "item")
             nearObject = other.gameObject;
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "weapon")
+        if (other.tag == "item")
             nearObject = null;
     }
+
     #endregion
     void Jump()
     {

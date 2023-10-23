@@ -2024,6 +2024,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: claymore 1
       objectReference: {fileID: 0}
+    - target: {fileID: 124341778483726605, guid: 6ae69749d87355b42b3ac72638aff3dc, type: 3}
+      propertyPath: m_TagString
+      value: item
+      objectReference: {fileID: 0}
     - target: {fileID: 124341778483726612, guid: 6ae69749d87355b42b3ac72638aff3dc, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -6905,7 +6909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4291030809302317860, guid: 8902c420098635741877e6e6fd5bb422, type: 3}
       propertyPath: m_TagString
-      value: weapon
+      value: item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8902c420098635741877e6e6fd5bb422, type: 3}
