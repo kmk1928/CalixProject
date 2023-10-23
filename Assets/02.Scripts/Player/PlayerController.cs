@@ -60,6 +60,10 @@ public class PlayerController : MonoBehaviour
     public bool canPlayerRotate = false;
     private float animatableRotationTime = 0.1f;
 
+    // 인벤토리 컴포넌트
+    [SerializeField]
+    private Inventory theInventory;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -74,6 +78,8 @@ public class PlayerController : MonoBehaviour
         playerParryG = GetComponent<PlayerParryGuard>();
 
         playerStats = GetComponent<PlayerStats>();
+
+        theInventory = FindObjectOfType<Inventory>();
     }
 
     void Update()
@@ -285,16 +291,40 @@ public class PlayerController : MonoBehaviour
 
     void Interraction()
     {
-        if (Input.GetKeyDown("e") && nearObject != null)
+        if (Input.GetKeyDown(KeyCode.E) && nearObject != null)
         {
-            Debug.Log("e누름");
-            if (nearObject.tag == "weapon")
+            ItemPickUp itemPickUp = nearObject.GetComponent<ItemPickUp>();
+            if (itemPickUp != null)
             {
-                Item item = nearObject.GetComponent<Item>();
-                int weaponIndex = item.value;
-                hasWeapons[weaponIndex] = true;
+                Item item = itemPickUp.item;
 
+                //theInventory 변수를 통해 아이템을 인벤토리에 추가
+                theInventory.AcquireItem(item);
+
+                if (item.itemtype == Item.ItemType.Weapon)
+                {
+                    int weaponIndex = item.value;
+                    hasWeapons[weaponIndex] = true;
+
+                    Debug.Log("무기 아이템을 획득하셨습니다.");
+                }
+
+                else if (item.itemtype == Item.ItemType.Used)
+                {
+                
+                    Debug.Log("소비 아이템을 획득하셨습니다.");
+                }
+
+                // GameObject 파괴
                 Destroy(nearObject);
+
+                // 'nearObject'를 null로 초기화
+                nearObject = null;
+            }
+
+            else
+            {
+                Debug.LogWarning("근처 오브젝트에 'ItemPickUp' 컴포넌트가 없거나 아이템이 아닙니다.");
             }
         }
     }
