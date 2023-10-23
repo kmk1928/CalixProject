@@ -57,7 +57,7 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (slots[i].item.itemName == "")
+            if (slots[i].item == null || string.IsNullOrEmpty(slots[i].item.itemName))
             {
                 slots[i].AddItem(_item, _count);
                 return;
