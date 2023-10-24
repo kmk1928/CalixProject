@@ -17,11 +17,15 @@ public class PlayerStats : CharStats
         playerAk = GetComponent<PlayerAttacker>();
     }
 
-    private void LateUpdate() {
-        if (playerAk.isNAing) {
+    private void LateUpdate() { 
+        if (playerAk.isNAing && !playerAk.isSkill_1ing && !playerAk.isSkill_2ing) {
             curDamageCal = playerAk.attackPatterns_void_normalAk[playerAk.indexValueForCalculation].damageMultiplier;
-        }else if (playerAk.isSkill_1ing) {
+        }
+        if (playerAk.isSkill_1ing && !playerAk.isNAing && !playerAk.isSkill_2ing) {
             curDamageCal = playerAk.attackPatterns_void_Skill_1[playerAk.indexValueForCalculation].damageMultiplier;
+        }
+        if (playerAk.isSkill_2ing && !playerAk.isNAing && !playerAk.isSkill_1ing) {
+            curDamageCal = playerAk.attackPatterns_void_Skill_2[0].damageMultiplier;
         }
 
 

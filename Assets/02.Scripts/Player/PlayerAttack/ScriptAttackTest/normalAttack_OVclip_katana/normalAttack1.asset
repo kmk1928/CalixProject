@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: 
   damageMultiplier: 1
-  cooldown: 0.35
+  cooldown: 0.3
   attackCollider_ActiveTime: 0.2
   animatorOV: {fileID: 22100000, guid: 50118493405d25e44b21d94b5c1ac572, type: 2}
   AnimTag: NormalAttack

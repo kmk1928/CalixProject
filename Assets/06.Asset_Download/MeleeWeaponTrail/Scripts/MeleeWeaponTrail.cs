@@ -25,7 +25,7 @@ public class MeleeWeaponTrail : MonoBehaviour
  
 	[Tooltip("default가 0일땐 무한유지 시간을 올리면 자동으로 줄어들고 0이 되면 Emit 을 false로")]
 	[SerializeField]
-	float _emitTime = 0.0f;
+	public float _emitTime = 0.0f;
 
 	[Tooltip("트레일용 네모난 마테리얼")]
 	[SerializeField]

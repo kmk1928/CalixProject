@@ -7,6 +7,7 @@ public class MeleeAreaSetup : MonoBehaviour
     PlayerController playerCtrl;
     DamageCollider damageCollider;      //장착 무기의 damageCollider를 받아오기 위한 선언
     public DamageCollider defaultDamageCollider;
+    public DamageCollider oneSlash;
 
     private void Start() {
         //장착 무기 콜라이더 받기 위한 플레이어컨트롤러 
@@ -49,6 +50,17 @@ public class MeleeAreaSetup : MonoBehaviour
         defaultDamageCollider.EnableMeleeArea();
         yield return new WaitForSeconds(0.1f);
         defaultDamageCollider.DisableMeleeArea();
+    }
+
+    void OneSlashAttack1() {
+        StartCoroutine(OneSlashAttack1_C());
+    }
+
+    IEnumerator OneSlashAttack1_C() {
+        oneSlash.EnableMeleeArea();
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log("켜졌다 꺼짐");
+        oneSlash.DisableMeleeArea();
     }
 
     #region 예전버전

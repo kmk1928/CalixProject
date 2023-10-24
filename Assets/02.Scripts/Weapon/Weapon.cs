@@ -9,7 +9,6 @@ public class Weapon : MonoBehaviour
     public int damage;
     //public float rate;
     //public BoxCollider meleeArea;
-    public TrailRenderer trailEffect;
 
 
     //public void EnableMeleeArea() {

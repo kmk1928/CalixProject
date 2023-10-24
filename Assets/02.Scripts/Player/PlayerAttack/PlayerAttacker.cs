@@ -6,28 +6,31 @@ public class PlayerAttacker : MonoBehaviour {
     //public List<SOAttackPattern> attackPatterns_NA;
     public SOAttackPattern[] attackPatterns_void_normalAk;   //배열을 담을 빈 배열
     public SOAttackPattern[] attackPatterns_void_Skill_1;   //배열을 담을 빈 배열
+    public SOAttackPattern[] attackPatterns_void_Skill_2;   //배열을 담을 빈 배열
     public SOAttackPattern[] attackPatterns_NA;
     public SOAttackPattern[] attackPatterns_PA;
     public SOAttackPattern[] rapidAssault;
+    public SOAttackPattern[] oneSlash;
     private float lastComboEnd;         //마지막으로 콤보가 끝난 시간
     private float lastClickTime;        //마지막으로 누른 시간
     public int currentAttackIndex = 0; //배열의 현재인덱스
     public int maxIndex;           //현재 배열의 최대인덱스
     private int endCount = 0;       //EndCombo 1번 실행용 변수
     
-    public int indexValueForCalculation = 0;
+    public int indexValueForCalculation = 0;  //playerStats에 넘겨주는 인덱스
 
     public bool NA_Equipped = true;
     public bool PA_Equipped = false;
 
     public bool Skill_1_Equipped = true;
-    public bool Skill_2_Equipped = false;
+    public bool Skill_2_Equipped = true;
 
     private bool cooldownActive = false; // 쿨다운 중임을 나타내는 변수 추가
 
     //private bool isAttacking = false;
     public bool isNAing = false;
     public bool isSkill_1ing = false;
+    public bool isSkill_2ing = false;
 
     private bool colliderCoroutineIsRunning = false;
 
@@ -35,13 +38,13 @@ public class PlayerAttacker : MonoBehaviour {
     Transform playerTransform;
     PlayerController playerController;
     MeleeAreaSetup meleeAreaSetup;
-
+    MeleeWeaponTrail meleeWeaponTrail;
     private void Start() {
         anim = GetComponent<Animator>();
         playerTransform = GetComponent<Transform>();
         playerController = GetComponent<PlayerController>();
         meleeAreaSetup = GetComponent<MeleeAreaSetup>();
-
+        meleeWeaponTrail = GetComponentInChildren<MeleeWeaponTrail>();
     }
     private void FixedUpdate() {
         if (NA_Equipped) {
@@ -54,25 +57,32 @@ public class PlayerAttacker : MonoBehaviour {
         if (Skill_1_Equipped) {
             attackPatterns_void_Skill_1 = rapidAssault;
         }
-        else if (Skill_2_Equipped) {
-
+        if (Skill_2_Equipped) {
+            attackPatterns_void_Skill_2 = oneSlash;
         }
     }
     private void Update() {
 
-        if (Input.GetButtonDown("Fire1") && !cooldownActive && !isSkill_1ing && !PlayerFlag.isInteracting) {
+        if (Input.GetButtonDown("Fire1") && !cooldownActive && !isSkill_1ing && !isSkill_2ing && !PlayerFlag.isInteracting) {
             Attack(attackPatterns_void_normalAk);
             isNAing = true;
         }
         if (isNAing) {
             ExitAttack(attackPatterns_void_normalAk);
         }
-        if (Input.GetKeyDown(KeyCode.F) && !cooldownActive && !isNAing && !PlayerFlag.isInteracting) {
+        if (Input.GetKeyDown(KeyCode.F) && !cooldownActive && !isNAing && !isSkill_2ing && !PlayerFlag.isInteracting) {
             Attack(attackPatterns_void_Skill_1);
             isSkill_1ing = true;
         }
         if (isSkill_1ing) {
             ExitAttack(attackPatterns_void_Skill_1);
+        }
+        if (Input.GetKeyDown(KeyCode.R) && !cooldownActive && !isNAing && !isSkill_1ing &&!PlayerFlag.isInteracting) {
+            Attack(attackPatterns_void_Skill_2);
+            isSkill_2ing = true;
+        }
+        if (isSkill_2ing) {
+            ExitAttack(attackPatterns_void_Skill_2);
         }
 
 
@@ -87,12 +97,13 @@ public class PlayerAttacker : MonoBehaviour {
             endCount = 0;
             //Debug.Log("-------------ㄴㅅㅁㄳtAttack------------");
             playerController.LockPlayerInput_ForAnimRootMotion();   //플레이어 이동제한
-
-            if (!cooldownActive)
-            { // 쿨다운 중이 아닐 때만 처리
-                cooldownActive = true; // 쿨다운 시작
-                StartCoroutine(PreviousIndex(attackPatterns));
+            if(maxIndex > 0) {
+                if (!cooldownActive) { // 쿨다운 중이 아닐 때만 처리
+                    cooldownActive = true; // 쿨다운 시작
+                    StartCoroutine(PreviousIndex(attackPatterns));
+                }
             }
+
             //공격범위 활성    
             if (!colliderCoroutineIsRunning) {
                 StartCoroutine(AttackAreaActive_Cour(attackPatterns));
@@ -161,10 +172,15 @@ public class PlayerAttacker : MonoBehaviour {
         yield return null;
     }
 
+    public void MeleeTrail() {
+        meleeWeaponTrail._emitTime = 0.2f;
+        meleeWeaponTrail.Emit = true;
+    }
+
     void ExitAttack(SOAttackPattern[] attackPatterns) {     //애니메이션 시간이 90%가 넘으면
 
-        if(anim.GetCurrentAnimatorStateInfo(0).IsTag(attackPatterns[currentAttackIndex].AnimTag) 
-            && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f){
+        if((anim.GetCurrentAnimatorStateInfo(0).IsTag(attackPatterns[currentAttackIndex].AnimTag) 
+            && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f) || anim.GetBool("isDamaged")==true) {
             if(endCount == 0) {
                 // Invoke("EndCombo", 0.5f);
                 EndCombo();
@@ -175,6 +191,7 @@ public class PlayerAttacker : MonoBehaviour {
         Debug.Log("EndCombo------------");
         isNAing = false;
         isSkill_1ing = false;
+        isSkill_2ing = false;
         endCount = 1;
         currentAttackIndex = 0;
         lastComboEnd = Time.time;

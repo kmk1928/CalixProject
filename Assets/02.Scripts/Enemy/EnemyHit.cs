@@ -60,5 +60,6 @@ public class EnemyHit : MonoBehaviour
         isHitted = false;
         mat.color = Color.white;
 
-    }// Start is called before the first frame update
+    }
+
 }
