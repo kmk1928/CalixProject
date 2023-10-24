@@ -5,7 +5,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject go_BaseUi;
-    [SerializeField] private GameObject background_Img;
+    [SerializeField] private GameObject Menu_BackImg;
 
     // Update is called once per frame
     void Update()
@@ -23,7 +23,7 @@ public class PauseMenu : MonoBehaviour
     {
         GameManager.isPause = true;
         go_BaseUi.SetActive(true);
-        background_Img.SetActive(true);
+        Menu_BackImg.SetActive(true);
         Time.timeScale = 0f;
     }
 
@@ -31,7 +31,7 @@ public class PauseMenu : MonoBehaviour
     {
         GameManager.isPause = false;
         go_BaseUi.SetActive(false);
-        background_Img.SetActive(false);
+        Menu_BackImg.SetActive(false);
         Time.timeScale = 1f;
     }
 

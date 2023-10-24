@@ -14,6 +14,8 @@ public class Inventory : MonoBehaviour
     private GameObject go_InventoryBase;
     [SerializeField]
     private GameObject go_SlotsParent;
+    [SerializeField] 
+    private GameObject Inven_BackImg;
 
 
     //슬롯
@@ -35,23 +37,26 @@ public class Inventory : MonoBehaviour
                 InventoryActivated = true;
             }
             else {
-
                 CloseInventory();
-                InventoryActivated = false;
+                InventoryActivated = false;               
             }
-
-
         }
     }
 
     private void OpenInventory()
     {
         go_InventoryBase.SetActive(true);
+        Inven_BackImg.SetActive(true);
+        GameManager.isInventory = true;
+        Time.timeScale = 0f;
     }
 
     private void CloseInventory()
     {
         go_InventoryBase.SetActive(false);
+        Inven_BackImg.SetActive(false);
+        GameManager.isInventory = false;
+        Time.timeScale = 1f;
     }
 
     public void AcquireItem(Item _item, int _count = 1)

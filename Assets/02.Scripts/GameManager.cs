@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static bool canPlayerRotate = true; // 카메라의 움직임 제어
     public static bool isGameover; // 플레이어 사망 여부 
     public static bool isPause = false; // 메뉴가 호출되면 true
+    public static bool isInventory = false; // 인벤토리가 호출되면 true
     [SerializeField] private int playerNanoCount = 10; // 플레이어 나노 카운트
 
     //[Header("디버그용 인스펙터 표시용 변수들")]
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
         isPause = false;
+        isInventory = false;
         isGameover = false;
     }
 
@@ -51,7 +53,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if( isPause )
+        if( isPause || isInventory)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
