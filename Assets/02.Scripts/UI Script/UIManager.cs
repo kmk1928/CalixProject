@@ -14,11 +14,9 @@ public class UIManager : MonoBehaviour
 
 
     void Awake() {
-        // 싱글톤 변수 instance가 비어있는가?
         if (instance == null) {
-            // instance가 비어있다면(null) 그곳에 자기 자신을 할당
             instance = this;
-            //DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject); //씬 옮겨도 노파괴
             Debug.LogWarning("UI 매니저 할당!!!");
         }
         else {

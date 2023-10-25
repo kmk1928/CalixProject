@@ -42,6 +42,14 @@ public class GameManager : MonoBehaviour
         isPause = false;
         isInventory = false;
         isGameover = false;
+
+        if (SceneManager.GetActiveScene().name == "01_StartScene") {
+            // 모든 DontDestroyOnLoad 오브젝트 파괴
+            GameObject[] dontDestroyObjects = GameObject.FindGameObjectsWithTag("DontDestroyOnLoad");
+            foreach (GameObject obj in dontDestroyObjects) {
+                Destroy(obj);
+            }
+        }
     }
 
     void Update()
