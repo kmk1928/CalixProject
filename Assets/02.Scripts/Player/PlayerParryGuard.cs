@@ -73,7 +73,7 @@ public class PlayerParryGuard : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (!isHitted && (other.tag == "EnemyAttack" || other.tag == "EnemyPowerAttack") && !playerController.isDead) {
+        if (!isHitted && (other.tag == "EnemyAttack" || other.tag == "EnemyPowerAttack") && !playerController.isDodge && !playerController.isDead) {
             Debug.Log("1"); //추적추적추적추적
             nearObject = other.gameObject;
             playerController.LockPlayerInput_ForAnimRootMotion();  //피격중 이동 제한

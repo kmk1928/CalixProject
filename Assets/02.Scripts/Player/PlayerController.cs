@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     GameObject nearObject;
     public Weapon equipWeapon;
 
-    bool isDodge;
+    public bool isDodge;
 
     //weapon variable
     public GameObject[] weapons;
@@ -368,10 +368,10 @@ public class PlayerController : MonoBehaviour
             float originalSpeed = speed;
 
             // Dodge 동작을 시작합니다.
-            speed *= 1.6f;
-            anim.SetTrigger("DodgeTrigger"); // Dodge 애니메이션
+            speed *= 1.8f;
             isDodge = true;
 
+            anim.SetTrigger("DodgeTrigger"); // Dodge 애니메이션
             canMovePlayer = false; // 회전 비활성화
 
             // 플레이어의 forward 방향으로 설정
