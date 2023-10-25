@@ -17,13 +17,15 @@ public class EnemyHitParticle : MonoBehaviour
             Vector3 contactNormal = contact.normal; //방향추가
             Debug.LogWarning("파티클 나옴");
 
-            // 파티클 시스템의 위치와 방향을 설정하고 재생합니다.
-            hitBlood.transform.position = contactPoint;
-            hitEffect.transform.position = contactPoint;
-            // 파티클 시스템의 회전만 설정합니다.
-            hitBlood.transform.rotation = Quaternion.LookRotation(contactNormal); // 충돌 법선 방향으로 회전
-            hitBlood.Play();
-            hitEffect.Play();
+                // 파티클 시스템의 위치와 방향을 설정하고 재생합니다.
+                hitBlood.transform.position = contactPoint;
+                // 파티클 시스템의 회전만 설정합니다.
+                hitBlood.transform.rotation = Quaternion.LookRotation(contactNormal); // 충돌 법선 방향으로 회전
+                hitBlood.Play();
+            
+                hitEffect.transform.position = contactPoint;
+                hitEffect.Play();
+            
         }
          
 

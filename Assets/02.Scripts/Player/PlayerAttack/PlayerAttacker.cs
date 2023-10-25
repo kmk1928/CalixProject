@@ -39,12 +39,14 @@ public class PlayerAttacker : MonoBehaviour {
     PlayerController playerController;
     MeleeAreaSetup meleeAreaSetup;
     MeleeWeaponTrail meleeWeaponTrail;
+    HitParticleActiveCollider hPACollider;
     private void Start() {
         anim = GetComponent<Animator>();
         playerTransform = GetComponent<Transform>();
         playerController = GetComponent<PlayerController>();
         meleeAreaSetup = GetComponent<MeleeAreaSetup>();
         meleeWeaponTrail = GetComponentInChildren<MeleeWeaponTrail>();
+        hPACollider = GetComponentInChildren<HitParticleActiveCollider>();
     }
     private void FixedUpdate() {
         if (NA_Equipped) {
@@ -168,6 +170,7 @@ public class PlayerAttacker : MonoBehaviour {
         colliderCoroutineIsRunning = true;
         yield return new WaitForSeconds(attackPatterns[currentAttackIndex].attackCollider_ActiveTime);
         meleeAreaSetup.OpenDamageCollider_Corutin();
+        hPACollider.ColliderEnable();
         colliderCoroutineIsRunning = false;
         yield return null;
     }

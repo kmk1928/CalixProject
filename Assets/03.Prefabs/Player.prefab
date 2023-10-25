@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 204017156}
   - component: {fileID: 204017158}
   - component: {fileID: 204017157}
+  - component: {fileID: 7025522013652247602}
   m_Layer: 6
   m_Name: CheckParticle
   m_TagString: melee
@@ -58,10 +59,22 @@ BoxCollider:
   m_GameObject: {fileID: 204017155}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.1376207, y: 1.1961919, z: 0.10955579}
-  m_Center: {x: 0.012835393, y: 0.68496424, z: -0.06462481}
+  m_Size: {x: 0.030111423, y: 1.2047719, z: 0.10955622}
+  m_Center: {x: -0.010253628, y: 0.68067616, z: -0.06458807}
+--- !u!114 &7025522013652247602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204017155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b95e0633e3b2e5e4e8530e36c28840aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &538170835
 GameObject:
   m_ObjectHideFlags: 0

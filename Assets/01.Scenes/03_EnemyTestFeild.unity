@@ -280,8 +280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5985dd51fd5544ca29a3af80580965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffect: {fileID: 0}
-  hitBlood: {fileID: 0}
+  hitEffect: {fileID: 1035222444224318358}
+  hitBlood: {fileID: 526940013}
 --- !u!54 &74787206
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10592,28 +10592,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 204017157, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-      propertyPath: m_Size.x
-      value: 0.030111423
-      objectReference: {fileID: 0}
-    - target: {fileID: 204017157, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-      propertyPath: m_Size.y
-      value: 1.2047719
-      objectReference: {fileID: 0}
-    - target: {fileID: 204017157, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-      propertyPath: m_Size.z
-      value: 0.10955622
-      objectReference: {fileID: 0}
-    - target: {fileID: 204017157, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-      propertyPath: m_Center.x
-      value: -0.010253628
-      objectReference: {fileID: 0}
-    - target: {fileID: 204017157, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-      propertyPath: m_Center.y
-      value: 0.68067616
-      objectReference: {fileID: 0}
-    - target: {fileID: 204017157, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-      propertyPath: m_Center.z
-      value: -0.06458807
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1191465245011681576, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
       propertyPath: m_Name
