@@ -15,7 +15,7 @@ public class EnemyBullet : MonoBehaviour
         }
 
         // 총알과 다른 오브젝트와의 충돌 처리
-        Destroy(gameObject, 0.05f); // 총알을 제거
+        Destroy(gameObject, 0.07f); // 총알을 제거
 
     }
 }
