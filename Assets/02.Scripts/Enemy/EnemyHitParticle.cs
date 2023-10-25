@@ -7,6 +7,7 @@ public class EnemyHitParticle : MonoBehaviour
 
     public ParticleSystem hitEffect; // 파티클 시스템 연결
     public ParticleSystem hitBlood;
+    Animator animator;
 
     private void OnCollisionEnter(Collision collision) {
          if (collision.gameObject.CompareTag("melee")) {
@@ -25,9 +26,21 @@ public class EnemyHitParticle : MonoBehaviour
             
                 hitEffect.transform.position = contactPoint;
                 hitEffect.Play();
-            
         }
-         
-
     }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("melee")) {  //태그가 Melee일때 출력
+            Debug.Log("Enemy Hit!!");
+            animator = other.transform.root.GetComponent<Animator>();
+            float animSpeed = animator.speed;
+            StartCoroutine(StopAnim(animSpeed));
+        }
+    }
+    IEnumerator StopAnim(float animSpeed) {
+        animator.speed = 0;
+        yield return new WaitForSeconds(0.1f);
+        animator.speed = animSpeed;
+    }
+
 }
