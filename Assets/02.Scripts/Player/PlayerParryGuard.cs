@@ -76,7 +76,7 @@ public class PlayerParryGuard : MonoBehaviour {
         if (!isHitted && (other.tag == "EnemyAttack" || other.tag == "EnemyPowerAttack") && !playerController.isDodge && !playerController.isDead) {
             Debug.Log("1"); //추적추적추적추적
             nearObject = other.gameObject;
-            playerController.LockPlayerInput_ForAnimRootMotion();  //피격중 이동 제한
+            playerController.LockPlayerInput();  //피격중 이동 제한
             TestAnimationEndPlayerVelocityZero();
             if (isParried) {
                 Debug.Log("PARRY!!!");                          //패링 성공

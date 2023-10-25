@@ -12,7 +12,7 @@ public class EnemyHit : MonoBehaviour
     PlayerController playerController;
     GameObject nearObject;
     BoxCollider enemyCollider;
-    
+
     private float noHitTime = 0.2f;
     private bool isHitted = false;
     private bool deathAnim = false;
@@ -36,16 +36,19 @@ public class EnemyHit : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "melee" && !isHitted && !enemyStats.isDead) {  //태그가 Melee일때 출력
+        if (other.CompareTag("melee") && !isHitted && !enemyStats.isDead) {  //태그가 Melee일때 출력
             Debug.Log("Enemy Hit!!");  
             PlayerStats targetStatus = other.transform.root.GetComponent<PlayerStats>();
             if (targetStatus != null) {
                 combat.EnemyHitted(targetStatus);
             }
-                              //애님 트리거  doDamage 발동
+
+
+            //애님 트리거  doDamage 발동
             StartCoroutine(OnDamage());
         }
     }
+
     public void Damaged() {             //애님 트리거  doDamage 발동
         anim.SetTrigger("doDamage");
         Debug.Log("     - - -      ");

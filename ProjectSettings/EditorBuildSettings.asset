@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/01.Scenes/01_StartScene.unity
     guid: da5f6b4f63db7aa4181db22194bf99fa
   - enabled: 1
-    path: Assets/01.Scenes/SampleScene.unity
+    path: Assets/01.Scenes/SampleScene_0.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/01.Scenes/03_EnemyTestFeild.unity
