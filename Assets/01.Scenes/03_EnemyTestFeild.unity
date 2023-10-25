@@ -8601,7 +8601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccc59a6dba778e499fa971d5463364f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  maxHealth: 10000
   curHealth: 0
   defense: 5
   attackDamage: 10
@@ -10006,3 +10006,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a97b4ec4ed8214ab520fd03d4f5e46, type: 3}
+--- !u!1 &8753811037171617174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8753811038122871218, guid: 09a97b4ec4ed8214ab520fd03d4f5e46, type: 3}
+  m_PrefabInstance: {fileID: 8753811037171617173}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8753811037171617175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8753811037171617174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396e2a5eda6462146a035efa1ff799d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
