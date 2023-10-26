@@ -454,7 +454,7 @@ public class PlayerController : MonoBehaviour
 
     void FindNearestEnemy()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("EnemyLockonPosition");
         Transform nearestEnemy = null;
 
         foreach (GameObject enemy in enemies)
