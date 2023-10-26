@@ -148,25 +148,27 @@ public class EnemyPattern : MonoBehaviour
         Debug.Log("Test3 Start");
         isAttacking = true;
         animator.SetTrigger("Backstep");
-        float targetDistance = 2f;
-        Vector3 moveDirection = (transform.position - player.position).normalized;
-        Vector3 targetPosition = transform.position + moveDirection * targetDistance;
+        //float targetDistance = 2f;
+        //Vector3 moveDirection = (transform.position - player.position).normalized;
+        //Vector3 targetPosition = transform.position + moveDirection * targetDistance;
 
-        agent.SetDestination(targetPosition);
-        agent.speed = 8f;
+        //agent.SetDestination(targetPosition);
+        //agent.speed = 8f;
 
-        // 이동 완료까지 대기
-        while (agent.remainingDistance > 0.5f) {
-            yield return null;
-        }
-        agent.speed = 3.5f;
+        //// 이동 완료까지 대기
+        //while (agent.remainingDistance > 0.5f) {
+        //    yield return null;
+        //}
+        //agent.speed = 3.5f;
+
+
         yield return new WaitForSeconds(2f);
 
 
         isAttacking = false;
     }
     /*
-    IEnumerator CurveMove(Vector3 startPos, Vector3 endPos, float height, float duration) {//커브후퇴
+    IEnumerator CurveMove() {//커브후퇴
                                                                                            // 이동 경로의 길이 계산
         float journeyLength = Vector3.Distance(startPos, endPos);
         // 이동 시작 시간 기록
