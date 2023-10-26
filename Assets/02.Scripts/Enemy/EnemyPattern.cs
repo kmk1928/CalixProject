@@ -14,11 +14,13 @@ public class EnemyPattern : MonoBehaviour
     public float hrizon_move = 0;
     private float moveDirection = 0; //좌우 이동용 기본 값
     private float detectionRange = 10f; //후퇴용 이동속도
+    private float distanceToPlayer;
 
     public float detectionDistance = 20f; // 플레이어 감지 범위 = 공격시작 범위
 
     private bool isSearchMode = true;
     private bool isBattleMode = false;
+    public bool isInteracting = false;
 
     void OnDrawGizmos() {
         Gizmos.color = Color.red;
@@ -43,12 +45,12 @@ public class EnemyPattern : MonoBehaviour
             //선형보간 함수를 이용해 부드러운 회전   //마지막의 숫자는 얼마나 빠르게 회전 할 것인지
             transform.rotation = Quaternion.Slerp(transform.rotation
                                                 , targetAngle
-                                                , Time.deltaTime * 8.0f);
+                                                , Time.deltaTime * 5.0f);
         }
 
         if (isSearchMode) {
             if (player != null) {
-                float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+                distanceToPlayer = Vector3.Distance(transform.position, player.position);
                 if (distanceToPlayer <= detectionDistance)      //플레이어 발견 시
                 {
                         agent.SetDestination(player.position);
@@ -63,10 +65,10 @@ public class EnemyPattern : MonoBehaviour
         }
 
         if (isBattleMode) {
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            distanceToPlayer = Vector3.Distance(transform.position, player.position); //지금상태로는 두번 불러서 손해지만 일반 냅둠
             if (!isAttacking) {
                 // 여기서 패턴을 랜덤하게 선택합니다.
-                int pattern = 1; //Random.Range(2, 4); // 예를 들어, 1에서 3 중에서 랜덤 선택
+                int pattern = 3; //Random.Range(2, 4); // 예를 들어, 1에서 3 중에서 랜덤 선택
 
                 switch (pattern) {
                     case 1:
@@ -84,10 +86,11 @@ public class EnemyPattern : MonoBehaviour
                 }
 
             }
-            if (distanceToPlayer > 8.0f) {  //너무 멀어지면 다시 추격
-                isSearchMode = true;
-                isBattleMode = false;
-            }
+
+        }
+        if (!isBattleMode) {  //너무 멀어지면 다시 추격
+            isSearchMode = true;
+            isBattleMode = false;
         }
     }
 
@@ -145,16 +148,18 @@ public class EnemyPattern : MonoBehaviour
         Debug.Log("Test3 Start");
         isAttacking = true;
         animator.SetTrigger("Backstep");
-        float targetDistance = 5f;
+        float targetDistance = 2f;
         Vector3 moveDirection = (transform.position - player.position).normalized;
         Vector3 targetPosition = transform.position + moveDirection * targetDistance;
 
         agent.SetDestination(targetPosition);
+        agent.speed = 8f;
 
         // 이동 완료까지 대기
         while (agent.remainingDistance > 0.5f) {
             yield return null;
         }
+        agent.speed = 3.5f;
         yield return new WaitForSeconds(2f);
 
 
