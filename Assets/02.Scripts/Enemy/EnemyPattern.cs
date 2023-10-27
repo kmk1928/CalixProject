@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyPattern : MonoBehaviour {
+public class EnemyPattern : MonoBehaviour
+{
     private NavMeshAgent agent;
     private Transform player;
     private Animator animator;
@@ -26,24 +27,28 @@ public class EnemyPattern : MonoBehaviour {
     private bool isBattleMode = false;
     public bool isInteracting = false;
 
-    void OnDrawGizmos() {
+    void OnDrawGizmos()
+    {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 4f);
     }
 
-    void Start() {
+    void Start()
+    {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         player = GameObject.FindWithTag("Player").transform;
         animator = GetComponent<Animator>();
     }
-    void Update() {
+    void Update()
+    {
         isCombo = animator.GetBool("isCombo");
 
         // if(agent.velocity.sqrMagnitude >= 0.1f * 0.1f && agent.remainingDistance < 0.1f) {
         //    //걷는 애니메이션 중지 -- 자연스러운 회전을 위함
         //}
-        if (agent.desiredVelocity.sqrMagnitude >= 0.1f * 0.1f) {
+        if (agent.desiredVelocity.sqrMagnitude >= 0.1f * 0.1f)
+        {
             //에이전트의 이동방향
             Vector3 direction = agent.desiredVelocity;
             //회전각도 (쿼터니언 산출) 위의 벡터를 변형
@@ -55,19 +60,23 @@ public class EnemyPattern : MonoBehaviour {
         }
 
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (isSearchMode) {
-            if (player != null) {
+        if (isSearchMode)
+        {
+            if (player != null)
+            {
                 if (distanceToPlayer <= detectionDistance)      //플레이어 발견 시
                 {
                     animator.SetFloat("enemySpeed", 1f);
                     // 패턴이 실행 중이 아니라면 추적을 시작합니다.
-                    if (!agent.isActiveAndEnabled) {
+                    if (!agent.isActiveAndEnabled)
+                    {
                         agent.enabled = true;       //네비메시를 아예 꺼버림
                     }
                     agent.destination = player.position;
                     agent.SetDestination(player.position);
                     // 플레이어가 공격 범위 내에 있을 때
-                    if (distanceToPlayer <= 2.0f) {
+                    if (distanceToPlayer <= 2.0f)
+                    {
                         isSearchMode = false;
                         isBattleMode = true;
                     }  //공격 모드 돌입
@@ -76,18 +85,21 @@ public class EnemyPattern : MonoBehaviour {
             }
         }
 
-        if (isBattleMode) {
-            if (!isAttacking) {
+        if (isBattleMode)
+        {
+            if (!isAttacking)
+            {
                 agent.isStopped = true;
                 canEnemyRotate = false;
                 //animator.SetFloat("enemySpeed", -1f);
-                int pattern = 2; //Random.Range(1, 4); // 예를 들어, 1에서 3 중에서 랜덤 선택
+                int pattern = 3; //Random.Range(1, 4); // 예를 들어, 1에서 3 중에서 랜덤 선택
                 //int backCount = Random.Range(0, 16);
                 //if (backStepCount > backCount) {
                 //    pattern = 3;
                 //    StartCoroutine(Backstep());
                 //}
-                switch (pattern) {
+                switch (pattern)
+                {
                     case 1:
                         // 패턴 1: 공격 패턴
                         BackStepCountPlus();
@@ -98,13 +110,14 @@ public class EnemyPattern : MonoBehaviour {
                         StartCoroutine(AttackPattern1_2());
                         break;
                     case 3:
-                        // 패턴 3: 후퇴 패턴
-
+                        StartCoroutine(TeleportAndAttack());
                         break;
+
                 }
             }
 
-            if(distanceToPlayer > 4.1f) {
+            if (distanceToPlayer > 4.1f)
+            {
 
                 isSearchMode = true;
                 isBattleMode = false;
@@ -112,26 +125,59 @@ public class EnemyPattern : MonoBehaviour {
         }
     }
 
-    IEnumerator AttackPattern1() {
+    IEnumerator TeleportAndAttack()
+    {
+        isAttacking = true;
+        Debug.Log("Test Teleport");
+
+        // 플레이어 주변의 8개의 위치 생성
+        Vector3[] teleportPositions = new Vector3[8];
+        float moveDistance = 4.0f; //순간이동시 플레이어와의 거리
+        for (int i = 0; i < 8; i++)
+        {
+            float angle = i * 45.0f;
+            Vector3 offset = Quaternion.Euler(0, angle, 0) * Vector3.forward * moveDistance;
+            teleportPositions[i] = player.position + offset;
+        }
+
+        // 랜덤하게 하나의 위치 선택
+        Vector3 randomTeleportPosition = teleportPositions[Random.Range(0, 8)];
+
+        // 순간 이동
+        transform.position = randomTeleportPosition;
+
+        // 플레이어를 바라보도록 회전
+        Vector3 lookDirection = (player.position - transform.position).normalized;
+        transform.LookAt(transform.position + lookDirection);
+
+        // 공격 액션 수행 (예를 들어, AttackPattern1 사용)
+        yield return StartCoroutine(AttackPattern1());
+    }
+
+
+    IEnumerator AttackPattern1()
+    {
         Debug.Log("Test1 Start");
         isAttacking = true;
-       // LockEnemyAnimRootTrue();
+        // LockEnemyAnimRootTrue();
 
         animator.SetTrigger("Attack1");
         yield return new WaitForSeconds(1.3f);
         // UnLockEnemyAnimRootfalse();
         int pattern = Random.Range(1, 3);
-        if(pattern == 1) {
-         //   yield return StartCoroutine(AttackPattern1_2());
+        if (pattern == 1)
+        {
+            //   yield return StartCoroutine(AttackPattern1_2());
         }
         yield return new WaitForSeconds(1f);
-        
+
         agent.SetDestination(player.position);
         isAttacking = false;
 
     }
     //1-2 연속 공격
-    IEnumerator AttackPattern1_2() {
+    IEnumerator AttackPattern1_2()
+    {
         isAttacking = true;
         isCombo = true;
         animator.SetTrigger("Attack1_all");
@@ -143,7 +189,8 @@ public class EnemyPattern : MonoBehaviour {
 
 
     //2번째
-    IEnumerator Backstep() { //후퇴
+    IEnumerator Backstep()
+    { //후퇴
         Debug.Log("Test3 Start");
         isAttacking = true;
         animator.SetTrigger("Backstep");
@@ -151,11 +198,12 @@ public class EnemyPattern : MonoBehaviour {
         Vector3 moveDirection = (transform.position - player.position).normalized;
         Vector3 targetPosition = transform.position + moveDirection * targetDistance;
 
-        agent.destination = targetPosition; 
+        agent.destination = targetPosition;
         agent.speed = 8f;
 
         // 이동 완료까지 대기
-        while (agent.remainingDistance > 0.2f) {
+        while (agent.remainingDistance > 0.2f)
+        {
             yield return null;
         }
         agent.speed = originNavSpeed;
@@ -165,7 +213,8 @@ public class EnemyPattern : MonoBehaviour {
         isAttacking = false;
     }
     //3번째
-    IEnumerator horizontal_movement() { //경계 이동
+    IEnumerator horizontal_movement()
+    { //경계 이동
 
         Debug.Log("Test2 Start");
 
@@ -185,7 +234,8 @@ public class EnemyPattern : MonoBehaviour {
         agent.destination = targetPosition;
 
         // 이동 완료까지 대기
-        while (agent.remainingDistance > 0.5f) {
+        while (agent.remainingDistance > 0.5f)
+        {
             yield return null;
         }
 
@@ -232,10 +282,12 @@ public class EnemyPattern : MonoBehaviour {
 
     */
 
-    private void LockEnemyAnimRootTrue() {
+    private void LockEnemyAnimRootTrue()
+    {
         animator.applyRootMotion = true;
     }
-    private void UnLockEnemyAnimRootfalse() {
+    private void UnLockEnemyAnimRootfalse()
+    {
         animator.applyRootMotion = false;
     }
     //public void EnemyCanRotate() {
@@ -244,19 +296,23 @@ public class EnemyPattern : MonoBehaviour {
     //public void EnemyNotRotate() {
     //    canEnemyRotate = false;
     //}
-    private void BackStepCountPlus() {
+    private void BackStepCountPlus()
+    {
         backStepCount += 1;
     }
-    void StopAgent() {
+    void StopAgent()
+    {
         canEnemyRotate = false;
         agent.isStopped = true;
-        
+
     }
-    void GoAgent() {
+    void GoAgent()
+    {
         canEnemyRotate = true;
         agent.isStopped = false;
     }
-    void ComboEnd() {
+    void ComboEnd()
+    {
         isCombo = false;
     }
 }
