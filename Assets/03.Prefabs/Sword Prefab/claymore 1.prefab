@@ -13,12 +13,11 @@ GameObject:
   - component: {fileID: 124341778483726614}
   - component: {fileID: 124341778483726601}
   - component: {fileID: 124341778483726600}
-  - component: {fileID: 124341778483726603}
   - component: {fileID: 124341778483726602}
   - component: {fileID: -7009588227911433997}
   m_Layer: 0
   m_Name: claymore 1
-  m_TagString: weapon
+  m_TagString: item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124341778483726605}
-  m_LocalRotation: {x: 0.6373232, y: -0.013910055, z: 0.7703852, w: -0.011507034}
+  m_LocalRotation: {x: 0.63732094, y: -0.013911666, z: 0.770387, w: -0.011503586}
   m_LocalPosition: {x: -1.19, y: 1.93, z: 4.81}
   m_LocalScale: {x: 1.0485266, y: 1.3606856, z: 0.28015798}
   m_ConstrainProportionsScale: 0
@@ -118,20 +117,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &124341778483726603
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124341778483726605}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 4fb60c94d0610084fbdc47d366ab4f29, type: 3}
 --- !u!65 &124341778483726602
 BoxCollider:
   m_ObjectHideFlags: 0

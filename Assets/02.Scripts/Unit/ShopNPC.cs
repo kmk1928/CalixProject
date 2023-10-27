@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ShopNPC : MonoBehaviour
 {
+    [Tooltip("Stat up Panel")]
     public GameObject uiGroup;
     public SphereCollider recoRange;
     public Image pressE;

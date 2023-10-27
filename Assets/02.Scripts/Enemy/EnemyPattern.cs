@@ -113,6 +113,7 @@ public class EnemyPattern : MonoBehaviour
                         break;
                     case 4:
                         // 패턴 2: 이동 패턴
+                        transform.LookAt(player.position);
                         StartCoroutine(AttackPattern_GS7());
                         break;
 

@@ -27,7 +27,9 @@ public class PlayerParryGuard : MonoBehaviour {
     public BoxCollider parryArea;
     [Tooltip("패링 성공 이펙트")]
     public ParticleSystem parryParticle;
+    public ParticleSystem parryDistortion;
 
+    public ParticleSystem hittedParticle;
     [Header("power Hit")]
     [Tooltip("강한 피격 이펙트")]
     public ParticleSystem powerHittedParticle;
@@ -122,6 +124,7 @@ public class PlayerParryGuard : MonoBehaviour {
         smoothMoved.SmoothMove_Parry(original, nearObject.transform);
 
         parryParticle.Play();           //패리 이펙트
+        parryDistortion.Play();
         Invoke("HittedOut", 0.2f);              //연속피격방지   
         parryArea.enabled = false;
         playerController.Invoke("UnlockPlayerInput_ForAnimRootMotion", parryRecovery_Time);
@@ -129,7 +132,7 @@ public class PlayerParryGuard : MonoBehaviour {
     private void OnDamage() {              //가드 또는 피격 시 쓰는 데미지 코루틴
         isHitted = true;                        //연속피격방지
         isHittedMotioning = true;           //피격 직후 60프레임 내 패링 가능 방지
-
+        hittedParticle.Play();
         //Debug.Log("3"); //추적추적추적추적
         original = this.transform;
         smoothMoved.SmoothMove_normalAttack(original, nearObject.transform);
