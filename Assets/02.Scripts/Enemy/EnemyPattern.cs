@@ -48,7 +48,7 @@ public class EnemyPattern : MonoBehaviour
     void Update()
     {
         isCombo = animator.GetBool("isCombo");
-
+        
         // if(agent.velocity.sqrMagnitude >= 0.1f * 0.1f && agent.remainingDistance < 0.1f) {
         //    //걷는 애니메이션 중지 -- 자연스러운 회전을 위함
         //}
