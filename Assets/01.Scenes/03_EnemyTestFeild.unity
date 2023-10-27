@@ -8860,10 +8860,10 @@ GameObject:
   - component: {fileID: 1750435802082672596}
   - component: {fileID: 1750435802082672597}
   - component: {fileID: 7357804373126903204}
-  - component: {fileID: 7357804373126903201}
   - component: {fileID: 7357804373126903206}
   - component: {fileID: 8823433257909934844}
   - component: {fileID: 7357804373126903207}
+  - component: {fileID: 8823433257909934845}
   m_Layer: 7
   m_Name: Enemy_Sandbag
   m_TagString: Enemy
@@ -9591,7 +9591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7355159845875028409, guid: 307bb7772df7acd40bdd742aecbd87b5, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7355159845875028409, guid: 307bb7772df7acd40bdd742aecbd87b5, type: 3}
       propertyPath: m_CollisionDetection
@@ -9647,18 +9647,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 307bb7772df7acd40bdd742aecbd87b5, type: 3}
---- !u!114 &7357804373126903201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750435802082672591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df1237a8d4108f44bb61a6d078d85e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7357804373126903204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9898,6 +9886,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &8823433257909934845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750435802082672591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e54cb93fac26b4a91f9e635dc2a4cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8915502878494669295
 PrefabInstance:
   m_ObjectHideFlags: 0

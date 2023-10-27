@@ -8,6 +8,7 @@ public class EnemyPattern : MonoBehaviour {
     private Transform player;
     private Animator animator;
     private bool isAttacking = false;
+    public bool isCombo = false;
     private bool isLookPlayer = false;
     private float stoppingDistance = 1f;
     private float originNavSpeed = 3.5f;
@@ -37,6 +38,8 @@ public class EnemyPattern : MonoBehaviour {
         animator = GetComponent<Animator>();
     }
     void Update() {
+        isCombo = animator.GetBool("isCombo");
+
         // if(agent.velocity.sqrMagnitude >= 0.1f * 0.1f && agent.remainingDistance < 0.1f) {
         //    //걷는 애니메이션 중지 -- 자연스러운 회전을 위함
         //}
@@ -68,19 +71,11 @@ public class EnemyPattern : MonoBehaviour {
             }
         }
 
-        //if (distanceToPlayer <= stoppingDistance) {
-        //    agent.isStopped = true;
-        //}
-        //else {
-        //    agent.isStopped = false;
-        //    agent.SetDestination( player.position);
-        //}
-
         if (isBattleMode) {
-            if (!isAttacking) {
+            if (!isAttacking && !isCombo) {
                 agent.isStopped = true;
                 canEnemyRotate = false;
-                animator.SetFloat("enemySpeed", 0f);
+                animator.SetFloat("enemySpeed", -1f);
                 int pattern = 1; //Random.Range(1, 4); // 예를 들어, 1에서 3 중에서 랜덤 선택
                 //int backCount = Random.Range(0, 16);
                 //if (backStepCount > backCount) {
@@ -119,14 +114,25 @@ public class EnemyPattern : MonoBehaviour {
        // LockEnemyAnimRootTrue();
 
         animator.SetTrigger("Attack1");
-        yield return new WaitForSeconds(0.8f);
-       // UnLockEnemyAnimRootfalse();
+        yield return new WaitForSeconds(1.6f);
+        // UnLockEnemyAnimRootfalse();
+        int pattern = 1;//Random.Range(1, 3);
+        if(pattern == 1) {
+            yield return StartCoroutine(AttackPattern1_2());
+        }
         yield return new WaitForSeconds(1f);
-
+        Debug.Log("Test Combo");
         //agent.SetDestination(player.position);
         isAttacking = false;
 
     }
+    //1-2 연속 공격
+    IEnumerator AttackPattern1_2() {
+        animator.SetTrigger("Attack1_all");
+        yield return null;
+    }
+
+
     //2번째
     IEnumerator Backstep() { //후퇴
         Debug.Log("Test3 Start");
@@ -223,12 +229,12 @@ public class EnemyPattern : MonoBehaviour {
     private void UnLockEnemyAnimRootfalse() {
         animator.applyRootMotion = false;
     }
-    public void EnemyCanRotate() {
-        canEnemyRotate = true;
-    }
-    public void EnemyNotRotate() {
-        canEnemyRotate = false;
-    }
+    //public void EnemyCanRotate() {
+    //    canEnemyRotate = true;
+    //}
+    //public void EnemyNotRotate() {
+    //    canEnemyRotate = false;
+    //}
     private void BackStepCountPlus() {
         backStepCount += 1;
     }
@@ -239,5 +245,8 @@ public class EnemyPattern : MonoBehaviour {
     void GoAgent() {
         canEnemyRotate = true;
         agent.isStopped = false;
+    }
+    void ComboEnd() {
+        isCombo = false;
     }
 }
