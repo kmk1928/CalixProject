@@ -7,7 +7,7 @@ public class EnemyPattern : MonoBehaviour {
     private NavMeshAgent agent;
     private Transform player;
     private Animator animator;
-    private bool isAttacking = false;
+    public bool isAttacking = false;
     public bool isCombo = false;
     private bool isLookPlayer = false;
     private float stoppingDistance = 1f;
@@ -60,9 +60,14 @@ public class EnemyPattern : MonoBehaviour {
                 if (distanceToPlayer <= detectionDistance)      //플레이어 발견 시
                 {
                     animator.SetFloat("enemySpeed", 1f);
+                    // 패턴이 실행 중이 아니라면 추적을 시작합니다.
+                    if (!agent.isActiveAndEnabled) {
+                        agent.enabled = true;       //네비메시를 아예 꺼버림
+                    }
+                    agent.destination = player.position;
                     agent.SetDestination(player.position);
                     // 플레이어가 공격 범위 내에 있을 때
-                    if (distanceToPlayer <= 4.0f) {
+                    if (distanceToPlayer <= 2.0f) {
                         isSearchMode = false;
                         isBattleMode = true;
                     }  //공격 모드 돌입
@@ -72,11 +77,11 @@ public class EnemyPattern : MonoBehaviour {
         }
 
         if (isBattleMode) {
-            if (!isAttacking && !isCombo) {
+            if (!isAttacking) {
                 agent.isStopped = true;
                 canEnemyRotate = false;
-                animator.SetFloat("enemySpeed", -1f);
-                int pattern = 1; //Random.Range(1, 4); // 예를 들어, 1에서 3 중에서 랜덤 선택
+                //animator.SetFloat("enemySpeed", -1f);
+                int pattern = 2; //Random.Range(1, 4); // 예를 들어, 1에서 3 중에서 랜덤 선택
                 //int backCount = Random.Range(0, 16);
                 //if (backStepCount > backCount) {
                 //    pattern = 3;
@@ -90,8 +95,7 @@ public class EnemyPattern : MonoBehaviour {
                         break;
                     case 2:
                         // 패턴 2: 이동 패턴
-                        //StartCoroutine(horizontal_movement());
-                        //int ranana = Random.Range(1, 3);
+                        StartCoroutine(AttackPattern1_2());
                         break;
                     case 3:
                         // 패턴 3: 후퇴 패턴
@@ -114,22 +118,27 @@ public class EnemyPattern : MonoBehaviour {
        // LockEnemyAnimRootTrue();
 
         animator.SetTrigger("Attack1");
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(1.3f);
         // UnLockEnemyAnimRootfalse();
-        int pattern = 1;//Random.Range(1, 3);
+        int pattern = Random.Range(1, 3);
         if(pattern == 1) {
-            yield return StartCoroutine(AttackPattern1_2());
+         //   yield return StartCoroutine(AttackPattern1_2());
         }
         yield return new WaitForSeconds(1f);
-        Debug.Log("Test Combo");
-        //agent.SetDestination(player.position);
+        
+        agent.SetDestination(player.position);
         isAttacking = false;
 
     }
     //1-2 연속 공격
     IEnumerator AttackPattern1_2() {
+        isAttacking = true;
+        isCombo = true;
         animator.SetTrigger("Attack1_all");
-        yield return null;
+        Debug.Log("Test Combo");
+        yield return new WaitForSeconds(4f);
+        isAttacking = false;
+        isCombo = false;
     }
 
 
@@ -241,6 +250,7 @@ public class EnemyPattern : MonoBehaviour {
     void StopAgent() {
         canEnemyRotate = false;
         agent.isStopped = true;
+        
     }
     void GoAgent() {
         canEnemyRotate = true;

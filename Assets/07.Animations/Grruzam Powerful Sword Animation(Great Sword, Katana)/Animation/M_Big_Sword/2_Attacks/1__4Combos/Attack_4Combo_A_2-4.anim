@@ -105994,27 +105994,27 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.06666667
-    functionName: LockEnemyAnimRootTrue
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.06666667
     functionName: StopAgent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.0333333
+  - time: 0.1
+    functionName: LockEnemyAnimRootTrue
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.9
     functionName: UnLockEnemyAnimRootfalse
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.0333333
+  - time: 1.9666667
     functionName: GoAgent
     data: 
     objectReferenceParameter: {fileID: 0}
