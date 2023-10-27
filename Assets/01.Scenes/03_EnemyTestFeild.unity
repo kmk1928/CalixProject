@@ -7828,6 +7828,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1191465245011681574, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1191465245011681574, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1191465245011681576, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
       propertyPath: m_Name
       value: Player
@@ -9661,6 +9669,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7355159845875028404, guid: 307bb7772df7acd40bdd742aecbd87b5, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355159845875028408, guid: 307bb7772df7acd40bdd742aecbd87b5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7355159845875028411, guid: 307bb7772df7acd40bdd742aecbd87b5, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -9675,7 +9691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7355159845875028411, guid: 307bb7772df7acd40bdd742aecbd87b5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.45
+      value: -9.78
       objectReference: {fileID: 0}
     - target: {fileID: 7355159845875028411, guid: 307bb7772df7acd40bdd742aecbd87b5, type: 3}
       propertyPath: m_LocalRotation.w
