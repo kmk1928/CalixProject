@@ -8,6 +8,9 @@ public class EnemyPattern : MonoBehaviour
     private NavMeshAgent agent;
     private Transform player;
     private Animator animator;
+    private BossEyeTrail bossEye;
+    private CharStats charStats;
+
     public bool isAttacking = false;
     public bool isCombo = false;
     private bool isLookPlayer = false;
@@ -39,6 +42,8 @@ public class EnemyPattern : MonoBehaviour
         agent.updateRotation = false;
         player = GameObject.FindWithTag("Player").transform;
         animator = GetComponent<Animator>();
+        bossEye = GetComponentInChildren<BossEyeTrail>();
+        charStats = GetComponent<CharStats>();
     }
     void Update()
     {
@@ -91,13 +96,7 @@ public class EnemyPattern : MonoBehaviour
             {
                 agent.isStopped = true;
                 canEnemyRotate = false;
-                //animator.SetFloat("enemySpeed", -1f);
-                int pattern = 3; //Random.Range(1, 4); // 예를 들어, 1에서 3 중에서 랜덤 선택
-                //int backCount = Random.Range(0, 16);
-                //if (backStepCount > backCount) {
-                //    pattern = 3;
-                //    StartCoroutine(Backstep());
-                //}
+                int pattern = 4; //Random.Range(1, 4); // 예를 들어, 1에서 3 중에서 랜덤 선택
                 switch (pattern)
                 {
                     case 1:
@@ -111,6 +110,10 @@ public class EnemyPattern : MonoBehaviour
                         break;
                     case 3:
                         StartCoroutine(TeleportAndAttack());
+                        break;
+                    case 4:
+                        // 패턴 2: 이동 패턴
+                        StartCoroutine(AttackPattern_GS7());
                         break;
 
                 }
@@ -186,7 +189,15 @@ public class EnemyPattern : MonoBehaviour
         isAttacking = false;
         isCombo = false;
     }
-
+    IEnumerator AttackPattern_GS7() {
+        isAttacking = true;
+        isCombo = true;
+        animator.SetTrigger("Attack_GS7");
+        Debug.Log("Test GSGSGS7777");
+        yield return new WaitForSeconds(7f);
+        isAttacking = false;
+        isCombo = false;
+    }
 
     //2번째
     IEnumerator Backstep()
@@ -314,5 +325,12 @@ public class EnemyPattern : MonoBehaviour
     void ComboEnd()
     {
         isCombo = false;
+    }
+
+    void BossEye_Enable_RootObj() {
+        bossEye.EyeParticleEnable();
+    }
+    void BossEye_Disable_RootObj() {
+        bossEye.EyeParticleDisable();
     }
 }

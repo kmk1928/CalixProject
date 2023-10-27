@@ -5,12 +5,15 @@ using UnityEngine;
 public class BossEyeTrail : MonoBehaviour
 {
     TrailRenderer trailRenderer;
-    public float trailDuration = 1.0f; // 트레일 지속 시간
-    public float trailWidth = 0.2f; // 트레일 너비
-    public ParticleSystem particle;
+    public float trailDuration = 0.5f; // 트레일 지속 시간
+    public float trailWidth = 0.1f; // 트레일 너비
+    public ParticleSystem particle_red;
+    public ParticleSystem particle_distortion;
+    public Light eyeLight;
     void Start()
     {
-        trailRenderer = GetComponent<TrailRenderer>();
+        eyeLight = GetComponentInChildren<Light>();
+        trailRenderer = GetComponentInChildren<TrailRenderer>();
         // 트레일 렌더러 설정
         trailRenderer.time = trailDuration;
         trailRenderer.startWidth = trailWidth;
@@ -18,4 +21,16 @@ public class BossEyeTrail : MonoBehaviour
 
     }
 
+    public void EyeParticleEnable() 
+    {
+        eyeLight.enabled = true;
+        particle_distortion.Play();
+        particle_red.Play();
+        trailRenderer.enabled = true;
+    }
+
+    public void EyeParticleDisable() {
+        eyeLight.enabled = false;        
+        trailRenderer.enabled = false;
+    }
 }
