@@ -96,7 +96,7 @@ public class EnemyPattern : MonoBehaviour
             {
                 agent.isStopped = true;
                 canEnemyRotate = false;
-                int pattern = 4; //Random.Range(1, 4); // 예를 들어, 1에서 3 중에서 랜덤 선택
+                int pattern = Random.Range(1, 5); // 예를 들어, 1에서 3 중에서 랜덤 선택
                 switch (pattern)
                 {
                     case 1:

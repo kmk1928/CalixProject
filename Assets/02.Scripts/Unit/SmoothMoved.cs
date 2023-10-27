@@ -39,14 +39,14 @@ public class SmoothMoved : MonoBehaviour
         StartCoroutine(SmoothPushed(original.position,
                                     enemy.position,
                                     smoothTime - 0.1f,
-                                    0.3f));
+                                    0.7f));
     }
     public void SmoothMove_normalAttack(Transform original, Transform enemy) {
         //SmoothPushed(현재위치, 공격자의 위치 , 이동시간, 이동거리)을 받음
         StartCoroutine(SmoothPushed(original.position,
                                     enemy.position,
                                     smoothTime,
-                                    1f));
+                                    1.2f));
     }
     public void SmoothMove_powerAttack(Transform original, Transform enemy) {
         //SmoothPushed(현재위치, 공격자의 위치 , 이동시간, 이동거리)을 받음

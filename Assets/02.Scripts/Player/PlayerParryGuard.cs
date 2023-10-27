@@ -57,7 +57,7 @@ public class PlayerParryGuard : MonoBehaviour {
         if (isParried && !isHittedMotioning) {                        //패리중이 true일때 패리 영역을활성화하고 패리시간이 지나면 다시 꺼지는 코드
             parryArea.enabled = true;
             parryTimer += Time.deltaTime;
-            if (parryTimer > 0.6f) {
+            if (parryTimer > 0.3f) {
                 parryTimer = 0;
                 isParried = false;
                 parryArea.enabled = false;

@@ -48,7 +48,7 @@ public class MeleeAreaSetup : MonoBehaviour
         }
         Debug.Log("Enemy 공격 코루틴 실행");
         defaultDamageCollider.EnableMeleeArea();
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.08f);
         defaultDamageCollider.DisableMeleeArea();
     }
 
