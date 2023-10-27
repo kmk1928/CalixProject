@@ -169,3 +169,4 @@ MonoBehaviour:
   item: {fileID: 0}
   itemImage: {fileID: 0}
   itemCount: 0
+  theSlotToolTip: {fileID: 0}

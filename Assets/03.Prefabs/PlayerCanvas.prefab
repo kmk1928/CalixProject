@@ -1243,7 +1243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   go_BaseUi: {fileID: 286844675}
-  background_Img: {fileID: 163886985}
+  Menu_BackImg: {fileID: 0}
 --- !u!1 &1978209875
 GameObject:
   m_ObjectHideFlags: 0
@@ -5634,6 +5634,7 @@ MonoBehaviour:
   InventoryActivated: 0
   go_InventoryBase: {fileID: 3124041523589993639}
   go_SlotsParent: {fileID: 4557046403150436629}
+  Inven_BackImg: {fileID: 0}
 --- !u!1 &6358445222203512243
 GameObject:
   m_ObjectHideFlags: 0

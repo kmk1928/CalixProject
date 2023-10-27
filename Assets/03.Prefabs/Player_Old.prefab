@@ -467,6 +467,7 @@ MonoBehaviour:
   enemyToLookAt: {fileID: 0}
   isTargeting: 0
   equipWeapon: {fileID: 0}
+  isDodge: 0
   weapons:
   - {fileID: 2721926924749682036}
   - {fileID: 2721926923924075745}
@@ -477,6 +478,7 @@ MonoBehaviour:
   isDead: 0
   canMovePlayer: 1
   canPlayerRotate: 0
+  theInventory: {fileID: 0}
 --- !u!114 &4387737048312850188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,6 +512,8 @@ MonoBehaviour:
   nanoDropAmount: 0
   criticalChance: 1
   criticalDamage: 1.5
+  curDamageCal: 1
+  imsi: 0
 --- !u!114 &2721926923998867568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,6 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42316a8dd1ee93c4bad6073e01b46727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  atkSpd: 1
 --- !u!114 &2721926923998867470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,6 +543,8 @@ MonoBehaviour:
   smoothTime: 0.5
   parryArea: {fileID: 1393981726454021418}
   parryParticle: {fileID: 0}
+  parryDistortion: {fileID: 0}
+  hittedParticle: {fileID: 0}
   powerHittedParticle: {fileID: 2636222640454372865}
 --- !u!1 &2721926924102220817
 GameObject:
@@ -3697,6 +3704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultDamageCollider: {fileID: 0}
+  oneSlash: {fileID: 0}
 --- !u!4 &4355991118125941432 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: b78a8aa8ae349394187459c9200c4753, type: 3}
@@ -3850,7 +3858,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   damage: 20
-  trailEffect: {fileID: 2721926924102220823}
 --- !u!1001 &6437736762324697913
 PrefabInstance:
   m_ObjectHideFlags: 0

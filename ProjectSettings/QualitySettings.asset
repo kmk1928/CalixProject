@@ -76,7 +76,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: e95fa36813369e44b91c0e2a53e7ed25, type: 2}
+    customRenderPipeline: {fileID: 11400000, guid: 9d56e7f6b6ce27744956accbf4e31e28, type: 2}
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Medium
@@ -112,7 +112,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: f263d4c3ac347cd42a713e5fdc89a8fe, type: 2}
+    customRenderPipeline: {fileID: 11400000, guid: 4c40455cca3f06e448384a561d6e3d7d, type: 2}
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: High
@@ -148,7 +148,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    customRenderPipeline: {fileID: 11400000, guid: 3e2b208fc63251048a02756e624a1fed, type: 2}
+    customRenderPipeline: {fileID: 11400000, guid: 7e61d1ca57d25b34894787fc1fd6e498, type: 2}
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Very High

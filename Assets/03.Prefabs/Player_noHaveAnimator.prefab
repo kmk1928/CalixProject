@@ -139,6 +139,7 @@ MonoBehaviour:
   enemyToLookAt: {fileID: 0}
   isTargeting: 0
   equipWeapon: {fileID: 0}
+  isDodge: 0
   weapons:
   - {fileID: 4493776037282137778}
   - {fileID: 6278710012595514599}
@@ -149,6 +150,7 @@ MonoBehaviour:
   isDead: 0
   canMovePlayer: 1
   canPlayerRotate: 0
+  theInventory: {fileID: 0}
 --- !u!114 &1304810687227552458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +184,8 @@ MonoBehaviour:
   nanoDropAmount: 0
   criticalChance: 1
   criticalDamage: 1.5
+  curDamageCal: 1
+  imsi: 0
 --- !u!114 &808954602112218550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42316a8dd1ee93c4bad6073e01b46727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  atkSpd: 1
 --- !u!114 &808954602112218568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +215,8 @@ MonoBehaviour:
   smoothTime: 0.5
   parryArea: {fileID: 4442707641012828396}
   parryParticle: {fileID: 0}
+  parryDistortion: {fileID: 0}
+  hittedParticle: {fileID: 0}
   powerHittedParticle: {fileID: 750552437843479495}
 --- !u!1 &2462413641426145189
 GameObject:
@@ -1954,7 +1961,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   damage: 20
-  trailEffect: {fileID: 6278710014192456897}
 --- !u!114 &6278710012595415643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2072,6 +2078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultDamageCollider: {fileID: 0}
+  oneSlash: {fileID: 0}
 --- !u!114 &6278710013572097307
 MonoBehaviour:
   m_ObjectHideFlags: 0
