@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyPattern : MonoBehaviour
-{
+public class EnemyPattern : MonoBehaviour {
     private NavMeshAgent agent;
     private Transform player;
     private Animator animator;
     private bool isAttacking = false;
     private bool isLookPlayer = false;
-    private float originNavSpeed;
+    private float stoppingDistance = 1f;
+    private float originNavSpeed = 3.5f;
     public float hrizon_move = 0;
     private float moveDirection = 0; //좌우 이동용 기본 값
     private float detectionRange = 10f; //후퇴용 이동속도
     private float distanceToPlayer;
 
+    private bool canEnemyRotate = true;
+
+    private int backStepCount = 0;
     public float detectionDistance = 20f; // 플레이어 감지 범위 = 공격시작 범위
 
     private bool isSearchMode = true;
@@ -34,10 +37,10 @@ public class EnemyPattern : MonoBehaviour
         animator = GetComponent<Animator>();
     }
     void Update() {
-        //if(agent.velocity.sqrMagnitude >= 0.1f * 0.1f && agent.remainingDistance < 0.1f) {
+        // if(agent.velocity.sqrMagnitude >= 0.1f * 0.1f && agent.remainingDistance < 0.1f) {
         //    //걷는 애니메이션 중지 -- 자연스러운 회전을 위함
         //}
-        if(agent.desiredVelocity.sqrMagnitude >= 0.1f * 0.1f) {
+        if (agent.desiredVelocity.sqrMagnitude >= 0.1f * 0.1f) {
             //에이전트의 이동방향
             Vector3 direction = agent.desiredVelocity;
             //회전각도 (쿼터니언 산출) 위의 벡터를 변형
@@ -45,15 +48,16 @@ public class EnemyPattern : MonoBehaviour
             //선형보간 함수를 이용해 부드러운 회전   //마지막의 숫자는 얼마나 빠르게 회전 할 것인지
             transform.rotation = Quaternion.Slerp(transform.rotation
                                                 , targetAngle
-                                                , Time.deltaTime * 5.0f);
+                                                , Time.deltaTime * 6.0f);
         }
 
+        distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (isSearchMode) {
             if (player != null) {
-                distanceToPlayer = Vector3.Distance(transform.position, player.position);
                 if (distanceToPlayer <= detectionDistance)      //플레이어 발견 시
                 {
-                        agent.SetDestination(player.position);
+                    animator.SetFloat("enemySpeed", 1f);
+                    agent.SetDestination(player.position);
                     // 플레이어가 공격 범위 내에 있을 때
                     if (distanceToPlayer <= 4.0f) {
                         isSearchMode = false;
@@ -64,63 +68,98 @@ public class EnemyPattern : MonoBehaviour
             }
         }
 
-        if (isBattleMode) {
-            distanceToPlayer = Vector3.Distance(transform.position, player.position); //지금상태로는 두번 불러서 손해지만 일반 냅둠
-            if (!isAttacking) {
-                // 여기서 패턴을 랜덤하게 선택합니다.
-                int pattern = 3; //Random.Range(2, 4); // 예를 들어, 1에서 3 중에서 랜덤 선택
+        //if (distanceToPlayer <= stoppingDistance) {
+        //    agent.isStopped = true;
+        //}
+        //else {
+        //    agent.isStopped = false;
+        //    agent.SetDestination( player.position);
+        //}
 
+        if (isBattleMode) {
+            if (!isAttacking) {
+                agent.isStopped = true;
+                canEnemyRotate = false;
+                animator.SetFloat("enemySpeed", 0f);
+                int pattern = 1; //Random.Range(1, 4); // 예를 들어, 1에서 3 중에서 랜덤 선택
+                //int backCount = Random.Range(0, 16);
+                //if (backStepCount > backCount) {
+                //    pattern = 3;
+                //    StartCoroutine(Backstep());
+                //}
                 switch (pattern) {
                     case 1:
                         // 패턴 1: 공격 패턴
+                        BackStepCountPlus();
                         StartCoroutine(AttackPattern1());
                         break;
                     case 2:
                         // 패턴 2: 이동 패턴
-                        StartCoroutine(horizontal_movement());
+                        //StartCoroutine(horizontal_movement());
+                        //int ranana = Random.Range(1, 3);
                         break;
                     case 3:
                         // 패턴 3: 후퇴 패턴
-                        StartCoroutine(Backstep());
+
                         break;
                 }
-
             }
 
-        }
-        if (!isBattleMode) {  //너무 멀어지면 다시 추격
-            isSearchMode = true;
-            isBattleMode = false;
+            if(distanceToPlayer > 4.1f) {
+
+                isSearchMode = true;
+                isBattleMode = false;
+            }
         }
     }
 
-    IEnumerator AttackPattern1() {      //어깨빵 공격
-
+    IEnumerator AttackPattern1() {
         Debug.Log("Test1 Start");
         isAttacking = true;
-        LockEnemyAnimRootTrue();
+       // LockEnemyAnimRootTrue();
 
         animator.SetTrigger("Attack1");
+        yield return new WaitForSeconds(0.8f);
+       // UnLockEnemyAnimRootfalse();
+        yield return new WaitForSeconds(1f);
 
-        yield return new WaitForSeconds(1f);
-        UnLockEnemyAnimRootfalse();
-        yield return new WaitForSeconds(1f);
+        //agent.SetDestination(player.position);
+        isAttacking = false;
+
+    }
+    //2번째
+    IEnumerator Backstep() { //후퇴
+        Debug.Log("Test3 Start");
+        isAttacking = true;
+        animator.SetTrigger("Backstep");
+        float targetDistance = 3f;
+        Vector3 moveDirection = (transform.position - player.position).normalized;
+        Vector3 targetPosition = transform.position + moveDirection * targetDistance;
+
+        agent.destination = targetPosition; 
+        agent.speed = 8f;
+
+        // 이동 완료까지 대기
+        while (agent.remainingDistance > 0.2f) {
+            yield return null;
+        }
+        agent.speed = originNavSpeed;
+        yield return new WaitForSeconds(2f);
+        agent.destination = player.position;
+        // yield return StartCoroutine(horizontal_movement());
         isAttacking = false;
     }
-    
-    //2번째
+    //3번째
     IEnumerator horizontal_movement() { //경계 이동
 
         Debug.Log("Test2 Start");
-        isAttacking = true;
 
         Vector3 lookForward = (transform.position + player.position).normalized;
         transform.LookAt(lookForward);
 
         moveDirection = Random.Range(0, 2) == 0 ? -1 : 1; // 랜덤하게 좌우 이동 방향 선택 (-1: 왼쪽, 1: 오른쪽)
-        float moveDistance = 4f; // 이동 거리
-        float moveSpeed = 2f; //  이동 속도
-        originNavSpeed = agent.speed;  //이동속도 변경
+        float moveDistance = 2f; // 이동 거리
+        float moveSpeed = 1.5f; //  이동 속도
         agent.speed = moveSpeed;
 
         animator.SetFloat("horizon_move", moveDirection);
@@ -128,7 +167,7 @@ public class EnemyPattern : MonoBehaviour
         Vector3 initialPosition = transform.position;
         Vector3 localRight = transform.TransformDirection(Vector3.right); // 현재 로컬 x방향의 세계 좌표
         Vector3 targetPosition = initialPosition + localRight * (moveDirection * moveDistance);
-        agent.SetDestination(targetPosition);
+        agent.destination = targetPosition;
 
         // 이동 완료까지 대기
         while (agent.remainingDistance > 0.5f) {
@@ -136,37 +175,14 @@ public class EnemyPattern : MonoBehaviour
         }
 
         agent.speed = originNavSpeed; //이동속도 복구
-        originNavSpeed = 0;
         animator.SetFloat("horizon_move", 0f);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
+        agent.destination = player.position;
         // 이동 끝
         isAttacking = false;
     }
 
-    //3번째
-    IEnumerator Backstep() { //후퇴
-        Debug.Log("Test3 Start");
-        isAttacking = true;
-        animator.SetTrigger("Backstep");
-        //float targetDistance = 2f;
-        //Vector3 moveDirection = (transform.position - player.position).normalized;
-        //Vector3 targetPosition = transform.position + moveDirection * targetDistance;
 
-        //agent.SetDestination(targetPosition);
-        //agent.speed = 8f;
-
-        //// 이동 완료까지 대기
-        //while (agent.remainingDistance > 0.5f) {
-        //    yield return null;
-        //}
-        //agent.speed = 3.5f;
-
-
-        yield return new WaitForSeconds(2f);
-
-
-        isAttacking = false;
-    }
     /*
     IEnumerator CurveMove() {//커브후퇴
                                                                                            // 이동 경로의 길이 계산
@@ -202,13 +218,26 @@ public class EnemyPattern : MonoBehaviour
     */
 
     private void LockEnemyAnimRootTrue() {
-        originNavSpeed = agent.speed;
-        agent.speed = 0;
         animator.applyRootMotion = true;
     }
     private void UnLockEnemyAnimRootfalse() {
         animator.applyRootMotion = false;
-        agent.speed = originNavSpeed;
-        originNavSpeed = 0;
+    }
+    public void EnemyCanRotate() {
+        canEnemyRotate = true;
+    }
+    public void EnemyNotRotate() {
+        canEnemyRotate = false;
+    }
+    private void BackStepCountPlus() {
+        backStepCount += 1;
+    }
+    void StopAgent() {
+        canEnemyRotate = false;
+        agent.isStopped = true;
+    }
+    void GoAgent() {
+        canEnemyRotate = true;
+        agent.isStopped = false;
     }
 }

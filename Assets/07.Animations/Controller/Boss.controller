@@ -23,7 +23,7 @@ AnimatorStateMachine:
     m_Position: {x: 910, y: 70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3370534355723714340}
-    m_Position: {x: 270, y: 360, z: 0}
+    m_Position: {x: 290, y: 360, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4877849264720595}
     m_Position: {x: 580, y: 280, z: 0}
@@ -197,9 +197,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.15707748
   m_TransitionOffset: 0
-  m_ExitTime: 0.1
+  m_ExitTime: 0.099999994
   m_HasExitTime: 1
   m_HasFixedDuration: 0
   m_InterruptionSource: 0
@@ -264,7 +264,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Attack_4Combo_1A
-  m_Speed: 1
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4832298761405676482}
@@ -277,7 +277,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 98e6292c687a88c47a05eb619d9559b2, type: 3}
+  m_Motion: {fileID: 7400000, guid: 378f0ff3f9d01e24e8fa5d0ed9cd248a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -329,8 +329,16 @@ BlendTree:
     m_DirectBlendParameter: enemySpeed
     m_Mirror: 0
   - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 04593b49903ae0245ac868742955ae37, type: 3}
+    m_Threshold: 0.5
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: enemySpeed
+    m_Mirror: 0
+  - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: f561c8c659cf37149891228483ea1eb3, type: 3}
-    m_Threshold: 0.11
+    m_Threshold: 1
     m_Position: {x: 0.5, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -339,7 +347,7 @@ BlendTree:
   m_BlendParameter: enemySpeed
   m_BlendParameterY: horizon_move
   m_MinThreshold: 0
-  m_MaxThreshold: 0.11
+  m_MaxThreshold: 1
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0

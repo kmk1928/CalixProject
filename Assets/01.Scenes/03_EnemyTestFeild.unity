@@ -9589,13 +9589,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7355159845875028409, guid: 307bb7772df7acd40bdd742aecbd87b5, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355159845875028409, guid: 307bb7772df7acd40bdd742aecbd87b5, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7355159845875028410, guid: 307bb7772df7acd40bdd742aecbd87b5, type: 3}
+      propertyPath: avoidancePriority
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7355159845875028411, guid: 307bb7772df7acd40bdd742aecbd87b5, type: 3}
       propertyPath: m_RootOrder
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7355159845875028411, guid: 307bb7772df7acd40bdd742aecbd87b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.56
+      value: -2.67
       objectReference: {fileID: 0}
     - target: {fileID: 7355159845875028411, guid: 307bb7772df7acd40bdd742aecbd87b5, type: 3}
       propertyPath: m_LocalPosition.y
