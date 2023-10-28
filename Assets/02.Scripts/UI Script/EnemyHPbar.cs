@@ -43,13 +43,28 @@ public class EnemyHPbar : MonoBehaviour
     void Update()
     {
         for(int i=0; i<enemy_objectList.Count; i++) {
-            enemy_HPbarList[i].transform.position = 
+
+            if (enemy_objectList[i] != null) {
+                enemy_HPbarList[i].transform.position =
                 enemy_cam.WorldToScreenPoint(enemy_objectList[i].position + new Vector3(0, 1.2f, 0));
 
-            enemy_sliderList[i].value =
-                Mathf.Lerp(enemy_sliderList[i].value
-                , enemy_statsList[i].curHealth / enemy_statsList[i].maxHealth
-                , Time.deltaTime * 25);
+                enemy_sliderList[i].value =
+                    Mathf.Lerp(enemy_sliderList[i].value
+                    , enemy_statsList[i].curHealth / enemy_statsList[i].maxHealth
+                    , Time.deltaTime * 25);
+            }
+
+
+            // 적 오브젝트가 파괴되었을 때 처리
+            if (enemy_objectList[i] == null) {
+                // 적 오브젝트가 파괴되었으므로 체력바를 파괴
+                Destroy(enemy_HPbarList[i]);
+                // 해당 리스트의 아이템들도 삭제
+                enemy_objectList.RemoveAt(i);
+                enemy_HPbarList.RemoveAt(i);
+                enemy_sliderList.RemoveAt(i);
+                enemy_statsList.RemoveAt(i);
+            }
         }
     }
 }
