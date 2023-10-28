@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
         theInventory = FindObjectOfType<Inventory>();
 
-        Invoke("StartSwap",1f);
+        //Invoke("StartSwap",1f);
     }
 
     void Update()
@@ -323,7 +323,7 @@ public class PlayerController : MonoBehaviour
         equipWeaponIndex = weaponIndex;
         equipWeapon = weapons[weaponIndex].GetComponent<Weapon>();
         equipWeapon.gameObject.SetActive(true);
-        meleeAreaSetup.LoadWeaponDamageCollider();
+        meleeAreaSetup.LoadDefaultDamageCollider();
 
         anim.SetTrigger("doSwap");
         isSwap = true;
@@ -384,17 +384,9 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(horizontalInput * speed, rb.velocity.y, verticalInput * speed);
 
             // Coroutine을 시작하여 Dodge를 일정 시간 후에 종료합니다.
-            StartCoroutine(EndDodgeAfterDelay(0.75f, originalSpeed));
+            StartCoroutine(EndDodgeAfterDelay(0.5f, originalSpeed));
         }
 
-    }
-    private void Die()
-    {
-        isDead = true;
-        canMovePlayer = false;
-        //Destroy(this, 2f);
-        anim.SetTrigger("doDie");
-        GameManager.instance.OnPlayerDead();
     }
 
     // Dodge 동작을 0.5초 후 종료하는 코루틴
@@ -407,6 +399,13 @@ public class PlayerController : MonoBehaviour
         speed = originalSpeed; // 속도를 원래 값으로 복원
 
         canMovePlayer = true; // 이동 활성화
+    }
+    private void Die() {
+        isDead = true;
+        canMovePlayer = false;
+        //Destroy(this, 2f);
+        anim.SetTrigger("doDie");
+        GameManager.instance.OnPlayerDead();
     }
 
     /*  ------------- 속도만 조절 하는 부분 -------------------

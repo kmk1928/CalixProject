@@ -13,6 +13,7 @@ public class MeleeAreaSetup : MonoBehaviour
         //장착 무기 콜라이더 받기 위한 플레이어컨트롤러 
         //플레이어 위치 확인
         playerCtrl = GetComponent<PlayerController>();
+        LoadDefaultDamageCollider();
     }
 
     public void LoadWeaponDamageCollider() {
