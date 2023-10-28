@@ -12,16 +12,19 @@ public class PlayerStats : CharStats
     [Tooltip("치명타 피해 증가량 기본 1.5배")]
     public float criticalDamage = 1.5f;
     public float curDamageCal = 1.0f;       //데미지 계수
+
     public float imsi;
 
     private void Start() {
         playerAk = GetComponent<PlayerAttacker>();
     }
+
     private void Update() {
+
         imsi = (float)curHealth / (float)maxHealth;
         UIManager.instance.UpdateHPBar(imsi);
     }
-
+   
     private void LateUpdate() { 
         if (playerAk.isNAing && !playerAk.isSkill_1ing && !playerAk.isSkill_2ing) {
             curDamageCal = playerAk.attackPatterns_void_normalAk[playerAk.indexValueForCalculation].damageMultiplier;

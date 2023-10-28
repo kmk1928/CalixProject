@@ -14,13 +14,14 @@ public class CharStats : MonoBehaviour
     public float abillityPower = 10f;
 
     public bool isDead = false;
-
+     
     [Header("적이 드랍하는 나노")]
     public int nanoDropAmount = 100;
 
     private void Awake() {
         curHealth = maxHealth;
     }
+
 
     public void TakeADDamage(float damage) {
         curHealth -= damage;

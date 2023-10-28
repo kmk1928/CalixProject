@@ -195,7 +195,7 @@ public class EnemyPattern : MonoBehaviour
         isCombo = true;
         animator.SetTrigger("Attack_GS7");
         Debug.Log("Test GSGSGS7777");
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(9f);
         isAttacking = false;
         isCombo = false;
     }

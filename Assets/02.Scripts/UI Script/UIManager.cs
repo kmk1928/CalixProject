@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject gameoverUI;   // 게임 오버시 활성화 할 UI 게임 오브젝트
     public TMP_Text nanoText;          // 보유한 나노를 출력할 UI 텍스트
-    public Slider HPBar;
+    public Slider player_HPBar;
 
 
     void Awake() {
@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
         nanoText.text = "Nano " + newNano;
     }
     public void UpdateHPBar(float PSimsi) {  //나노 UI 최신화
-        HPBar.value = Mathf.Lerp(HPBar.value, PSimsi, Time.deltaTime * 25);
+        player_HPBar.value = Mathf.Lerp(player_HPBar.value, PSimsi, Time.deltaTime * 25);
     }
 
     public void SetActiveGameoverUI(bool active) {
