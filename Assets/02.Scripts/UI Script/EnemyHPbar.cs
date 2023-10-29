@@ -10,6 +10,7 @@ public class EnemyHPbar : MonoBehaviour
     List<Transform> enemy_objectList = new List<Transform>();
     List<GameObject> enemy_HPbarList = new List<GameObject>();
     List<Slider> enemy_sliderList = new List<Slider>();
+    List<Text> enemy_textList = new List<Text>();
     List<CharStats> enemy_statsList = new List<CharStats>();
 
     Camera enemy_cam = null;
@@ -23,6 +24,7 @@ public class EnemyHPbar : MonoBehaviour
             enemy_objectList.Add(t_objects[i].transform);
             GameObject t_HPbar = Instantiate(enemy_HPbarPrefab, t_objects[i].transform.position, Quaternion.identity, transform);
             enemy_HPbarList.Add(t_HPbar);
+            enemy_textList.Add(t_HPbar.GetComponentInChildren<Text>());
         
             // 슬라이더 오브젝트에서 Slider 컴포넌트를 찾음
             Slider slider = t_HPbar.GetComponentInChildren<Slider>();
@@ -52,7 +54,10 @@ public class EnemyHPbar : MonoBehaviour
                     Mathf.Lerp(enemy_sliderList[i].value
                     , enemy_statsList[i].curHealth / enemy_statsList[i].maxHealth
                     , Time.deltaTime * 25);
+
+                enemy_textList[i].text = "-" + enemy_statsList[i].t_damage.ToString("0");
             }
+
 
 
             // 적 오브젝트가 파괴되었을 때 처리

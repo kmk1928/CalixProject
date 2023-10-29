@@ -14,6 +14,8 @@ public class CharStats : MonoBehaviour
     public float abillityPower = 10f;
 
     public bool isDead = false;
+
+    public float t_damage = 0;
      
     [Header("적이 드랍하는 나노")]
     public int nanoDropAmount = 100;
@@ -25,6 +27,7 @@ public class CharStats : MonoBehaviour
 
     public void TakeADDamage(float damage) {
         curHealth -= damage;
+        t_damage = damage;
         DeadCheck();
     }
 
