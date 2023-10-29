@@ -43,8 +43,6 @@ public class EnemyHPbar : MonoBehaviour
             float healthRatio = curHP / maxHP;
             slider.value = healthRatio;
 
-            // 카메라 위치에서의 오프셋을 저장
-            enemy_HPbarList[i].transform.position = enemy_cam.WorldToScreenPoint(enemy_objectList[i].position + new Vector3(0, 1.2f, 0));
         }
     }
     // Update is called once per frame
@@ -56,46 +54,40 @@ public class EnemyHPbar : MonoBehaviour
             if (enemy_objectList[i] != null)
             {
 
-               // 적 객체가 카메라에 보이는지 확인
+                // 적 객체가 카메라에 보이는지 확인
                 if (enemy_cam.WorldToViewportPoint(enemy_objectList[i].position).z > 0)
                 {
                     enemy_HPbarList[i].transform.position = enemy_cam.WorldToScreenPoint(enemy_objectList[i].position + new Vector3(0, 1.2f, 0));
                     enemy_sliderList[i].value = Mathf.Lerp(enemy_sliderList[i].value, enemy_statsList[i].curHealth / enemy_statsList[i].maxHealth, Time.deltaTime * 25);
-                    
-//enemy_textList[i].text = "-" + enemy_statsList[i].t_damage.ToString("0");
-EnableText(enemy_textList[i], enemy_statsList[i].t_damage.ToString("0"));
-                }
-                else
-                {
-                    // 적이 카메라 뷰에 없을 때 체력 바를 숨깁니다.
-                    enemy_HPbarList[i].SetActive(false);
-                }
 
-                if (enemy_HPbarList[i].activeSelf == false)
-                {
-                    // 적이 카메라 뷰에 있을 때 체력 바를 표시합니다.
-                    enemy_HPbarList[i].SetActive(true);
-                }
-
-                // 적 오브젝트가 파괴되었을 때 처리
-                if (enemy_objectList[i] == null)
-                {
-                    // 적 오브젝트가 파괴되었으므로 체력바를 파괴
-                    Destroy(enemy_HPbarList[i]);
-                    // 해당 리스트의 아이템들도 삭제
-                    enemy_objectList.RemoveAt(i);
-                    enemy_HPbarList.RemoveAt(i);
-                    enemy_sliderList.RemoveAt(i);
-                    enemy_statsList.RemoveAt(i);
+                    //enemy_textList[i].text = "-" + enemy_statsList[i].t_damage.ToString("0");
+                    EnableText(enemy_textList[i], enemy_statsList[i].t_damage.ToString("0"));
                 }
             }
-        }
+            // 적 오브젝트가 파괴되었을 때 처리
+            if (enemy_objectList[i] == null)
+            {
 
-        void EnableText(Text hpText, string s_damage)
-        {
-            hpText.text = s_damage;
-            hpText.enabled = true;
-        }
+                // 적 오브젝트가 파괴되었으므로 체력바를 파괴
+                Destroy(enemy_HPbarList[i]);
 
+                // 해당 리스트의 아이템들도 삭제
+                enemy_objectList.RemoveAt(i);
+                enemy_HPbarList.RemoveAt(i);
+                enemy_sliderList.RemoveAt(i);
+                enemy_textList.RemoveAt(i);
+                enemy_statsList.RemoveAt(i);
+
+                i--; // 인덱스 감소 (리스트가 조정되었으므로 같은 인덱스 재확인)
+            }
+
+
+            void EnableText(Text hpText, string s_damage)
+            {
+                hpText.text = s_damage;
+                hpText.enabled = true;
+            }
+
+        }
     }
 }
