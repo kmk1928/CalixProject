@@ -15,8 +15,10 @@ public class CharStats : MonoBehaviour
 
     public bool isDead = false;
 
-    public float t_damage = 0;
-     
+    public float t_damage = 1;
+    IEnumerator hptext_corutine;  //다시 호출되면 코루틴을 취소하고 다시 생성 3초안에 다시 데미지입으면 
+    private float additionalDamage = 0;
+
     [Header("적이 드랍하는 나노")]
     public int nanoDropAmount = 100;
 
@@ -24,11 +26,26 @@ public class CharStats : MonoBehaviour
         curHealth = maxHealth;
     }
 
+    private Coroutine resetCoroutine; // 코루틴을 저장할 변수
+
+
+    IEnumerator damageReset(float additionalDamage)
+    {
+        t_damage += additionalDamage;
+        yield return new WaitForSeconds(3f);
+        t_damage = 0;
+    }
 
     public void TakeADDamage(float damage) {
         curHealth -= damage;
-        t_damage = damage;
+        additionalDamage = damage;
         DeadCheck();
+        // 만약 damageReset 코루틴이 이미 실행 중이라면 중지하고 재시작
+        if (resetCoroutine != null)
+        {
+            StopCoroutine(resetCoroutine);
+        }
+        resetCoroutine = StartCoroutine(damageReset(additionalDamage)); // damageReset 코루틴 시작
     }
 
     public void TakeAPDamage(float damage) {

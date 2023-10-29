@@ -12,6 +12,7 @@ public class EnemyHPbar : MonoBehaviour
     List<Slider> enemy_sliderList = new List<Slider>();
     List<Text> enemy_textList = new List<Text>();
     List<CharStats> enemy_statsList = new List<CharStats>();
+    List<float> text_enableTime = new List<float>();
 
     Camera enemy_cam = null;
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class EnemyHPbar : MonoBehaviour
         GameObject[] t_objects = GameObject.FindGameObjectsWithTag("Enemy");
         for (int i = 0; i < t_objects.Length; i++) 
         {
+            text_enableTime.Add(0f);
             enemy_objectList.Add(t_objects[i].transform);
             GameObject t_HPbar = Instantiate(enemy_HPbarPrefab, t_objects[i].transform.position, Quaternion.identity, transform);
             enemy_HPbarList.Add(t_HPbar);
@@ -55,7 +57,10 @@ public class EnemyHPbar : MonoBehaviour
                     , enemy_statsList[i].curHealth / enemy_statsList[i].maxHealth
                     , Time.deltaTime * 25);
 
-                enemy_textList[i].text = "-" + enemy_statsList[i].t_damage.ToString("0");
+                //enemy_textList[i].text = "-" + enemy_statsList[i].t_damage.ToString("0");
+                EnableText(enemy_textList[i], enemy_statsList[i].t_damage.ToString("0"));
+
+
             }
 
 
@@ -72,4 +77,11 @@ public class EnemyHPbar : MonoBehaviour
             }
         }
     }
+
+    void EnableText(Text hpText, string s_damage)
+    {
+        hpText.text = s_damage;
+        hpText.enabled = true;
+    }
+
 }
