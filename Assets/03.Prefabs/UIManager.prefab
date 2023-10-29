@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameoverUI: {fileID: 0}
   nanoText: {fileID: 0}
-  HPBar: {fileID: 0}
+  player_HPBar: {fileID: 0}

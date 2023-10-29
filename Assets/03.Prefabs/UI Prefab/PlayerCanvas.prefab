@@ -6052,7 +6052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 396c4548a52c68b4c8556deab2c295ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_HPbarPrefab: {fileID: 0}
+  enemy_HPbarPrefab: {fileID: 1920208703614559106, guid: c13a86f5c9742cc4e9462948b5668768, type: 3}
 --- !u!1 &8753811038163479709
 GameObject:
   m_ObjectHideFlags: 0
@@ -6462,7 +6462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.5526123, y: -2.9143066}
+  m_AnchoredPosition: {x: 4.5526123, y: -2.9142456}
   m_SizeDelta: {x: 29.7745, y: 36.0681}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8753811038357594274
