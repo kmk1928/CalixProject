@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,72 +16,86 @@ public class EnemyHPbar : MonoBehaviour
 
     Camera enemy_cam = null;
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         enemy_cam = Camera.main;
 
         GameObject[] t_objects = GameObject.FindGameObjectsWithTag("Enemy");
-        for (int i = 0; i < t_objects.Length; i++) 
+        for (int i = 0; i < t_objects.Length; i++)
         {
             text_enableTime.Add(0f);
             enemy_objectList.Add(t_objects[i].transform);
             GameObject t_HPbar = Instantiate(enemy_HPbarPrefab, t_objects[i].transform.position, Quaternion.identity, transform);
             enemy_HPbarList.Add(t_HPbar);
             enemy_textList.Add(t_HPbar.GetComponentInChildren<Text>());
-        
-            // ½½¶óÀÌ´õ ¿ÀºêÁ§Æ®¿¡¼­ Slider ÄÄÆ÷³ÍÆ®¸¦ Ã£À½
+
+            // ìŠ¬ë¼ì´ë” ì˜¤ë¸Œì íŠ¸ì—ì„œ Slider ì»´í¬ë„ŒíŠ¸ë¥¼ ì°¾ìŒ
             Slider slider = t_HPbar.GetComponentInChildren<Slider>();
             enemy_sliderList.Add(slider);
 
-            // Slider ÄÄÆ÷³ÍÆ®¿¡ ¿¬°áµÈ CharStats ½ºÅ©¸³Æ®¿¡¼­ ÇöÀç Ã¼·Â ¹× ÃÖ´ë Ã¼·Â °ªÀ» °¡Á®¿È
+            // Slider ì»´í¬ë„ŒíŠ¸ì— ì—°ê²°ëœ CharStats ìŠ¤í¬ë¦½íŠ¸ì—ì„œ í˜„ì¬ ì²´ë ¥ ë° ìµœëŒ€ ì²´ë ¥ ê°’ì„ ê°€ì ¸ì˜´
             CharStats charStats = t_objects[i].GetComponent<CharStats>();
             enemy_statsList.Add(charStats);
             float curHP = charStats.curHealth;
             float maxHP = charStats.maxHealth;
 
-            // ½½¶óÀÌ´õÀÇ value¸¦ ÇöÀç Ã¼·Â ºñÀ²·Î ¼³Á¤
+            // ìŠ¬ë¼ì´ë”ì˜ valueë¥¼ í˜„ì¬ ì²´ë ¥ ë¹„ìœ¨ë¡œ ì„¤ì •
             float healthRatio = curHP / maxHP;
             slider.value = healthRatio;
+
+            // ì¹´ë©”ë¼ ìœ„ì¹˜ì—ì„œì˜ ì˜¤í”„ì…‹ì„ ì €ì¥
+            enemy_HPbarList[i].transform.position = enemy_cam.WorldToScreenPoint(enemy_objectList[i].position + new Vector3(0, 1.2f, 0));
         }
     }
     // Update is called once per frame
     void Update()
     {
-        for(int i=0; i<enemy_objectList.Count; i++) {
 
-            if (enemy_objectList[i] != null) {
-                enemy_HPbarList[i].transform.position =
-                enemy_cam.WorldToScreenPoint(enemy_objectList[i].position + new Vector3(0, 1.2f, 0));
+        for (int i = 0; i < enemy_objectList.Count; i++)
+        {
+            if (enemy_objectList[i] != null)
+            {
 
-                enemy_sliderList[i].value =
-                    Mathf.Lerp(enemy_sliderList[i].value
-                    , enemy_statsList[i].curHealth / enemy_statsList[i].maxHealth
-                    , Time.deltaTime * 25);
+               // ì  ê°ì²´ê°€ ì¹´ë©”ë¼ì— ë³´ì´ëŠ”ì§€ í™•ì¸
+                if (enemy_cam.WorldToViewportPoint(enemy_objectList[i].position).z > 0)
+                {
+                    enemy_HPbarList[i].transform.position = enemy_cam.WorldToScreenPoint(enemy_objectList[i].position + new Vector3(0, 1.2f, 0));
+                    enemy_sliderList[i].value = Mathf.Lerp(enemy_sliderList[i].value, enemy_statsList[i].curHealth / enemy_statsList[i].maxHealth, Time.deltaTime * 25);
+                    
+//enemy_textList[i].text = "-" + enemy_statsList[i].t_damage.ToString("0");
+EnableText(enemy_textList[i], enemy_statsList[i].t_damage.ToString("0"));
+                }
+                else
+                {
+                    // ì ì´ ì¹´ë©”ë¼ ë·°ì— ì—†ì„ ë•Œ ì²´ë ¥ ë°”ë¥¼ ìˆ¨ê¹ë‹ˆë‹¤.
+                    enemy_HPbarList[i].SetActive(false);
+                }
 
-                //enemy_textList[i].text = "-" + enemy_statsList[i].t_damage.ToString("0");
-                EnableText(enemy_textList[i], enemy_statsList[i].t_damage.ToString("0"));
+                if (enemy_HPbarList[i].activeSelf == false)
+                {
+                    // ì ì´ ì¹´ë©”ë¼ ë·°ì— ìˆì„ ë•Œ ì²´ë ¥ ë°”ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤.
+                    enemy_HPbarList[i].SetActive(true);
+                }
 
-
-            }
-
-
-
-            // Àû ¿ÀºêÁ§Æ®°¡ ÆÄ±«µÇ¾úÀ» ¶§ Ã³¸®
-            if (enemy_objectList[i] == null) {
-                // Àû ¿ÀºêÁ§Æ®°¡ ÆÄ±«µÇ¾úÀ¸¹Ç·Î Ã¼·Â¹Ù¸¦ ÆÄ±«
-                Destroy(enemy_HPbarList[i]);
-                // ÇØ´ç ¸®½ºÆ®ÀÇ ¾ÆÀÌÅÛµéµµ »èÁ¦
-                enemy_objectList.RemoveAt(i);
-                enemy_HPbarList.RemoveAt(i);
-                enemy_sliderList.RemoveAt(i);
-                enemy_statsList.RemoveAt(i);
+                // ì  ì˜¤ë¸Œì íŠ¸ê°€ íŒŒê´´ë˜ì—ˆì„ ë•Œ ì²˜ë¦¬
+                if (enemy_objectList[i] == null)
+                {
+                    // ì  ì˜¤ë¸Œì íŠ¸ê°€ íŒŒê´´ë˜ì—ˆìœ¼ë¯€ë¡œ ì²´ë ¥ë°”ë¥¼ íŒŒê´´
+                    Destroy(enemy_HPbarList[i]);
+                    // í•´ë‹¹ ë¦¬ìŠ¤íŠ¸ì˜ ì•„ì´í…œë“¤ë„ ì‚­ì œ
+                    enemy_objectList.RemoveAt(i);
+                    enemy_HPbarList.RemoveAt(i);
+                    enemy_sliderList.RemoveAt(i);
+                    enemy_statsList.RemoveAt(i);
+                }
             }
         }
-    }
 
-    void EnableText(Text hpText, string s_damage)
-    {
-        hpText.text = s_damage;
-        hpText.enabled = true;
-    }
+        void EnableText(Text hpText, string s_damage)
+        {
+            hpText.text = s_damage;
+            hpText.enabled = true;
+        }
 
+    }
 }
