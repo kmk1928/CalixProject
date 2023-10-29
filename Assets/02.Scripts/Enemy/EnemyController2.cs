@@ -31,7 +31,7 @@ public class EnemyController2 : MonoBehaviour
     public BoxCollider attackArea;
 
     public GameObject bulletPrefab;
-    public float bulletSpeed = 10.0f;
+    public float bulletSpeed = 10.0f; //총알 시작
     public Transform bulletSpawnPoint; // 총알 시작 위치
     private float fireCooldown = 1.5f; // 총알 발사 쿨타임
 

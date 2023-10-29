@@ -45,6 +45,7 @@ public class EnemyPattern : MonoBehaviour
         bossEye = GetComponentInChildren<BossEyeTrail>();
         charStats = GetComponent<CharStats>();
     }
+
     void Update()
     {
         isCombo = animator.GetBool("isCombo");
@@ -85,7 +86,6 @@ public class EnemyPattern : MonoBehaviour
                         isSearchMode = false;
                         isBattleMode = true;
                     }  //공격 모드 돌입
-
                 }
             }
         }
@@ -136,7 +136,7 @@ public class EnemyPattern : MonoBehaviour
 
         // 플레이어 주변의 8개의 위치 생성
         Vector3[] teleportPositions = new Vector3[8];
-        float moveDistance = 4.0f; //순간이동시 플레이어와의 거리
+        float moveDistance = 4.0f; // 순간이동시 플레이어와의 거리
         for (int i = 0; i < 8; i++)
         {
             float angle = i * 45.0f;
@@ -146,6 +146,8 @@ public class EnemyPattern : MonoBehaviour
 
         // 랜덤하게 하나의 위치 선택
         Vector3 randomTeleportPosition = teleportPositions[Random.Range(0, 8)];
+
+       
 
         // 순간 이동
         transform.position = randomTeleportPosition;
@@ -157,7 +159,6 @@ public class EnemyPattern : MonoBehaviour
         // 공격 액션 수행 (예를 들어, AttackPattern1 사용)
         yield return StartCoroutine(AttackPattern2());
     }
-
 
     IEnumerator AttackPattern1()
     {
