@@ -96,7 +96,7 @@ public class EnemyPattern : MonoBehaviour
             {
                 agent.isStopped = true;
                 canEnemyRotate = false;
-                int pattern = Random.Range(1, 5); // 예를 들어, 1에서 3 중에서 랜덤 선택
+                int pattern = 3;//Random.Range(1, 5); // 예를 들어, 1에서 3 중에서 랜덤 선택
                 switch (pattern)
                 {
                     case 1:
@@ -155,7 +155,7 @@ public class EnemyPattern : MonoBehaviour
         transform.LookAt(transform.position + lookDirection);
 
         // 공격 액션 수행 (예를 들어, AttackPattern1 사용)
-        yield return StartCoroutine(AttackPattern1());
+        yield return StartCoroutine(AttackPattern2());
     }
 
 
@@ -200,6 +200,16 @@ public class EnemyPattern : MonoBehaviour
         isCombo = false;
     }
 
+    IEnumerator AttackPattern2()
+    {
+        Debug.Log("TellAttack Start");
+        isAttacking = true;
+
+        animator.SetTrigger("Attack2");
+        yield return new WaitForSeconds(1.5f);
+        isAttacking = false;
+
+    }
     //2번째
     IEnumerator Backstep()
     { //후퇴
