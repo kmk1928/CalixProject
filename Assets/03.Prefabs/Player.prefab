@@ -5205,6 +5205,7 @@ MonoBehaviour:
   attackDamage: 10
   abillityPower: 10
   isDead: 0
+  t_damage: 1
   nanoDropAmount: 0
   criticalChance: 0
   criticalDamage: 1.5
