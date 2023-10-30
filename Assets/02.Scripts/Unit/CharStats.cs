@@ -15,7 +15,7 @@ public class CharStats : MonoBehaviour
 
     public bool isDead = false;
 
-    public float t_damage = 1;
+    public float t_damage = 0;
     IEnumerator hptext_corutine;  //다시 호출되면 코루틴을 취소하고 다시 생성 3초안에 다시 데미지입으면 
     private float additionalDamage = 0;
 
