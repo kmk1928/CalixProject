@@ -8,37 +8,117 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_Chainmail
-    second: {fileID: 2100000, guid: d7feb05622e0ecb4298de7659f0f14c9, type: 2}
+    second: {fileID: 2100000, guid: 0754ce7920d385449ac5b1d773b51ce6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_Chainmail.002
-    second: {fileID: 2100000, guid: d7feb05622e0ecb4298de7659f0f14c9, type: 2}
+    second: {fileID: 2100000, guid: 0754ce7920d385449ac5b1d773b51ce6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Chainmail_Small
+    second: {fileID: 2100000, guid: 0754ce7920d385449ac5b1d773b51ce6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Cloth.006
+    second: {fileID: 2100000, guid: 0754ce7920d385449ac5b1d773b51ce6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Leather
+    second: {fileID: 2100000, guid: 0754ce7920d385449ac5b1d773b51ce6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Leather.010
+    second: {fileID: 2100000, guid: 0754ce7920d385449ac5b1d773b51ce6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Leather.011
+    second: {fileID: 2100000, guid: 0754ce7920d385449ac5b1d773b51ce6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_Leather.012
-    second: {fileID: 2100000, guid: d7feb05622e0ecb4298de7659f0f14c9, type: 2}
+    second: {fileID: 2100000, guid: 0754ce7920d385449ac5b1d773b51ce6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Leather.014
+    second: {fileID: 2100000, guid: aa521d957c9f3274ea5a76ca555d7193, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_Leather.015
-    second: {fileID: 2100000, guid: d7feb05622e0ecb4298de7659f0f14c9, type: 2}
+    second: {fileID: 2100000, guid: aa521d957c9f3274ea5a76ca555d7193, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Leather.016
+    second: {fileID: 2100000, guid: aa521d957c9f3274ea5a76ca555d7193, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_metal.029
-    second: {fileID: 2100000, guid: d7feb05622e0ecb4298de7659f0f14c9, type: 2}
+    second: {fileID: 2100000, guid: 32397cff1f035384faece7fb317686cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_metal.030
+    second: {fileID: 2100000, guid: 32397cff1f035384faece7fb317686cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_metal.031
+    second: {fileID: 2100000, guid: 32397cff1f035384faece7fb317686cb, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_metal.032
-    second: {fileID: 2100000, guid: f2d439abc416e0947b1038cb8802cb9e, type: 2}
+    second: {fileID: 2100000, guid: 32397cff1f035384faece7fb317686cb, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_metal.033
-    second: {fileID: 2100000, guid: f2d439abc416e0947b1038cb8802cb9e, type: 2}
+    second: {fileID: 2100000, guid: 32397cff1f035384faece7fb317686cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_metal.034
+    second: {fileID: 2100000, guid: 32397cff1f035384faece7fb317686cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_metal.036
+    second: {fileID: 2100000, guid: 32397cff1f035384faece7fb317686cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_metal.037
+    second: {fileID: 2100000, guid: 32397cff1f035384faece7fb317686cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_metal.038
+    second: {fileID: 2100000, guid: 32397cff1f035384faece7fb317686cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_metal.039
+    second: {fileID: 2100000, guid: 32397cff1f035384faece7fb317686cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_metal.040
+    second: {fileID: 2100000, guid: 32397cff1f035384faece7fb317686cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_metal.041
+    second: {fileID: 2100000, guid: 32397cff1f035384faece7fb317686cb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
