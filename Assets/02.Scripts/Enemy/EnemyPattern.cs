@@ -96,23 +96,23 @@ public class EnemyPattern : MonoBehaviour
             {
                 agent.isStopped = true;
                 canEnemyRotate = false;
-                int pattern = 3;//Random.Range(1, 5); // 예를 들어, 1에서 3 중에서 랜덤 선택
+                int pattern = 2;//Random.Range(1, 5); // 예를 들어, 1에서 3 중에서 랜덤 선택
                 switch (pattern)
                 {
                     case 1:
-                        // 패턴 1: 공격 패턴
+                        // 패턴 1: 공격 패턴 몸빵
                         BackStepCountPlus();
                         StartCoroutine(AttackPattern1());
                         break;
                     case 2:
-                        // 패턴 2: 이동 패턴
+                        // 패턴 2: 공격패턴 3연타
                         StartCoroutine(AttackPattern1_2());
                         break;
-                    case 3:
+                    case 3: //패턴 3: 순간이동 공격
                         StartCoroutine(TeleportAndAttack());
                         break;
                     case 4:
-                        // 패턴 2: 이동 패턴
+                        // 패턴 4: 연속공격 패턴
                         transform.LookAt(player.position);
                         StartCoroutine(AttackPattern_GS7());
                         break;

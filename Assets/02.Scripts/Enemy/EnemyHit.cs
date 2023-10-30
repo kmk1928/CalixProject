@@ -28,7 +28,19 @@ public class EnemyHit : MonoBehaviour
         if (enemyStats.isDead) {
             if (!deathAnim) {
                 deathAnim = true;
-                anim.SetTrigger("enemyDeathTrg");
+                int count = Random.Range(1, 4);
+                switch (count)
+                {
+                    case 1:
+                        anim.SetTrigger("enemyDeathTrg");
+                        break;
+                    case 2:
+                        anim.SetTrigger("enemyDeathTrg2");
+                        break;
+                    case 3:
+                        anim.SetTrigger("enemyDeathTrg3");
+                        break;
+                }
                 enemyCollider.enabled = false;
                 Destroy(this.gameObject, 3f);
             }
