@@ -202,7 +202,15 @@ public class PlayerAttacker : MonoBehaviour {
         PlayerFlag.isAttacking = false;     //플래그 설정
     }
 
-    
+    public void WorldTimeSlowDown()
+    {
+        Time.timeScale = 0.1f; // 월드 시간을 0.1로 느리게 설정
+    }
+    public void WorldTimeReset()
+    {
+        Time.timeScale = 1f; 
+    }
+
     //void AttackAreaActive(SOAttackPattern[] attackPatterns) {       //공격범위 활성화 - meleeAreaSetup 사용한 버전
     //    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime > attackPatterns[currentAttackIndex].attackCollider_ActiveTime
     //            && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > attackPatterns[currentAttackIndex].attackCollider_ActiveTime + 0.1f) {
