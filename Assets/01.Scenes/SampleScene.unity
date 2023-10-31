@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -338,11 +338,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c63f274ebb06bcf4aa988f95780939a8, type: 3}
---- !u!4 &147994038 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4089431165432149859, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-  m_PrefabInstance: {fileID: 1780191899}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &402677810
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,37 +745,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 217c7773b7f791347bb9cd7d97480c52, type: 3}
   m_PrefabInstance: {fileID: 731970198}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &879650770
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 879650771}
-  m_Layer: 7
-  m_Name: BulletSpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &879650771
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 879650770}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.526, z: 0.67}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 147994038}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &902992220
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,11 +1355,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1191465245011681577, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
   m_PrefabInstance: {fileID: 1220417202}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1346956784 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 4198382212375038730, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-  m_PrefabInstance: {fileID: 1780191899}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1424281921 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 4f354ba23c3e35741885729ce4a3a3b3, type: 3}
@@ -1769,18 +1728,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1220417203}
-    - target: {fileID: -6394708201667358274, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: attackArea
-      value: 
-      objectReference: {fileID: 1346956784}
-    - target: {fileID: -6394708201667358274, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 2195726465694210025, guid: 3160afc7e3e24ce479654ec52ff06e3c, type: 3}
-    - target: {fileID: -6394708201667358274, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: bulletSpawnPoint
-      value: 
-      objectReference: {fileID: 879650771}
     - target: {fileID: 4089431165432149859, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_RootOrder
       value: 17
