@@ -489,15 +489,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
-        functionName: Attack
+      - time: 0.24410497
+        functionName: MeleeTrail
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.24410497
-        functionName: MeleeTrail
+      - time: 0
+        functionName: Sound_Attack_normal
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

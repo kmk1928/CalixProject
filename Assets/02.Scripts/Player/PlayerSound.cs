@@ -35,7 +35,7 @@ public class PlayerSound : MonoBehaviour
       // 이벤트가 발생하면 사운드 재생
       AudioSource.PlayClipAtPoint(jump, Camera.main.transform.position);
    }
-   void Attack()
+   void Sound_Attack_normal()
    {
       // 이벤트가 발생하면 사운드 재생
       AudioSource.PlayClipAtPoint(attack, Camera.main.transform.position);

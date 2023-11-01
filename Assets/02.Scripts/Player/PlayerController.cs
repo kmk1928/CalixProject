@@ -524,6 +524,11 @@ public class PlayerController : MonoBehaviour
         anim.applyRootMotion = false;
         canMovePlayer = true;
     }
+
+    public void UnlockAnimRootMotion()
+    {
+        anim.applyRootMotion = false;
+    }
     #endregion
 
     public IEnumerator AnimationingRotation() {

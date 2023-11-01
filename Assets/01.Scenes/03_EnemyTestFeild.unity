@@ -5713,11 +5713,6 @@ PrefabInstance:
       objectReference: {fileID: 865673632}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
---- !u!1 &1768231016 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1191465245011681576, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-  m_PrefabInstance: {fileID: 1768231015}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1777720826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 42ecc5ab4b81aa24e9a773a0b56a7239, type: 3}
@@ -6354,26 +6349,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1191465245011681577, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
   m_PrefabInstance: {fileID: 1768231015}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1191465243520282959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768231016}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 205c9313e02d12b47b64c76e2d5871e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collisionLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  capsuleRadius: 1.5
-  capsuleHeight: 2
-  moveSpeed: 25
-  playerMass: 2
-  monsterMass: 1
 --- !u!4 &1232424934792814296 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8068054833305963180, guid: 93db9d26df9025d4b9e53bbb7fc3f83d, type: 3}
