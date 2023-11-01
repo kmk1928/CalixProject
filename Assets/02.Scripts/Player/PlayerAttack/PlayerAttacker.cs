@@ -70,7 +70,7 @@ public class PlayerAttacker : MonoBehaviour {
     }
     private void Update() {
 
-        if (Input.GetButtonDown("Fire1") && !cooldownActive && !isSkill_1ing && !isSkill_2ing && !PlayerFlag.isInteracting) {
+        if (Input.GetButtonDown("Fire1") && !cooldownActive && !isSkill_1ing && !isSkill_2ing && !PlayerFlag.isInteracting && playerController.isGrounded) {
             Attack(attackPatterns_void_normalAk);
             isNAing = true;
         }
@@ -84,7 +84,7 @@ public class PlayerAttacker : MonoBehaviour {
         if (isSkill_1ing) {
             ExitAttack(attackPatterns_void_Skill_1);
         }
-        if (Input.GetKeyDown(KeyCode.R) && !cooldownActive && !isNAing && !isSkill_1ing &&!PlayerFlag.isInteracting) {
+        if (Input.GetKeyDown(KeyCode.R) && !cooldownActive && !isNAing && !isSkill_1ing &&!PlayerFlag.isInteracting && playerController.isGrounded) {
             Attack(attackPatterns_void_Skill_2);
             isSkill_2ing = true;
         }

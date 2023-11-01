@@ -18,9 +18,9 @@ MonoBehaviour:
   attackCollider_ActiveTime: 0.15
   animatorOV: {fileID: 22100000, guid: 15af3965621582e49b101713807d8c69, type: 2}
   AnimTag: FlyMech
-  particleEffectPrefab: {fileID: 1011157772751556, guid: ca63c6ac7458764498741e0306f78528, type: 3}
-  particlePosition: {x: 0.0023651123, y: 0.06, z: -0.728}
-  particleRotation: {x: 0, y: 271.46417, z: 0}
+  particleEffectPrefab: {fileID: 1130446560849736, guid: c4d564b5d4682ad46b8621f0fa6f40d9, type: 3}
+  particlePosition: {x: 0.12, y: 0.7, z: -0.85}
+  particleRotation: {x: 62.94205, y: 202.6051, z: 35.280094}
   particleScale: {x: 1, y: 1, z: 1}
   particleStartTime: 0.15
   particleEndTime: 1

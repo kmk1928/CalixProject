@@ -8,6 +8,7 @@ public class MeleeAreaSetup : MonoBehaviour
     DamageCollider damageCollider;      //장착 무기의 damageCollider를 받아오기 위한 선언
     public DamageCollider defaultDamageCollider;
     public DamageCollider oneSlash;
+    public DamageCollider flymech;
 
     private void Start() {
         //장착 무기 콜라이더 받기 위한 플레이어컨트롤러 
@@ -62,6 +63,19 @@ public class MeleeAreaSetup : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Debug.Log("켜졌다 꺼짐");
         oneSlash.DisableMeleeArea();
+    }
+
+    void FlyMechAttack1_2()
+    {
+        StartCoroutine(FlyMechAttack1_2_C());
+    }
+
+    IEnumerator FlyMechAttack1_2_C()
+    {
+        flymech.EnableMeleeArea();
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log("공중 켜졌다 꺼짐");
+        flymech.DisableMeleeArea();
     }
 
     #region 예전버전

@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: FlyMech
   damageMultiplier: 1
-  cooldown: 0.16
+  cooldown: 0.17
   attackCollider_ActiveTime: 0.16
   animatorOV: {fileID: 22100000, guid: c7cee8a58c2a5de43876ed30fa3f67c9, type: 2}
   AnimTag: FlyMech
-  particleEffectPrefab: {fileID: 1044528419629608, guid: 3be98662c9e7ef5468cb9c4e11010dc7, type: 3}
-  particlePosition: {x: -0.06, y: -0.111, z: 0.218}
-  particleRotation: {x: 0, y: 302.05176, z: 0}
+  particleEffectPrefab: {fileID: 1942681157837952, guid: 5153725f7adb4cf47952f6201f4ee095, type: 3}
+  particlePosition: {x: -0.43, y: 1.3, z: -0.62}
+  particleRotation: {x: -0.00032721038, y: 90, z: 180}
   particleScale: {x: 1, y: 1, z: 1}
   particleStartTime: 0.16
   particleEndTime: 1

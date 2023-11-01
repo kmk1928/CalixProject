@@ -13,8 +13,7 @@ public class PlayerController : MonoBehaviour
     Vector2 lockOnMovement = new Vector2();  //락온 중 이동 변경을 위한 값
 
     private Vector3 movement = Vector3.zero;
-    [SerializeField]
-    private bool isGrounded = true; // 땅에 닿았는지 여부
+    public bool isGrounded = true; // 땅에 닿았는지 여부
     [SerializeField]
     private int jumpCount = 0; // 점프 횟수
     private bool isDashing = false; // 대시 중인지 여부
