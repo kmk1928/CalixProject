@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: FlyMech
   damageMultiplier: 1
-  cooldown: 0.17
+  cooldown: 0.27
   attackCollider_ActiveTime: 0.16
   animatorOV: {fileID: 22100000, guid: c7cee8a58c2a5de43876ed30fa3f67c9, type: 2}
   AnimTag: FlyMech

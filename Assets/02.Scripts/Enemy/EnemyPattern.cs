@@ -96,7 +96,7 @@ public class EnemyPattern : MonoBehaviour
             {
                 agent.isStopped = true;
                 canEnemyRotate = false;
-                int pattern = 2;//Random.Range(1, 5); // 예를 들어, 1에서 3 중에서 랜덤 선택
+                int pattern = 4;//Random.Range(1, 5); // 예를 들어, 1에서 3 중에서 랜덤 선택
                 switch (pattern)
                 {
                     case 1:
@@ -113,7 +113,7 @@ public class EnemyPattern : MonoBehaviour
                         break;
                     case 4:
                         // 패턴 4: 연속공격 패턴
-                        transform.LookAt(player.position);
+                        LookAtPlayer();
                         StartCoroutine(AttackPattern_GS7());
                         break;
 
@@ -127,6 +127,11 @@ public class EnemyPattern : MonoBehaviour
                 isBattleMode = false;
             }
         }
+    }
+
+    private void LookAtPlayer()
+    {
+        transform.LookAt(player.position);
     }
 
     IEnumerator TeleportAndAttack()
@@ -196,7 +201,7 @@ public class EnemyPattern : MonoBehaviour
         isCombo = true;
         animator.SetTrigger("Attack_GS7");
         Debug.Log("Test GSGSGS7777");
-        yield return new WaitForSeconds(9f);
+        yield return new WaitForSeconds(11f);
         isAttacking = false;
         isCombo = false;
     }
