@@ -11,6 +11,7 @@ public class PlayerAttacker : MonoBehaviour {
     public SOAttackPattern[] attackPatterns_PA;
     public SOAttackPattern[] rapidAssault;
     public SOAttackPattern[] oneSlash;
+    public SOAttackPattern[] flymech;
     private float lastComboEnd;         //마지막으로 콤보가 끝난 시간
     private float lastClickTime;        //마지막으로 누른 시간
     public int currentAttackIndex = 0; //배열의 현재인덱스
@@ -58,6 +59,10 @@ public class PlayerAttacker : MonoBehaviour {
 
         if (Skill_1_Equipped) {
             attackPatterns_void_Skill_1 = rapidAssault;
+        }
+        else if(!Skill_1_Equipped)
+        {
+            attackPatterns_void_Skill_1 = flymech;
         }
         if (Skill_2_Equipped) {
             attackPatterns_void_Skill_2 = oneSlash;

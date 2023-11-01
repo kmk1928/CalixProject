@@ -5386,6 +5386,22 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1128348089664677789, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: flymech.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1128348089664677789, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: flymech.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 214a6fed175cb67499c244f1512a482a, type: 2}
+    - target: {fileID: 1128348089664677789, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: flymech.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 51bd8ed2be2cd8e40a781819ca4322b7, type: 2}
+    - target: {fileID: 1128348089664677789, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: flymech.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7fe7fd608879f9c4588358945b1c944c, type: 2}
     - target: {fileID: 1191465245011681576, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
       propertyPath: m_Name
       value: Player

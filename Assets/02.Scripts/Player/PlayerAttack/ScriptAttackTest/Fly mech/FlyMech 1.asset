@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66823841ae2f9e24aad67ad8a42af99a, type: 3}
+  m_Name: FlyMech 1
+  m_EditorClassIdentifier: 
+  attackName: FlyMech
+  damageMultiplier: 1
+  cooldown: 0.16
+  attackCollider_ActiveTime: 0.16
+  animatorOV: {fileID: 22100000, guid: c7cee8a58c2a5de43876ed30fa3f67c9, type: 2}
+  AnimTag: FlyMech
+  particleEffectPrefab: {fileID: 1044528419629608, guid: 3be98662c9e7ef5468cb9c4e11010dc7, type: 3}
+  particlePosition: {x: -0.06, y: -0.111, z: 0.218}
+  particleRotation: {x: 0, y: 302.05176, z: 0}
+  particleScale: {x: 1, y: 1, z: 1}
+  particleStartTime: 0.16
+  particleEndTime: 1
