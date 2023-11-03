@@ -13,6 +13,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     public int itemCount; // 획득한 아이템의 개수
 
 
+    public PlayerStats playerStats;
+
 
     [SerializeField]
     private SlotToolTip theSlotToolTip; // 슬롯 툴팁 호출
@@ -75,12 +77,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         {
             if(item != null) ///슬롯이 비었는지 판단
             {
-                if(item.itemType == Item.ItemType.Used) 
-                {
-                    Debug.Log(item.itemName + " 을 사용했습니다.");
-                    SetSlotCount(-1);                   
-                }
-                // 소모
+                    Debug.Log(item.itemName + " 을 파괴했습니다.");
+                    playerStats.RemoveItemModifiers(item);
+                    SetSlotCount(-1);
             }
         }
     }

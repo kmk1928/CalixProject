@@ -6,18 +6,18 @@ public class PlayerStats : CharStats
 {
     PlayerAttacker playerAk;
 
-    [Header("ÇÃ·¹ÀÌ¾î¿ë Ä¡¸íÅ¸ ½ºÅÈ")]
-    [Tooltip("Ä¡¸íÅ¸ È®·ü 0.0~1.0")]
-    public float criticalChance = 0.5f; // 50%ÀÇ Å©¸®Æ¼ÄÃ È®·ü
-    [Tooltip("Ä¡¸íÅ¸ ÇÇÇØ Áõ°¡·® ±âº» 1.5¹è")]
+    [Header("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ Ä¡ï¿½ï¿½Å¸ ï¿½ï¿½ï¿½ï¿½")]
+    [Tooltip("Ä¡ï¿½ï¿½Å¸ È®ï¿½ï¿½ 0.0~1.0")]
+    public float criticalChance = 0.5f; // 50%ï¿½ï¿½ Å©ï¿½ï¿½Æ¼ï¿½ï¿½ È®ï¿½ï¿½
+    [Tooltip("Ä¡ï¿½ï¿½Å¸ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» 1.5ï¿½ï¿½")]
     public float criticalDamage = 1.5f;
-    public float curDamageCal = 1.0f;       //µ¥¹ÌÁö °è¼ö
+    public float curDamageCal = 1.0f;       //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 
     public float imsi;
 
-    [SerializeField] private int redCount = 0;
-    [SerializeField] private int yellowCount = 0;
-    [SerializeField] private int blueCount = 0;
+    [SerializeField] public int redCount = 0;
+    [SerializeField] public int yellowCount = 0;
+    [SerializeField] public int blueCount = 0;
 
     private void Start() {
         playerAk = GetComponent<PlayerAttacker>();
@@ -31,24 +31,26 @@ public class PlayerStats : CharStats
 
     public void ApplyItemModifiers(Item item)
     {
-        // ¾ÆÀÌÅÛÀÇ ´É·ÂÄ¡ º¯°æ·®À» Àû¿ë
-        //maxHealth += item.healthModifier;
-        //attackDamage += item.attackModifier;
-        //defense += item.defenseModifier;
+        maxHealth += item.healthEnergy;
+        attackDamage += item.attackEnergy;
+        defense += item.defenseEnergy;
 
-        // ´Ù¸¥ ´É·ÂÄ¡ º¯°æ·®µµ Àû¿ë
+        if(redCount == 3)
+            maxHealth = maxHealth + 1;
+
+        else if (yellowCount == 3)
+            attackDamage = attackDamage + 1;
+
+        else if (blueCount == 3)
+            defense = defense + 1;
     }
 
     public void RemoveItemModifiers(Item item)
     {
-        // ¾ÆÀÌÅÛÀÇ ´É·ÂÄ¡ º¯°æ·®À» Á¦°Å
-        //maxHealth -= item.healthModifier;
-        //attackDamage -= item.attackModifier;
-        //defense -= item.defenseModifier;
-
-        // ´Ù¸¥ ´É·ÂÄ¡ º¯°æ·®µµ Á¦°Å
+        maxHealth -= item.healthEnergy;
+        attackDamage -= item.attackEnergy;
+        defense -= item.defenseEnergy;
     }
-
 
 
 
@@ -64,6 +66,6 @@ public class PlayerStats : CharStats
         }
 
 
-        //Debug.Log("ÇöÀç pl½º°¡ ¹Þ´Â index°ª");
+        //Debug.Log("ï¿½ï¿½ï¿½ï¿½ plï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ indexï¿½ï¿½");
     }
 }

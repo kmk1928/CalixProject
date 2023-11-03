@@ -331,6 +331,7 @@ public class PlayerController : MonoBehaviour
         Invoke("SwapOut", 0.6f);
     }
 
+
     void Interraction()
     {
         if (Input.GetKeyDown(KeyCode.E) && nearObject != null)
@@ -342,6 +343,18 @@ public class PlayerController : MonoBehaviour
 
                 //theInventory 변수를 통해 아이템을 인벤토리에 추가
                 theInventory.AcquireItem(item);
+
+                // 아이템을 주웠을때 능력치 증가
+                playerStats.ApplyItemModifiers(item);
+
+                if (item.itemType == Item.ItemType.Red)
+                    playerStats.redCount += 1;
+
+                else if (item.itemType == Item.ItemType.Yellow)
+                    playerStats.yellowCount += 1;
+
+                else
+                    playerStats.blueCount += 1;
 
                 // GameObject 파괴
                 Destroy(nearObject);

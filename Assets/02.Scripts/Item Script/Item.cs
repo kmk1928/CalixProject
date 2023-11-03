@@ -10,19 +10,17 @@ public class Item : ScriptableObject
     public Sprite itemImage; // 아이템의 이미지
     public GameObject itemPrefab; // 아이템의 프리팹
 
+    public int healthEnergy; // 체력 변경량
+    public int attackEnergy; // 공격력 변경량
+    public int defenseEnergy; // 방어력 변경량
+
     [TextArea]
     public string itemDesc; // 아이템의 설명
 
-
-    public string weaponType; // 무기 유형
-
-    public int codeNumber;
-
     public enum ItemType
     {   
-        Magic,
-        Reward,
-        Used,
-        Weapon
+        Red,
+        Yellow,
+        Blue
     };
 }
