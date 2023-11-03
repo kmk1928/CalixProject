@@ -24,6 +24,8 @@ public class PlayerStats : CharStats
         imsi = (float)curHealth / (float)maxHealth;
         UIManager.instance.UpdateHPBar(imsi);
     }
+
+
    
     private void LateUpdate() { 
         if (playerAk.isNAing && !playerAk.isSkill_1ing && !playerAk.isSkill_2ing) {

@@ -16,8 +16,8 @@ public class Item : ScriptableObject
 
     public string weaponType; // 무기 유형
 
-    public int value;
-   
+    public int codeNumber;
+
     public enum ItemType
     {   
         Magic,

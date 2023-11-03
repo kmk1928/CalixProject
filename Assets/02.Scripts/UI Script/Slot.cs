@@ -12,6 +12,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     public Image itemImage; // 아이템의 이미지
     public int itemCount; // 획득한 아이템의 개수
 
+
+
     [SerializeField]
     private SlotToolTip theSlotToolTip; // 슬롯 툴팁 호출
 
@@ -20,6 +22,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         originPos = transform.position;
         theSlotToolTip = FindObjectOfType<SlotToolTip>();
     }
+
 
     public void ShowToolTip(Item _item)
     {
@@ -68,11 +71,11 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(eventData.button == PointerEventData.InputButton.Right)
+        if(eventData.button == PointerEventData.InputButton.Right) //버튼 우클릭을 했을때
         {
-            if(item != null)
+            if(item != null) ///슬롯이 비었는지 판단
             {
-                if(item.itemType == Item.ItemType.Used)
+                if(item.itemType == Item.ItemType.Used) 
                 {
                     Debug.Log(item.itemName + " 을 사용했습니다.");
                     SetSlotCount(-1);                   
