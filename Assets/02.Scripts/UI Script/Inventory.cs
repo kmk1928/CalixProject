@@ -14,9 +14,10 @@ public class Inventory : MonoBehaviour
     private GameObject go_InventoryBase;
     [SerializeField]
     private GameObject go_SlotsParent;
-    [SerializeField] 
+    [SerializeField]
     private GameObject Inven_BackImg;
-
+    [SerializeField]
+    private GameObject go_Base;
 
     //슬롯
     private Slot[] slots;
@@ -30,15 +31,17 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K))
         {
-            if (!InventoryActivated) {
+            if (!InventoryActivated)
+            {
                 OpenInventory();
                 InventoryActivated = true;
             }
-            else {
+            else
+            {
                 CloseInventory();
-                InventoryActivated = false;               
+                InventoryActivated = false;
             }
         }
     }
@@ -55,6 +58,7 @@ public class Inventory : MonoBehaviour
     {
         go_InventoryBase.SetActive(false);
         Inven_BackImg.SetActive(false);
+        go_Base.SetActive(false);
         GameManager.isInventory = false;
         Time.timeScale = 1f;
     }
@@ -67,7 +71,7 @@ public class Inventory : MonoBehaviour
             {
                 slots[i].AddItem(_item, _count);
                 return;
-            }    
+            }
         }
     }
 }
