@@ -15,6 +15,10 @@ public class PlayerStats : CharStats
 
     public float imsi;
 
+    [SerializeField] private int redCount = 0;
+    [SerializeField] private int yellowCount = 0;
+    [SerializeField] private int blueCount = 0;
+
     private void Start() {
         playerAk = GetComponent<PlayerAttacker>();
     }
@@ -25,8 +29,29 @@ public class PlayerStats : CharStats
         UIManager.instance.UpdateHPBar(imsi);
     }
 
+    public void ApplyItemModifiers(Item item)
+    {
+        // 아이템의 능력치 변경량을 적용
+        //maxHealth += item.healthModifier;
+        //attackDamage += item.attackModifier;
+        //defense += item.defenseModifier;
 
-   
+        // 다른 능력치 변경량도 적용
+    }
+
+    public void RemoveItemModifiers(Item item)
+    {
+        // 아이템의 능력치 변경량을 제거
+        //maxHealth -= item.healthModifier;
+        //attackDamage -= item.attackModifier;
+        //defense -= item.defenseModifier;
+
+        // 다른 능력치 변경량도 제거
+    }
+
+
+
+
     private void LateUpdate() { 
         if (playerAk.isNAing && !playerAk.isSkill_1ing && !playerAk.isSkill_2ing) {
             curDamageCal = playerAk.attackPatterns_void_normalAk[playerAk.indexValueForCalculation].damageMultiplier;
