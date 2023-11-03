@@ -1,25 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Text itemNameText;
-    public Image itemIconImage;
+    InventoryT inven;
 
-    // UI 업데이트 함수
-    public void UpdateUI(ItemData item)
+    public GameObject inventoryUI; // 인벤토리 UI 게임 오브젝트
+    bool activeInventory = false;
+    public SlotT[] slots;
+    public Transform slotHolder;
+
+    void Start()
     {
-        if (item != null)
+        inven = InventoryT.instance;
+        slots = slotHolder.GetComponentsInChildren<SlotT>();
+        inven.onChaneItem += RedrawSlotUI;
+        inventoryUI.SetActive(activeInventory);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
         {
-            itemNameText.text = item.name;
-            itemIconImage.sprite = item.icon;
+            activeInventory = !activeInventory;
+            inventoryUI.SetActive(activeInventory);
         }
-        else
+    }
+
+    public void Slot()
+    {
+        inven.SlotCount = inven.SlotCount;
+    }
+
+    void RedrawSlotUI()
+    {
+        for (int i = 0; i < slots.Length; i++)
         {
-            itemNameText.text = "";
-            itemIconImage.sprite = null;
+            slots[i].RemoveSlot();
+        }
+        for (int i = 0; i < inven.items.Count; i++)
+        {
+            slots[i].item = inven.items[i];
+            slots[i].UpdateSlotUI();
         }
     }
 }

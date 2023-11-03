@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SlotT : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public ItemData item;
+    public Image itemIcon;
+
+    public void UpdateSlotUI()
     {
-        
+        itemIcon.sprite = item.itemIcon;
+        itemIcon.gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RemoveSlot()
     {
-        
+        item = null;
+        itemIcon.gameObject.SetActive(false);
     }
 }

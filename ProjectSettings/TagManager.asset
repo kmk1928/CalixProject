@@ -15,6 +15,7 @@ TagManager:
   - Portal
   - EnemyLockonPosition
   - Boss
+  - Item
   layers:
   - Default
   - TransparentFX
