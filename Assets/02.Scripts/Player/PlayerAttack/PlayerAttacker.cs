@@ -77,7 +77,7 @@ public class PlayerAttacker : MonoBehaviour {
         if (isNAing) {
             ExitAttack(attackPatterns_void_normalAk);
         }
-        if (Input.GetKeyDown(KeyCode.F) && !cooldownActive && !isNAing && !isSkill_2ing && !PlayerFlag.isInteracting) {
+        if (Input.GetKeyDown(KeyCode.F) && !cooldownActive && !isNAing && !isSkill_2ing && !PlayerFlag.isInteracting && playerController.isGrounded) {
             Attack(attackPatterns_void_Skill_1);
             isSkill_1ing = true;
         }
@@ -209,11 +209,17 @@ public class PlayerAttacker : MonoBehaviour {
 
     public void WorldTimeSlowDown()
     {
-        Time.timeScale = 0.1f; // 월드 시간을 0.1로 느리게 설정
+        StartCoroutine(WorldTimeSlowDown_C());
     }
     public void WorldTimeReset()
     {
         Time.timeScale = 1f; 
+    }
+    IEnumerator WorldTimeSlowDown_C()
+    {
+        Time.timeScale = 0.1f;// 월드 시간을 0.1로 느리게 설정
+        yield return new WaitForSeconds(0.02f);
+        Time.timeScale = 1f;
     }
 
     //void AttackAreaActive(SOAttackPattern[] attackPatterns) {       //공격범위 활성화 - meleeAreaSetup 사용한 버전

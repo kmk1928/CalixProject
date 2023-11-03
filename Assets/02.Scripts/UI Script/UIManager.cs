@@ -27,9 +27,7 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Start() {
-
-    }
+   
 
     public void UpdateNanoText(int newNano) {  //나노 UI 최신화
         nanoText.text = "Nano " + newNano;
@@ -41,5 +39,7 @@ public class UIManager : MonoBehaviour
     public void SetActiveGameoverUI(bool active) {
         gameoverUI.SetActive(true);     //게임오버 UI 활성화
     }
+
+
 
 }

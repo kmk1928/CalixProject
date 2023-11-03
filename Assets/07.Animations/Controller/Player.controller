@@ -49,6 +49,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-8070061310195145055
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OneSlash_1
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: d9fb6e888ae5a5a4a8b26871cf85aaf1, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-7948475987623944130
 AnimatorState:
   serializedVersion: 6
@@ -169,10 +195,16 @@ AnimatorStateMachine:
     m_Position: {x: 560, y: 560, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1850259434080747182}
-    m_Position: {x: 1040, y: 990, z: 0}
+    m_Position: {x: 1220, y: 980, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7242150190062553654}
-    m_Position: {x: 1040, y: 930, z: 0}
+    m_Position: {x: 1220, y: 940, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -8070061310195145055}
+    m_Position: {x: 1020, y: 940, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 8854775621917681776}
+    m_Position: {x: 1020, y: 980, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 4719220863345084467}
@@ -1985,6 +2017,32 @@ BlendTree:
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 0
+--- !u!1102 &8854775621917681776
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: OneSlash_2
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: fb7a8b2365d92e740bd4a8bf06642b6c, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!206 &9126219242144535409
 BlendTree:
   m_ObjectHideFlags: 1

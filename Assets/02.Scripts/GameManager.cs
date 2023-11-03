@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public static bool isInventory = false; // 인벤토리가 호출되면 true
     [SerializeField] private int playerNanoCount = 10; // 플레이어 나노 카운트
 
+    public bool isBossBattle = false; //보스전투돌입
+
     //[Header("디버그용 인스펙터 표시용 변수들")]
     //public bool debug_canPlayerMove = true; // 플레이어의 움직임 제어
     //public bool debug_canPlayerRotate = true; // 카메라의 움직임 제어
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour
         //debug_canPlayerRotate = canPlayerRotate;
         debug_isGameover = isGameover;
         //debug_isPause = isPause;
+
     }
 
     public void AddNano(int newNano) {

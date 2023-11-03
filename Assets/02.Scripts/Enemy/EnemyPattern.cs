@@ -101,7 +101,6 @@ public class EnemyPattern : MonoBehaviour
                 {
                     case 1:
                         // ÆÐÅÏ 1: °ø°Ý ÆÐÅÏ ¸ö»§
-                        BackStepCountPlus();
                         StartCoroutine(AttackPattern1());
                         break;
                     case 2:
@@ -324,10 +323,7 @@ public class EnemyPattern : MonoBehaviour
     //public void EnemyNotRotate() {
     //    canEnemyRotate = false;
     //}
-    private void BackStepCountPlus()
-    {
-        backStepCount += 1;
-    }
+
     void StopAgent()
     {
         canEnemyRotate = false;

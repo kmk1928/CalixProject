@@ -15,6 +15,15 @@ public class EnemyHPbar : MonoBehaviour
     float text_enableTime = 0f;
 
     Camera enemy_cam = null;
+
+
+    public GameObject bossHpbar;
+    private GameObject bossObj;
+    private Slider bossHpSlider;
+    private CharStats bossStats;
+    private Text bossDamageTxt;
+    private bool bossOn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +51,14 @@ public class EnemyHPbar : MonoBehaviour
             float healthRatio = curHP / maxHP;
             slider.value = healthRatio;
 
+        }
+
+        bossObj = GameObject.FindGameObjectWithTag("Boss");
+        if(bossObj != null)
+        {
+            bossStats = bossObj.GetComponent<CharStats>();
+            bossHpSlider = bossHpbar.GetComponentInChildren<Slider>();
+            bossDamageTxt = bossHpbar.GetComponentInChildren<Text>();
         }
     }
     // Update is called once per frame
@@ -90,24 +107,54 @@ public class EnemyHPbar : MonoBehaviour
             }
 
 
-            void EnableText(Text hpText, string s_damage)
-            {
-                hpText.text = s_damage;
-                hpText.enabled = true;
-            }
-            void DisableText(Text hpText)
-            {
-                hpText.enabled = false;
-            }
 
-            void EnableHPbar(GameObject hpbar)
+        }
+
+        //보스
+        bossOn = GameManager.instance.isBossBattle;
+        if(bossObj != null)
+        {
+            if (bossOn)
             {
-                hpbar.SetActive(true);
+                EnableHPbar(bossHpbar);
+                bossHpSlider.value = Mathf.Lerp(bossHpSlider.value, bossStats.curHealth / bossStats.maxHealth, Time.deltaTime * 25);
+                if (text_enableTime != bossStats.t_damage)
+                {
+                    EnableText(bossDamageTxt, bossStats.t_damage.ToString("0"));
+                }
+                else if (text_enableTime == bossStats.t_damage)
+                {
+                    DisableText(bossDamageTxt);
+                }
             }
-            void DisableHPbar(GameObject hpbar)
+            else
             {
-                hpbar.SetActive(false);
+                DisableHPbar(bossHpbar);
             }
         }
+        else
+        {
+            DisableHPbar(bossHpbar);
+        }
+
+
+    }
+    void EnableText(Text hpText, string s_damage)
+    {
+        hpText.text = s_damage;
+        hpText.enabled = true;
+    }
+    void DisableText(Text hpText)
+    {
+        hpText.enabled = false;
+    }
+
+    void EnableHPbar(GameObject hpbar)
+    {
+        hpbar.SetActive(true);
+    }
+    void DisableHPbar(GameObject hpbar)
+    {
+        hpbar.SetActive(false);
     }
 }
