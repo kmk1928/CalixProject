@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
    
 
     public void UpdateNanoText(int newNano) {  //나노 UI 최신화
-        nanoText.text = "Nano " + newNano;
+        nanoText.text =  newNano.ToString();
     }
     public void UpdateHPBar(float PSimsi) {  //나노 UI 최신화
         player_HPBar.value = Mathf.Lerp(player_HPBar.value, PSimsi, Time.deltaTime * 25);

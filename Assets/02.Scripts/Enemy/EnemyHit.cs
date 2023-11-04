@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHit : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class EnemyHit : MonoBehaviour
     PlayerController playerController;
     GameObject nearObject;
     BoxCollider enemyCollider;
+    NavMeshAgent agent;
 
     private float noHitTime = 0.2f;
     private bool isHitted = false;
@@ -22,12 +24,17 @@ public class EnemyHit : MonoBehaviour
         anim = GetComponentInChildren<Animator>(); // 애니메이션
         enemyStats = GetComponent<CharStats>();
         enemyCollider = GetComponent<BoxCollider>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update() {
         if (enemyStats.isDead) {
             if (!deathAnim) {
                 deathAnim = true;
+                if(agent != null)
+                {
+                    agent.isStopped = true;
+                }
                 int count = Random.Range(1, 4);
                 switch (count)
                 {

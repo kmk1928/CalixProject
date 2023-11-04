@@ -5080,7 +5080,7 @@ MonoBehaviour:
   abillityPower: 10
   isDead: 0
   t_damage: 0
-  nanoDropAmount: 100
+  nanoDropAmount: 3000
 --- !u!114 &1541277563749876446
 MonoBehaviour:
   m_ObjectHideFlags: 0
