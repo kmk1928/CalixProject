@@ -19,8 +19,8 @@ MonoBehaviour:
   animatorOV: {fileID: 22100000, guid: bd3621f4b5863be4dacb2912a2f67170, type: 2}
   AnimTag: FlyMech
   particleEffectPrefab: {fileID: 1130446560849736, guid: c4d564b5d4682ad46b8621f0fa6f40d9, type: 3}
-  particlePosition: {x: 0.12, y: 0.7, z: -0.85}
-  particleRotation: {x: 62.94205, y: 202.6051, z: 35.280094}
+  particlePosition: {x: 0.72, y: 1.45, z: 0.08}
+  particleRotation: {x: 41.64183, y: 233.30804, z: 60.204403}
   particleScale: {x: 1, y: 1, z: 1}
   particleStartTime: 0.1
   particleEndTime: 1
