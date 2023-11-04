@@ -17,7 +17,7 @@ public class ItemDataBase : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 11; i++)
         {
             GameObject it = Instantiate(ItemPrefab, pos[i],Quaternion.identity);
             it.GetComponent<GetItem>().SetItem(itemDB[Random.Range(0, 3)]);
