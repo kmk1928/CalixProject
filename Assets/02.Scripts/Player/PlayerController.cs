@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float defaultSpeed = 5.0f;  //기본 이동속도
     public float speed = 5.0f; // 이동 속도 
-    public float jumpForce = 7.0f; // 점프 힘
+    public float jumpForce = 8.0f; // 점프 힘
     public float dashSpeed = 10.0f; // 대시 속도
     public float dashDuration = 0.5f; // 대시 지속 시간
     public float maxJumpAngle = 30.0f; // 최대 점프 각도 (좌우로 움직일 수 있는 각도)
