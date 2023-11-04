@@ -9,9 +9,10 @@ public class PlayerAttacker : MonoBehaviour {
     public SOAttackPattern[] attackPatterns_void_Skill_2;   //배열을 담을 빈 배열
     public SOAttackPattern[] attackPatterns_NA;
     public SOAttackPattern[] attackPatterns_PA;
-    public SOAttackPattern[] rapidAssault;
-    public SOAttackPattern[] oneSlash;
+    public SOAttackPattern[] rapidAssault;    
     public SOAttackPattern[] flymech;
+    public SOAttackPattern[] oneSlash;
+    public SOAttackPattern[] bloodRain;
     private float lastComboEnd;         //마지막으로 콤보가 끝난 시간
     private float lastClickTime;        //마지막으로 누른 시간
     public int currentAttackIndex = 0; //배열의 현재인덱스
@@ -41,6 +42,7 @@ public class PlayerAttacker : MonoBehaviour {
     MeleeAreaSetup meleeAreaSetup;
     MeleeWeaponTrail meleeWeaponTrail;
     HitParticleActiveCollider hPACollider;
+
     private void Start() {
         anim = GetComponent<Animator>();
         playerTransform = GetComponent<Transform>();
@@ -53,19 +55,23 @@ public class PlayerAttacker : MonoBehaviour {
         if (NA_Equipped) {
             attackPatterns_void_normalAk = attackPatterns_NA;
         }
-        else if (PA_Equipped) {
-            attackPatterns_void_normalAk = attackPatterns_PA;
-        }
+        //else if (PA_Equipped) {
+        //    attackPatterns_void_normalAk = attackPatterns_PA;
+        //}
 
-        if (Skill_1_Equipped) {
+        if (SkillManager.isRapidAssaultEquipped) {
             attackPatterns_void_Skill_1 = rapidAssault;
         }
-        else if(!Skill_1_Equipped)
+        else if(SkillManager.isFlyMechEquipped)
         {
             attackPatterns_void_Skill_1 = flymech;
         }
-        if (Skill_2_Equipped) {
+        if (SkillManager.isOneSlashEquipped) {
             attackPatterns_void_Skill_2 = oneSlash;
+        }
+        else if (SkillManager.isBloodRainEquipped)
+        {
+            attackPatterns_void_Skill_2 = bloodRain;
         }
     }
     private void Update() {

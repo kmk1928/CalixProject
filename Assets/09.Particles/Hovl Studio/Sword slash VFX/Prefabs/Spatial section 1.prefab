@@ -5105,7 +5105,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0, b: 0.0379858, a: 1}
+      maxColor: {r: 0.2028302, g: 0.31375498, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -44420,7 +44420,6 @@ GameObject:
   - component: {fileID: 6647383059239402595}
   - component: {fileID: 6649365066019120291}
   - component: {fileID: 6846014159373954707}
-  - component: {fileID: 7783295628849734383}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -49543,26 +49542,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &7783295628849734383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6810737798198094625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Version: 1
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &6810844234100877735
 GameObject:
   m_ObjectHideFlags: 0
@@ -49575,7 +49554,7 @@ GameObject:
   - component: {fileID: 6646801059716861133}
   - component: {fileID: 6647888803371871629}
   m_Layer: 0
-  m_Name: Spatial section
+  m_Name: Spatial section 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49800,7 +49779,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.23921567, g: 0.3089735, b: 1, a: 1}
+      maxColor: {r: 0.8490566, g: 0, b: 0.09449149, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

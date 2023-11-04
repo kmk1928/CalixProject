@@ -9,6 +9,7 @@ public class MeleeAreaSetup : MonoBehaviour
     public DamageCollider defaultDamageCollider;
     public DamageCollider oneSlash;
     public DamageCollider flymech;
+    public DamageCollider bloodRain;
 
     private void Start() {
         //장착 무기 콜라이더 받기 위한 플레이어컨트롤러 
@@ -76,6 +77,19 @@ public class MeleeAreaSetup : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Debug.Log("공중 켜졌다 꺼짐");
         flymech.DisableMeleeArea();
+    }
+
+    void BloodRainAttackArea()
+    {
+        StartCoroutine(BloodRainAttackArea_C());
+    }
+
+    IEnumerator BloodRainAttackArea_C()
+    {
+        bloodRain.EnableMeleeArea();
+        yield return new WaitForSeconds(0.05f);
+        Debug.Log("켜졌다 꺼짐");
+        bloodRain.DisableMeleeArea();
     }
 
     #region 예전버전

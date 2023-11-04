@@ -5330,12 +5330,14 @@ MonoBehaviour:
   rapidAssault:
   - {fileID: 11400000, guid: 73e02f16d3f709246a8041ab3b941ea3, type: 2}
   - {fileID: 11400000, guid: 0d9792b1286e0cd4bb11d2fcc79326d7, type: 2}
-  oneSlash:
-  - {fileID: 11400000, guid: 91033f70b998d0b4b87c5ca2d21a219e, type: 2}
   flymech:
   - {fileID: 11400000, guid: 214a6fed175cb67499c244f1512a482a, type: 2}
   - {fileID: 11400000, guid: 51bd8ed2be2cd8e40a781819ca4322b7, type: 2}
   - {fileID: 11400000, guid: 7fe7fd608879f9c4588358945b1c944c, type: 2}
+  oneSlash:
+  - {fileID: 11400000, guid: 91033f70b998d0b4b87c5ca2d21a219e, type: 2}
+  bloodRain:
+  - {fileID: 11400000, guid: 02ba95e78181a6d448e363dda26ec203, type: 2}
   currentAttackIndex: 0
   maxIndex: 0
   indexValueForCalculation: 0

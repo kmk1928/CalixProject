@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66823841ae2f9e24aad67ad8a42af99a, type: 3}
+  m_Name: BloodRain
+  m_EditorClassIdentifier: 
+  attackName: BloodRain
+  damageMultiplier: 20
+  cooldown: 0.68
+  attackCollider_ActiveTime: 0.1
+  animatorOV: {fileID: 22100000, guid: e944297764aa8464caab01456cab0531, type: 2}
+  AnimTag: BloodRain
+  particleEffectPrefab: {fileID: 6810844234100877735, guid: 88dd9c4a8854b804186fda4318305ba0, type: 3}
+  particlePosition: {x: 0, y: 0, z: 0}
+  particleRotation: {x: 0, y: 0, z: 0}
+  particleScale: {x: 1, y: 1, z: 1}
+  particleStartTime: 0.2
+  particleEndTime: 3

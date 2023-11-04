@@ -15,7 +15,7 @@ public class EnemyHit : MonoBehaviour
     BoxCollider enemyCollider;
     NavMeshAgent agent;
 
-    private float noHitTime = 0.2f;
+    private float noHitTime = 0.15f;
     private bool isHitted = false;
     private bool deathAnim = false;
     void Awake() {
