@@ -26,13 +26,25 @@ public class SkillManager : MonoBehaviour
 
     public static bool isRapidAssaultEquipped = true;
     public static bool isFlyMechEquipped = false;
-    public static bool isOneSlashEquipped = false;
-    public static bool isBloodRainEquipped = true;
+    public static bool isOneSlashEquipped = true;
+    public static bool isBloodRainEquipped = false;
 
     public static int rapidAssault_Lv = 1;
     public static int flyMech_Lv = 1;
     public static int oneSlash_Lv = 1;
     public static int bloodRain_Lv = 1;
 
+    private void Update()
+    {
+        if (isOneSlashEquipped)
+        {
 
+            Debug.Log("ooooooo-----------oooooooooo");
+        }
+        if (!isBloodRainEquipped)
+        {
+
+            Debug.Log("bbbbbb-----------bbbbbbbbbbbbbbbbbbbbbbbbb");
+        }
+    }
 }

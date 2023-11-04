@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text nanoText;          // 보유한 나노를 출력할 UI 텍스트
     public Slider player_HPBar;
 
-
+    public static bool isOpenUI = false; //UI가 켜져있을때 공격을 제한하는 bool변수
     void Awake() {
         if (instance == null) {
             instance = this;

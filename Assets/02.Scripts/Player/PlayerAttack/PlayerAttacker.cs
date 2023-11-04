@@ -59,38 +59,40 @@ public class PlayerAttacker : MonoBehaviour {
         //    attackPatterns_void_normalAk = attackPatterns_PA;
         //}
 
-        if (SkillManager.isRapidAssaultEquipped) {
+    }
+    private void Update() {
+
+        if (SkillManager.isRapidAssaultEquipped)
+        {
             attackPatterns_void_Skill_1 = rapidAssault;
         }
-        else if(SkillManager.isFlyMechEquipped)
+        else if (SkillManager.isFlyMechEquipped)
         {
             attackPatterns_void_Skill_1 = flymech;
         }
-        if (SkillManager.isOneSlashEquipped) {
+        if (SkillManager.isOneSlashEquipped)
+        {
             attackPatterns_void_Skill_2 = oneSlash;
         }
         else if (SkillManager.isBloodRainEquipped)
         {
             attackPatterns_void_Skill_2 = bloodRain;
         }
-    }
-    private void Update() {
-
-        if (Input.GetButtonDown("Fire1") && !cooldownActive && !isSkill_1ing && !isSkill_2ing && !PlayerFlag.isInteracting && playerController.isGrounded) {
+        if (Input.GetButtonDown("Fire1") && !cooldownActive && !isSkill_1ing && !isSkill_2ing && !PlayerFlag.isInteracting && playerController.isGrounded && !UIManager.isOpenUI) {
             Attack(attackPatterns_void_normalAk);
             isNAing = true;
         }
         if (isNAing) {
             ExitAttack(attackPatterns_void_normalAk);
         }
-        if (Input.GetKeyDown(KeyCode.F) && !cooldownActive && !isNAing && !isSkill_2ing && !PlayerFlag.isInteracting && playerController.isGrounded) {
+        if (Input.GetKeyDown(KeyCode.F) && !cooldownActive && !isNAing && !isSkill_2ing && !PlayerFlag.isInteracting && playerController.isGrounded && !UIManager.isOpenUI) {
             Attack(attackPatterns_void_Skill_1);
             isSkill_1ing = true;
         }
         if (isSkill_1ing) {
             ExitAttack(attackPatterns_void_Skill_1);
         }
-        if (Input.GetKeyDown(KeyCode.R) && !cooldownActive && !isNAing && !isSkill_1ing &&!PlayerFlag.isInteracting && playerController.isGrounded) {
+        if (Input.GetKeyDown(KeyCode.R) && !cooldownActive && !isNAing && !isSkill_1ing &&!PlayerFlag.isInteracting && playerController.isGrounded && !UIManager.isOpenUI) {
             Attack(attackPatterns_void_Skill_2);
             isSkill_2ing = true;
         }
