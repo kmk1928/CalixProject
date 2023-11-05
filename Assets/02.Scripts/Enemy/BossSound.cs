@@ -29,7 +29,7 @@ public class BossSound : MonoBehaviour
       // 이벤트가 발생하면 사운드 재생
       AudioSource.PlayClipAtPoint(footstep, Camera.main.transform.position);
    }
-   void BossAttackSound()
+   void EneyDamageColliderOn()
    {
       // 이벤트가 발생하면 사운드 재생
       AudioSource.PlayClipAtPoint(attack, Camera.main.transform.position);
