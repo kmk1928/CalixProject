@@ -4984,6 +4984,8 @@ GameObject:
   - component: {fileID: 5882534645612678844}
   - component: {fileID: 5882534645612678845}
   - component: {fileID: 7527489562426406815}
+  - component: {fileID: -3386788147965340529}
+  - component: {fileID: 6244644406189962209}
   m_Layer: 7
   m_Name: Boss_Enemy_Blue
   m_TagString: Boss
@@ -5076,6 +5078,9 @@ MonoBehaviour:
   maxHealth: 1000
   curHealth: 0
   defense: 0.5
+  maxHardness: 10
+  curHardness: 0
+  hardnessDamage: 10
   attackDamage: 10
   abillityPower: 10
   isDead: 0
@@ -5111,6 +5116,8 @@ MonoBehaviour:
   hrizon_move: 0
   detectionDistance: 20
   isInteracting: 0
+  debugingPatten: 1
+  skill_Particle_blood: {fileID: 0}
 --- !u!95 &1541277563749876444
 Animator:
   serializedVersion: 5
@@ -5144,8 +5151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultDamageCollider: {fileID: 8318554430980850925}
-  oneSlash: {fileID: 0}
-  flymech: {fileID: 0}
 --- !u!114 &5882534645612678838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5196,6 +5201,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50252970c45677d48b137efacb09b277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3386788147965340529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541277563749876439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e18b01beec7dba4c8bb858c289a5b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstep: {fileID: 0}
+  attack: {fileID: 0}
+--- !u!114 &6244644406189962209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541277563749876439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e18b01beec7dba4c8bb858c289a5b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstep: {fileID: 0}
+  attack: {fileID: 0}
 --- !u!1 &1541277563935699178
 GameObject:
   m_ObjectHideFlags: 0

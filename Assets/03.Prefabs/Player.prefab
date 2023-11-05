@@ -5449,6 +5449,7 @@ MonoBehaviour:
   isTargeting: 0
   equipWeapon: {fileID: 0}
   isDodge: 0
+  dodgeTrail: {fileID: 1903361138}
   weapons:
   - {fileID: 2629941106490375149, guid: 5d4f26a4d37fbae4ca5c3a45970d60f4, type: 3}
   - {fileID: 2629941106490375149, guid: 5d4f26a4d37fbae4ca5c3a45970d60f4, type: 3}
@@ -5487,6 +5488,9 @@ MonoBehaviour:
   maxHealth: 500
   curHealth: 0
   defense: 5
+  maxHardness: 20
+  curHardness: 0
+  hardnessDamage: 10
   attackDamage: 10
   abillityPower: 10
   isDead: 0
@@ -5529,6 +5533,7 @@ MonoBehaviour:
   parryArea: {fileID: 2744591789021096974}
   parryParticle: {fileID: 252306853455233808}
   parryDistortion: {fileID: 456866949}
+  sparkParticle: {fileID: 8068054833189095148}
   hittedParticle: {fileID: 8693740141498095776}
   powerHittedParticle: {fileID: 1286740626951577381}
 --- !u!95 &8408679433847319184
@@ -5927,6 +5932,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1950168537594000178}
     m_Modifications:
+    - target: {fileID: 8068054832123931954, guid: 93db9d26df9025d4b9e53bbb7fc3f83d, type: 3}
+      propertyPath: simulationSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068054832424526121, guid: 93db9d26df9025d4b9e53bbb7fc3f83d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8068054833305963169, guid: 93db9d26df9025d4b9e53bbb7fc3f83d, type: 3}
       propertyPath: m_Name
       value: Sword Spark
@@ -5937,15 +5950,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8068054833305963180, guid: 93db9d26df9025d4b9e53bbb7fc3f83d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.871
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8068054833305963180, guid: 93db9d26df9025d4b9e53bbb7fc3f83d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1889999
+      value: 0.194
       objectReference: {fileID: 0}
     - target: {fileID: 8068054833305963180, guid: 93db9d26df9025d4b9e53bbb7fc3f83d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.893
+      value: 0.282
       objectReference: {fileID: 0}
     - target: {fileID: 8068054833305963180, guid: 93db9d26df9025d4b9e53bbb7fc3f83d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5977,6 +5990,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93db9d26df9025d4b9e53bbb7fc3f83d, type: 3}
+--- !u!198 &8068054833189095148 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8068054833305963183, guid: 93db9d26df9025d4b9e53bbb7fc3f83d, type: 3}
+  m_PrefabInstance: {fileID: 118443075}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8068054833189095151 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8068054833305963180, guid: 93db9d26df9025d4b9e53bbb7fc3f83d, type: 3}
@@ -8786,19 +8804,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45316530917683228}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47f233e4c5d6f4aa6a1618016c2233f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 9c099207da52b4c04a36bdba21440a4a, type: 2}
+  profile: {fileID: 11400000, guid: c31a20b613d59cd43ad55c133d3fa78b, type: 2}
   profileSync: 0
   target: {fileID: 7308082050333980713}
   _active: 1
   ignoreVisibility: 0
   executeInEditMode: 0
-  ignoreFrames: 3
-  duration: 1.5
+  ignoreFrames: 4
+  duration: 0.67
   continuous: 0
   smooth: 0
   checkWorldPosition: 0
@@ -8806,9 +8824,9 @@ MonoBehaviour:
   worldPositionRelativeOption: 0
   worldPositionRelativeTransform: {fileID: 0}
   checkScreenPosition: 1
-  minPixelDistance: 10
+  minPixelDistance: 105
   stepsBufferSize: 1023
-  maxStepsPerFrame: 12
+  maxStepsPerFrame: 9
   checkTime: 0
   timeInterval: 2
   checkCollisions: 0
@@ -8820,14 +8838,14 @@ MonoBehaviour:
     m_Bits: 4294967295
   mask: {fileID: 0}
   drawBehind: 1
-  cullMode: 2
+  cullMode: 0
   subMeshMask: -1
   colorOverTime:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 0.71132076, g: 1, b: 0.912532, a: 1}
-    key2: {r: 1, g: 1, b: 1, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
+    key0: {r: 0, g: 0.465413, b: 0.85882354, a: 1}
+    key1: {r: 0.9481132, g: 0.9481132, b: 1, a: 0.75686276}
+    key2: {r: 0.48900855, g: 0.48900855, b: 0.9339623, a: 0}
+    key3: {r: 0.48900855, g: 0.48900855, b: 0.9339623, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
@@ -8835,7 +8853,7 @@ MonoBehaviour:
     ctime0: 0
     ctime1: 65535
     ctime2: 65535
-    ctime3: 0
+    ctime3: 65535
     ctime4: 0
     ctime5: 0
     ctime6: 0
@@ -8857,7 +8875,7 @@ MonoBehaviour:
   colorRampEnd: {fileID: 0}
   fadeOut: 1
   colorSequence: 0
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 0.19607843, g: 0.81960785, b: 0.7115062, a: 1}
   colorCycleDuration: 3
   colorCycleLoop: 1
   pingPongSpeed: 1
@@ -8891,7 +8909,7 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   cam: {fileID: 0}
-  effect: 4
+  effect: 3
   customMaterial: {fileID: 0}
   texture: {fileID: 2800000, guid: 5d67d51a1e4c947a2aaebc1c814a3b7c, type: 3}
   scale: {x: 1, y: 1, z: 1}
@@ -8933,13 +8951,13 @@ MonoBehaviour:
   cameraDistanceFade: 0
   cameraDistanceFadeNear: 0
   cameraDistanceFadeFar: 1000
-  animationStates: Standing Dodge
+  animationStates: 
   animator: {fileID: 8408679433847319184}
   lookTarget: {fileID: 0}
   lookToCamera: 1
   textureCutOff: 0.5
   normalThreshold: 0.1
-  useLastAnimationState: 1
+  useLastAnimationState: 0
   maxBatches: 15
   meshPoolSize: 256
   interpolate: 0
