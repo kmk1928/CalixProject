@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class StatView : MonoBehaviour
 {
-    //필요한 컴포넌트들
     [SerializeField]
-    private GameObject Stats;
+    private PlayerStats playerStats; // Inspector에서 PlayerStats 컴포넌트 할당
 
     [SerializeField]
     private TextMeshProUGUI AD_Stat;
@@ -19,9 +17,28 @@ public class StatView : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI HP_stat;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (playerStats != null)
+        {
+            // PlayerStats 컴포넌트에서 능력치 데이터 가져오기
+            float maxHealth = playerStats.maxHealth;
+            float attackDamage = playerStats.attackDamage;
+            float defense = playerStats.defense;
+
+            // 텍스트 업데이트
+            AD_Stat.text = attackDamage.ToString();
+            DF_Stat.text = defense.ToString();
+            HP_stat.text = maxHealth.ToString();
+        }
+        else
+        {
+            Debug.LogWarning("PlayerStats 컴포넌트를 찾을 수 없습니다.");
+        }
     }
 }
+
+
+
+
+
