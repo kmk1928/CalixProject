@@ -16,8 +16,6 @@ TagManager:
   - EnemyLockonPosition
   - Boss
   - Item
-  - ParticleAttack
-  - EnemyParticleAttack
   layers:
   - Default
   - TransparentFX

@@ -30,9 +30,6 @@ public class EnemyPattern : MonoBehaviour
     private bool isBattleMode = false;
     public bool isInteracting = false;
 
-    public int debugingPatten = 1;
-
-    public GameObject skill_Particle_blood;
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -99,8 +96,7 @@ public class EnemyPattern : MonoBehaviour
             {
                 agent.isStopped = true;
                 canEnemyRotate = false;
-                int pattern = 2;//Random.Range(1, 5); // 예를 들어, 1에서 3 중에서 랜덤 선택
-                pattern = debugingPatten;
+                int pattern = 4;//Random.Range(1, 5); // 예를 들어, 1에서 3 중에서 랜덤 선택
                 switch (pattern)
                 {
                     case 1:
@@ -119,13 +115,11 @@ public class EnemyPattern : MonoBehaviour
                         LookAtPlayer();
                         StartCoroutine(AttackPattern_GS7());
                         break;
-                    case 5:
-                        StartCoroutine(AttackPattern_Blood_SwordAura());
-                        break;
+
                 }
             }
 
-            if (distanceToPlayer > 1.1f)
+            if (distanceToPlayer > 4.1f)
             {
 
                 isSearchMode = true;
@@ -137,12 +131,6 @@ public class EnemyPattern : MonoBehaviour
     private void LookAtPlayer()
     {
         transform.LookAt(player.position);
-    }
-
-    private void Spawned_Particle_blood()
-    {
-        GameObject particleInstance = Instantiate(skill_Particle_blood, this.transform.position + new Vector3(0,0.6f,0), this.transform.rotation);
-        Destroy(particleInstance, 1.5f);
     }
 
     IEnumerator TeleportAndAttack()
@@ -180,11 +168,19 @@ public class EnemyPattern : MonoBehaviour
     {
         Debug.Log("Test1 Start");
         isAttacking = true;
+        // LockEnemyAnimRootTrue();
 
         animator.SetTrigger("Attack1");
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(1.3f);
+        // UnLockEnemyAnimRootfalse();
+        int pattern = Random.Range(1, 3);
+        if (pattern == 1)
+        {
+            //   yield return StartCoroutine(AttackPattern1_2());
+        }
+        yield return new WaitForSeconds(1f);
 
-        //agent.SetDestination(player.position);
+        agent.SetDestination(player.position);
         isAttacking = false;
 
     }
@@ -208,35 +204,6 @@ public class EnemyPattern : MonoBehaviour
         isAttacking = false;
         isCombo = false;
     }
-    IEnumerator AttackPattern_Blood_SwordAura()
-    {
-        isAttacking = true;
-        isCombo = true;
-        animator.SetTrigger("Blood_SwordAura");
-        Debug.Log("Test particle Attack");
-        yield return new WaitForSeconds(4f);
-        isAttacking = false;
-        isCombo = false;
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     IEnumerator AttackPattern2()
     {
