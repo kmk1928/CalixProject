@@ -341,29 +341,33 @@ public class PlayerController : MonoBehaviour
             if (itemPickUp != null)
             {
                 Item item = itemPickUp.item;
+                
+                if (item != null) // 아이템이 Null이 아닌 경우에만 처리
+                {
+                    // theInventory 변수를 통해 아이템을 인벤토리에 추가
+                    theInventory.AcquireItem(item);
 
-                //theInventory 변수를 통해 아이템을 인벤토리에 추가
-                theInventory.AcquireItem(item);
+                    // 아이템을 주웠을 때 능력치 증가
+                    playerStats.ApplyItemModifiers(item);
 
-                // 아이템을 주웠을때 능력치 증가
-                playerStats.ApplyItemModifiers(item);
-
-                if (item.itemType == Item.ItemType.Red)
-                    playerStats.redCount += 1;
-
-                else if (item.itemType == Item.ItemType.Yellow)
-                    playerStats.yellowCount += 1;
-
+                    if (item.itemType == Item.ItemType.Red)
+                        playerStats.redCount += 1;
+                    else if (item.itemType == Item.ItemType.Yellow)
+                        playerStats.yellowCount += 1;
+                    else
+                        playerStats.blueCount += 1;
+                    
+                    // GameObject 파괴
+                    Destroy(nearObject);
+                }
                 else
-                    playerStats.blueCount += 1;
-
-                // GameObject 파괴
-                Destroy(nearObject);
+                {
+                    Debug.LogWarning("아이템이 Null입니다.");
+                }
 
                 // 'nearObject'를 null로 초기화
                 nearObject = null;
             }
-
             else
             {
                 Debug.LogWarning("근처 오브젝트에 'ItemPickUp' 컴포넌트가 없거나 아이템이 아닙니다.");

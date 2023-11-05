@@ -6,11 +6,13 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject go_BaseUi;
     [SerializeField] private GameObject Menu_BackImg;
+    [SerializeField] private GameObject SetUp_Menu;
+    public Inventory inventory;
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Cancel"))
+        if(Input.GetButtonDown("Cancel") && !inventory.InventoryActivated)
         {
             if(!GameManager.isPause)
                 CallMenu();
@@ -32,6 +34,7 @@ public class PauseMenu : MonoBehaviour
         GameManager.isPause = false;
         go_BaseUi.SetActive(false);
         Menu_BackImg.SetActive(false);
+        SetUp_Menu.SetActive(false);
         Time.timeScale = 1f;
     }
 
@@ -40,10 +43,21 @@ public class PauseMenu : MonoBehaviour
         CloseMenu();
     }
 
+
+
     public void ClickSetUp()
     {
-        Debug.Log("설정창");
+        go_BaseUi.SetActive(false);
+        SetUp_Menu.SetActive(true);
     }
+
+    public void ClickCloseSetUp()
+    {
+        go_BaseUi.SetActive(true);
+        SetUp_Menu.SetActive(false);
+    }
+
+
 
     public void ClickExit()
     {
