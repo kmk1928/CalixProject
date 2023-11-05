@@ -6,7 +6,7 @@ public class MeleeAreaSetup : MonoBehaviour
 {
     PlayerController playerCtrl;
     DamageCollider damageCollider;      //장착 무기의 damageCollider를 받아오기 위한 선언
-    public DamageCollider defaultDamageCollider;
+    public DamageCollider defaultDamageCollider; 
 
     private void Start() {
         //장착 무기 콜라이더 받기 위한 플레이어컨트롤러 

@@ -2789,81 +2789,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436005162}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &448281122
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 448281123}
-  - component: {fileID: 448281126}
-  - component: {fileID: 448281125}
-  - component: {fileID: 448281124}
-  m_Layer: 6
-  m_Name: BloodRain Area
-  m_TagString: melee
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &448281123
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448281122}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1399246107}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &448281124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448281122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26382e6f34c1a82469517ec6a20fb1e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!54 &448281125
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448281122}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &448281126
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448281122}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 11.45, y: 5.93, z: 12.79}
-  m_Center: {x: 0, y: -0.1, z: -0.73}
 --- !u!1 &454157891
 GameObject:
   m_ObjectHideFlags: 0
@@ -3916,17 +3841,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7683221586736670519, guid: 5e0a0cab54dfa164b9577df1b00f1af8, type: 3}
   m_PrefabInstance: {fileID: 875843609}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &909559175 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 865673632, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-  m_PrefabInstance: {fileID: 1768231015}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26382e6f34c1a82469517ec6a20fb1e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &915570245
 GameObject:
   m_ObjectHideFlags: 0
@@ -5775,17 +5689,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.033844, y: 1, z: 1.1681938}
   m_Center: {x: -0.09545338, y: 0, z: 0.08409691}
---- !u!114 &1288629390 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8079657306257471001, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-  m_PrefabInstance: {fileID: 1768231015}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26382e6f34c1a82469517ec6a20fb1e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1299890686 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 181047349368296036, guid: d70b6fb0a05bb25429ec422ee1a5c21a, type: 3}
@@ -6503,11 +6406,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d70b6fb0a05bb25429ec422ee1a5c21a, type: 3}
---- !u!4 &1399246107 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1862426205, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-  m_PrefabInstance: {fileID: 1768231015}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1433156135
 GameObject:
   m_ObjectHideFlags: 0
@@ -9034,10 +8932,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1191465245011681575, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-      propertyPath: jumpForce
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1191465245011681576, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
       propertyPath: m_Name
       value: Player
@@ -9086,20 +8980,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7190673556723799320, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-      propertyPath: skill
-      value: 
-      objectReference: {fileID: 8300000, guid: a0fa4e05bd3321f4e880340563928ca7, type: 3}
-    - target: {fileID: 7190673556723799320, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-      propertyPath: attack
-      value: 
-      objectReference: {fileID: 8300000, guid: 4f90aaaf0f3f9984aa8d18177e27f06d, type: 3}
-    - target: {fileID: 8408679433847319185, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-      propertyPath: bloodRain
-      value: 
-      objectReference: {fileID: 448281124}
-    m_RemovedComponents:
-    - {fileID: 8408679433847319185, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
 --- !u!1 &1798358832
 GameObject:
@@ -10728,17 +10609,6 @@ RectTransform:
   m_AnchoredPosition: {x: 400, y: 225}
   m_SizeDelta: {x: 799.99994, y: 449.99997}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1989346207 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3705453085180866927, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-  m_PrefabInstance: {fileID: 1768231015}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26382e6f34c1a82469517ec6a20fb1e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1994334980 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1191465245011681576, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
@@ -11516,22 +11386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c03b9aa1d028f4994245ce1e5fdc2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1191465243520282978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994334980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e968af4a2ce169e4a9cd8bd17a97c209, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultDamageCollider: {fileID: 1288629390}
-  oneSlash: {fileID: 1989346207}
-  flymech: {fileID: 909559175}
-  bloodRain: {fileID: 448281124}
 --- !u!4 &1232424934792814296 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8068054833305963180, guid: 93db9d26df9025d4b9e53bbb7fc3f83d, type: 3}

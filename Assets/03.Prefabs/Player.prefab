@@ -91,6 +91,81 @@ Transform:
   m_Father: {fileID: 167966577}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &448281122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 448281123}
+  - component: {fileID: 448281126}
+  - component: {fileID: 448281125}
+  - component: {fileID: 448281124}
+  m_Layer: 6
+  m_Name: BloodRain Area
+  m_TagString: melee
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &448281123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448281122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1862426205}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &448281126
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448281122}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 11.45, y: 5.93, z: 12.79}
+  m_Center: {x: 0, y: -0.1, z: -0.73}
+--- !u!54 &448281125
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448281122}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &448281124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448281122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26382e6f34c1a82469517ec6a20fb1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &456866946
 GameObject:
   m_ObjectHideFlags: 0
@@ -5222,6 +5297,7 @@ Transform:
   m_Children:
   - {fileID: 1241436298}
   - {fileID: 865673631}
+  - {fileID: 448281123}
   m_Father: {fileID: 1191465245011681577}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5243,10 +5319,10 @@ GameObject:
   - component: {fileID: 1191465245011681620}
   - component: {fileID: 1191465245011681578}
   - component: {fileID: 8408679433847319184}
-  - component: {fileID: 8408679433847319185}
   - component: {fileID: 7190673556723799320}
   - component: {fileID: 1191465243520282959}
   - component: {fileID: 1191465243520282966}
+  - component: {fileID: 1191465243520282978}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -5362,7 +5438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSpeed: 5
   speed: 5
-  jumpForce: 5
+  jumpForce: 8
   dashSpeed: 10
   dashDuration: 0.5
   maxJumpAngle: 30
@@ -5475,21 +5551,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &8408679433847319185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1191465245011681576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7a4d45a2e1acde46a6b594e038f2cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultDamageCollider: {fileID: 8079657306257471001}
-  oneSlash: {fileID: 3705453085180866927}
-  flymech: {fileID: 865673632}
 --- !u!114 &7190673556723799320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5504,7 +5565,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   footstep: {fileID: 8300000, guid: 9a30499e47789df48aa9bdb1ec7b0982, type: 3}
   jump: {fileID: 8300000, guid: a967f92e38352bb4291945423de63499, type: 3}
-  attack: {fileID: 8300000, guid: c2dade153431323449798d5d5fd92ee4, type: 3}
+  attack: {fileID: 8300000, guid: 4f90aaaf0f3f9984aa8d18177e27f06d, type: 3}
+  skill: {fileID: 8300000, guid: a0fa4e05bd3321f4e880340563928ca7, type: 3}
 --- !u!114 &1191465243520282959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5538,6 +5600,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flymech_Trail: {fileID: 167966578}
+--- !u!114 &1191465243520282978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191465245011681576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e968af4a2ce169e4a9cd8bd17a97c209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultDamageCollider: {fileID: 8079657306257471001}
+  oneSlash: {fileID: 3705453085180866927}
+  flymech: {fileID: 865673632}
+  bloodRain: {fileID: 448281124}
 --- !u!1 &2249790557613876686
 GameObject:
   m_ObjectHideFlags: 0
