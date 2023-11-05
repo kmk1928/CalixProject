@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 2938998536786894300}
   - component: {fileID: 5095915684516312787}
   - component: {fileID: 1027758548196807120}
+  - component: {fileID: -3227520430938486978}
   m_Layer: 7
   m_Name: Bear
   m_TagString: Enemy
@@ -160,6 +161,9 @@ MonoBehaviour:
   maxHealth: 200
   curHealth: 0
   defense: 5
+  maxHardness: 10
+  curHardness: 0
+  hardnessDamage: 10
   attackDamage: 10
   abillityPower: 10
   isDead: 0
@@ -198,9 +202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultDamageCollider: {fileID: 1027758548938075220}
-  oneSlash: {fileID: 0}
-  flymech: {fileID: 0}
-  bloodRain: {fileID: 0}
 --- !u!23 &1027758548196807120
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -243,6 +244,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-3227520430938486978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918841452736499748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91daf0b6f697cb4f930663fd5316cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstep: {fileID: 8300000, guid: 161d5a427e88d594f9906708ccdc5663, type: 3}
+  attack: {fileID: 8300000, guid: 70699b548e9f2a743a972f2259736cfd, type: 3}
 --- !u!1 &1027758548938075217
 GameObject:
   m_ObjectHideFlags: 0

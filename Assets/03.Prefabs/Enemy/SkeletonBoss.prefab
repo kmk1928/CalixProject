@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 4158904968317868621}
   - component: {fileID: 4158904968317868620}
   - component: {fileID: 4158904968317868627}
+  - component: {fileID: -2592866741813230553}
   m_Layer: 7
   m_Name: SkeletonBoss
   m_TagString: Enemy
@@ -218,6 +219,9 @@ MonoBehaviour:
   maxHealth: 200
   curHealth: 0
   defense: 5
+  maxHardness: 10
+  curHardness: 0
+  hardnessDamage: 10
   attackDamage: 10
   abillityPower: 10
   isDead: 0
@@ -256,9 +260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultDamageCollider: {fileID: 4158904967613856003}
-  oneSlash: {fileID: 0}
-  flymech: {fileID: 0}
-  bloodRain: {fileID: 0}
 --- !u!23 &4158904968317868627
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -301,6 +302,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-2592866741813230553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4158904968317868626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91daf0b6f697cb4f930663fd5316cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstep: {fileID: 8300000, guid: f1547ad8fbfa4f24d83e5a445aee860d, type: 3}
+  attack: {fileID: 8300000, guid: 70699b548e9f2a743a972f2259736cfd, type: 3}
 --- !u!1001 &4158904969163514877
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5572,6 +5572,7 @@ MonoBehaviour:
   jump: {fileID: 8300000, guid: a967f92e38352bb4291945423de63499, type: 3}
   attack: {fileID: 8300000, guid: 4f90aaaf0f3f9984aa8d18177e27f06d, type: 3}
   skill: {fileID: 8300000, guid: a0fa4e05bd3321f4e880340563928ca7, type: 3}
+  skill1: {fileID: 8300000, guid: 9e29046ed3041254caab2d41a5054e75, type: 3}
 --- !u!114 &1191465243520282959
 MonoBehaviour:
   m_ObjectHideFlags: 0
