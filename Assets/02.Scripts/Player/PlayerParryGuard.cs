@@ -75,39 +75,76 @@ public class PlayerParryGuard : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (!isHitted && (other.tag == "EnemyAttack" || other.tag == "EnemyPowerAttack") && !playerController.isDodge && !playerController.isDead) {
+        if (!isHitted && (other.tag == "EnemyAttack" || other.tag == "EnemyPowerAttack" || other.tag == "EnemyParticleAttack") 
+                      && !playerController.isDodge && !playerController.isDead) 
+        {
             Debug.Log("1"); //추적추적추적추적
             nearObject = other.gameObject;
             playerController.LockPlayerInput();  //피격중 이동 제한
             TestAnimationEndPlayerVelocityZero();
-            if (isParried) {
-                Debug.Log("PARRY!!!");                          //패링 성공
-                OnParried();
-            }
-            else if (isBlocked) {                                    //우클릭 가드로 인한 뎀감 실험
-                CharStats targetStatus = other.GetComponentInParent<CharStats>();
-                if(targetStatus != null) {
-                    combat.Guard(targetStatus);
+            if(other.tag != "EnemyParticleAttack") //일반적인 피격
+            {
+                if (isParried)
+                {
+                    Debug.Log("PARRY!!!");                          //패링 성공
+                    OnParried();
                 }
-                Debug.Log("Guard!");
-                OnDamage();
-            }
-            else {
-                CharStats targetStatus = other.GetComponentInParent<CharStats>();
-                    combat.PlayerHitted(targetStatus);
-                Debug.Log("Damaged");
-                if(other.tag == "EnemyAttack") {
-                    anim.SetTrigger("doDamage");
+                else if (isBlocked)
+                {                                    //우클릭 가드로 인한 뎀감 실험
+                    CharStats targetStatus = other.GetComponentInParent<CharStats>();
+                    if (targetStatus != null)
+                    {
+                        combat.Guard(targetStatus);
+                    }
+                    Debug.Log("Guard!");
                     OnDamage();
-                    
                 }
-                else if(other.tag == "EnemyPowerAttack") {
+                else
+                {
+                    CharStats targetStatus = other.GetComponentInParent<CharStats>();
+                    combat.PlayerHitted(targetStatus);
+                    Debug.Log("Damaged");
+                    if (other.tag == "EnemyAttack")
+                    {
+                        anim.SetTrigger("doDamage");
+                        OnDamage();
+
+                    }
+                    else if (other.tag == "EnemyPowerAttack")
+                    {
+                        anim.SetTrigger("doDamage_Power");
+                        OnPowerDamage();
+
+                    }
+
+                }
+
+            }
+            else    //파티클 공격에 맞았을때
+            {
+                ParticleAttackCollider particleCol = other.GetComponent<ParticleAttackCollider>();
+                if (isParried)
+                {
+                    Debug.Log("PARRY!!!");                          //패링 성공
+                    OnParried();
+                }
+                else if (isBlocked)
+                {
+                    combat.ParticleDamaged(particleCol.damage);
+                    
+                    Debug.Log("Guard!");
+                    OnDamage();
+                }
+                else
+                {
+                    combat.ParticleDamaged(particleCol.damage);
                     anim.SetTrigger("doDamage_Power");
                     OnPowerDamage();
-                    
                 }
-                
             }
+
+
+           
 
         }
     }
