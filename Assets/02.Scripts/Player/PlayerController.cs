@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public Weapon equipWeapon;
 
     public bool isDodge;
+    public TrailsFX.TrailEffect dodgeTrail;
 
     //weapon variable
     public GameObject[] weapons;
@@ -376,6 +377,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCount < 1 && !isDashing && !isSwap && !isDodge)
         {
+            dodgeTrail.active = true;
             // 현재 속도를 저장하여 나중에 복원할 수 있도록 합니다.
             float originalSpeed = speed;
 
@@ -405,7 +407,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator EndDodgeAfterDelay(float delay, float originalSpeed)
     {
         yield return new WaitForSeconds(delay);
-
+        dodgeTrail.active = false;
         // Dodge 동작 종료
         isDodge = false;
         speed = originalSpeed; // 속도를 원래 값으로 복원

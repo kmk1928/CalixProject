@@ -38,6 +38,7 @@ public class PlayerAttacker : MonoBehaviour {
 
     private Coroutine attackCor;
     private Coroutine particleCor;
+    private GameObject cloneParticle;
 
     Animator anim;
     Transform playerTransform;
@@ -182,6 +183,7 @@ public class PlayerAttacker : MonoBehaviour {
         Quaternion rotation = playerTransform.rotation * Quaternion.Euler(currentAttack.particleRotation);
         Vector3 scale = currentAttack.particleScale;
         GameObject particleInstance = Instantiate(prefab, position, rotation);
+        cloneParticle = particleInstance;
         //particleInstance.transform.parent = playerTransform;  //플레이어를 부모로 지정
         particleInstance.transform.localScale = scale;
         // 지정된 endTime 시간 후에 파티클을 파괴하는 대기
@@ -202,14 +204,16 @@ public class PlayerAttacker : MonoBehaviour {
 
     public void Stop_AttackAreaActive_Cour()
     {
-        Debug.Log("테스트 코루틴");
         if(attackCor != null)
         {
-            Debug.Log("테스트 908908908코루틴 이거도 됨");
             StopCoroutine(attackCor);
         }
         if(particleCor != null)
         {
+            if(cloneParticle != null)
+            {
+                Destroy(cloneParticle);
+            }
             StopCoroutine(particleCor);
         }
     }
