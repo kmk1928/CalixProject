@@ -13,6 +13,7 @@ public class CharCombat : MonoBehaviour
     //private float atkCdw = 0f;          //공격 딜레이\
 
     private float finalDamage;
+    private float hdDamage;
 
     private void Start() {
         myStats = GetComponent<CharStats>();
@@ -32,10 +33,16 @@ public class CharCombat : MonoBehaviour
         }
         Debug.LogWarning("적이 받은 데미지" + finalDamage);
         myStats.TakeADDamage(finalDamage);
+
+        hdDamage = targetStats.hardnessDamage;
+        myStats.TakeHardness(hdDamage);
     }
     public void PlayerHitted(CharStats targetStats) {     //공격 데미지를 받음
         finalDamage = targetStats.attackDamage;
         myStats.TakeADDamage(finalDamage);
+
+        hdDamage = targetStats.hardnessDamage;
+        myStats.TakeHardness(hdDamage);
     }
 
     public void Guard(CharStats targetStats) {  //가드 시 데미지 %감소

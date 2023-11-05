@@ -9,6 +9,7 @@ public class SOAttackPattern : ScriptableObject {
     public float cooldown = 0.4f;          //연속입력 방지시간 ex) 0.3f면 애니메이션 실행 후 0.3초 이후에 다음 입력가능
     [Tooltip("애니메이션의 몇 프레임에 공격 콜라이더를 활성화 할건지")] //0.01은 1프레임 0.1은 10프레임
     public float attackCollider_ActiveTime = 0.2f;
+    public float hardness_Damage = 10;
 
     public AnimatorOverrideController animatorOV;
 

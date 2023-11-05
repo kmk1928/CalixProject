@@ -62,9 +62,12 @@ public class EnemyHit : MonoBehaviour
                 combat.EnemyHitted(targetStatus);
             }
 
+            if(enemyStats.curHardness <= 0)
+            {
 
-            //애님 트리거  doDamage 발동
-            StartCoroutine(OnDamage());
+                //애님 트리거  doDamage 발동
+                StartCoroutine(OnDamage());
+            }
         }
     }
 

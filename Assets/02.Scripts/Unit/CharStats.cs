@@ -9,6 +9,9 @@ public class CharStats : MonoBehaviour
     public int maxHealth = 1000;
     public float curHealth; // { get; private set; } 쓰면 다른 클래스에서 변수에 접근가능하지만 값 변경은 현재 클래스에서만 가능
     public float defense = 0.5f;
+    public float maxHardness = 10f;        //강인도 수치
+    public float curHardness;
+    public float hardnessDamage = 10f;  //강인도 데미지
 
     public float attackDamage = 10f;
     public float abillityPower = 10f;
@@ -24,6 +27,7 @@ public class CharStats : MonoBehaviour
 
     private void Awake() {
         curHealth = maxHealth;
+        curHardness = maxHardness;
     }
 
     private Coroutine resetCoroutine; // 코루틴을 저장할 변수
@@ -46,6 +50,21 @@ public class CharStats : MonoBehaviour
             StopCoroutine(resetCoroutine);
         }
         resetCoroutine = StartCoroutine(damageReset(additionalDamage)); // damageReset 코루틴 시작
+    }
+
+    public void TakeHardness(float hardnessDamage)
+    {
+        curHardness -= hardnessDamage;
+        if(curHardness <= 0)
+        {
+            StartCoroutine(RecoverHardness());
+        }
+    }
+
+    IEnumerator RecoverHardness()
+    {
+        yield return new WaitForSeconds(0.2f);
+        curHardness = maxHardness;
     }
 
     public void TakeAPDamage(float damage) {

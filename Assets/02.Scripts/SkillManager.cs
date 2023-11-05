@@ -34,17 +34,4 @@ public class SkillManager : MonoBehaviour
     public static int oneSlash_Lv = 1;
     public static int bloodRain_Lv = 1;
 
-    private void Update()
-    {
-        if (isOneSlashEquipped)
-        {
-
-            Debug.Log("ooooooo-----------oooooooooo");
-        }
-        if (!isBloodRainEquipped)
-        {
-
-            Debug.Log("bbbbbb-----------bbbbbbbbbbbbbbbbbbbbbbbbb");
-        }
-    }
 }

@@ -397,9 +397,6 @@ MonoBehaviour:
   maxHealth: 500
   curHealth: 0
   defense: 5
-  maxHardness: 10
-  curHardness: 0
-  hardnessDamage: 10
   attackDamage: 10
   abillityPower: 10
   isDead: 0
@@ -8983,10 +8980,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8408679433847319187, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-      propertyPath: maxHardness
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
 --- !u!1 &1798358832
@@ -10033,9 +10026,6 @@ MonoBehaviour:
   maxHealth: 500
   curHealth: 0
   defense: 5
-  maxHardness: 10
-  curHardness: 0
-  hardnessDamage: 10
   attackDamage: 10
   abillityPower: 10
   isDead: 0
@@ -12036,9 +12026,6 @@ MonoBehaviour:
   maxHealth: 10000
   curHealth: 0
   defense: 5
-  maxHardness: 10
-  curHardness: 0
-  hardnessDamage: 10
   attackDamage: 10
   abillityPower: 10
   isDead: 0
@@ -15287,20 +15274,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1541277563749876445, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
       propertyPath: debugingPatten
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1541277563749876445, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
       propertyPath: skill_Particle_blood
       value: 
       objectReference: {fileID: 1996079926692674, guid: 492b3e123b58f62468c377cd510efa10, type: 3}
-    - target: {fileID: 1541277563749876447, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
-      propertyPath: maxHardness
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1541277564718321299, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
 --- !u!224 &5960957166293457135

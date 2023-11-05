@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerParryGuard : MonoBehaviour {
 
     CharCombat combat;
+    PlayerStats playerStats;
 
     [SerializeField]
     private float parryTimer = 0f;
@@ -41,6 +42,7 @@ public class PlayerParryGuard : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         combat = GetComponent<CharCombat>();
+        playerStats = GetComponent<PlayerStats>();
         anim = GetComponentInChildren<Animator>();//animation
         playerController = GetComponent<PlayerController>();
         smoothMoved = GetComponent<SmoothMoved>();
@@ -104,21 +106,21 @@ public class PlayerParryGuard : MonoBehaviour {
                     CharStats targetStatus = other.GetComponentInParent<CharStats>();
                     combat.PlayerHitted(targetStatus);
                     Debug.Log("Damaged");
-                    if (other.tag == "EnemyAttack")
+
+                    if (playerStats.curHardness <= 0)
                     {
-                        anim.SetTrigger("doDamage");
-                        OnDamage();
-
+                        if (other.tag == "EnemyAttack")
+                        {
+                            anim.SetTrigger("doDamage");
+                            OnDamage();
+                        }
+                        else if (other.tag == "EnemyPowerAttack")
+                        {
+                            anim.SetTrigger("doDamage_Power");
+                            OnPowerDamage();
+                        }
                     }
-                    else if (other.tag == "EnemyPowerAttack")
-                    {
-                        anim.SetTrigger("doDamage_Power");
-                        OnPowerDamage();
-
-                    }
-
                 }
-
             }
             else    //파티클 공격에 맞았을때
             {
@@ -142,9 +144,6 @@ public class PlayerParryGuard : MonoBehaviour {
                     OnPowerDamage();
                 }
             }
-
-
-           
 
         }
     }

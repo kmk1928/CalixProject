@@ -64,8 +64,5 @@ public class PlayerStats : CharStats
         if (playerAk.isSkill_2ing && !playerAk.isNAing && !playerAk.isSkill_1ing) {
             curDamageCal = playerAk.attackPatterns_void_Skill_2[0].damageMultiplier;
         }
-
-
-        //Debug.Log("���� pl���� �޴� index��");
     }
 }
