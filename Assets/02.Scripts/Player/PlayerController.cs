@@ -135,9 +135,9 @@ public class PlayerController : MonoBehaviour
                 //weapon
                 Interraction();
                 Swap();
-                Dodge();
             }
 
+            Dodge();
             #endregion
             PortalEnter();
 
@@ -380,7 +380,7 @@ public class PlayerController : MonoBehaviour
             float originalSpeed = speed;
 
             // Dodge 동작을 시작합니다.
-            speed *= 1.8f;
+            speed *= 1.6f;
             isDodge = true;
 
             anim.SetTrigger("DodgeTrigger"); // Dodge 애니메이션
@@ -396,7 +396,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(horizontalInput * speed, rb.velocity.y, verticalInput * speed);
 
             // Coroutine을 시작하여 Dodge를 일정 시간 후에 종료합니다.
-            StartCoroutine(EndDodgeAfterDelay(0.5f, originalSpeed));
+            StartCoroutine(EndDodgeAfterDelay(0.6f, originalSpeed));
         }
 
     }

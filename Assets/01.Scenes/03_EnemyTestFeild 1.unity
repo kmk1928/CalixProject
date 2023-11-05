@@ -15268,7 +15268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1541277563749876439, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1541277563749876440, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
       propertyPath: m_RootOrder
@@ -16204,7 +16204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 043c932b5029da743b73a333dd7d1b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Stats: {fileID: 1994334980}
+  playerStats: {fileID: 0}
   AD_Stat: {fileID: 8753811037591262648}
   DF_Stat: {fileID: 1860658474}
   HP_stat: {fileID: 1363977895}

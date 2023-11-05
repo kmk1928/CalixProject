@@ -36,6 +36,9 @@ public class PlayerAttacker : MonoBehaviour {
 
     private bool colliderCoroutineIsRunning = false;
 
+    private Coroutine attackCor;
+    private Coroutine particleCor;
+
     Animator anim;
     Transform playerTransform;
     PlayerController playerController;
@@ -78,25 +81,34 @@ public class PlayerAttacker : MonoBehaviour {
         {
             attackPatterns_void_Skill_2 = bloodRain;
         }
-        if (Input.GetButtonDown("Fire1") && !cooldownActive && !isSkill_1ing && !isSkill_2ing && !PlayerFlag.isInteracting && playerController.isGrounded && !UIManager.isOpenUI) {
+        if (Input.GetButtonDown("Fire1") && !cooldownActive && !isSkill_1ing && !isSkill_2ing && !PlayerFlag.isInteracting 
+                                        && playerController.isGrounded && !UIManager.isOpenUI && !playerController.isDodge) 
+        {
             Attack(attackPatterns_void_normalAk);
             isNAing = true;
         }
-        if (isNAing) {
+        if (isNAing) 
+        {
             ExitAttack(attackPatterns_void_normalAk);
         }
-        if (Input.GetKeyDown(KeyCode.F) && !cooldownActive && !isNAing && !isSkill_2ing && !PlayerFlag.isInteracting && playerController.isGrounded && !UIManager.isOpenUI) {
+        if (Input.GetKeyDown(KeyCode.F) && !cooldownActive && !isNAing && !isSkill_2ing && !PlayerFlag.isInteracting 
+                                        && playerController.isGrounded && !UIManager.isOpenUI && !playerController.isDodge) 
+        {
             Attack(attackPatterns_void_Skill_1);
             isSkill_1ing = true;
         }
-        if (isSkill_1ing) {
+        if (isSkill_1ing) 
+        {
             ExitAttack(attackPatterns_void_Skill_1);
         }
-        if (Input.GetKeyDown(KeyCode.R) && !cooldownActive && !isNAing && !isSkill_1ing &&!PlayerFlag.isInteracting && playerController.isGrounded && !UIManager.isOpenUI) {
+        if (Input.GetKeyDown(KeyCode.R) && !cooldownActive && !isNAing && !isSkill_1ing &&!PlayerFlag.isInteracting 
+                                        && playerController.isGrounded && !UIManager.isOpenUI && !playerController.isDodge) 
+        {
             Attack(attackPatterns_void_Skill_2);
             isSkill_2ing = true;
         }
-        if (isSkill_2ing) {
+        if (isSkill_2ing) 
+        {
             ExitAttack(attackPatterns_void_Skill_2);
         }
 
@@ -121,7 +133,7 @@ public class PlayerAttacker : MonoBehaviour {
 
             //공격범위 활성    
             if (!colliderCoroutineIsRunning) {
-                StartCoroutine(AttackAreaActive_Cour(attackPatterns));
+                attackCor = StartCoroutine(AttackAreaActive_Cour(attackPatterns));
             }
             //공격중 회전 활성화
             StartCoroutine(playerController.AnimationingRotation());
@@ -135,7 +147,7 @@ public class PlayerAttacker : MonoBehaviour {
                 #region 파티클 효과 생성
                 SOAttackPattern currentAttack = attackPatterns[currentAttackIndex];
                 if (currentAttack.particleEffectPrefab != null) {
-                    StartCoroutine(SpawnParticleLifecycle(currentAttack.particleEffectPrefab,
+                    particleCor = StartCoroutine(SpawnParticleLifecycle(currentAttack.particleEffectPrefab,
                                                             currentAttack.particleStartTime,
                                                             currentAttack.particleEndTime,
                                                             currentAttack));
@@ -188,6 +200,20 @@ public class PlayerAttacker : MonoBehaviour {
         yield return null;
     }
 
+    public void Stop_AttackAreaActive_Cour()
+    {
+        Debug.Log("테스트 코루틴");
+        if(attackCor != null)
+        {
+            Debug.Log("테스트 908908908코루틴 이거도 됨");
+            StopCoroutine(attackCor);
+        }
+        if(particleCor != null)
+        {
+            StopCoroutine(particleCor);
+        }
+    }
+
     public void MeleeTrail() {
         meleeWeaponTrail._emitTime = 0.2f;
         meleeWeaponTrail.Emit = true;
@@ -196,7 +222,8 @@ public class PlayerAttacker : MonoBehaviour {
     void ExitAttack(SOAttackPattern[] attackPatterns) {     //애니메이션 시간이 90%가 넘으면
 
         if((anim.GetCurrentAnimatorStateInfo(0).IsTag(attackPatterns[currentAttackIndex].AnimTag) 
-            && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f) || anim.GetBool("isDamaged")==true) {
+            && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f) || anim.GetBool("isDamaged")==true
+            || anim.GetCurrentAnimatorStateInfo(0).IsName("StandingDodge")) {
             if(endCount == 0) {
                 // Invoke("EndCombo", 0.5f);
                 EndCombo();
