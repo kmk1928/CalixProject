@@ -41,7 +41,13 @@ public class CharCombat : MonoBehaviour
     public void Guard(CharStats targetStats) {  //가드 시 데미지 %감소
         finalDamage = targetStats.attackDamage;
         myStats.GuardDamage(finalDamage);
-        }
+    }
+
+    public void ParticleDamaged(float particleDamage)
+    {
+        finalDamage = particleDamage;
+        myStats.TakeADDamage(finalDamage);
+    }
 
     private void DamageCalculation() {
         /* 임시 데미지 공식
