@@ -12,6 +12,7 @@ public class PlayerSound : MonoBehaviour
    public AudioClip jump;
    public AudioClip attack;
    public AudioClip skill;
+   public AudioClip skill1;
    
    // Start is called before the first frame update
    void Start()
@@ -65,5 +66,10 @@ public class PlayerSound : MonoBehaviour
    {
       // 이벤트가 발생하면 사운드 재생
       AudioSource.PlayClipAtPoint(attack, Camera.main.transform.position);
+   }
+   void  OneSlashSound()
+   {
+      // 이벤트가 발생하면 사운드 재생
+      AudioSource.PlayClipAtPoint(skill1, Camera.main.transform.position);
    }
 }
