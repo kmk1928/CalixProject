@@ -15,7 +15,7 @@ MonoBehaviour:
   profile: {fileID: 0}
   active: 1
   ignoreVisibility: 0
-  ignoreFrames: 6
+  ignoreFrames: 4
   duration: 0.67
   continuous: 0
   smooth: 0
@@ -24,8 +24,8 @@ MonoBehaviour:
   worldPositionRelativeOption: 0
   worldPositionRelativeTransform: {fileID: 0}
   checkScreenPosition: 1
-  minPixelDistance: 94
-  maxStepsPerFrame: 12
+  minPixelDistance: 105
+  maxStepsPerFrame: 9
   checkTime: 0
   timeInterval: 2
   checkCollisions: 0
