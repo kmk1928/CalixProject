@@ -30,9 +30,10 @@ public class PlayerParryGuard : MonoBehaviour {
     public ParticleSystem parryParticle;
     public ParticleSystem parryDistortion;
 
-    public ParticleSystem hittedParticle;
-    [Header("power Hit")]
+    [Header("Hit")]
     [Tooltip("강한 피격 이펙트")]
+    public ParticleSystem sparkParticle;
+    public ParticleSystem hittedParticle;
     public ParticleSystem powerHittedParticle;
     
     Animator anim;  //animation variable
@@ -99,12 +100,15 @@ public class PlayerParryGuard : MonoBehaviour {
                         combat.Guard(targetStatus);
                     }
                     Debug.Log("Guard!");
+                    sparkParticle.Play();
                     OnDamage();
                 }
                 else
                 {
                     CharStats targetStatus = other.GetComponentInParent<CharStats>();
                     combat.PlayerHitted(targetStatus);
+                    hittedParticle.Play();
+                    sparkParticle.Play();
                     Debug.Log("Damaged");
 
                     if (playerStats.curHardness <= 0)
@@ -155,7 +159,7 @@ public class PlayerParryGuard : MonoBehaviour {
         isHitted = true;                        //연속피격방지
         isParried = false;     
         parryTimer = 0f;    //패리가능시간 초기화
-       /// Debug.Log("2"); //추적추적추적추적
+
         original = this.transform;      //부드럽게 밀려남
         smoothMoved.SmoothMove_Parry(original, nearObject.transform);
 
@@ -168,7 +172,6 @@ public class PlayerParryGuard : MonoBehaviour {
     private void OnDamage() {              //가드 또는 피격 시 쓰는 데미지 코루틴
         isHitted = true;                        //연속피격방지
         isHittedMotioning = true;           //피격 직후 60프레임 내 패링 가능 방지
-        hittedParticle.Play();
         //Debug.Log("3"); //추적추적추적추적
         original = this.transform;
         smoothMoved.SmoothMove_normalAttack(original, nearObject.transform);
