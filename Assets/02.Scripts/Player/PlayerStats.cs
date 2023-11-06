@@ -36,14 +36,8 @@ public class PlayerStats : CharStats
         attackDamage += item.attackEnergy;
         defense += item.defenseEnergy;
 
-        if(redCount == 3)
-            maxHealth = maxHealth + 1;
-
-        else if (yellowCount == 3)
-            attackDamage = attackDamage + 1;
-
-        else if (blueCount == 3)
-            defense = defense + 1;
+        PlusStatBonus1();
+        PlusStatBonus2();
     }
 
     public void RemoveItemModifiers(Item item)
@@ -51,8 +45,63 @@ public class PlayerStats : CharStats
         maxHealth -= item.healthEnergy;
         attackDamage -= item.attackEnergy;
         defense -= item.defenseEnergy;
+
+        MinusStatBonus1();
+        MinusStatBonus2();
     }
 
+
+
+
+    public void PlusStatBonus1()
+    {
+        if(redCount == 3)
+            maxHealth = maxHealth + 100;
+
+        else if (yellowCount == 3)
+            attackDamage = attackDamage + 10;
+
+        else if (blueCount == 3)
+            defense = defense + 10;
+    }
+
+    public void PlusStatBonus2()
+    {
+        if(redCount == 6)
+            maxHealth = maxHealth + 100;
+
+        else if (yellowCount == 6)
+            attackDamage = attackDamage + 10;
+
+        else if (blueCount == 6)
+            defense = defense + 10;
+    }
+
+
+
+    public void MinusStatBonus1()
+    {
+        if(redCount == 3)
+            maxHealth = maxHealth - 100;
+
+        else if (yellowCount == 3)
+            attackDamage = attackDamage - 10;
+
+        else if (blueCount == 3)
+            defense = defense - 10;
+    }
+
+    public void MinusStatBonus2()
+    {
+        if(redCount == 6)
+            maxHealth = maxHealth - 100;
+
+        else if (yellowCount == 6)
+            attackDamage = attackDamage - 10;
+
+        else if (blueCount == 6)
+            defense = defense - 10;
+    }
 
 
     private void LateUpdate() { 

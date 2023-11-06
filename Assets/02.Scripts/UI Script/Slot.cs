@@ -77,6 +77,16 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         {
             if(item != null) ///슬롯이 비었는지 판단
             {
+
+                    if (item.itemType == Item.ItemType.Red)
+                        playerStats.redCount -= 1;
+                    else if (item.itemType == Item.ItemType.Yellow)
+                        playerStats.yellowCount -= 1;
+                    else
+                        playerStats.blueCount -= 1;
+
+                    
+                    
                     Debug.Log(item.itemName + " 을 파괴했습니다.");
                     playerStats.RemoveItemModifiers(item);
                     SetSlotCount(-1);
