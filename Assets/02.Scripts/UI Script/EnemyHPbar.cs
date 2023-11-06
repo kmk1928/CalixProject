@@ -22,6 +22,7 @@ public class EnemyHPbar : MonoBehaviour
     public GameObject bossHpbar;
     private GameObject bossObj;
     private Slider bossHpSlider;
+    private Slider bossYellowHpSlider;
     private CharStats bossStats;
     private Text bossDamageTxt;
     private bool bossOn;
@@ -60,8 +61,10 @@ public class EnemyHPbar : MonoBehaviour
         bossObj = GameObject.FindGameObjectWithTag("Boss");
         if(bossObj != null)
         {
+            Slider[] bossSlider = bossHpbar.GetComponentsInChildren<Slider>();
             bossStats = bossObj.GetComponent<CharStats>();
-            bossHpSlider = bossHpbar.GetComponentInChildren<Slider>();
+            bossHpSlider = bossSlider[1];
+            bossYellowHpSlider = bossSlider[0];
             bossDamageTxt = bossHpbar.GetComponentInChildren<Text>();
         }
     }
@@ -123,6 +126,7 @@ public class EnemyHPbar : MonoBehaviour
             {
                 EnableHPbar(bossHpbar);
                 bossHpSlider.value = Mathf.Lerp(bossHpSlider.value, bossStats.curHealth / bossStats.maxHealth, Time.deltaTime * 25);
+                StartCoroutine( YellowBar(bossYellowHpSlider, bossStats.curHealth, bossStats.maxHealth));
                 if (text_enableTime != bossStats.t_damage)
                 {
                     EnableText(bossDamageTxt, bossStats.t_damage.ToString("0"));
@@ -149,6 +153,12 @@ public class EnemyHPbar : MonoBehaviour
         yield return new WaitForSeconds(1f);
         slider.value = Mathf.Lerp(slider.value,curHP / maxHP, Time.deltaTime * 80);
     }
+    IEnumerator BossYellowBar(Slider slider, float curHP, float maxHP)
+    {
+        yield return new WaitForSeconds(1f);
+        slider.value = Mathf.Lerp(slider.value, curHP / maxHP, Time.deltaTime * 80);
+    }
+
     void EnableText(Text hpText, string s_damage)
     {
         hpText.text = s_damage;
