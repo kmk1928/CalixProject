@@ -883,15 +883,29 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0
+      - time: 0.12015502
         functionName: EnemyAttackSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.48092484
+      - time: 0.22832787
+        functionName: OpenDamageCollider_Corutin
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.63208765
         functionName: EnemyAttackSound
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.73078144
+        functionName: OpenDamageCollider_Corutin
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
