@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 2938998536786894300}
   - component: {fileID: 5095915684516312787}
   - component: {fileID: 1027758548196807120}
-  - component: {fileID: -3227520430938486978}
+  - component: {fileID: -8223524618908015055}
   m_Layer: 7
   m_Name: Bear
   m_TagString: Enemy
@@ -244,7 +244,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-3227520430938486978
+--- !u!114 &-8223524618908015055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,11 +253,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 918841452736499748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e91daf0b6f697cb4f930663fd5316cf7, type: 3}
+  m_Script: {fileID: 11500000, guid: 05c384747ac05924d9edd8ec8ac96c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstep: {fileID: 8300000, guid: 161d5a427e88d594f9906708ccdc5663, type: 3}
-  attack: {fileID: 8300000, guid: 70699b548e9f2a743a972f2259736cfd, type: 3}
 --- !u!1 &1027758548938075217
 GameObject:
   m_ObjectHideFlags: 0

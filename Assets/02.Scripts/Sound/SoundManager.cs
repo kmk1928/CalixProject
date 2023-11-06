@@ -27,6 +27,9 @@ public class SoundManager : MonoBehaviour
     //오크
     public AudioClip orcFootstep;
     public AudioClip orcAttack;
+    //곰
+    public AudioClip bearFootstep;
+    public AudioClip bearAttack;
 
     private void Awake()
     {
@@ -108,7 +111,15 @@ public class SoundManager : MonoBehaviour
     {
         EffectSource.PlayOneShot(orcFootstep);
     }
-
+    //곰
+    public void BearAttackSound()
+    {
+        EffectSource.PlayOneShot(bearAttack);
+    }
+    public void BearFootstepSound()
+    {
+        EffectSource.PlayOneShot(bearFootstep);
+    }
 }
 
 

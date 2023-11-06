@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 7664498896681746932}
   - component: {fileID: 7664498896681746933}
   - component: {fileID: 7664498896681746934}
-  - component: {fileID: 5077058547098404964}
+  - component: {fileID: 812146631854781669}
   m_Layer: 7
   m_Name: Orc
   m_TagString: Enemy
@@ -302,7 +302,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5077058547098404964
+--- !u!114 &812146631854781669
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -311,11 +311,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7664498896681746935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e91daf0b6f697cb4f930663fd5316cf7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b14556e6bd076541b8ce63a7785d633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstep: {fileID: 8300000, guid: 2e14b3cc9c6906b42885675f3572d4b3, type: 3}
-  attack: {fileID: 8300000, guid: 70699b548e9f2a743a972f2259736cfd, type: 3}
 --- !u!1001 &7664498895375654010
 PrefabInstance:
   m_ObjectHideFlags: 0

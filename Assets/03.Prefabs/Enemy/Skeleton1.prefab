@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 7856824653343478293}
   - component: {fileID: 250006596592941338}
   - component: {fileID: 5441248885683445273}
-  - component: {fileID: 7021424566389835383}
+  - component: {fileID: -4807621494446769634}
   m_Layer: 7
   m_Name: Skeleton1
   m_TagString: Enemy
@@ -244,7 +244,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7021424566389835383
+--- !u!114 &-4807621494446769634
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,11 +253,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5260211592171216877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e91daf0b6f697cb4f930663fd5316cf7, type: 3}
+  m_Script: {fileID: 11500000, guid: bf4608f9c694aa34d88b677acdf12c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstep: {fileID: 8300000, guid: 6478d7fb30f301b4fa8f74d5d1dad094, type: 3}
-  attack: {fileID: 8300000, guid: 70699b548e9f2a743a972f2259736cfd, type: 3}
 --- !u!1 &5441248885887574936
 GameObject:
   m_ObjectHideFlags: 0

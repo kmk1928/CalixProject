@@ -7866,17 +7866,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1307645926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c8fed20f7e43d94eb300f25023a9692, type: 3}
+  m_Script: {fileID: 11500000, guid: d82a7377f7d996f4faf05ef4820c44ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bgm_Source: {fileID: 1037998014}
-  bossFootstep: {fileID: 8300000, guid: 149e8ca9df68d744e9722158daa78ab1, type: 3}
-  bossAttack: {fileID: 8300000, guid: 70c8952b02a8c924891a8951f67242e8, type: 3}
   playerFootstep: {fileID: 8300000, guid: c3f3efc1106f84643a38bd21f6826aaf, type: 3}
   playerAttack: {fileID: 8300000, guid: 4f90aaaf0f3f9984aa8d18177e27f06d, type: 3}
   jump: {fileID: 8300000, guid: 7d65afb5fe7bb7e41a03b001f5acfbde, type: 3}
   ilsum: {fileID: 8300000, guid: 9e29046ed3041254caab2d41a5054e75, type: 3}
   dohon: {fileID: 8300000, guid: a0fa4e05bd3321f4e880340563928ca7, type: 3}
+  bossFootstep: {fileID: 8300000, guid: 149e8ca9df68d744e9722158daa78ab1, type: 3}
+  bossAttack: {fileID: 8300000, guid: 70c8952b02a8c924891a8951f67242e8, type: 3}
+  skeletonFootstep: {fileID: 8300000, guid: 8e001351cd7065543a068386cde4c960, type: 3}
+  skeletonAttack: {fileID: 8300000, guid: 70699b548e9f2a743a972f2259736cfd, type: 3}
+  minotaurosFootstep: {fileID: 8300000, guid: cb9aa4db4b3a12147bf2fe3d88fee270, type: 3}
+  minotaurosAttack: {fileID: 8300000, guid: 6cdf2b6afcdf03c4fb959f056819ba48, type: 3}
+  orcFootstep: {fileID: 8300000, guid: cb111f071b2e63844afba5ac99aceb2b, type: 3}
+  orcAttack: {fileID: 8300000, guid: f9cfc0e6ef7909a4fa3f8663ac5f3034, type: 3}
+  bearFootstep: {fileID: 8300000, guid: ba6466c0db2d12649a51ba73749902d3, type: 3}
+  bearAttack: {fileID: 8300000, guid: fcd896cebcfc7ef40abc379522db9266, type: 3}
 --- !u!4 &1307645928
 Transform:
   m_ObjectHideFlags: 0
@@ -15688,10 +15696,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1313577648}
     m_Modifications:
-    - target: {fileID: -3227520430938486978, guid: 00b5748a66b48384e859f125665c2b30, type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 918841452736499748, guid: 00b5748a66b48384e859f125665c2b30, type: 3}
       propertyPath: m_Name
       value: Bear
@@ -15744,7 +15748,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 00b5748a66b48384e859f125665c2b30, type: 3}
 --- !u!224 &1790976471715282662
 RectTransform:
