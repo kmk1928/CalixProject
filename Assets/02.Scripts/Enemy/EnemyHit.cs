@@ -35,7 +35,7 @@ public class EnemyHit : MonoBehaviour
                 {
                     agent.isStopped = true;
                 }
-                int count = Random.Range(1, 4);
+                int count = 1; // Random.Range(1, 4);
                 switch (count)
                 {
                     case 1:

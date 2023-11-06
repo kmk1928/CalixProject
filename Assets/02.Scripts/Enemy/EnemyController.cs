@@ -27,9 +27,7 @@ public class EnemyController : MonoBehaviour
     CharStats myStats;
     CharCombat combat;
     private int comboAttackCount = 0;
-
     public BoxCollider attackArea;
- 
     void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, enemyAttackRange);
@@ -46,6 +44,7 @@ public class EnemyController : MonoBehaviour
 
         combat = GetComponent<CharCombat>();
         myStats = GetComponent<CharStats>();
+
     }
 
     private void Update()
