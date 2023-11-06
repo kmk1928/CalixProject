@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgm_Source: {fileID: 0}
   playerFootstep: {fileID: 8300000, guid: c3f3efc1106f84643a38bd21f6826aaf, type: 3}
-  playerAttack: {fileID: 8300000, guid: 4f90aaaf0f3f9984aa8d18177e27f06d, type: 3}
+  playerAttack: {fileID: 8300000, guid: 9239799d3f98fb14ab41843a4113304f, type: 3}
   jump: {fileID: 8300000, guid: 7d65afb5fe7bb7e41a03b001f5acfbde, type: 3}
   ilsum: {fileID: 8300000, guid: 9e29046ed3041254caab2d41a5054e75, type: 3}
   dohon: {fileID: 8300000, guid: a0fa4e05bd3321f4e880340563928ca7, type: 3}
