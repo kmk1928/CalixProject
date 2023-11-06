@@ -1414,6 +1414,10 @@ PrefabInstance:
       propertyPath: hitBlood
       value: 
       objectReference: {fileID: 3071823}
+    - target: {fileID: 1485896560135908647, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.985
+      objectReference: {fileID: 0}
     - target: {fileID: 2074357387500632705, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_Controller
       value: 
@@ -1428,11 +1432,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4089431165432149859, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.55
+      value: 1.73
       objectReference: {fileID: 0}
     - target: {fileID: 4089431165432149859, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.316
       objectReference: {fileID: 0}
     - target: {fileID: 4089431165432149859, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1493,6 +1497,10 @@ PrefabInstance:
     - target: {fileID: 6024519485979390814, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_Intensity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024519486036561818, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
@@ -8777,7 +8785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1541277563749876439, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1541277563749876440, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
       propertyPath: m_RootOrder

@@ -59,11 +59,9 @@ public class EnemyController : MonoBehaviour
             isAttack = anim.GetBool("isAttack");
             if (player != null) {
                 float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
                 if (!isInteracting) {
                     if (distanceToPlayer <= detectionDistance)      //플레이어 발견 시
                     {
-
                         // 플레이어 따라가기
                         navMeshAgent.SetDestination(player.position);
                         isPatrolling = false;
@@ -90,11 +88,12 @@ public class EnemyController : MonoBehaviour
                     else if (!isPatrolling) {
                         // 플레이어가 감지 범위 밖으로 나갔을 때 원래 위치로 돌아가기
                         navMeshAgent.SetDestination(originalPosition);
+                        navMeshAgent.speed=originalSpeed;
                         if (navMeshAgent.remainingDistance < 0.2f) {
-                            isPatrolling = true;            //원래 위치로 돌아온 뒤 속도0으로 변경
-                                                            //navMeshAgent.speed = 0;
+                            isPatrolling = true;            //원래 위치로 돌아온 뒤 속도0으로
                         }
                     }
+                    
                 }
 
             }
