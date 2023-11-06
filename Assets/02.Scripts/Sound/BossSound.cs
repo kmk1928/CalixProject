@@ -14,11 +14,6 @@ public class BossSound : MonoBehaviour
       anim = GetComponent<Animator>();
    }
 
-   // Update is called once per frame
-   void Update()
-   {
-   }
-
    // 애니메이션 이벤트
    void FootStep()
    {

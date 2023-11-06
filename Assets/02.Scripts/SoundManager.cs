@@ -6,12 +6,27 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    AudioSource myAudio;
+    AudioSource EffectSource;
     public AudioSource bgm_Source;
-    public AudioSource playerEffectSource;
-
+    
+    //플레이어
+    public AudioClip playerFootstep;
+    public AudioClip playerAttack;
+    public AudioClip jump;
+    public AudioClip ilsum;
+    public AudioClip dohon;
+    //보스
     public AudioClip bossFootstep;
     public AudioClip bossAttack;
+    //해골
+    public AudioClip skeletonFootstep;
+    public AudioClip skeletonAttack;
+    //미노타우로스
+    public AudioClip minotaurosFootstep;
+    public AudioClip minotaurosAttack;
+    //오크
+    public AudioClip orcFootstep;
+    public AudioClip orcAttack;
 
     private void Awake()
     {
@@ -23,7 +38,7 @@ public class SoundManager : MonoBehaviour
 
     public void Start()
     {
-        myAudio = GetComponent<AudioSource>();
+        EffectSource = GetComponent<AudioSource>();
     }
 
     public void SetBgmVolume(float volume)
@@ -33,19 +48,66 @@ public class SoundManager : MonoBehaviour
 
     public void SetEffectVolume(float volume)
     {
-        playerEffectSource.volume = volume;
+        EffectSource.volume = volume;
     }
-
+    
+    //플레이어
+    public void PlayerAttackSound()
+    {
+        EffectSource.PlayOneShot(playerAttack);
+    }
+    public void PlayerFootstepSound()
+    {
+        EffectSource.PlayOneShot(playerFootstep);
+    }
+    public void JumpSound()
+    {
+        EffectSource.PlayOneShot(jump);
+    }
+    public void IlsumSound()
+    {
+        EffectSource.PlayOneShot(ilsum);
+    }
+    public void DohonSound()
+    {
+        EffectSource.PlayOneShot(dohon);
+    }
+    //보스
     public void BossAttackSound()
     {
-        myAudio.PlayOneShot(bossAttack);
+        EffectSource.PlayOneShot(bossAttack);
     }
-
     public void BossFootstepSound()
     {
-        myAudio.PlayOneShot(bossFootstep);
+        EffectSource.PlayOneShot(bossFootstep);
     }
-
+    //해골
+    public void SkeletonAttackSound()
+    {
+        EffectSource.PlayOneShot(skeletonAttack);
+    }
+    public void SkeletonFootstepSound()
+    {
+        EffectSource.PlayOneShot(skeletonFootstep);
+    }
+    //미노타우로스
+    public void MinotaurosAttackSound()
+    {
+        EffectSource.PlayOneShot(minotaurosAttack);
+    }
+    public void MinotaurosFootstepSound()
+    {
+        EffectSource.PlayOneShot(minotaurosFootstep);
+    }
+    //오크
+    public void OrcAttackSound()
+    {
+        EffectSource.PlayOneShot(orcAttack);
+    }
+    public void OrcFootstepSound()
+    {
+        EffectSource.PlayOneShot(orcFootstep);
+    }
 
 }
 
