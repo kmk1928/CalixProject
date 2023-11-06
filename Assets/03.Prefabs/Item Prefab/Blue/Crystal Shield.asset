@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
+  m_Name: Crystal Shield
+  m_EditorClassIdentifier: 
+  itemCode: 0
+  itemName: "\uC218\uC815 \uC2E4\uB4DC"
+  itemType: 2
+  itemImage: {fileID: 21300000, guid: a480c6f9be0a54e49b7a65c905df4352, type: 3}
+  itemPrefab: {fileID: 2365780067155480480, guid: a9109efc7f08e5e47bd7e41ce237c2b3, type: 3}
+  healthEnergy: 0
+  attackEnergy: 0
+  defenseEnergy: 10
+  itemDesc: "Defense + 10\n\n\uC218\uC815 \uC2E4\uB4DC\uB97C \uC5BB\uC5B4 \uBC29\uC5B4\uB825\uC774
+    \uC99D\uAC00\uD588\uC2B5\uB2C8\uB2E4.\n"

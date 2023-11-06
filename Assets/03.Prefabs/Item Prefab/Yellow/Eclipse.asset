@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
+  m_Name: Eclipse
+  m_EditorClassIdentifier: 
+  itemCode: 0
+  itemName: "\uC77C\uC2DD"
+  itemType: 1
+  itemImage: {fileID: 21300000, guid: 1c2cebd78166753498f5c71b16cef271, type: 3}
+  itemPrefab: {fileID: 4730380820212961752, guid: f0e5afa24d2d708408e1efc90ec83e02, type: 3}
+  healthEnergy: 0
+  attackEnergy: 10
+  defenseEnergy: 0
+  itemDesc: "Attack + 10\n\n\uC77C\uC2DD\uC758 \uD798\uC744 \uBC1B\uC558\uC2B5\uB2C8\uB2E4."
