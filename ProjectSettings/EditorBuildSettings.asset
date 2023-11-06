@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/00_MainMenu 1.unity
     guid: f07a6bf2a30ec1d438deb53aadb63c2a
-  - enabled: 1
+  - enabled: 0
     path: Assets/01.Scenes/03_EnemyTestFeild.unity
     guid: 92ce711c98049f24cae611911a1160d1
   - enabled: 1
@@ -20,9 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/06_BossStage.unity
     guid: ade95226926b4d5448eae7c2ade93f1e
-  - enabled: 1
-    path: Assets/01.Scenes/Stage1.unity
-    guid: 740c1bc041670ef4f85c3f60447a319a
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/01.Scenes/Stage2.unity
     guid: 55d07179a864c134cb2d2e74c2a852ba
@@ -54,6 +54,12 @@ EditorBuildSettings:
     path: Assets/01.Scenes/MapScene4.unity
     guid: cd89ab846f3b9514fbe9159398f24fc3
   - enabled: 1
-    path: Assets/01.Scenes/MapScene5.unity
-    guid: 6ee674ec101ba1b4a8850b53cd9d3d25
+    path: Assets/01.Scenes/03_EnemyTestFeild 2.unity
+    guid: dd5bde883d6ccc843800cd54e9ea8063
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/01.Scenes/Stage1.unity
+    guid: b203b405b4b71ef4c8deab5941504abb
   m_configObjects: {}
