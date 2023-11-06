@@ -4083,6 +4083,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 252306853428477909, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_Range
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 252306853428477909, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1191465245011681576, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
       propertyPath: m_Name
       value: Player
@@ -4146,6 +4154,42 @@ PrefabInstance:
     - target: {fileID: 2791558202390476588, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.107993126
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790244358769204183, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_Range
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790244358769204183, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790244358826321708, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790244358826321708, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790244358826321708, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790244358826321708, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.224
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790244358826321708, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.237
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790244358826321709, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790244358826321711, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: clearBehavior
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7190673556723799320, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
       propertyPath: playerAudioSource
