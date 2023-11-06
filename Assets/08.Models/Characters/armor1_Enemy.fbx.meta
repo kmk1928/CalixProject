@@ -18,17 +18,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_Chainmail_Small
-    second: {fileID: 2100000, guid: 0754ce7920d385449ac5b1d773b51ce6, type: 2}
+    second: {fileID: 2100000, guid: b191e487b32a03b40ac770adf6f4ccae, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_Cloth.006
-    second: {fileID: 2100000, guid: 0754ce7920d385449ac5b1d773b51ce6, type: 2}
+    second: {fileID: 2100000, guid: b191e487b32a03b40ac770adf6f4ccae, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_Leather
-    second: {fileID: 2100000, guid: 0754ce7920d385449ac5b1d773b51ce6, type: 2}
+    second: {fileID: 2100000, guid: b191e487b32a03b40ac770adf6f4ccae, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -38,12 +38,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_Leather.011
-    second: {fileID: 2100000, guid: 0754ce7920d385449ac5b1d773b51ce6, type: 2}
+    second: {fileID: 2100000, guid: b191e487b32a03b40ac770adf6f4ccae, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_Leather.012
-    second: {fileID: 2100000, guid: 0754ce7920d385449ac5b1d773b51ce6, type: 2}
+    second: {fileID: 2100000, guid: b191e487b32a03b40ac770adf6f4ccae, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -58,7 +58,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mat_Leather.016
-    second: {fileID: 2100000, guid: 0754ce7920d385449ac5b1d773b51ce6, type: 2}
+    second: {fileID: 2100000, guid: 659268b7c941f81459ebf9d1f9ea26e0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
