@@ -29,10 +29,8 @@ public class GameManager : MonoBehaviour
         if (instance == null) {
             instance = this;
             DontDestroyOnLoad(this.gameObject); //씬 옮겨도 노파괴
-            Debug.LogWarning("게임 매니저가 생성되었습니다!!!");
         }
         else {
-            Debug.LogWarning("이미 다른 게임 매니저가 존재합니다. 이전 매니저를 파괴합니다.");
             Destroy(gameObject);
         }
     }

@@ -68,7 +68,7 @@ Material:
     - _Cutoff: 0.1
     - _DirLightScreenAtten: 1
     - _DirectLightingRamp: 1
-    - _DissolveSmooth: 0.02
+    - _DissolveSmooth: 0.164
     - _Distort: 0.1
     - _DoubleDissolve: 0
     - _DstBlend: 10

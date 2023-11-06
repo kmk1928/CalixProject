@@ -27,6 +27,7 @@ public class PlayerStats : CharStats
 
         imsi = (float)curHealth / (float)maxHealth;
         UIManager.instance.UpdateHPBar(imsi);
+        UIManager.instance.UpdateHpText(curHealth, maxHealth);
     }
 
     public void ApplyItemModifiers(Item item)

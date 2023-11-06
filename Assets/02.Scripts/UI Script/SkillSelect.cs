@@ -17,10 +17,10 @@ public class SkillSelect : MonoBehaviour
     public Sprite flyMech_Sp;
     public Sprite oneSlash_Sp;
     public Sprite bloodRain_Sp;
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        // DontDestroyOnLoad를 호출하여 이 게임 오브젝트를 씬 전환 시에 파괴되지 않도록 합니다.
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void Update()
