@@ -112,10 +112,31 @@ public class GameManager : MonoBehaviour
     public void SceneLoad_normalMap(int portalNum) {
         ///SceneManager.LoadScene("SampleScene");
         ///
-        if(portalNum == 0) {
-            SceneManager.LoadScene("04_Normal Stage");
+        if (portalNum == 0)
+        {
+            SceneManager.LoadScene("Stage1");
         }
-        if(portalNum == 1)
+        else if (portalNum == 1)
+        {
+            SceneManager.LoadScene("MapScene1");
+        }
+        else if(portalNum == 2)
+        {
+            SceneManager.LoadScene("MapScene2");
+        }
+        else if (portalNum == 3)
+        {
+            SceneManager.LoadScene("MapScene3");
+        }
+        else if (portalNum == 4)
+        {
+            SceneManager.LoadScene("MapScene4");
+        }
+        else if (portalNum == 5)
+        {
+            SceneManager.LoadScene("07_BounsStage1");
+        }
+        else if (portalNum == 6)
         {
             SceneManager.LoadScene("06_BossStage");
         }
