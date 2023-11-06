@@ -7,10 +7,6 @@ public class BossSound : MonoBehaviour
    // Animator 컴포넌트
    Animator anim;
    
-   // 발소리 오디오 클릭
-   public AudioClip footstep;
-   public AudioClip attack;
-   
    // Start is called before the first frame update
    void Start()
    {
@@ -27,11 +23,11 @@ public class BossSound : MonoBehaviour
    void FootStep()
    {
       // 이벤트가 발생하면 사운드 재생
-      AudioSource.PlayClipAtPoint(footstep, Camera.main.transform.position);
+      SoundManager.instance.BossFootstepSound();
    }
    void EneyDamageColliderOn()
    {
       // 이벤트가 발생하면 사운드 재생
-      AudioSource.PlayClipAtPoint(attack, Camera.main.transform.position);
+      SoundManager.instance.BossAttackSound();
    }
 }
