@@ -85425,21 +85425,21 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.36666667
+  - time: 0.9
     functionName: Fire
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.94351965
+  - time: 0.96666664
     functionName: OpenDamageCollider_Corutin
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.95343065
+  - time: 0.96666664
     functionName: EnemyAttackSound
     data: 
     objectReferenceParameter: {fileID: 0}
