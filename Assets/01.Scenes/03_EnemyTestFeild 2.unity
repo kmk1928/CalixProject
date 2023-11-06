@@ -2659,6 +2659,10 @@ PrefabInstance:
       value: UIManager
       objectReference: {fileID: 0}
     - target: {fileID: 3953022460023994483, guid: fb4b10bc932e2de4ba3150154a99ab70, type: 3}
+      propertyPath: hpText
+      value: 
+      objectReference: {fileID: 1799417488}
+    - target: {fileID: 3953022460023994483, guid: fb4b10bc932e2de4ba3150154a99ab70, type: 3}
       propertyPath: nanoText
       value: 
       objectReference: {fileID: 2146668664}
@@ -4157,6 +4161,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+--- !u!114 &1799417488 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 479587302167085459, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+  m_PrefabInstance: {fileID: 2143278690401904540}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1802323987 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 1099951629, guid: d70b6fb0a05bb25429ec422ee1a5c21a, type: 3}

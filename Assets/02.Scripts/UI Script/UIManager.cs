@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject gameoverUI;   // 게임 오버시 활성화 할 UI 게임 오브젝트
     public TMP_Text nanoText;          // 보유한 나노를 출력할 UI 텍스트
     public Slider player_HPBar;
+    public TMP_Text hpText;
 
     public static bool isOpenUI = false; //UI가 켜져있을때 공격을 제한하는 bool변수
     void Awake() {
@@ -40,6 +41,9 @@ public class UIManager : MonoBehaviour
         gameoverUI.SetActive(true);     //게임오버 UI 활성화
     }
 
-
+    public void UpdateHpText(float curHp, float maxHp)
+    {
+        hpText.text = curHp.ToString() + " / " + maxHp.ToString();
+    }
 
 }
