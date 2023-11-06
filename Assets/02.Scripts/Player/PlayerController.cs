@@ -61,6 +61,12 @@ public class PlayerController : MonoBehaviour
     public bool canPlayerRotate = false;
     private float animatableRotationTime = 0.1f;
 
+    private void Awake()
+    {
+
+        DontDestroyOnLoad(this.gameObject); //씬 옮겨도 노파괴
+    }
+
     // 인벤토리 컴포넌트
     [SerializeField]
     private Inventory theInventory;

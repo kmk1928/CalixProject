@@ -7,7 +7,7 @@ public class MainSetUp : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("03_EnemyTestFeild");
+        SceneManager.LoadScene("03_EnemyTestFeild 2");
     }
 
     public void ExitGame()
