@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
   m_Name: Sacred Lantern
   m_EditorClassIdentifier: 
-  itemCode: 0
+  itemCode: 23
   itemName: "\uC2E0\uC131\uD55C \uB79C\uD134"
   itemType: 1
   itemImage: {fileID: 21300000, guid: 69b8ed02316cae84e8d9d42921c9a58b, type: 3}

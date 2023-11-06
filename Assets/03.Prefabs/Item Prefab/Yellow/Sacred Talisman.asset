@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
   m_Name: Sacred Talisman
   m_EditorClassIdentifier: 
-  itemCode: 0
+  itemCode: 24
   itemName: "\uC2E0\uC131\uD55C \uB9C8\uBC95\uAD6C"
   itemType: 1
   itemImage: {fileID: 21300000, guid: 60816a7a440e25d4c9bf6306eedd8654, type: 3}

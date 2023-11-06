@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
   m_Name: Hell Scream
   m_EditorClassIdentifier: 
-  itemCode: 0
+  itemCode: 20
   itemName: "\uC9C0\uC625\uC758 \uBE44\uBA85"
   itemType: 1
   itemImage: {fileID: 21300000, guid: 9cd2393db256a7b4e9732aa1ed53a975, type: 3}

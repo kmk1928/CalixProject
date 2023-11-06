@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
   m_Name: Death Fire Hands
   m_EditorClassIdentifier: 
-  itemCode: 0
+  itemCode: 17
   itemName: "\uC8FD\uC74C \uBD88\uAF43 \uC190\uC544\uADC0"
   itemType: 1
   itemImage: {fileID: 21300000, guid: fdecb5563afdf874aae20dbfaa165887, type: 3}

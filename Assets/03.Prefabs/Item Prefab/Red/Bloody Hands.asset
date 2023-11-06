@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
   m_Name: Bloody Hands
   m_EditorClassIdentifier: 
-  itemCode: 0
+  itemCode: 11
   itemName: "\uD54F\uBE5B \uC8FC\uBA39"
   itemType: 0
   itemImage: {fileID: 21300000, guid: 4352f238cca6fbf4cb51c0f740690277, type: 3}

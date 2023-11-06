@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
   m_Name: Enhanced Spear
   m_EditorClassIdentifier: 
-  itemCode: 0
+  itemCode: 19
   itemName: "\uAC15\uD654\uB41C \uCC3D"
   itemType: 1
   itemImage: {fileID: 21300000, guid: 23afc5afa4d5a414c8b0b9b1bb06badd, type: 3}

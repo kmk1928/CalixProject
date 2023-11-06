@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
   m_Name: Blue Gem
   m_EditorClassIdentifier: 
-  itemCode: 0
+  itemCode: 1
   itemName: "\uD478\uB978 \uC218\uC815"
   itemType: 2
   itemImage: {fileID: 21300000, guid: 769ff25ce0cb6d74eb44d5c0098ff01f, type: 3}

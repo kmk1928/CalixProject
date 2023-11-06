@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
   m_Name: Wolf Spirit
   m_EditorClassIdentifier: 
-  itemCode: 0
+  itemCode: 8
   itemName: "\uB291\uB300\uC758 \uAE30\uC6B4"
   itemType: 2
   itemImage: {fileID: 21300000, guid: 6838b7131c06ec44396a35a6f5f2c5c3, type: 3}

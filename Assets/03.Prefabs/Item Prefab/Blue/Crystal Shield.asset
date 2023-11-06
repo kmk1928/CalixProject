@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
   m_Name: Crystal Shield
   m_EditorClassIdentifier: 
-  itemCode: 0
+  itemCode: 4
   itemName: "\uC218\uC815 \uC2E4\uB4DC"
   itemType: 2
   itemImage: {fileID: 21300000, guid: a480c6f9be0a54e49b7a65c905df4352, type: 3}

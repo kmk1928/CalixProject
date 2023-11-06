@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
   m_Name: Dark Blood Heart
   m_EditorClassIdentifier: 
-  itemCode: 0
+  itemCode: 14
   itemName: "\uC9C4\uD55C \uD53C\uC758 \uC2EC\uC7A5"
   itemType: 0
   itemImage: {fileID: 21300000, guid: f7d18b2daf4de504da7a6a631ec9e17c, type: 3}

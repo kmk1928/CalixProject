@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
   m_Name: Holy Water
   m_EditorClassIdentifier: 
-  itemCode: 0
+  itemCode: 5
   itemName: "\uC131\uC218"
   itemType: 2
   itemImage: {fileID: 21300000, guid: c3bf264a2d6218744b37e044b78cb029, type: 3}

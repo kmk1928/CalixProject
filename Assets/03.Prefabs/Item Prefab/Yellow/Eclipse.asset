@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
   m_Name: Eclipse
   m_EditorClassIdentifier: 
-  itemCode: 0
+  itemCode: 18
   itemName: "\uC77C\uC2DD"
   itemType: 1
   itemImage: {fileID: 21300000, guid: 1c2cebd78166753498f5c71b16cef271, type: 3}

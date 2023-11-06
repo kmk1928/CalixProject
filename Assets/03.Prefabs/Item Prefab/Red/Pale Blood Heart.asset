@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
   m_Name: Pale Blood Heart
   m_EditorClassIdentifier: 
-  itemCode: 0
+  itemCode: 16
   itemName: "\uC605\uC740 \uD53C\uC758 \uC2EC\uC7A5"
   itemType: 0
   itemImage: {fileID: 21300000, guid: dab83e2d1ca17ff458ed8f2a0214643d, type: 3}
