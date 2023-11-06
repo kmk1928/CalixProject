@@ -379,7 +379,7 @@ public class PlayerController : MonoBehaviour
     #region 구르기하는 부분 Dodge
     void Dodge()  // 0.5초 동안 강제로 이동함
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCount < 1 && !isDashing && !isSwap && !isDodge)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCount < 1 && !isDashing && !isSwap && !isDodge && !playerParryG.isHitted)
         {
             dodgeTrail.active = true;
             // 현재 속도를 저장하여 나중에 복원할 수 있도록 합니다.

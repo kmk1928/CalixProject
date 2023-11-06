@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerDash
   m_EditorClassIdentifier: 
   profile: {fileID: 0}
-  active: 1
+  active: 0
   ignoreVisibility: 0
   ignoreFrames: 4
   duration: 0.67

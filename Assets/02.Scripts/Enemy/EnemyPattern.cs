@@ -23,7 +23,6 @@ public class EnemyPattern : MonoBehaviour
 
     private bool canEnemyRotate = true;
 
-    private int backStepCount = 0;
     public float detectionDistance = 20f; // 플레이어 감지 범위 = 공격시작 범위
 
     private bool isSearchMode = true;
@@ -202,6 +201,7 @@ public class EnemyPattern : MonoBehaviour
     IEnumerator AttackPattern_GS7() {
         isAttacking = true;
         isCombo = true;
+        charStats.curHardness += 60;
         animator.SetTrigger("Attack_GS7");
         Debug.Log("Test GSGSGS7777");
         yield return new WaitForSeconds(11f);
@@ -220,7 +220,11 @@ public class EnemyPattern : MonoBehaviour
 
     }
 
-
+    public void ResetAnim_Search()
+    {
+        isAttacking = false;
+        isCombo = false;
+    }
 
 
 

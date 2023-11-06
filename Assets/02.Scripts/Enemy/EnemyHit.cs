@@ -64,9 +64,11 @@ public class EnemyHit : MonoBehaviour
 
             if(enemyStats.curHardness <= 0)
             {
-
-                //애님 트리거  doDamage 발동
-                StartCoroutine(OnDamage());
+                if (!enemyStats.isDead)
+                {
+                    //애님 트리거  doDamage 발동
+                    StartCoroutine(OnDamage());
+                }
             }
         }
     }

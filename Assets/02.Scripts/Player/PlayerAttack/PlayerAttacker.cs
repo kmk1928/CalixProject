@@ -43,6 +43,7 @@ public class PlayerAttacker : MonoBehaviour {
     Animator anim;
     Transform playerTransform;
     PlayerController playerController;
+    PlayerParryGuard playerParryG;
     MeleeAreaSetup meleeAreaSetup;
     MeleeWeaponTrail meleeWeaponTrail;
     HitParticleActiveCollider hPACollider;
@@ -51,6 +52,7 @@ public class PlayerAttacker : MonoBehaviour {
         anim = GetComponent<Animator>();
         playerTransform = GetComponent<Transform>();
         playerController = GetComponent<PlayerController>();
+        playerParryG = GetComponent<PlayerParryGuard>();
         meleeAreaSetup = GetComponent<MeleeAreaSetup>();
         meleeWeaponTrail = GetComponentInChildren<MeleeWeaponTrail>();
         hPACollider = GetComponentInChildren<HitParticleActiveCollider>();
@@ -82,7 +84,7 @@ public class PlayerAttacker : MonoBehaviour {
         {
             attackPatterns_void_Skill_2 = bloodRain;
         }
-        if (Input.GetButtonDown("Fire1") && !cooldownActive && !isSkill_1ing && !isSkill_2ing && !PlayerFlag.isInteracting 
+        if (Input.GetButtonDown("Fire1") && !cooldownActive && !isSkill_1ing && !isSkill_2ing && !PlayerFlag.isInteracting && !playerParryG.isHitted
                                         && playerController.isGrounded && !UIManager.isOpenUI && !playerController.isDodge) 
         {
             Attack(attackPatterns_void_normalAk);
@@ -92,7 +94,7 @@ public class PlayerAttacker : MonoBehaviour {
         {
             ExitAttack(attackPatterns_void_normalAk);
         }
-        if (Input.GetKeyDown(KeyCode.F) && !cooldownActive && !isNAing && !isSkill_2ing && !PlayerFlag.isInteracting 
+        if (Input.GetKeyDown(KeyCode.F) && !cooldownActive && !isNAing && !isSkill_2ing && !PlayerFlag.isInteracting && !playerParryG.isHitted
                                         && playerController.isGrounded && !UIManager.isOpenUI && !playerController.isDodge) 
         {
             Attack(attackPatterns_void_Skill_1);
@@ -102,7 +104,7 @@ public class PlayerAttacker : MonoBehaviour {
         {
             ExitAttack(attackPatterns_void_Skill_1);
         }
-        if (Input.GetKeyDown(KeyCode.R) && !cooldownActive && !isNAing && !isSkill_1ing &&!PlayerFlag.isInteracting 
+        if (Input.GetKeyDown(KeyCode.R) && !cooldownActive && !isNAing && !isSkill_1ing &&!PlayerFlag.isInteracting && !playerParryG.isHitted
                                         && playerController.isGrounded && !UIManager.isOpenUI && !playerController.isDodge) 
         {
             Attack(attackPatterns_void_Skill_2);

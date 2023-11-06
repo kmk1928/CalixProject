@@ -5568,11 +5568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 159f4ae2723a14a45a0e1b62cfe5b948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstep: {fileID: 8300000, guid: 9a30499e47789df48aa9bdb1ec7b0982, type: 3}
-  jump: {fileID: 8300000, guid: a967f92e38352bb4291945423de63499, type: 3}
-  attack: {fileID: 8300000, guid: 4f90aaaf0f3f9984aa8d18177e27f06d, type: 3}
-  skill: {fileID: 8300000, guid: a0fa4e05bd3321f4e880340563928ca7, type: 3}
-  skill1: {fileID: 8300000, guid: 9e29046ed3041254caab2d41a5054e75, type: 3}
 --- !u!114 &1191465243520282959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8813,7 +8808,7 @@ MonoBehaviour:
   profile: {fileID: 11400000, guid: c31a20b613d59cd43ad55c133d3fa78b, type: 2}
   profileSync: 0
   target: {fileID: 7308082050333980713}
-  _active: 1
+  _active: 0
   ignoreVisibility: 0
   executeInEditMode: 0
   ignoreFrames: 4

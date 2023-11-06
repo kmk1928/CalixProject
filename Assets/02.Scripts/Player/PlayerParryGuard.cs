@@ -12,7 +12,7 @@ public class PlayerParryGuard : MonoBehaviour {
     private float parryTimer = 0f;
     private bool isBlocked = false;     //우클릭 가드 확인용
     private bool isParried = false;     //패리 가능 상태 확인용
-    private bool isHitted = false;      //데미지를 연속으로 입는 것을 방지하기 위한 bool 트리거, OnDamage코루틴에 사용
+    public bool isHitted = false;      //데미지를 연속으로 입는 것을 방지하기 위한 bool 트리거, OnDamage코루틴에 사용
     private bool isHittedMotioning = false;     //맞는 모션중 패링 방지
     private float parryRecovery_Time = 0.3f;        //이동가능까지 걸리는 시간
     private float hitRecovery_Time = 0.5f;
@@ -172,7 +172,6 @@ public class PlayerParryGuard : MonoBehaviour {
     private void OnDamage() {              //가드 또는 피격 시 쓰는 데미지 코루틴
         isHitted = true;                        //연속피격방지
         isHittedMotioning = true;           //피격 직후 60프레임 내 패링 가능 방지
-        //Debug.Log("3"); //추적추적추적추적
         original = this.transform;
         smoothMoved.SmoothMove_normalAttack(original, nearObject.transform);
 
@@ -185,7 +184,6 @@ public class PlayerParryGuard : MonoBehaviour {
         isHitted = true;                        //연속피격방지
         isHittedMotioning = true;           //피격 직후 60프레임 내 패링 가능 방지
         powerHittedParticle.Play();
-       // Debug.Log("4"); //추적추적추적추적
         original = this.transform;
         smoothMoved.SmoothMove_powerAttack(original, nearObject.transform);
 
@@ -195,12 +193,10 @@ public class PlayerParryGuard : MonoBehaviour {
     }
     private void HittedOut() {
         isHitted = false;    //연속피격방지
-        //Debug.Log("5"); //추적추적추적추적
     }
 
     private void HittedMotioningOut() {
         isHittedMotioning = false;    // 피격 직후 60프레임 내 패링 가능 방지
-        //Debug.Log("6"); //추적추적추적추적
     }
 
     private void TestAnimationEndPlayerVelocityZero() {
