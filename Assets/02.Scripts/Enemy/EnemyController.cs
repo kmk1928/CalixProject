@@ -59,12 +59,14 @@ public class EnemyController : MonoBehaviour
             isAttack = anim.GetBool("isAttack");
             if (player != null) {
                 float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+                navMeshAgent.speed=0f;
                 if (!isInteracting) {
                     if (distanceToPlayer <= detectionDistance)      //플레이어 발견 시
                     {
                         // 플레이어 따라가기
                         navMeshAgent.SetDestination(player.position);
                         isPatrolling = false;
+                        navMeshAgent.speed=originalSpeed;
 
                         // 플레이어가 감지 범위 내에 있을 때 공격
                         if (distanceToPlayer <= 2.0f && !isAttack) {
