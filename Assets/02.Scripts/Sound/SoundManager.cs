@@ -33,9 +33,14 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance==null)
+        if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(this.gameObject); //씬 옮겨도 노파괴
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
