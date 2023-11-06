@@ -54,6 +54,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            SceneManager.LoadScene("06_BossStage");
+        }
 
         if(isGameover && Input.GetKeyDown("k")) 
         { 

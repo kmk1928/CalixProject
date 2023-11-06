@@ -16,7 +16,7 @@ public class BossFindPlayer : MonoBehaviour
     void Update()
     {
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if(distanceToPlayer < 30)
+        if(distanceToPlayer < 20)
         {
             GameManager.instance.isBossBattle = true;
         }

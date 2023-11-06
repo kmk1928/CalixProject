@@ -30,7 +30,10 @@ public class CameraController : MonoBehaviour
 
     Vector3 cameraPosition; // 카메라 위치 업데이트용 변수
     private Vector3 lastCameraDirection; // 마지막 방향을 저장할 변수
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     void LateUpdate()//Player가 움직이고 그 후 카메라가 따라가야 하므로 LateUpdate
     {
