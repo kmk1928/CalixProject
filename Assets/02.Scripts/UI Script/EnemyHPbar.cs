@@ -94,6 +94,13 @@ public class EnemyHPbar : MonoBehaviour
                         DisableHPbar(enemy_HPbarList[i]);
                     }
                     //enemy_textList[i].text = "-" + enemy_statsList[i].t_damage.ToString("0");
+
+
+                    if(GameManager.isPause || GameManager.isInventory)
+                    {
+                        DisableText(enemy_textList[i]);
+                        DisableHPbar(enemy_HPbarList[i]);
+                    }
                 }
             }
             // 적 오브젝트가 파괴되었을 때 처리
@@ -113,9 +120,6 @@ public class EnemyHPbar : MonoBehaviour
 
                 i--; // 인덱스 감소 (리스트가 조정되었으므로 같은 인덱스 재확인)
             }
-
-
-
         }
 
         //보스
