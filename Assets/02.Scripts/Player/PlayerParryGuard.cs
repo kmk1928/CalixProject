@@ -50,31 +50,39 @@ public class PlayerParryGuard : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetMouseButtonDown(1) && !isHittedMotioning) {                  //우클릭 키 다운 시 패링
-            isParried = true;                   //패리중을 true로 변경
-            isBlocked = true;                   //가드중을 true로 변경
-            anim.SetBool("isGuard", true);//able animation
-            playerController.speed /= 2;
-        }
-       //if (Input.GetMouseButton(1)) {                       //우클릭 꾹 누를 시 가드
-       //     
-       // }
-        if (isParried && !isHittedMotioning) {                        //패리중이 true일때 패리 영역을활성화하고 패리시간이 지나면 다시 꺼지는 코드
-            parryArea.enabled = true;
-            parryTimer += Time.deltaTime;
-            if (parryTimer > 0.3f) {
-                parryTimer = 0;
-                isParried = false;
-                parryArea.enabled = false;
+        if (!PlayerFlag.isAttacking)
+        {
+            if (Input.GetMouseButtonDown(1) && !isHittedMotioning)
+            {                  //우클릭 키 다운 시 패링
+                isParried = true;                   //패리중을 true로 변경
+                isBlocked = true;                   //가드중을 true로 변경
+                anim.SetBool("isGuard", true);//able animation
+                playerController.speed /= 2;
+            }
+            //if (Input.GetMouseButton(1)) {                       //우클릭 꾹 누를 시 가드
+            //     
+            // }
+            if (isParried && !isHittedMotioning)
+            {                        //패리중이 true일때 패리 영역을활성화하고 패리시간이 지나면 다시 꺼지는 코드
+                parryArea.enabled = true;
+                parryTimer += Time.deltaTime;
+                if (parryTimer > 0.3f)
+                {
+                    parryTimer = 0;
+                    isParried = false;
+                    parryArea.enabled = false;
+                }
+            }
+            if (Input.GetMouseButtonUp(1))
+            {         //우클릭 해제 시 가드해제
+                isBlocked = false;
+                anim.SetBool("isGuard", false);//able animation
+                playerController.speed = playerController.defaultSpeed;
+                Debug.Log("?-? Non blocked");
+
             }
         }
-        if (Input.GetMouseButtonUp(1)) {         //우클릭 해제 시 가드해제
-            isBlocked = false;
-            anim.SetBool("isGuard", false);//able animation
-            playerController.speed = playerController.defaultSpeed;
-            Debug.Log("?-? Non blocked");
 
-        }
     }
 
     private void OnTriggerEnter(Collider other) {

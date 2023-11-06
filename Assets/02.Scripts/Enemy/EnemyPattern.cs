@@ -10,6 +10,7 @@ public class EnemyPattern : MonoBehaviour
     private Animator animator;
     private BossEyeTrail bossEye;
     private CharStats charStats;
+    public MeleeWeaponTrail meleeWeaponTrail;
 
     public bool isAttacking = false;
     public bool isCombo = false;
@@ -144,6 +145,11 @@ public class EnemyPattern : MonoBehaviour
         Destroy(particleInstance, 1.5f);
     }
 
+    public void MeleeTrail_Enemy()
+    {
+        meleeWeaponTrail._emitTime = 0.2f;
+        meleeWeaponTrail.Emit = true;
+    }
     IEnumerator TeleportAndAttack()
     {
         isAttacking = true;
@@ -204,7 +210,7 @@ public class EnemyPattern : MonoBehaviour
         charStats.curHardness += 60;
         animator.SetTrigger("Attack_GS7");
         Debug.Log("Test GSGSGS7777");
-        yield return new WaitForSeconds(11f);
+        yield return new WaitForSeconds(8f);
         isAttacking = false;
         isCombo = false;
     }

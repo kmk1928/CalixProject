@@ -115,7 +115,10 @@ public class GameManager : MonoBehaviour
         if(portalNum == 0) {
             SceneManager.LoadScene("04_Normal Stage");
         }
-        
+        if(portalNum == 1)
+        {
+            SceneManager.LoadScene("06_BossStage");
+        }
     }
 
 }

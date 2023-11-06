@@ -209,6 +209,7 @@ public class PlayerAttacker : MonoBehaviour {
         if(attackCor != null)
         {
             StopCoroutine(attackCor);
+            colliderCoroutineIsRunning = false;
         }
         if(particleCor != null)
         {

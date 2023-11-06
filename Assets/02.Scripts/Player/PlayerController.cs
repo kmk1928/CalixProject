@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
     //attack
     public bool canDoCombo;
+    PlayerAttacker playerAttacker;
 
     //hitted
     PlayerParryGuard playerParryG;
