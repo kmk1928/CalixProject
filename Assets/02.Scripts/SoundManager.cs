@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public AudioSource bgm_Source;
-    public AudioSource playerEffectSource; 
+    public AudioSource playerEffectSource;
 
     public void SetBgmVolume(float volume)
     {

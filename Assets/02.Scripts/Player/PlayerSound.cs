@@ -7,6 +7,8 @@ public class PlayerSound : MonoBehaviour
    // Animator 컴포넌트
    Animator anim;
    
+   public AudioSource playerAudioSource;
+
    // 발소리 오디오 클릭
    public AudioClip footstep;
    public AudioClip jump;
@@ -14,64 +16,61 @@ public class PlayerSound : MonoBehaviour
    public AudioClip skill;
    public AudioClip skill1;
    
-   private AudioSource playerAudioSource;
-   
-   // Start is called before the first frame update
+
    void Start()
    {
       // Animator 컴포넌트 가져오기
       anim = GetComponent<Animator>();
+
+      // 플레이어 오디오 소스 가져오기
+      playerAudioSource = GetComponent<AudioSource>();
    }
 
-   // Update is called once per frame
-   void Update()
-   {
-   }
 
    // 애니메이션 이벤트
    void FootStep()
    {
       // 이벤트가 발생하면 사운드 재생
-      AudioSource.PlayClipAtPoint(footstep, Camera.main.transform.position);
+      playerAudioSource.PlayOneShot(footstep);
    }
    void Jump()
    {
       // 이벤트가 발생하면 사운드 재생
-      AudioSource.PlayClipAtPoint(jump, Camera.main.transform.position);
+      playerAudioSource.PlayOneShot(jump);
    }
    void Sound_Attack_normal()
    {
       // 이벤트가 발생하면 사운드 재생
-      AudioSource.PlayClipAtPoint(attack, Camera.main.transform.position);
+      playerAudioSource.PlayOneShot(attack);
    }
    void Skill_A_Sound()
    {
       // 이벤트가 발생하면 사운드 재생
-      AudioSource.PlayClipAtPoint(attack, Camera.main.transform.position);
+      playerAudioSource.PlayOneShot(attack);
    }
    void Skill_G_Sound()
    {
       // 이벤트가 발생하면 사운드 재생
-      AudioSource.PlayClipAtPoint(attack, Camera.main.transform.position);
+      playerAudioSource.PlayOneShot(attack);
    }
    void Fly_Attack_Sound()
    {
       // 이벤트가 발생하면 사운드 재생
-      AudioSource.PlayClipAtPoint(attack, Camera.main.transform.position);
+      playerAudioSource.PlayOneShot(attack);
    }
    void BloodRain_Sound()
    {
       // 이벤트가 발생하면 사운드 재생
-      AudioSource.PlayClipAtPoint(skill, Camera.main.transform.position);
+      playerAudioSource.PlayOneShot(skill);
    }
    void  BloodRain_Sound1()
    {
       // 이벤트가 발생하면 사운드 재생
-      AudioSource.PlayClipAtPoint(attack, Camera.main.transform.position);
+      playerAudioSource.PlayOneShot(attack);
    }
    void  OneSlashSound()
    {
       // 이벤트가 발생하면 사운드 재생
-      AudioSource.PlayClipAtPoint(skill1, Camera.main.transform.position);
+      playerAudioSource.PlayOneShot(skill1);
    }
 }
