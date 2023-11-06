@@ -1135,6 +1135,10 @@ PrefabInstance:
       propertyPath: hitBlood
       value: 
       objectReference: {fileID: 3071823}
+    - target: {fileID: 2074357387500632705, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: eef3cfbfa85bdd044a9cf50f38abae2c, type: 2}
     - target: {fileID: 4089431165432149859, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_RootOrder
       value: 20

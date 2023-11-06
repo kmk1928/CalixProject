@@ -87,7 +87,7 @@ public class EnemyController2 : MonoBehaviour
                             navMeshAgent.speed = 0f;                // AI의 이동 속도를 0으로 설정
                             //int randomAttack = Random.Range(0, 2);
                             Debug.Log("---Find Player---");
-                            Fire();
+                        Attack2();
 
                             /*
                                 if (randomAttack == 0) {
@@ -130,13 +130,6 @@ public class EnemyController2 : MonoBehaviour
         navMeshAgent.SetDestination(patrolPoints[Random.Range(0, patrolPoints.Length)].position);
     }
 
-    // 공격 메서드
-    void Attack()
-    {
-        Debug.Log("ATTACK"); // 디버그 로그 출력 (대문자 'Debug')
-        StartCoroutine(AttackOut("doSwing"));
-    }
-
     void Attack2() {
         Debug.Log("ATTACK2");
         StartCoroutine(AttackOut("doSwing2"));
@@ -145,12 +138,13 @@ public class EnemyController2 : MonoBehaviour
     void Fire()
     {
         Debug.Log("BulletFire");
-        StartCoroutine(AttackOut("doSwing2"));
+        //StartCoroutine(AttackOut("doSwing2"));
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
-
+        Debug.Log("dho");
         // 이동 방향 계산 및 설정
         Vector3 moveDirection = (player.position - bulletSpawnPoint.position).normalized;
         bullet.GetComponent<Rigidbody>().velocity = moveDirection * bulletSpeed;
+        Debug.Log("adadda");
     }
 
     // 공격 종료 메서드
@@ -176,38 +170,5 @@ public class EnemyController2 : MonoBehaviour
         navMeshAgent.speed = originalSpeed;
         isAttack = false;
     }
-
-
-    /*
-       void Attack()
-     {
-         // AI의 이동 속도를 0으로 설정
-         navMeshAgent.speed = 0f;
-         anim.SetTrigger("doSwing");
-         isAttack = true;
-         Debug.Log("ATTACK"); // 디버그 로그 출력 (대문자 'Debug')
-         Invoke("AttackOut", attackDelay);
-     }
-
-     // 공격 종료 메서드
-     void AttackOut()
-     {
-
-         // AI의 이동 속도를 원래 값으로 복원
-         navMeshAgent.speed = originalSpeed;
-
-         isAttack = false;
-
-     }
-
-     void Attack2()
-     {
-         navMeshAgent.speed = 0f;
-         anim.SetTrigger("doSwing2");
-         isAttack = true;
-         Debug.Log("ATTACK2");
-         Invoke("AttackOut", attackDelay + 2f);
-     }
-      */
 
 }
