@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 83401c3d87a7f4a42a6ee09fdcce7cc4, type: 2}
+--- !u!198 &3071823 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4119555624947960601, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
+  m_PrefabInstance: {fileID: 423206505}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &32650833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1131,10 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 2195726465694210025, guid: 3160afc7e3e24ce479654ec52ff06e3c, type: 3}
+    - target: {fileID: 1395432122248219535, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
+      propertyPath: hitBlood
+      value: 
+      objectReference: {fileID: 3071823}
     - target: {fileID: 4089431165432149859, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -1176,7 +1185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4089431165432149881, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5065675774005464106, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1193,6 +1202,14 @@ PrefabInstance:
     - target: {fileID: 5305215714515901286, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0.010918712
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024519485979390814, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
+      propertyPath: m_Range
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024519485979390814, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
+      propertyPath: m_Intensity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
@@ -6427,6 +6444,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2718815476534080411, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2819278943999145484, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 50
@@ -6442,6 +6463,14 @@ PrefabInstance:
     - target: {fileID: 2998726994852740980, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: m_SizeDelta.y
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3125308695072710498, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3125308695072710498, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3380321695757599344, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6527,6 +6556,18 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 1191465243520282965}
+    - target: {fileID: 8633663651590817601, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633663651590817601, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8633663651590817601, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8775097933386250792, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 50

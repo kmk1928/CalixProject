@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065b06d76fc0c9149ab7d33e90b80905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitParticle: {fileID: 1414779434264708, guid: 1b27f624d5279b049abebaea6371ca99, type: 3}
   damage: 10
 --- !u!199 &5216325598532075666
 ParticleSystemRenderer:
