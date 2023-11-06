@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 421f060fcaa7acf459ba4094e4621476, type: 3}
-  m_Name: blue 1
+  m_Name: blue 6
   m_EditorClassIdentifier: 
-  itemName: "\uBE14\uB8E81"
+  itemName: "\uBE14\uB8E86"
   itemType: 2
-  itemImage: {fileID: 21300000, guid: e363455cac895074dbbe63907f243b1a, type: 3}
-  itemPrefab: {fileID: 6656680713190002122, guid: 24a356bd2a449af48a487552a1011985, type: 3}
+  itemImage: {fileID: 21300000, guid: a480c6f9be0a54e49b7a65c905df4352, type: 3}
+  itemPrefab: {fileID: 2365780067155480480, guid: a9109efc7f08e5e47bd7e41ce237c2b3, type: 3}
   healthEnergy: 0
   attackEnergy: 0
   defenseEnergy: 10

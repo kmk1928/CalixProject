@@ -68,7 +68,7 @@ public class StatView : MonoBehaviour
 
     public void AD_statBonus1()
     {
-        if (playerStats.redCount >= 3)
+        if (playerStats.yellowCount >= 3)
             AD_StatBonus1.enabled = true;
         else
             AD_StatBonus1.enabled = false;
@@ -76,7 +76,7 @@ public class StatView : MonoBehaviour
 
     public void AD_statBonus2()
     {
-        if (playerStats.redCount >= 6)
+        if (playerStats.yellowCount >= 6)
             AD_StatBonus2.enabled = true;
         else
             AD_StatBonus2.enabled = false;
@@ -100,7 +100,7 @@ public class StatView : MonoBehaviour
 
     public void HP_statBonus1()
     {
-        if (playerStats.yellowCount >= 3)
+        if (playerStats.redCount >= 3)
             HP_StatBonus1.enabled = true;
         else
             HP_StatBonus1.enabled = false;
@@ -108,7 +108,7 @@ public class StatView : MonoBehaviour
 
     public void HP_statBonus2()
     {
-        if (playerStats.yellowCount >= 6)
+        if (playerStats.redCount >= 6)
             HP_StatBonus2.enabled = true;
         else
             HP_StatBonus2.enabled = false;
