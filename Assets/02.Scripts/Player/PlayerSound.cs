@@ -14,6 +14,8 @@ public class PlayerSound : MonoBehaviour
    public AudioClip skill;
    public AudioClip skill1;
    
+   private AudioSource playerAudioSource;
+   
    // Start is called before the first frame update
    void Start()
    {
