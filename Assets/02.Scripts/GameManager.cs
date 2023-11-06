@@ -92,6 +92,10 @@ public class GameManager : MonoBehaviour
         isGameover = true;      //플레이어 사망
         UIManager.instance.SetActiveGameoverUI(true);
     }
+    public void LoadMenuScene()
+    {
+        SceneManager.LoadScene("00_MainMenu 1");
+    }
 
     public void GameRestart() {
         SceneManager.LoadScene("01_StartScene");
