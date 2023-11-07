@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 8630683830851185371}
   - component: {fileID: 8630683830851185370}
   - component: {fileID: 8630683830851185349}
-  - component: {fileID: 4826769470722236819}
+  - component: {fileID: 8843450435245686731}
   m_Layer: 7
   m_Name: Knight1
   m_TagString: Enemy
@@ -244,7 +244,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4826769470722236819
+--- !u!114 &8843450435245686731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8630683830851185348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf4608f9c694aa34d88b677acdf12c32, type: 3}
+  m_Script: {fileID: 11500000, guid: 4616855cb505cf34eb3983c33f7e710a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8630683831489071508

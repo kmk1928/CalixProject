@@ -30,6 +30,12 @@ public class SoundManager : MonoBehaviour
     //곰
     public AudioClip bearFootstep;
     public AudioClip bearAttack;
+    //기사
+    public AudioClip knightFootstep;
+    public AudioClip knightAttack;
+    //원거리
+    public AudioClip archerFootstep;
+    public AudioClip archerAttack;
 
     private void Awake()
     {
@@ -124,6 +130,24 @@ public class SoundManager : MonoBehaviour
     public void BearFootstepSound()
     {
         EffectSource.PlayOneShot(bearFootstep);
+    }
+    //기사
+    public void KnightAttackSound()
+    {
+        EffectSource.PlayOneShot(knightAttack);
+    }
+    public void KnightFootstepSound()
+    {
+        EffectSource.PlayOneShot(knightFootstep);
+    }
+    //원거리
+    public void ArcherAttackSound()
+    {
+        EffectSource.PlayOneShot(archerAttack);
+    }
+    public void ArcherFootstepSound()
+    {
+        EffectSource.PlayOneShot(archerFootstep);
     }
 }
 
