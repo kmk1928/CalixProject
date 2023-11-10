@@ -118,30 +118,44 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Stage1");
         }
-        else if (portalNum == 1)
+        else if (portalNum == 1) // 스테이지1 -> 지도 -> 스테이지2
         {
             SceneManager.LoadScene("MapScene1");
         }
-        else if(portalNum == 2)
+        else if (portalNum == 2) // 스테이지2 -> 지도 -> 스테이지3
         {
-            SceneManager.LoadScene("MapScene2");
+            // MapScene2_1, MapScene2_2, MapScene2_3 중에서 무작위로 선택
+            string[] mapScene2 = { "MapScene2_1", "MapScene2_2", "MapScene2_3" };
+            int randomIndex = Random.Range(0, mapScene2.Length);
+            string randomMapScene2 = mapScene2[randomIndex];
+
+            SceneManager.LoadScene(randomMapScene2);
         }
         else if (portalNum == 3)
         {
-            SceneManager.LoadScene("MapScene3");
+            // MapScene3_1, MapScene3_2, MapScene3_3 중에서 무작위로 선택
+            string[] mapScene3 = { "MapScene3_1", "MapScene3_2", "MapScene3_3" };
+            int randomIndex = Random.Range(0, mapScene3.Length);
+            string randomMapScene3 = mapScene3[randomIndex];
+
+            SceneManager.LoadScene(randomMapScene3);
         }
         else if (portalNum == 4)
         {
-            SceneManager.LoadScene("MapScene4");
+            SceneManager.LoadScene("BonusStage");
         }
         else if (portalNum == 5)
         {
-            SceneManager.LoadScene("07_BounsStage1");
+            SceneManager.LoadScene("MapScene4");
         }
         else if (portalNum == 6)
+        {
+            SceneManager.LoadScene("07_BounsStage1");
+        }
+        else if (portalNum == 7)
         {
             SceneManager.LoadScene("06_BossStage");
         }
     }
-
+    
 }

@@ -1,23 +1,35 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MapLoad : MonoBehaviour
 {
-    public string sceneName; // ÀÌµ¿ÇÒ ¾ÀÀÇ ÀÌ¸§À» Inspector¿¡¼­ ¼³Á¤ÇÒ º¯¼ö
+    public string selectScene; // í™•ì • ì”¬ì´ë™
+    public string[] random; // ëœë¤ ì”¬ì´ë™ìš©
 
-    // Å¬¸¯ ½Ã ÀÌº¥Æ®¸¦ Ã³¸®ÇÏ´Â ÇÔ¼ö
+    // í´ë¦­ ì‹œ ì´ë²¤íŠ¸ë¥¼ ì²˜ë¦¬í•˜ëŠ” í•¨ìˆ˜
     private void OnMouseDown()
     {
         ChangeScene();
+        ChangeRandomScene();
     }
 
-    // ¾ÀÀ» º¯°æÇÏ´Â ÇÔ¼ö
     public void ChangeScene()
     {
-        // sceneName º¯¼ö¿¡ ÀúÀåµÈ ¾ÀÀ¸·Î ÀÌµ¿
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(selectScene);
+    }
+
+    // ì”¬ì„ ë³€ê²½í•˜ëŠ” í•¨ìˆ˜
+    public void ChangeRandomScene()
+    {
+
+        // ë°°ì—´ì—ì„œ ë¬´ì‘ìœ„ë¡œ ì”¬ì„ ì„ íƒí•©ë‹ˆë‹¤.
+        int randomIndex = Random.Range(0, random.Length);
+        string randomScene = random[randomIndex];
+
+        // ì„ íƒëœ ì”¬ì„ ë¡œë“œí•©ë‹ˆë‹¤.
+        SceneManager.LoadScene(randomScene);
     }
 }
 
