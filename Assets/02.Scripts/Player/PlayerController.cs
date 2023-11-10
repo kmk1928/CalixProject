@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -60,6 +61,10 @@ public class PlayerController : MonoBehaviour
     //canRotate
     public bool canPlayerRotate = false;
     private float animatableRotationTime = 0.1f;
+
+    public TextMeshProUGUI dropText;
+
+    public TextMeshProUGUI portalText;
 
     private void Awake()
     {
@@ -148,6 +153,7 @@ public class PlayerController : MonoBehaviour
             Dodge();
             #endregion
             PortalEnter();
+            ActiveTxt();
 
             if (playerStats.curHealth <= 0)
             {
@@ -379,6 +385,31 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.LogWarning("근처 오브젝트에 'ItemPickUp' 컴포넌트가 없거나 아이템이 아닙니다.");
             }
+        }
+    }
+
+    void ActiveTxt()
+    {
+        if (nearObject != null)
+        {
+            if (nearObject.CompareTag("item"))
+            {
+                if (dropText != null)
+                    dropText.gameObject.SetActive(true);
+            }
+            else if (nearObject.CompareTag("Portal"))
+            {
+                if (portalText != null)
+                    portalText.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            if (dropText != null)
+                dropText.gameObject.SetActive(false);
+
+            if (portalText != null)
+                portalText.gameObject.SetActive(false);
         }
     }
 

@@ -8,6 +8,7 @@ public class Item : ScriptableObject
     public int itemCode; // 아이템의 코드번호
     public string itemName; // 아이템의 이름
     public ItemType itemType; // 아이템의 유형
+    public ItemGrade itemGrade; // 아이템의 등급
     public Sprite itemImage; // 아이템의 이미지
     public GameObject itemPrefab; // 아이템의 프리팹
 
@@ -23,5 +24,13 @@ public class Item : ScriptableObject
         Red,
         Yellow,
         Blue
+    };
+
+    public enum ItemGrade
+    {
+        Rare,
+        Epic,
+        Unique,
+        Legendary
     };
 }

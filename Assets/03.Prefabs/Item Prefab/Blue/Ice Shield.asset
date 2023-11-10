@@ -15,6 +15,7 @@ MonoBehaviour:
   itemCode: 6
   itemName: "\uC5BC\uC74C \uBC29\uD328"
   itemType: 2
+  itemGrade: 1
   itemImage: {fileID: 21300000, guid: 3ff3c4ff178253e48a772b8103ba32da, type: 3}
   itemPrefab: {fileID: 5289770149588102805, guid: d79468fff85b563429b8de5302003d2e, type: 3}
   healthEnergy: 0
