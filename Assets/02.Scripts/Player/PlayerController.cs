@@ -342,7 +342,7 @@ public class PlayerController : MonoBehaviour
 
     void Interraction()
     {
-        if (Input.GetKeyDown(KeyCode.E) && nearObject != null)
+        if (Input.GetKeyDown(KeyCode.E) && nearObject != null && nearObject.tag != "Portal")
         {
             ItemPickUp itemPickUp = nearObject.GetComponent<ItemPickUp>();
             if (itemPickUp != null)
