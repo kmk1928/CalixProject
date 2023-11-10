@@ -6310,6 +6310,70 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 81577292, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_Name
+      value: Shop BlueBuff Img
+      objectReference: {fileID: 0}
+    - target: {fileID: 228430314, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_Name
+      value: Shop Buy Bt _ Yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 324265482, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_Name
+      value: Shop RedBuff Img
+      objectReference: {fileID: 0}
+    - target: {fileID: 621250331, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_Name
+      value: Shop Buy Bt _ Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 1138056739, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_Name
+      value: Shop RedBuff Txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 1138056741, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_text
+      value: "\uCD5C\uB300 \uCCB4\uB825\n\uC99D\uAC00"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1156861102, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_Name
+      value: Shop Buy Txt _ Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174832679, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_Name
+      value: Shop YellowBuff Txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174832681, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_text
+      value: "\uACF5\uACA9\uB825\n\uC99D\uAC00"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361488604, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_Name
+      value: Shop Buy Txt _ Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 1467975080, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_Name
+      value: Shop Buy Txt _ Yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628863993, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_Name
+      value: Shop BlueBuff Txt
+      objectReference: {fileID: 0}
+    - target: {fileID: 1628863995, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_text
+      value: "\uBC29\uC5B4\uB825 \n\uC99D\uAC00"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863177762, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_Name
+      value: Shop Buy Bt _ Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062805916, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_Name
+      value: Shop YellowBuff Img
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112594588, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 74754724559472294, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: playerStats
       value: 
