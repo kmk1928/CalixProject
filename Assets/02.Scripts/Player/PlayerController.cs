@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     Animator anim;//animation variable
 
-    GameObject nearObject;
+    public GameObject nearObject;
     public Weapon equipWeapon;
 
     public bool isDodge;
@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI dropText;
 
     public TextMeshProUGUI portalText;
+
+    public TextMeshProUGUI shopText;
 
     private void Awake()
     {
@@ -243,6 +245,8 @@ public class PlayerController : MonoBehaviour
             nearObject = other.gameObject;
         if (other.tag == "Portal")
             nearObject = other.gameObject;
+        if (other.tag == "NPC")
+            nearObject = other.gameObject;
     }
 
     void OnTriggerExit(Collider other)
@@ -250,6 +254,8 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "item")
             nearObject = null;
         if (other.tag == "Portal")
+            nearObject = null;
+        if (other.tag == "NPC")
             nearObject = null;
     }
 
@@ -402,6 +408,13 @@ public class PlayerController : MonoBehaviour
                 if (portalText != null)
                     portalText.gameObject.SetActive(true);
             }
+
+             else if (nearObject.CompareTag("NPC"))
+            {
+                if (portalText != null)
+                    shopText.gameObject.SetActive(true);
+            }
+            
         }
         else
         {
@@ -410,6 +423,9 @@ public class PlayerController : MonoBehaviour
 
             if (portalText != null)
                 portalText.gameObject.SetActive(false);
+            
+            if (shopText != null)
+                shopText.gameObject.SetActive(false);
         }
     }
 

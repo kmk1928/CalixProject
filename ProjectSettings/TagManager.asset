@@ -18,6 +18,7 @@ TagManager:
   - Item
   - ParticleAttack
   - EnemyParticleAttack
+  - NPC
   layers:
   - Default
   - TransparentFX
