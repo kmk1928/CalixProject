@@ -48,8 +48,9 @@ public class EnemyHit : MonoBehaviour
                         anim.SetTrigger("enemyDeathTrg3");
                         break;
                 }
+                agent.isStopped = true;
                 enemyCollider.enabled = false;
-                Destroy(this.gameObject, 3f);
+                Destroy(this.gameObject, 5f);
             }
         }
     }
