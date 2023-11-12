@@ -16,13 +16,6 @@ public class GameManager : MonoBehaviour
 
     public bool isBossBattle = false; //보스전투돌입
 
-    //[Header("디버그용 인스펙터 표시용 변수들")]
-    //public bool debug_canPlayerMove = true; // 플레이어의 움직임 제어
-    //public bool debug_canPlayerRotate = true; // 카메라의 움직임 제어
-    public bool debug_isGameover = false; // 플레이어 사망 여부 
-    //public bool debug_isPause = false; // 메뉴가 호출되면 true
-
-
     // 게임 시작 시 각종 설정 및 초기화
     void Awake() {
         // GameManager 인스턴스가 없는 경우, 이 인스턴스를 유지하도록 함
@@ -77,10 +70,7 @@ public class GameManager : MonoBehaviour
             //Cursor.visible = false;
             canPlayerMove = true;
         }
-        //debug_canPlayerMove = canPlayerMove;
-        //debug_canPlayerRotate = canPlayerRotate;
-        debug_isGameover = isGameover;
-        //debug_isPause = isPause;
+
 
     }
 
@@ -94,6 +84,8 @@ public class GameManager : MonoBehaviour
         isGameover = true;      //플레이어 사망
         UIManager.instance.SetActiveGameoverUI(true);
     }
+
+    #region 씬 관련 함수들 - 포탈, 사망, 메인메뉴
     public void LoadMenuScene()
     {
         SceneManager.LoadScene("00_MainMenu 1");
@@ -157,5 +149,5 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("03_EnemyTestFeild 4");
         }
     }
-    
+    #endregion
 }

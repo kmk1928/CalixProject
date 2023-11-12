@@ -26,7 +26,7 @@ public class PauseMenu : MonoBehaviour
         GameManager.isPause = true;
         go_BaseUi.SetActive(true);
         Menu_BackImg.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 0.00001f;
     }
 
     private void CloseMenu()
