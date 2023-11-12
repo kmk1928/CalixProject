@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: 6944455507011936736}
   - component: {fileID: 6944455507011936737}
   - component: {fileID: 5253654064205548945}
+  - component: {fileID: 609498677}
   m_Layer: 7
   m_Name: Minotauros
   m_TagString: Enemy
@@ -66,7 +67,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6944455507011936738}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 19.496477, y: 0.02966106, z: -17.934946}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -288,6 +289,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf28dff00ef00904da6204f92628a80b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &609498677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6944455507011936738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7fe3a88ce12fa443b8cb68f43e94a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefabs:
+  - {fileID: 3656212596519750748, guid: 0e1b7cc93ec283349a155d1567835802, type: 3}
+  - {fileID: 6021795230242069904, guid: a17fc8adc603fa9419128ac7b729ee21, type: 3}
+  - {fileID: 3746732791105251345, guid: fe4d213cb86ca704d89bec010bac560b, type: 3}
+  - {fileID: 5558004781778407787, guid: d67d847ff4ec8fe45b5ebdc09ea6cb8a, type: 3}
+  - {fileID: 6465921761205412868, guid: 1938239e76901ab4b98b9560dc63ce2b, type: 3}
+  - {fileID: 5961626430532581728, guid: 03528fe4e655d2b4abebd816c646619e, type: 3}
+  - {fileID: 2139192445256792956, guid: 53169bfc19f860c44a81bacc4a90d43b, type: 3}
+  - {fileID: 9130475872694188937, guid: 93ac6d2cabc8c7a48baeef886a668cbb, type: 3}
+  - {fileID: 983865820341774518, guid: 1a17a991208015343acc9bdb0d47834d, type: 3}
+  - {fileID: 911922508518742993, guid: 8b83781ccea18ee438cc2a149d4f55ce, type: 3}
+  - {fileID: 6243519911935008, guid: 6ac9b96d86925db4591f78a2d1d2ecca, type: 3}
+  - {fileID: 3913951469276428772, guid: 16bf47ef81f5b9c44bd51366e3d9c7f8, type: 3}
+  - {fileID: 6383667668726086613, guid: b20d03d806e0fb14db1a2df2920c78f6, type: 3}
+  - {fileID: 604257944716279714, guid: 7d1707528ad7557489e9e2d84352a7fc, type: 3}
+  - {fileID: 1602537196235556104, guid: ae4ba5e6b3bec1f4da24269921028e79, type: 3}
+  - {fileID: 4966216653021164475, guid: 62f13c368af653e41a437230cebde5bb, type: 3}
+  - {fileID: 4339834639929948140, guid: 24e2c105e46c472439c36e84aa105934, type: 3}
+  - {fileID: 7184521690474857869, guid: 08a19b2ea1ae2214ca4fda55fb0d5198, type: 3}
+  - {fileID: 7323715917403973419, guid: 5ac2ea0feda7ea141bff39f567115db1, type: 3}
+  - {fileID: 2118264956018713080, guid: 124278efcc9912d42b4362947650c54e, type: 3}
+  - {fileID: 3504707703152888212, guid: 40f77cc89bbe3e14185945e50191ae68, type: 3}
+  - {fileID: 6030463933514024932, guid: ae71beccbab6ae745823b05c164b0aaa, type: 3}
+  - {fileID: 2316477519596416730, guid: 34f44a90e9001e94aae43d2a574351a2, type: 3}
+  - {fileID: 2704768031230474704, guid: 6af8c7c1cd167c747a3b48612c41794c, type: 3}
 --- !u!1 &6944455507074637164
 GameObject:
   m_ObjectHideFlags: 0
