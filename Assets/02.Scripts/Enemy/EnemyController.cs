@@ -45,6 +45,17 @@ public class EnemyController : MonoBehaviour
         combat = GetComponent<CharCombat>();
         myStats = GetComponent<CharStats>();
 
+        // 플레이어 태그를 가진 게임 오브젝트 찾기
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+
+        if (playerObj != null)
+        {
+            // 플레이어를 찾았으면 해당 오브젝트의 Transform 가져오기
+            player = playerObj.transform;
+
+            // playerTransform을 사용할 수 있어.
+        }
+
     }
 
     private void Update()
@@ -76,14 +87,6 @@ public class EnemyController : MonoBehaviour
                             Debug.Log("---Find Player---");
                             Attack2();
 
-                            /*
-                                if (randomAttack == 0) {
-                                Attack();
-                            }
-                            else {
-                                Attack2();
-                            }
-                                */
                         }
 
                     }
@@ -134,11 +137,14 @@ public class EnemyController : MonoBehaviour
     IEnumerator AttackOut(string attackName) { 
         isAttack = true;
         anim.SetTrigger(attackName);            //공격에 맞는 트리거 발동
+        navMeshAgent.isStopped = true;
         while (isAttack) {
-            yield return new WaitForSeconds(1f);  //공격 종료 후 idle의 지속 시간
+            yield return new WaitForSeconds(1.6f);  //공격 종료 후 idle의 지속 시간
         }
         isAttack = false;
         // AI의 이동 속도를 원래 값으로 복원, 저장해둔 속도로 플레이어 추격
+
+        navMeshAgent.isStopped = false;
         navMeshAgent.speed = originalSpeed;
     }
     IEnumerator ComboAttackOut(string attackName) {
