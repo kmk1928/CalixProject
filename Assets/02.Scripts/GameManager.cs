@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
         }
         else if (portalNum == 7)
         {
-            SceneManager.LoadScene("06_BossStage");
+            SceneManager.LoadScene("03_EnemyTestFeild 4");
         }
     }
     

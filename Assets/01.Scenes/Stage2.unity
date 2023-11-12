@@ -16671,6 +16671,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4733772755456769034, guid: 3ad7a1cffb2556547a8b7e60fd320431, type: 3}
   m_PrefabInstance: {fileID: 795408731}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &796158164 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1191465245011681577, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+  m_PrefabInstance: {fileID: 1728300007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &797456097
 GameObject:
   m_ObjectHideFlags: 0
@@ -33871,7 +33876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Yaxis: 0
   Xaxis: 0
-  target: {fileID: 0}
+  target: {fileID: 796158164}
   rotSensitive: 3
   dis: 3.5
   RotationMin: -10
