@@ -52,6 +52,17 @@ public class EnemyController2 : MonoBehaviour
 
         combat = GetComponent<CharCombat>();
         myStats = GetComponent<CharStats>();
+
+        // 플레이어 태그를 가진 게임 오브젝트 찾기
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+
+        if (playerObj != null)
+        {
+            // 플레이어를 찾았으면 해당 오브젝트의 Transform 가져오기
+            player = playerObj.transform;
+
+            // playerTransform을 사용할 수 있어.
+        }
     }
 
     private void Update()
