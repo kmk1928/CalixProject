@@ -57,7 +57,7 @@ public class PlayerParryGuard : MonoBehaviour {
                 isParried = true;                   //패리중을 true로 변경
                 isBlocked = true;                   //가드중을 true로 변경
                 anim.SetBool("isGuard", true);//able animation
-                playerController.speed /= 2;
+                playerController.speed /= 5;
             }
             //if (Input.GetMouseButton(1)) {                       //우클릭 꾹 누를 시 가드
             //     

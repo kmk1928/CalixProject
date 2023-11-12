@@ -54,11 +54,11 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            SceneManager.LoadScene("07_BounsStage1");
+            SceneManager.LoadScene("Stage6_shop");
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
-            SceneManager.LoadScene("07_BounsStage1");
+            SceneManager.LoadScene("Stage7_Boss");
         }
 
         if (isGameover && Input.GetKeyDown("k")) 
@@ -151,11 +151,11 @@ public class GameManager : MonoBehaviour
         }
         else if (portalNum == 6)
         {
-            SceneManager.LoadScene("07_BounsStage1");
+            SceneManager.LoadScene("Stage6_shop");
         }
         else if (portalNum == 7)
         {
-            SceneManager.LoadScene("06_BossStage 1");
+            SceneManager.LoadScene("Stage7_Boss");
         }
     }
     #endregion

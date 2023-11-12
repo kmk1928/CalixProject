@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/01.Scenes/06_BossStage.unity
     guid: ade95226926b4d5448eae7c2ade93f1e
   - enabled: 1
-    path: Assets/01.Scenes/07_BounsStage1.unity
+    path: Assets/01.Scenes/Stage6_shop.unity
     guid: d8961641d7f1b67459af3c1c6c90b94c
   - enabled: 1
     path: Assets/01.Scenes/07_BounsStage2.unity
@@ -84,6 +84,6 @@ EditorBuildSettings:
     path: Assets/01.Scenes/03_EnemyTestFeild 4.unity
     guid: e0ed2b63f0de3854a847a4774de34e97
   - enabled: 1
-    path: Assets/01.Scenes/06_BossStage 1.unity
+    path: Assets/01.Scenes/Stage7_Boss.unity
     guid: b2deae43d90f469418efac6b0008c41a
   m_configObjects: {}

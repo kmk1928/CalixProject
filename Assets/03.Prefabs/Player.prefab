@@ -5449,6 +5449,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   enemyToLookAt: {fileID: 0}
   isTargeting: 0
+  nearObject: {fileID: 0}
   equipWeapon: {fileID: 0}
   isDodge: 0
   dodgeTrail: {fileID: 1903361138}
@@ -5462,6 +5463,9 @@ MonoBehaviour:
   isDead: 0
   canMovePlayer: 1
   canPlayerRotate: 0
+  dropText: {fileID: 0}
+  portalText: {fileID: 0}
+  shopText: {fileID: 0}
   theInventory: {fileID: 0}
 --- !u!114 &696521750386652712
 MonoBehaviour:
