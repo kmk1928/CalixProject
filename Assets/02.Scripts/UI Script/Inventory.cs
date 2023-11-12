@@ -67,6 +67,13 @@ public class Inventory : MonoBehaviour
 
     public void AcquireItem(Item _item, int _count = 1)
     {
+        // 인벤토리가 가득 찼으면 획득할 수 없도록 처리
+        if (IsInventoryFull())
+        {
+            Debug.LogWarning("인벤토리가 가득 찼습니다.");
+            return;
+        }
+
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i].item == null || string.IsNullOrEmpty(slots[i].item.itemName))
@@ -75,5 +82,18 @@ public class Inventory : MonoBehaviour
                 return;
             }
         }
+    }
+
+    // 인벤토리가 가득 찼는지 여부를 확인하는 함수
+    private bool IsInventoryFull()
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].item == null || string.IsNullOrEmpty(slots[i].item.itemName))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
