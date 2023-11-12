@@ -48,6 +48,7 @@ public class Inventory : MonoBehaviour
 
     private void OpenInventory()
     {
+        UIManager.isOpenUI = true;
         go_InventoryBase.SetActive(true);
         Inven_BackImg.SetActive(true);
         GameManager.isInventory = true;
@@ -56,6 +57,7 @@ public class Inventory : MonoBehaviour
 
     private void CloseInventory()
     {
+        UIManager.isOpenUI = false;
         go_InventoryBase.SetActive(false);
         Inven_BackImg.SetActive(false);
         go_Base.SetActive(false);

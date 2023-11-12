@@ -1208,6 +1208,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.6065576, y: 1, z: 1}
   m_Center: {x: 0.8032822, y: 0, z: 2.842171e-14}
+--- !u!1 &383925792 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5320958065832114016, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+  m_PrefabInstance: {fileID: 2143278690401904540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &417535953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6944455507011936758, guid: a56a8fbc92e6e0f42bd67762c41251a1, type: 3}
@@ -2328,17 +2333,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d70b6fb0a05bb25429ec422ee1a5c21a, type: 3}
---- !u!114 &985862623 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4337452002104792701, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-  m_PrefabInstance: {fileID: 2143278690401904540}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &998225281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6449,94 +6443,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 81577292, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Name
-      value: Shop BlueBuff Img
-      objectReference: {fileID: 0}
-    - target: {fileID: 81577294, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 99037300f8ed93d42908405ca375812d, type: 3}
-    - target: {fileID: 81577294, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 81577294, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 81577294, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Color.g
-      value: 0.8509804
-      objectReference: {fileID: 0}
-    - target: {fileID: 81577294, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 228430314, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Name
-      value: Shop Buy Bt _ Yellow
-      objectReference: {fileID: 0}
-    - target: {fileID: 324265482, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Name
-      value: Shop RedBuff Img
-      objectReference: {fileID: 0}
-    - target: {fileID: 324265484, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: cfe805252d39b0f47b6426df93fae18e, type: 3}
-    - target: {fileID: 621250331, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Name
-      value: Shop Buy Bt _ Blue
-      objectReference: {fileID: 0}
-    - target: {fileID: 1138056739, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Name
-      value: Shop RedBuff Txt
-      objectReference: {fileID: 0}
-    - target: {fileID: 1138056741, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_text
-      value: "\uC804\uCCB4 \uCCB4\uB825\n\uD68C\uBCF5"
-      objectReference: {fileID: 0}
-    - target: {fileID: 1156861102, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Name
-      value: Shop Buy Txt _ Blue
-      objectReference: {fileID: 0}
-    - target: {fileID: 1174832679, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Name
-      value: Shop YellowBuff Txt
-      objectReference: {fileID: 0}
-    - target: {fileID: 1174832681, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_text
-      value: "\uACF5\uACA9\uB825\n\uC99D\uAC00"
-      objectReference: {fileID: 0}
-    - target: {fileID: 1361488604, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Name
-      value: Shop Buy Txt _ Red
-      objectReference: {fileID: 0}
-    - target: {fileID: 1467975080, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Name
-      value: Shop Buy Txt _ Yellow
-      objectReference: {fileID: 0}
-    - target: {fileID: 1628863993, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Name
-      value: Shop BlueBuff Txt
-      objectReference: {fileID: 0}
-    - target: {fileID: 1628863995, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_text
-      value: "\uBC29\uC5B4\uB825 \n\uC99D\uAC00"
-      objectReference: {fileID: 0}
-    - target: {fileID: 1863177762, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Name
-      value: Shop Buy Bt _ Red
-      objectReference: {fileID: 0}
-    - target: {fileID: 2062805916, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Name
-      value: Shop YellowBuff Img
-      objectReference: {fileID: 0}
-    - target: {fileID: 2062805918, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 42fea608331c98841b1ef10c94364270, type: 3}
     - target: {fileID: 2112594588, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6565,18 +6471,6 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 1191465243520282965}
-    - target: {fileID: 1622428849585136482, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1622428849585136482, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1622428849585136482, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 2143278691776298319, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6677,14 +6571,6 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1307645927}
-    - target: {fileID: 2534715300375116825, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2534715300375116825, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2583493896794345592, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6692,10 +6578,6 @@ PrefabInstance:
     - target: {fileID: 2583493896794345592, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2718815476534080411, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3380321695757599344, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6718,6 +6600,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4661865039298275829, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: Shop_BackImg
+      value: 
+      objectReference: {fileID: 383925792}
+    - target: {fileID: 4661865039298275829, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1191465243520282976}
@@ -6729,12 +6615,8 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 1191465243520282965}
-    - target: {fileID: 5007672829697779943, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5007672829697779943, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMax.y
+    - target: {fileID: 5320958065832114016, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6090073547496488892, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
@@ -6749,14 +6631,6 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 1191465243520282965}
-    - target: {fileID: 6457253642908252966, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: txt_ItemGrade
-      value: 
-      objectReference: {fileID: 985862623}
-    - target: {fileID: 6457253643182215254, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6789861614957799645, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: playerStats
       value: 
@@ -6773,20 +6647,7 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 1191465243520282965}
-    - target: {fileID: 9197092372643669050, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9197092372643669050, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9197092372643669050, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2578122712542815619, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
 --- !u!1001 &2243168012526357571
 PrefabInstance:

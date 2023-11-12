@@ -23,6 +23,7 @@ public class PauseMenu : MonoBehaviour
 
     private void CallMenu()
     {
+        UIManager.isOpenUI = true;
         GameManager.isPause = true;
         go_BaseUi.SetActive(true);
         Menu_BackImg.SetActive(true);
@@ -31,6 +32,7 @@ public class PauseMenu : MonoBehaviour
 
     private void CloseMenu()
     {
+        UIManager.isOpenUI = false;
         GameManager.isPause = false;
         go_BaseUi.SetActive(false);
         Menu_BackImg.SetActive(false);
