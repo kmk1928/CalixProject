@@ -150,6 +150,12 @@ public class EnemyHPbar : MonoBehaviour
             DisableHPbar(bossHpbar);
         }
 
+
+        if(GameManager.isPause || GameManager.isInventory)
+        {
+            DisableText(bossDamageTxt);
+            DisableHPbar(bossHpbar);
+        }
     }
 
     IEnumerator YellowBar(Slider slider, float curHP, float maxHP)
