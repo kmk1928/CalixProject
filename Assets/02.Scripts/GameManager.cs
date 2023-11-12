@@ -52,7 +52,16 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("06_BossStage");
         }
 
-        if(isGameover && Input.GetKeyDown("k")) 
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            SceneManager.LoadScene("07_BounsStage1");
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            SceneManager.LoadScene("07_BounsStage1");
+        }
+
+        if (isGameover && Input.GetKeyDown("k")) 
         { 
             GameRestart();
         }
@@ -146,7 +155,7 @@ public class GameManager : MonoBehaviour
         }
         else if (portalNum == 7)
         {
-            SceneManager.LoadScene("03_EnemyTestFeild 4");
+            SceneManager.LoadScene("06_BossStage 1");
         }
     }
     #endregion

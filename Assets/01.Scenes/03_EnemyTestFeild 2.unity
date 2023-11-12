@@ -7373,10 +7373,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Enemy_Blue
       objectReference: {fileID: 0}
-    - target: {fileID: 1541277563749876439, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1541277563749876440, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -7421,28 +7417,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1541277563749876445, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
-      propertyPath: debugingPatten
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1541277563749876445, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
-      propertyPath: skill_Particle_blood
-      value: 
-      objectReference: {fileID: 1996079926692674, guid: 492b3e123b58f62468c377cd510efa10, type: 3}
-    - target: {fileID: 1541277563749876447, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
-      propertyPath: maxHardness
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1541277563749876447, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
-      propertyPath: hardnessDamage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1541277564718321299, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -3386788147965340529, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
 --- !u!4 &6206334115854603188 stripped
 Transform:
