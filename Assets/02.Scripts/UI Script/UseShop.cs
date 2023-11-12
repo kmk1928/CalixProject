@@ -34,4 +34,53 @@ public class UseShop : MonoBehaviour
             }
         }
     }
+
+        // 체력 회복 함수
+    public void Healing()
+    {
+        if (GameManager.instance.playerNanoCount >= 10)
+        {
+            PlayerStats playerStats = GameManager.instance.playerStats;
+            playerStats.curHealth = playerStats.maxHealth;
+            GameManager.instance.AddNano(-10);
+        }
+        else
+        {
+            Debug.Log("나노가 부족합니다.");
+        }
+    }
+
+
+    // 공격력 상승 함수
+    public void YellowStatUp()
+    {
+        if (GameManager.instance.playerNanoCount >= 50)
+        {
+            PlayerStats playerStats = GameManager.instance.playerStats;
+            playerStats.attackDamage += 10;
+            GameManager.instance.AddNano(-50);
+        }
+        else
+        {
+            // 골드가 부족하면 처리
+            Debug.Log("나노가 부족합니다.");
+        }
+    }
+
+
+    // 방어력 상승 함수
+    public void BlueStatUp()
+    {
+        if (GameManager.instance.playerNanoCount >= 30)
+        {
+            PlayerStats playerStats = GameManager.instance.playerStats;
+            playerStats.defense += 5;
+            GameManager.instance.AddNano(-30);
+        }
+        else
+        {
+            // 골드가 부족하면 처리
+            Debug.Log("나노가 부족합니다.");
+        }
+    }
 }

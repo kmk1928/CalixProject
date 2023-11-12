@@ -12,9 +12,11 @@ public class GameManager : MonoBehaviour
     public static bool isGameover; // 플레이어 사망 여부 
     public static bool isPause = false; // 메뉴가 호출되면 true
     public static bool isInventory = false; // 인벤토리가 호출되면 true
-    [SerializeField] private int playerNanoCount = 10; // 플레이어 나노 카운트
+    [SerializeField] public int playerNanoCount = 10; // 플레이어 나노 카운트
 
     public bool isBossBattle = false; //보스전투돌입
+
+    public PlayerStats playerStats;
 
     // 게임 시작 시 각종 설정 및 초기화
     void Awake() {
@@ -27,9 +29,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Start() 
-    {  //나노 카운트 반영
+
+    void Start() 
+    {  
+        // 나노 카운트 반영
         UIManager.instance.nanoText.text = "" + playerNanoCount;
+        // 플레이어 스탯 초기화
+        InitializePlayerStats();
+
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
         isPause = false;
@@ -66,8 +73,7 @@ public class GameManager : MonoBehaviour
             GameRestart();
         }
 
-
-        if( isPause || isInventory)
+        if (isPause || isInventory)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -79,8 +85,20 @@ public class GameManager : MonoBehaviour
             //Cursor.visible = false;
             canPlayerMove = true;
         }
+    }
 
-
+    void InitializePlayerStats()
+    {
+        // 플레이어를 찾아서 PlayerStats 스크립트에 접근
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            playerStats = playerObject.GetComponent<PlayerStats>();
+        }
+        else
+        {
+            Debug.LogError("플레이어를 찾을 수 없습니다.");
+        }
     }
 
     public void AddNano(int newNano) {
@@ -89,6 +107,7 @@ public class GameManager : MonoBehaviour
             UIManager.instance.UpdateNanoText(playerNanoCount);
         }
     }
+
     public void OnPlayerDead() {    
         isGameover = true;      //플레이어 사망
         UIManager.instance.SetActiveGameoverUI(true);
@@ -105,27 +124,21 @@ public class GameManager : MonoBehaviour
     }
 
     public void SceneLoad_Battle() {
-        ///SceneManager.LoadScene("SampleScene");
-        ///
-
         GameManager.isGameover = false;
         SceneManager.LoadScene("03_EnemyTestFeild");
     }
 
     public void SceneLoad_normalMap(int portalNum) {
-        ///SceneManager.LoadScene("SampleScene");
-        ///
         if (portalNum == 0)
         {
             SceneManager.LoadScene("Stage1");
         }
-        else if (portalNum == 1) // 스테이지1 -> 지도 -> 스테이지2
+        else if (portalNum == 1)
         {
             SceneManager.LoadScene("MapScene1");
         }
-        else if (portalNum == 2) // 스테이지2 -> 지도 -> 스테이지3
+        else if (portalNum == 2)
         {
-            // MapScene2_1, MapScene2_2, MapScene2_3 중에서 무작위로 선택
             string[] mapScene2 = { "MapScene2_1", "MapScene2_2", "MapScene2_3" };
             int randomIndex = Random.Range(0, mapScene2.Length);
             string randomMapScene2 = mapScene2[randomIndex];
@@ -134,7 +147,6 @@ public class GameManager : MonoBehaviour
         }
         else if (portalNum == 3)
         {
-            // MapScene3_1, MapScene3_2, MapScene3_3 중에서 무작위로 선택
             string[] mapScene3 = { "MapScene3_1", "MapScene3_2", "MapScene3_3" };
             int randomIndex = Random.Range(0, mapScene3.Length);
             string randomMapScene3 = mapScene3[randomIndex];
