@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.029087335, g: 0.0298977, b: 0.029896766, a: 1}
+  m_IndirectSpecularColor: {r: 0.029087335, g: 0.0298977, b: 0.029896773, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10662,6 +10662,7 @@ GameObject:
   - component: {fileID: 688183995}
   - component: {fileID: 688183994}
   - component: {fileID: 688183998}
+  - component: {fileID: 688183999}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -10848,6 +10849,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &688183999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688183993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c3d3285d75c4d4f99ad7c95c74724b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &697903116
 GameObject:
   m_ObjectHideFlags: 0
@@ -11391,7 +11404,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 950573548}
+      - m_Target: {fileID: 688183999}
         m_TargetAssemblyTypeName: MainSetUp, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
@@ -11624,7 +11637,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1441190964}
+      - m_Target: {fileID: 688183999}
         m_TargetAssemblyTypeName: MainSetUp, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1

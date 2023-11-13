@@ -13,5 +13,6 @@ public class MainSetUp : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+        Debug.Log("게임을 종료합니다.");
     }
 }
