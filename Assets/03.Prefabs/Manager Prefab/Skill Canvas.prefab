@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filledImage: {fileID: 389706006}
-  duration: 8
+  duration: 14
 --- !u!1 &409075342
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filledImage: {fileID: 3592090106944509848}
-  duration: 4
+  duration: 6
 --- !u!1 &4748356765458912787
 GameObject:
   m_ObjectHideFlags: 0

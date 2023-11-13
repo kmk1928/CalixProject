@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K) && !GameManager.isPause)
+        if (Input.GetKeyDown(KeyCode.I) && !GameManager.isPause)
         {
             if (!InventoryActivated)
             {

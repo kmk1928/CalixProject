@@ -28,7 +28,7 @@ public class SkillSelect : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             Debug.Log("Test스킬선택");
             if (!skillSelect_Active)
