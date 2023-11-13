@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public static bool isInventory = false; // 인벤토리가 호출되면 true
     [SerializeField] public int playerNanoCount = 10; // 플레이어 나노 카운트
 
+    [SerializeField] public GameObject Gameover_Display;
+
     public bool isBossBattle = false; //보스전투돌입
 
     public PlayerStats playerStats;
@@ -66,15 +68,27 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Stage6_shop");
         }
+
         if (Input.GetKeyDown(KeyCode.N))
         {
             SceneManager.LoadScene("Stage7_Boss");
         }
 
-        if (isGameover && Input.GetKeyDown("k")) 
-        { 
+
+
+        if (Input.GetKeyDown("p"))
+        {
             GameRestart();
         }
+
+        if (isGameover && Input.GetKeyDown("p")) 
+        { 
+            Gameover_Display.SetActive(false);
+            GameRestart();
+        }
+
+
+
 
         if (isPause || isInventory)
         {
