@@ -12,7 +12,1996 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75691fe4a49db4a21986bd2b7ebe85e1, type: 3}
   m_Name: BuiltShaders
   m_EditorClassIdentifier: 
-  creationDateTicks: 0
-  shaders: []
+  creationDateTicks: 638354830562941137
+  shaders:
+  - name: Universal Render Pipeline/Lit
+    simpleName: Lit
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _MAIN_LIGHT_SHADOWS_CASCADE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ADDITIONAL_LIGHTS
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _NORMALMAP
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ADDITIONAL_LIGHTS_VERTEX
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _MAIN_LIGHT_SHADOWS
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CASTING_PUNCTUAL_LIGHT_SHADOW
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _PARALLAXMAP
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _DETAIL_MULX2
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/Lit.shader
+  - name: Hidden/Universal Render Pipeline/FallbackError
+    simpleName: FallbackError
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/Utils/FallbackError.shader
+  - name: Unlit/Transparent
+    simpleName: Transparent
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Universal Render Pipeline/Simple Lit
+    simpleName: Simple Lit
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _MAIN_LIGHT_SHADOWS_CASCADE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ADDITIONAL_LIGHTS
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ADDITIONAL_LIGHTS_VERTEX
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _MAIN_LIGHT_SHADOWS
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CASTING_PUNCTUAL_LIGHT_SHADOW
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _NORMALMAP
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/SimpleLit.shader
+  - name: Shader Graphs/URP_Add_CG
+    simpleName: URP_Add_CG
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _BLENDMODE_OFF
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _SURFACE_TYPE_TRANSPARENT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CASTING_PUNCTUAL_LIGHT_SHADOW
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ALPHATEST_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/09.Particles/Hovl Studio/Render Pipelines support/Shaders/URP_Add_CG.shadergraph
+  - name: Hidden/Shader Graph/FallbackError
+    simpleName: FallbackError
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.shadergraph/Editor/Resources/Shaders/FallbackError.shader
+  - name: Shader Graphs/URP_Blend_CG
+    simpleName: URP_Blend_CG
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _BLENDMODE_OFF
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _SURFACE_TYPE_TRANSPARENT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CASTING_PUNCTUAL_LIGHT_SHADOW
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/09.Particles/Hovl Studio/Render Pipelines support/Shaders/URP_Blend_CG.shadergraph
+  - name: Shader Graphs/URP_Explosion
+    simpleName: URP_Explosion
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _BLENDMODE_OFF
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _SURFACE_TYPE_TRANSPARENT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CASTING_PUNCTUAL_LIGHT_SHADOW
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/09.Particles/Hovl Studio/Render Pipelines support/Shaders/URP_Explosion.shadergraph
+  - name: Universal Render Pipeline/Nature/SpeedTree7
+    simpleName: SpeedTree7
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _MAIN_LIGHT_SHADOWS_CASCADE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ADDITIONAL_LIGHTS
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ADDITIONAL_LIGHT_SHADOWS
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: LOD_FADE_CROSSFADE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: LOD_FADE_PERCENTAGE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: GEOM_TYPE_LEAF
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: GEOM_TYPE_BRANCH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ADDITIONAL_LIGHTS_VERTEX
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _MAIN_LIGHT_SHADOWS
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CASTING_PUNCTUAL_LIGHT_SHADOW
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/Nature/SpeedTree7.shader
+  - name: Cartoon FX/Remaster/Particle Procedural Glow
+    simpleName: Particle Procedural Glow
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _FADING_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_DEPTH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_CUBE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CFXR_DITHERED_SHADOWS_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SOFTPARTICLES_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/09.Particles/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR
+      Particle Glow.shader
+  - name: Shader Graphs/URP_Distortion
+    simpleName: URP_Distortion
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _BLENDMODE_OFF
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _SURFACE_TYPE_TRANSPARENT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CASTING_PUNCTUAL_LIGHT_SHADOW
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/09.Particles/Hovl Studio/Render Pipelines support/Shaders/URP_Distortion.shadergraph
+  - name: Universal Render Pipeline/Particles/Unlit
+    simpleName: Unlit
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _SOFTPARTICLES_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _FADING_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: PROCEDURAL_INSTANCING_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/Particles/ParticlesUnlit.shader
+  - name: Cartoon FX/Remaster/Particle Ubershader
+    simpleName: Particle Ubershader
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _CFXR_SINGLE_CHANNEL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CFXR_HDR_BOOST
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ALPHABLEND_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CFXR_DISSOLVE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _FADING_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CFXR_ADDITIVE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_DEPTH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_CUBE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SOFTPARTICLES_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/09.Particles/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR
+      Particle Ubershader.shader
+  - name: Cartoon FX/Remaster/Particle Procedural Ring
+    simpleName: Particle Procedural Ring
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _CFXR_HDR_BOOST
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _FADING_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_DEPTH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_CUBE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SOFTPARTICLES_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/09.Particles/JMO Assets/Cartoon FX Remaster/CFXR Assets/Shaders/CFXR
+      Particle Procedural Ring.shader
+  - name: Hovl/Particles/DissolveNoise
+    simpleName: DissolveNoise
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: SOFTPARTICLES_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/09.Particles/Hovl Studio/HSFiles/Shaders/DissolveNoise.shader
+  - name: Shader Graphs/URP_SwordSlash
+    simpleName: URP_SwordSlash
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _BLENDMODE_OFF
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _SURFACE_TYPE_TRANSPARENT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CASTING_PUNCTUAL_LIGHT_SHADOW
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/09.Particles/Hovl Studio/Render Pipelines support/Shaders/URP_SwordSlash.shadergraph
+  - name: Shader Graphs/URP_Ice
+    simpleName: URP_Ice
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _BLENDMODE_OFF
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _REFRACTION_OFF
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _SURFACE_TYPE_TRANSPARENT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: WRITE_DECAL_BUFFER
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: WRITE_NORMAL_BUFFER
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _MAIN_LIGHT_SHADOWS_CASCADE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ADDITIONAL_LIGHTS
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ADDITIONAL_LIGHTS_VERTEX
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _MAIN_LIGHT_SHADOWS
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _MIXED_LIGHTING_SUBTRACTIVE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CASTING_PUNCTUAL_LIGHT_SHADOW
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/09.Particles/Hovl Studio/Render Pipelines support/Shaders/URP_Ice.shadergraph
+  - name: Hovl/Particles/Add_Fresnel
+    simpleName: Add_Fresnel
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: SOFTPARTICLES_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/09.Particles/Hovl Studio/HSFiles/Shaders/Add_Fresnel.shader
+  - name: Shader Graphs/URP_Blend_TwoSides
+    simpleName: URP_Blend_TwoSides
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _BLENDMODE_OFF
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CASTING_PUNCTUAL_LIGHT_SHADOW
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/09.Particles/Hovl Studio/Render Pipelines support/Shaders/URP_Blend_TwoSides.shadergraph
+  - name: Hovl/Particles/Lightning
+    simpleName: Lightning
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: SOFTPARTICLES_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/09.Particles/Hovl Studio/HSFiles/Shaders/Lightning.shader
+  - name: Shader Graphs/URP_BlendDistort
+    simpleName: URP_BlendDistort
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _BLENDMODE_OFF
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _SURFACE_TYPE_TRANSPARENT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CASTING_PUNCTUAL_LIGHT_SHADOW
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/09.Particles/Hovl Studio/Render Pipelines support/Shaders/URP_BlendDistort.shadergraph
+  - name: Legacy Shaders/Particles/Alpha Blended
+    simpleName: Alpha Blended
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: SOFTPARTICLES_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Shader Graphs/ScaleTilingShader
+    simpleName: ScaleTilingShader
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _MAIN_LIGHT_SHADOWS_CASCADE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ADDITIONAL_LIGHTS
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ADDITIONAL_LIGHTS_VERTEX
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _MAIN_LIGHT_SHADOWS
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _MIXED_LIGHTING_SUBTRACTIVE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _CASTING_PUNCTUAL_LIGHT_SHADOW
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/04.Images/Material/Scalable Grid Prototype Materials/ShaderGraphs/ScaleTilingShader.shadergraph
+  - name: Hidden/Universal Render Pipeline/Sampling
+    simpleName: Sampling
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _USE_DRAW_PROCEDURAL
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/Utils/Sampling.shader
+  - name: Hidden/VoxelizeShader
+    simpleName: VoxelizeShader
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.visualeffectgraph/Shaders/SDFBaker/RayMapVoxelize.shader
+  - name: Hidden/Universal Render Pipeline/Stop NaN
+    simpleName: Stop NaN
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _USE_DRAW_PROCEDURAL
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/StopNaN.shader
+  - name: Hidden/Universal Render Pipeline/CameraMotionBlur
+    simpleName: CameraMotionBlur
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _USE_DRAW_PROCEDURAL
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/CameraMotionBlur.shader
+  - name: Hidden/Universal Render Pipeline/BokehDepthOfField
+    simpleName: BokehDepthOfField
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _USE_DRAW_PROCEDURAL
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/BokehDepthOfField.shader
+  - name: Hidden/Core/FallbackError
+    simpleName: FallbackError
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.core/Runtime/FallbackShader.shader
+  - name: Hidden/Universal Render Pipeline/XR/XROcclusionMesh
+    simpleName: XROcclusionMesh
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: XR_OCCLUSION_MESH_COMBINED
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/XR/XROcclusionMesh.shader
+  - name: Hidden/Universal Render Pipeline/Edge Adaptive Spatial Upsampling
+    simpleName: Edge Adaptive Spatial Upsampling
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _USE_DRAW_PROCEDURAL
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/EdgeAdaptiveSpatialUpsampling.shader
+  - name: Hidden/Universal Render Pipeline/GaussianDepthOfField
+    simpleName: GaussianDepthOfField
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _USE_DRAW_PROCEDURAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _HIGH_QUALITY_SAMPLING
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/GaussianDepthOfField.shader
+  - name: Hidden/Universal Render Pipeline/Bloom
+    simpleName: Bloom
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _BLOOM_HQ
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _USE_RGBM
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _USE_DRAW_PROCEDURAL
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/Bloom.shader
+  - name: Hidden/Universal Render Pipeline/MaterialError
+    simpleName: MaterialError
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/Utils/MaterialError.shader
+  - name: Hidden/Universal Render Pipeline/SubpixelMorphologicalAntialiasing
+    simpleName: SubpixelMorphologicalAntialiasing
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _SMAA_PRESET_LOW
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _SMAA_PRESET_MEDIUM
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _SMAA_PRESET_HIGH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _USE_DRAW_PROCEDURAL
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/SubpixelMorphologicalAntialiasing.shader
+  - name: Hidden/Universal Render Pipeline/LutBuilderLdr
+    simpleName: LutBuilderLdr
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/LutBuilderLdr.shader
+  - name: Hidden/Universal Render Pipeline/LensFlareDataDriven
+    simpleName: LensFlareDataDriven
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: FLARE_OCCLUSION
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/LensFlareDataDriven.shader
+  - name: Hidden/kMotion/ObjectMotionVectors
+    simpleName: ObjectMotionVectors
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/ObjectMotionVectors.shader
+  - name: Hidden/Universal/CoreBlit
+    simpleName: CoreBlit
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: BLIT_SINGLE_SLICE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: DISABLE_TEXTURE2D_X_ARRAY
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/Utils/CoreBlit.shader
+  - name: Hidden/Universal Render Pipeline/PaniniProjection
+    simpleName: PaniniProjection
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _GENERIC
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _UNIT_DISTANCE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _USE_DRAW_PROCEDURAL
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/PaniniProjection.shader
+  - name: Hidden/Universal Render Pipeline/Blit
+    simpleName: Blit
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _USE_DRAW_PROCEDURAL
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/Utils/Blit.shader
+  - name: Hidden/Universal Render Pipeline/FinalPost
+    simpleName: FinalPost
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _USE_DRAW_PROCEDURAL
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/FinalPost.shader
+  - name: Hidden/kMotion/CameraMotionVectors
+    simpleName: CameraMotionVectors
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/CameraMotionVectors.shader
+  - name: Hidden/Universal Render Pipeline/Debug/DebugReplacement
+    simpleName: DebugReplacement
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/Debug/DebugReplacement.shader
+  - name: Hidden/Universal/CoreBlitColorAndDepth
+    simpleName: CoreBlitColorAndDepth
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: BLIT_SINGLE_SLICE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: DISABLE_TEXTURE2D_X_ARRAY
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/Utils/CoreBlitColorAndDepth.shader
+  - name: Hidden/Universal Render Pipeline/XR/XRMirrorView
+    simpleName: XRMirrorView
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/XR/XRMirrorView.shader
+  - name: Hidden/Universal Render Pipeline/CopyDepth
+    simpleName: CopyDepth
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _USE_DRAW_PROCEDURAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _DEPTH_MSAA_2
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _DEPTH_MSAA_4
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _DEPTH_MSAA_8
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/Utils/CopyDepth.shader
+  - name: Hidden/Universal Render Pipeline/UberPost
+    simpleName: UberPost
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _USE_DRAW_PROCEDURAL
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/UberPost.shader
+  - name: Hidden/Universal Render Pipeline/Scaling Setup
+    simpleName: Scaling Setup
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _USE_DRAW_PROCEDURAL
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/ScalingSetup.shader
+  - name: Hidden/Universal Render Pipeline/StencilDeferred
+    simpleName: StencilDeferred
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/Utils/StencilDeferred.shader
+  - name: Hidden/Universal Render Pipeline/LutBuilderHdr
+    simpleName: LutBuilderHdr
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _TONEMAP_ACES
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _TONEMAP_NEUTRAL
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/PostProcessing/LutBuilderHdr.shader
+  - name: Standard
+    simpleName: Standard
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: DIRECTIONAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: LIGHTPROBE_SH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_SCREEN
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: VERTEXLIGHT_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: POINT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SPOT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: POINT_COOKIE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: DIRECTIONAL_COOKIE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_DEPTH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_SOFT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_CUBE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: UNITY_HDR_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Unlit/Texture
+    simpleName: Texture
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Unlit/Color
+    simpleName: Color
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: TrailsFX/Effect/Color
+    simpleName: Color
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: TRAIL_LOCAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: TRAIL_MASK
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: TRAIL_COLOR_RAMP
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: TRAIL_INTERPOLATE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: INSTANCING_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/Trails FX/Resources/TrailsFX/TrailEffectColor.shader
+  - name: ProBuilder/Standard Vertex Color
+    simpleName: Standard Vertex Color
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: DIRECTIONAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: LIGHTPROBE_SH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_SCREEN
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: VERTEXLIGHT_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: POINT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SPOT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: POINT_COOKIE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: DIRECTIONAL_COOKIE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_DEPTH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_SOFT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_CUBE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: UNITY_HDR_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.probuilder/Content/Shader/StandardVertexColor.shader
+  - name: TrailsFX/Effect/Laser
+    simpleName: Laser
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: TRAIL_LOCAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: TRAIL_MASK
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: TRAIL_INTERPOLATE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: INSTANCING_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/Trails FX/Resources/TrailsFX/TrailEffectLaser.shader
+  - name: ProBuilder/UnlitVertexColor
+    simpleName: UnlitVertexColor
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.probuilder/Content/Shader/UnlitVertexColor.shader
+  - name: TextMeshPro/Distance Field
+    simpleName: Distance Field
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: BEVEL_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: UNDERLAY_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: GLOW_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: UNITY_UI_ALPHACLIP
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: UNITY_UI_CLIP_RECT
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/04.Images/UnityPakages/TextMesh Pro/Shaders/TMP_SDF.shader
+  - name: TextMeshPro/Mobile/Distance Field (Surface)
+    simpleName: Distance Field (Surface)
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: DIRECTIONAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: LIGHTPROBE_SH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: VERTEXLIGHT_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_DEPTH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_CUBE
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/04.Images/UnityPakages/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader
+  - name: Hidden/ProBuilder/EdgePicker
+    simpleName: EdgePicker
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.probuilder/Content/Shader/EdgePicker.shader
+  - name: TrailsFX/Mask
+    simpleName: Mask
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/Trails FX/Resources/TrailsFX/TrailMask.shader
+  - name: TextMeshPro/Mobile/Distance Field Overlay
+    simpleName: Distance Field Overlay
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: UNITY_UI_ALPHACLIP
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: UNITY_UI_CLIP_RECT
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/04.Images/UnityPakages/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader
+  - name: TrailsFX/Effect/Distort
+    simpleName: Distort
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: TRAIL_LOCAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: TRAIL_MASK
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: TRAIL_INTERPOLATE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: INSTANCING_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/Trails FX/Resources/TrailsFX/TrailEffectDistort.shader
+  - name: TrailsFX/Effect/Clone
+    simpleName: Clone
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: TRAIL_LOCAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: TRAIL_MASK
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: TRAIL_INTERPOLATE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: TRAIL_ALPHACLIP
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: INSTANCING_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/Trails FX/Resources/TrailsFX/TrailEffectClone.shader
+  - name: TextMeshPro/Mobile/Distance Field - Masking
+    simpleName: Distance Field - Masking
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: UNITY_UI_ALPHACLIP
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: UNITY_UI_CLIP_RECT
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/04.Images/UnityPakages/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader
+  - name: Hidden/ProBuilder/VertexPicker
+    simpleName: VertexPicker
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.probuilder/Content/Shader/VertexPicker.shader
+  - name: Hidden/ProBuilder/FacePicker
+    simpleName: FacePicker
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.probuilder/Content/Shader/FacePicker.shader
+  - name: TrailsFX/Effect/TextureStamp
+    simpleName: TextureStamp
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: TRAIL_LOCAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: TRAIL_MASK
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: INSTANCING_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/Trails FX/Resources/TrailsFX/TrailEffectTextureStamp.shader
+  - name: TextMeshPro/Sprite
+    simpleName: Sprite
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: UNITY_UI_ALPHACLIP
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: UNITY_UI_CLIP_RECT
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/04.Images/UnityPakages/TextMesh Pro/Shaders/TMP_Sprite.shader
+  - name: Hidden/ProBuilder/HideVertices
+    simpleName: HideVertices
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.probuilder/Content/Shader/HideVertices.shader
+  - name: ShaderControl/ChromaScreen
+    simpleName: ChromaScreen
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: ENABLE_BLUE_CHANNEL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: ENABLE_GREEN_CHANNEL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: ENABLE_RED_CHANNEL
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/06.Asset_Download/Used Asset/ShaderControl/Demo/Resources/ChromaScreen.shader
+  - name: TrailsFX/Effect/Outline
+    simpleName: Outline
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: TRAIL_LOCAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: TRAIL_MASK
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: TRAIL_INTERPOLATE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: INSTANCING_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/Trails FX/Resources/TrailsFX/TrailEffectOutline.shader
+  - name: TrailsFX/ClearMask
+    simpleName: ClearMask
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: INSTANCING_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/Trails FX/Resources/TrailsFX/TrailClearMask.shader
+  - name: TextMeshPro/Distance Field (Surface)
+    simpleName: Distance Field (Surface)
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: DIRECTIONAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: GLOW_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: LIGHTPROBE_SH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: VERTEXLIGHT_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: POINT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SPOT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: POINT_COOKIE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: DIRECTIONAL_COOKIE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_DEPTH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_CUBE
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/04.Images/UnityPakages/TextMesh Pro/Shaders/TMP_SDF-Surface.shader
+  - name: TextMeshPro/Mobile/Distance Field
+    simpleName: Distance Field
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: OUTLINE_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: UNDERLAY_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: UNITY_UI_ALPHACLIP
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: UNITY_UI_CLIP_RECT
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Assets/04.Images/UnityPakages/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader
+  - name: Skybox/Procedural
+    simpleName: Procedural
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _SUNDISK_NONE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _SUNDISK_SIMPLE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _SUNDISK_HIGH_QUALITY
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Skybox/Cubemap
+    simpleName: Cubemap
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Legacy Shaders/Particles/Additive
+    simpleName: Additive
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: SOFTPARTICLES_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Legacy Shaders/Particles/Alpha Blended Premultiply
+    simpleName: Alpha Blended Premultiply
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: SOFTPARTICLES_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Universal Render Pipeline/Nature/SpeedTree7 Billboard
+    simpleName: SpeedTree7 Billboard
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: _MAIN_LIGHT_SHADOWS_CASCADE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ADDITIONAL_LIGHTS
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ADDITIONAL_LIGHT_SHADOWS
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: BILLBOARD_FACE_CAMERA_POS
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: LOD_FADE_CROSSFADE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _ADDITIONAL_LIGHTS_VERTEX
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: _MAIN_LIGHT_SHADOWS
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/Nature/SpeedTree7Billboard.shader
+  - name: Universal Render Pipeline/2D/Sprite-Unlit-Default
+    simpleName: Sprite-Unlit-Default
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 0
+    isReadOnly: 0
+    variants: []
+    path: Packages/com.unity.render-pipelines.universal/Shaders/2D/Sprite-Unlit-Default.shader
+  - name: Legacy Shaders/VertexLit
+    simpleName: VertexLit
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: POINT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SPOT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_DEPTH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_CUBE
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Legacy Shaders/Diffuse
+    simpleName: Diffuse
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: DIRECTIONAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: LIGHTPROBE_SH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_SCREEN
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: VERTEXLIGHT_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: POINT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SPOT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: POINT_COOKIE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: DIRECTIONAL_COOKIE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: UNITY_HDR_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-StencilWrite
+    simpleName: Internal-StencilWrite
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-DepthNormalsTexture
+    simpleName: Internal-DepthNormalsTexture
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-PrePassLighting
+    simpleName: Internal-PrePassLighting
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: POINT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: DIRECTIONAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SPOT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: POINT_COOKIE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: DIRECTIONAL_COOKIE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_DEPTH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_SOFT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_SCREEN
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_CUBE
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-ScreenSpaceShadows
+    simpleName: Internal-ScreenSpaceShadows
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: SHADOWS_SPLIT_SPHERES
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_SINGLE_CASCADE
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-CombineDepthNormals
+    simpleName: Internal-CombineDepthNormals
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/BlitCopy
+    simpleName: BlitCopy
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/BlitCopyDepth
+    simpleName: BlitCopyDepth
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/ConvertTexture
+    simpleName: ConvertTexture
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-DeferredShading
+    simpleName: Internal-DeferredShading
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: POINT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: DIRECTIONAL
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SPOT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: POINT_COOKIE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: DIRECTIONAL_COOKIE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_DEPTH
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_SOFT
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_SCREEN
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: SHADOWS_CUBE
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: UNITY_HDR_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-DeferredReflections
+    simpleName: Internal-DeferredReflections
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: UNITY_HDR_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-MotionVectors
+    simpleName: Internal-MotionVectors
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-Flare
+    simpleName: Internal-Flare
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-Halo
+    simpleName: Internal-Halo
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: FOG_LINEAR
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/BlitCopyWithDepth
+    simpleName: BlitCopyWithDepth
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/BlitToDepth
+    simpleName: BlitToDepth
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/BlitToDepth_MSAA
+    simpleName: BlitToDepth_MSAA
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/BlitCopyHDRTonemap
+    simpleName: BlitCopyHDRTonemap
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-GUITextureClip
+    simpleName: Internal-GUITextureClip
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-GUITextureClipText
+    simpleName: Internal-GUITextureClipText
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-GUITexture
+    simpleName: Internal-GUITexture
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-GUITextureBlit
+    simpleName: Internal-GUITextureBlit
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-GUIRoundedRect
+    simpleName: Internal-GUIRoundedRect
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-GUIRoundedRectWithColorPerBorder
+    simpleName: Internal-GUIRoundedRectWithColorPerBorder
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-UIRDefault
+    simpleName: Internal-UIRDefault
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-UIRAtlasBlitCopy
+    simpleName: Internal-UIRAtlasBlitCopy
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-UIRDefaultWorld
+    simpleName: Internal-UIRDefaultWorld
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Sprites/Default
+    simpleName: Default
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: PIXELSNAP_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: ETC1_EXTERNAL_ALPHA
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Sprites/Mask
+    simpleName: Mask
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: PIXELSNAP_ON
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: ETC1_EXTERNAL_ALPHA
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: UI/Default
+    simpleName: Default
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: UNITY_UI_ALPHACLIP
+      includeInBuild: 1
+      includeInVariant: 0
+    - keyword: UNITY_UI_CLIP_RECT
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/CubeBlur
+    simpleName: CubeBlur
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/CubeCopy
+    simpleName: CubeCopy
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/CubeBlend
+    simpleName: CubeBlend
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/VR/BlitTexArraySlice
+    simpleName: BlitTexArraySlice
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-ODSWorldTexture
+    simpleName: Internal-ODSWorldTexture
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Internal-CubemapToEquirect
+    simpleName: Internal-CubemapToEquirect
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/VR/BlitFromTex2DToTexArraySlice
+    simpleName: BlitFromTex2DToTexArraySlice
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/VideoComposite
+    simpleName: VideoComposite
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/VideoDecode
+    simpleName: VideoDecode
+    isExpanded: 0
+    includeInBuild: 1
+    keywords:
+    - keyword: ADJUST_TO_LINEARSPACE
+      includeInBuild: 1
+      includeInVariant: 0
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/Compositing
+    simpleName: Compositing
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
+  - name: Hidden/TextCore/Distance Field SSD
+    simpleName: Distance Field SSD
+    isExpanded: 0
+    includeInBuild: 1
+    keywords: []
+    isInternal: 1
+    isReadOnly: 0
+    variants: []
+    path: Resources/unity_builtin_extra
   sortType: 1
   hideReadOnlyShaders: 0

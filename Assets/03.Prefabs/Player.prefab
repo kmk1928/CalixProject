@@ -5494,7 +5494,7 @@ MonoBehaviour:
   maxHealth: 500
   curHealth: 0
   defense: 5
-  maxHardness: 20
+  maxHardness: 10
   curHardness: 0
   hardnessDamage: 10
   attackDamage: 10
@@ -6712,19 +6712,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b93f8e4727d69704ba0010af1922cbc0, type: 3}
---- !u!4 &333557305006500871 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2854776055415126771, guid: b93f8e4727d69704ba0010af1922cbc0, type: 3}
-  m_PrefabInstance: {fileID: 2539813759949018868}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3817886391953817932 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1712740437411600312, guid: b93f8e4727d69704ba0010af1922cbc0, type: 3}
-  m_PrefabInstance: {fileID: 2539813759949018868}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6645944948522020158 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9152467351359060938, guid: b93f8e4727d69704ba0010af1922cbc0, type: 3}
   m_PrefabInstance: {fileID: 2539813759949018868}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2744591787760078989
@@ -10730,11 +10720,11 @@ PrefabInstance:
     - target: {fileID: 7688480549409294834, guid: 5d4f26a4d37fbae4ca5c3a45970d60f4, type: 3}
       propertyPath: _tip
       value: 
-      objectReference: {fileID: 6645944948522020158}
+      objectReference: {fileID: 1385675401265621884}
     - target: {fileID: 7688480549409294834, guid: 5d4f26a4d37fbae4ca5c3a45970d60f4, type: 3}
       propertyPath: _base
       value: 
-      objectReference: {fileID: 333557305006500871}
+      objectReference: {fileID: 286350084453375329}
     - target: {fileID: 7688480549409294834, guid: 5d4f26a4d37fbae4ca5c3a45970d60f4, type: 3}
       propertyPath: _emit
       value: 1
@@ -10753,6 +10743,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d4f26a4d37fbae4ca5c3a45970d60f4, type: 3}
+--- !u!4 &286350084453375329 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9087157724085354751, guid: 5d4f26a4d37fbae4ca5c3a45970d60f4, type: 3}
+  m_PrefabInstance: {fileID: 9071727597619060126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1385675401265621884 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7989289256967091938, guid: 5d4f26a4d37fbae4ca5c3a45970d60f4, type: 3}
+  m_PrefabInstance: {fileID: 9071727597619060126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6456523245494008403 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2629941106490075085, guid: 5d4f26a4d37fbae4ca5c3a45970d60f4, type: 3}

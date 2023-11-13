@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     public PlayerStats playerStats;
 
+    public static bool isNormalTrail = false;
+    public static bool isFlyMechTrail = false;
+
     // 게임 시작 시 각종 설정 및 초기화
     void Awake() {
         // GameManager 인스턴스가 없는 경우, 이 인스턴스를 유지하도록 함
@@ -87,6 +90,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Melee_Skill_Trail()
+    {
+        isNormalTrail = false;
+        isFlyMechTrail = false;
+    }
+
     void InitializePlayerStats()
     {
         // 플레이어를 찾아서 PlayerStats 스크립트에 접근
@@ -129,6 +138,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void SceneLoad_normalMap(int portalNum) {
+        Melee_Skill_Trail();
         if (portalNum == 0)
         {
             SceneManager.LoadScene("Stage1");

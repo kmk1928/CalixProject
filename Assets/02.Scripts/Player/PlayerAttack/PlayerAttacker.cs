@@ -222,6 +222,11 @@ public class PlayerAttacker : MonoBehaviour {
     }
 
     public void MeleeTrail() {
+        if (!GameManager.isNormalTrail)
+        {
+            meleeWeaponTrail.MeleeTrail_StartFunc();
+            GameManager.isNormalTrail = true;
+        }
         meleeWeaponTrail._emitTime = 0.2f;
         meleeWeaponTrail.Emit = true;
     }
