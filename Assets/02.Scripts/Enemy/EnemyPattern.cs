@@ -124,8 +124,8 @@ public class EnemyPattern : MonoBehaviour
                     }
                 }
 
-                pattern = debugingPatten;
-                //debugingPatten = pattern;
+                //pattern = debugingPatten;
+                debugingPatten = pattern;
                 switch (pattern)
                 {
                     case 1:
