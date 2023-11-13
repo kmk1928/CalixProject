@@ -98,6 +98,8 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("02_restartScene");
 
             playerStats.curHealth = playerStats.maxHealth;
+
+        
         }
 
 

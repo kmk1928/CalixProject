@@ -8,37 +8,38 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance; 
 
-    public GameObject gameoverUI;   // °ÔÀÓ ¿À¹ö½Ã È°¼ºÈ­ ÇÒ UI °ÔÀÓ ¿ÀºêÁ§Æ®
-    public TMP_Text nanoText;          // º¸À¯ÇÑ ³ª³ë¸¦ Ãâ·ÂÇÒ UI ÅØ½ºÆ®
+    public GameObject gameoverUI;   // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­ ï¿½ï¿½ UI ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+    public TMP_Text nanoText;          // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ë¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ UI ï¿½Ø½ï¿½Æ®
     public Slider player_HPBar;
     public TMP_Text hpText;
 
-    public static bool isOpenUI = false; //UI°¡ ÄÑÁ®ÀÖÀ»¶§ °ø°ÝÀ» Á¦ÇÑÇÏ´Â boolº¯¼ö
+    public static bool isOpenUI = false; //UIï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ boolï¿½ï¿½ï¿½ï¿½
+    
     void Awake() {
         if (instance == null) {
             instance = this;
-            DontDestroyOnLoad(this.gameObject); //¾À ¿Å°Üµµ ³ëÆÄ±«
-            Debug.LogWarning("UI ¸Å´ÏÀú ÇÒ´ç!!!");
+            DontDestroyOnLoad(this.gameObject); //ï¿½ï¿½ ï¿½Å°Üµï¿½ ï¿½ï¿½ï¿½Ä±ï¿½
+            Debug.LogWarning("UI ï¿½Å´ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½!!!");
         }
         else {
-            // instance¿¡ ÀÌ¹Ì ´Ù¸¥ GameManager ¿ÀºêÁ§Æ®°¡ ÇÒ´çµÇ¾î ÀÖ´Â °æ¿ì
-            // ¾À¿¡ µÎ°³ ÀÌ»óÀÇ GameManager ¿ÀºêÁ§Æ®°¡ Á¸ÀçÇÑ´Ù´Â ÀÇ¹Ì.
-            // ½Ì±ÛÅæ ¿ÀºêÁ§Æ®´Â ÇÏ³ª¸¸ Á¸ÀçÇØ¾ß ÇÏ¹Ç·Î ÀÚ½ÅÀÇ °ÔÀÓ ¿ÀºêÁ§Æ®¸¦ ÆÄ±«
-            Debug.LogWarning("¾À¿¡ µÎ °³ ÀÌ»óÀÇ UI¸Å´ÏÀú°¡ Á¸ÀçÇÕ´Ï´Ù!");
+            // instanceï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½Ù¸ï¿½ GameManager ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ò´ï¿½Ç¾ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½Î°ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½ GameManager ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´Ù´ï¿½ ï¿½Ç¹ï¿½.
+            // ï¿½Ì±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ï¹Ç·ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ä±ï¿½
+            Debug.LogWarning("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½ UIï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½!");
             Destroy(gameObject);
         }
     }
    
 
-    public void UpdateNanoText(int newNano) {  //³ª³ë UI ÃÖ½ÅÈ­
+    public void UpdateNanoText(int newNano) {  //ï¿½ï¿½ï¿½ï¿½ UI ï¿½Ö½ï¿½È­
         nanoText.text =  newNano.ToString();
     }
-    public void UpdateHPBar(float PSimsi) {  //³ª³ë UI ÃÖ½ÅÈ­
+    public void UpdateHPBar(float PSimsi) {  //ï¿½ï¿½ï¿½ï¿½ UI ï¿½Ö½ï¿½È­
         player_HPBar.value = Mathf.Lerp(player_HPBar.value, PSimsi, Time.deltaTime * 25);
     }
 
     public void SetActiveGameoverUI(bool active) {
-        gameoverUI.SetActive(true);     //°ÔÀÓ¿À¹ö UI È°¼ºÈ­
+        gameoverUI.SetActive(true);     //ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ UI È°ï¿½ï¿½È­
     }
 
     public void UpdateHpText(float curHp, float maxHp)
