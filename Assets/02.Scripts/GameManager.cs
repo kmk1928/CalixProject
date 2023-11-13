@@ -76,15 +76,20 @@ public class GameManager : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown("p"))
+        /* 게임 리스타트
+
+        if (Input.GetKeyDown("l"))
         {
             GameRestart();
         }
 
+        */
+
+
         if (isGameover && Input.GetKeyDown("p")) 
         { 
             Gameover_Display.SetActive(false);
-            GameRestart();
+            SceneManager.LoadScene("00_MainMenu 1");
         }
 
 
@@ -142,9 +147,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("00_MainMenu 1");
     }
 
+    /*
     public void GameRestart() {
         SceneManager.LoadScene("01_StartScene");
     }
+    */
 
     public void SceneLoad_Battle() {
         GameManager.isGameover = false;

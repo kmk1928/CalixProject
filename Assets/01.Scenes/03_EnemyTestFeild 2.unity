@@ -4834,7 +4834,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4758736895602181976, guid: 893f22579407db441944a54271e0116a, type: 3}
       propertyPath: playerNanoCount
-      value: 0
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 4758736895602181976, guid: 893f22579407db441944a54271e0116a, type: 3}
       propertyPath: Gameover_Display
