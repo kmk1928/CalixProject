@@ -88,12 +88,14 @@ public class PlayerStats : CharStats
 
     public void MinusStatBonus1()
     {
-        if(redCount == 3)
+        if (redCount == 3)
+        {
             maxHealth = maxHealth - 100;
-
+        }
         else if (yellowCount == 3)
+        {
             attackDamage = attackDamage - 10;
-
+        }
         else if (blueCount == 3)
         {
             criticalChance -= 0.2f;
@@ -104,11 +106,13 @@ public class PlayerStats : CharStats
     public void MinusStatBonus2()
     {
         if(redCount == 6)
+        {
             maxHealth = maxHealth - 100;
-
+        }
         else if (yellowCount == 6)
+        {
             attackDamage = attackDamage - 10;
-
+        }
         else if (blueCount == 6)
         {
             criticalChance -= 0.5f;
