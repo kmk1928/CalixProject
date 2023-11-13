@@ -5011,11 +5011,11 @@ GameObject:
   - component: {fileID: 1541277563749876445}
   - component: {fileID: 1541277563749876444}
   - component: {fileID: 8318554429983071562}
-  - component: {fileID: 5882534645612678838}
   - component: {fileID: 5882534645612678844}
   - component: {fileID: 5882534645612678845}
   - component: {fileID: 7527489562426406815}
   - component: {fileID: 6244644406189962209}
+  - component: {fileID: 2631929531528355620}
   m_Layer: 7
   m_Name: Boss_Enemy_Blue
   m_TagString: Boss
@@ -5149,6 +5149,7 @@ MonoBehaviour:
   isInteracting: 0
   debugingPatten: 1
   skill_Particle_blood: {fileID: 1996079926692674, guid: 492b3e123b58f62468c377cd510efa10, type: 3}
+  pattern_2_effect: {fileID: 1210069404974878, guid: fbab27c98b168764eb295cfff1e9f61f, type: 3}
 --- !u!95 &1541277563749876444
 Animator:
   serializedVersion: 5
@@ -5182,18 +5183,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultDamageCollider: {fileID: 8318554430980850925}
---- !u!114 &5882534645612678838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541277563749876439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f056c49979aea814586282d9457db2ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5882534645612678844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5244,6 +5233,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e18b01beec7dba4c8bb858c289a5b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2631929531528355620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541277563749876439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494981e7e004c7b4e89e3634d99e566f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossDieParticle: {fileID: 1210069404974878, guid: fd60d39d7dddf884aa9e62d34313c5f8, type: 3}
 --- !u!1 &1541277563935699178
 GameObject:
   m_ObjectHideFlags: 0

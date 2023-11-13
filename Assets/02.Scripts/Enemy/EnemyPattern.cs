@@ -36,6 +36,7 @@ public class EnemyPattern : MonoBehaviour
     public int debugingPatten = 1;
 
     public GameObject skill_Particle_blood;
+    public GameObject pattern_2_effect;
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -166,6 +167,11 @@ public class EnemyPattern : MonoBehaviour
     private void Spawned_Particle_blood()
     {
         GameObject particleInstance = Instantiate(skill_Particle_blood, this.transform.position + new Vector3(0,0.6f,0), this.transform.rotation);
+        Destroy(particleInstance, 1.5f);
+    }
+    private void Pattern2_Particle()
+    {
+        GameObject particleInstance = Instantiate(pattern_2_effect, this.transform.position + this.transform.forward * 2 + new Vector3(0, -0.6f, 0), this.transform.rotation);
         Destroy(particleInstance, 1.5f);
     }
 
