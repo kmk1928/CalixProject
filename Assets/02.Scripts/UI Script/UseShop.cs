@@ -38,11 +38,11 @@ public class UseShop : MonoBehaviour
         // 체력 회복 함수
     public void Healing()
     {
-        if (GameManager.instance.playerNanoCount >= 10)
+        if (GameManager.instance.playerNanoCount >= 100)
         {
             PlayerStats playerStats = GameManager.instance.playerStats;
             playerStats.curHealth = playerStats.maxHealth;
-            GameManager.instance.AddNano(-10);
+            GameManager.instance.AddNano(-100);
         }
         else
         {
@@ -54,11 +54,11 @@ public class UseShop : MonoBehaviour
     // 공격력 상승 함수
     public void YellowStatUp()
     {
-        if (GameManager.instance.playerNanoCount >= 50)
+        if (GameManager.instance.playerNanoCount >= 200)
         {
             PlayerStats playerStats = GameManager.instance.playerStats;
-            playerStats.attackDamage += 10;
-            GameManager.instance.AddNano(-50);
+            playerStats.attackDamage += 5;
+            GameManager.instance.AddNano(-200);
         }
         else
         {

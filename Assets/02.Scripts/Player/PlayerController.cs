@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     public Weapon equipWeapon;
 
     public bool isDodge;
+    private bool canDodge = true;
     public TrailsFX.TrailEffect dodgeTrail;
 
     //weapon variable
@@ -151,8 +152,10 @@ public class PlayerController : MonoBehaviour
                 Interraction();
                 Swap();
             }
-
-            Dodge();
+            if (canDodge)
+            {
+                Dodge();
+            }
             #endregion
             PortalEnter();
             ActiveTxt();
@@ -445,12 +448,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && jumpCount < 1 && !isDashing && !isSwap && !isDodge && !playerParryG.isHitted)
         {
+            canDodge = false;
             dodgeTrail.active = true;
             // 현재 속도를 저장하여 나중에 복원할 수 있도록 합니다.
             float originalSpeed = speed;
 
             // Dodge 동작을 시작합니다.
-            speed *= 1.6f;
+            speed *= 1.8f;
             isDodge = true;
 
             anim.SetTrigger("DodgeTrigger"); // Dodge 애니메이션
@@ -479,8 +483,9 @@ public class PlayerController : MonoBehaviour
         // Dodge 동작 종료
         isDodge = false;
         speed = originalSpeed; // 속도를 원래 값으로 복원
-
         canMovePlayer = true; // 이동 활성화
+        yield return new WaitForSeconds(0.8f);
+        canDodge = true;
     }
     private void Die() {
         isDead = true;
