@@ -8127,7 +8127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &314614201
 AudioSource:
   m_ObjectHideFlags: 0
@@ -52555,6 +52555,10 @@ PrefabInstance:
     - target: {fileID: 6944455507011936747, guid: a56a8fbc92e6e0f42bd67762c41251a1, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6944455507011936750, guid: a56a8fbc92e6e0f42bd67762c41251a1, type: 3}
+      propertyPath: maxHealth
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6944455507011936758, guid: a56a8fbc92e6e0f42bd67762c41251a1, type: 3}
       propertyPath: m_RootOrder

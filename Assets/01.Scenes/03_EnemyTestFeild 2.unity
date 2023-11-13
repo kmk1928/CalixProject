@@ -5956,10 +5956,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1922146145340738170, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
+      propertyPath: bossDie
+      value: 
+      objectReference: {fileID: 8300000, guid: 035b7be8c3baff74db537c7710d081c4, type: 3}
+    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
+      propertyPath: stage1BGM
+      value: 
+      objectReference: {fileID: 8300000, guid: fe7ef27b7c1d72448a488cefc1c53bc0, type: 3}
+    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
+      propertyPath: stage2BGM
+      value: 
+      objectReference: {fileID: 8300000, guid: a66c12b3f8624204dac7440ac9396b0e, type: 3}
+    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
+      propertyPath: stage3BGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ff28b79b204e164f921f545c43356c9, type: 3}
+    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
+      propertyPath: stage4BGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 7860d1a07a21c994fb50d5df65978f1b, type: 3}
+    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
+      propertyPath: stage5BGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a3bfc93b67faed44a07658ac52182cb, type: 3}
     - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
       propertyPath: bgm_Source
       value: 
       objectReference: {fileID: 1037998014}
+    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
+      propertyPath: knightAttack
+      value: 
+      objectReference: {fileID: 8300000, guid: 70699b548e9f2a743a972f2259736cfd, type: 3}
+    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
+      propertyPath: stageBossBGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 2aca47bf3c6565a419863eba0e9bce0b, type: 3}
+    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
+      propertyPath: stageShopBGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 579f91653792a5442a4b430d12adf8a8, type: 3}
+    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
+      propertyPath: stageBonusBGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 62f317780b1a56b4589d940f8bfecd20, type: 3}
+    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
+      propertyPath: knightFootstep
+      value: 
+      objectReference: {fileID: 8300000, guid: d2b2858ce5c7ca9428bfd0e424d5a82d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
 --- !u!1001 &2143278690401904540

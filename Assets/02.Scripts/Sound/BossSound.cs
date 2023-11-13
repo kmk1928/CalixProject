@@ -25,4 +25,9 @@ public class BossSound : MonoBehaviour
       // 이벤트가 발생하면 사운드 재생
       SoundManager.instance.BossAttackSound();
    }
+   void BossDie_Pc()
+   {
+      // 이벤트가 발생하면 사운드 재생
+      SoundManager.instance.BossDieSound();
+   }
 }

@@ -105,6 +105,7 @@ public class EnemyController : MonoBehaviour
             else if (!isPatrolling) {
                 // 플레이어가 없을 때 원래 위치로 돌아가기
                 navMeshAgent.SetDestination(originalPosition);
+                navMeshAgent.speed=originalSpeed;
                 if (navMeshAgent.remainingDistance < 0.5f) {
                     isPatrolling = true;
                 }
