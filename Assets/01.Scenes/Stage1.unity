@@ -7365,6 +7365,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1028887603}
     m_Modifications:
+    - target: {fileID: 3589724534143613698, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3589724534143613702, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
       propertyPath: m_Name
       value: Skeleton2 (2)
@@ -9913,6 +9917,10 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 2195726465694210025, guid: 3160afc7e3e24ce479654ec52ff06e3c, type: 3}
+    - target: {fileID: 4089431165432149858, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 4089431165432149859, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -14611,6 +14619,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1028887603}
     m_Modifications:
+    - target: {fileID: 3589724534143613698, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
+      propertyPath: maxHealth
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 3589724534143613702, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
       propertyPath: m_Name
       value: Skeleton2
@@ -19219,6 +19231,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5260211592171216886, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 5260211592171216887, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -19277,6 +19293,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1028887603}
     m_Modifications:
+    - target: {fileID: 3589724534143613698, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3589724534143613702, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
       propertyPath: m_Name
       value: Skeleton2 (3)
@@ -21004,6 +21024,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1028887603}
     m_Modifications:
+    - target: {fileID: 3589724534143613698, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3589724534143613702, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
       propertyPath: m_Name
       value: Skeleton2 (1)
@@ -29767,6 +29791,10 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 2195726465694210025, guid: 3160afc7e3e24ce479654ec52ff06e3c, type: 3}
+    - target: {fileID: 4089431165432149858, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 4089431165432149859, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -35393,6 +35421,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5260211592171216886, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 5260211592171216887, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -37790,6 +37822,10 @@ PrefabInstance:
     - target: {fileID: 5260211592171216881, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260211592171216886, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
+      propertyPath: maxHealth
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5260211592171216887, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
       propertyPath: m_RootOrder
@@ -41305,6 +41341,10 @@ PrefabInstance:
       propertyPath: bulletPrefab
       value: 
       objectReference: {fileID: 2195726465694210025, guid: 3160afc7e3e24ce479654ec52ff06e3c, type: 3}
+    - target: {fileID: 4089431165432149858, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 4089431165432149859, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -42633,6 +42673,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1028887603}
     m_Modifications:
+    - target: {fileID: 3589724534143613698, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3589724534143613702, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
       propertyPath: m_Name
       value: Skeleton2 (4)
@@ -45229,6 +45273,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5260211592171216886, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
+      propertyPath: maxHealth
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 5260211592171216887, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -46415,6 +46463,10 @@ PrefabInstance:
     - target: {fileID: 5260211592171216881, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260211592171216886, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
+      propertyPath: maxHealth
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5260211592171216887, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
       propertyPath: m_RootOrder
