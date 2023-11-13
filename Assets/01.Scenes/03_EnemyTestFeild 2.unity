@@ -1841,7 +1841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3625517162612775882, guid: 5fb182e030181e04ba628091427f1acf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.40000057
+      value: 1.326
       objectReference: {fileID: 0}
     - target: {fileID: 3625517162612775882, guid: 5fb182e030181e04ba628091427f1acf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5623,6 +5623,14 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 1191465243520282965}
+    - target: {fileID: 670800570852190632, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 670800570852190632, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 849294206060677961, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: playerStats
       value: 
@@ -5735,10 +5743,34 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1307645927}
+    - target: {fileID: 2583493896794345592, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583493896794345592, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380321695757599344, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380321695757599344, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3392260225644326160, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 1191465243520282965}
+    - target: {fileID: 3500663673453269255, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3500663673453269255, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4661865039298275829, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: playerController
       value: 
