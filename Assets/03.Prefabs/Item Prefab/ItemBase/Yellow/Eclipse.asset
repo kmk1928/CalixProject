@@ -15,9 +15,10 @@ MonoBehaviour:
   itemCode: 18
   itemName: "\uC77C\uC2DD"
   itemType: 1
+  itemGrade: 3
   itemImage: {fileID: 21300000, guid: 1c2cebd78166753498f5c71b16cef271, type: 3}
   itemPrefab: {fileID: 4730380820212961752, guid: f0e5afa24d2d708408e1efc90ec83e02, type: 3}
   healthEnergy: 0
-  attackEnergy: 10
+  attackEnergy: 40
   defenseEnergy: 0
-  itemDesc: "Attack + 10\n\n\uC77C\uC2DD\uC758 \uD798\uC744 \uBC1B\uC558\uC2B5\uB2C8\uB2E4."
+  itemDesc: "Attack + 40\n\n\uC77C\uC2DD\uC758 \uD798\uC744 \uBC1B\uC558\uC2B5\uB2C8\uB2E4."
