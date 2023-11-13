@@ -5,6 +5,7 @@ using UnityEngine;
 public class UseShop : MonoBehaviour
 {
     [SerializeField] public GameObject go_Shop;
+    [SerializeField] public GameObject go_ShopStatView;
     [SerializeField] private GameObject Shop_BackImg;
     public PlayerController playerController;
 
@@ -20,6 +21,7 @@ public class UseShop : MonoBehaviour
                     GameManager.isPause = true;
                     UIManager.isOpenUI = true;
                     go_Shop.SetActive(true);
+                    go_ShopStatView.SetActive(true);
                     Shop_BackImg.SetActive(true);
                     Time.timeScale = 0.00001f;
                 }
@@ -28,6 +30,7 @@ public class UseShop : MonoBehaviour
                     GameManager.isPause = false;
                     UIManager.isOpenUI = false;
                     go_Shop.SetActive(false);
+                    go_ShopStatView.SetActive(false);
                     Shop_BackImg.SetActive(false);
                     Time.timeScale = 1f;
                 }
