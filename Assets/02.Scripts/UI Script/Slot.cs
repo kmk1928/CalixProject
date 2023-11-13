@@ -82,11 +82,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                         playerStats.redCount -= 1;
                     else if (item.itemType == Item.ItemType.Yellow)
                         playerStats.yellowCount -= 1;
-                    else
+                    else if (item.itemType == Item.ItemType.Blue)
                         playerStats.blueCount -= 1;
 
-                    
-                    
+
                     Debug.Log(item.itemName + " 을 파괴했습니다.");
                     playerStats.RemoveItemModifiers(item);
                     SetSlotCount(-1);

@@ -369,8 +369,6 @@ public class PlayerController : MonoBehaviour
                         // theInventory 변수를 통해 아이템을 인벤토리에 추가
                         theInventory.AcquireItem(item);
 
-                        // 아이템을 주웠을 때 능력치 증가
-                        playerStats.ApplyItemModifiers(item);
 
                         if (item.itemType == Item.ItemType.Red)
                             playerStats.redCount += 1;
@@ -378,6 +376,10 @@ public class PlayerController : MonoBehaviour
                             playerStats.yellowCount += 1;
                         else
                             playerStats.blueCount += 1;
+
+
+                        // 아이템을 주웠을 때 능력치 증가
+                        playerStats.ApplyItemModifiers(item);
 
                         // GameObject 파괴
                         Destroy(nearObject);
