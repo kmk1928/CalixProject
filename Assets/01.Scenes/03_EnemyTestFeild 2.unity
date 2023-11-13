@@ -4828,6 +4828,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4758736895602181976, guid: 893f22579407db441944a54271e0116a, type: 3}
+      propertyPath: playerNanoCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4758736895602181977, guid: 893f22579407db441944a54271e0116a, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -5973,14 +5977,6 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 1191465243520282965}
-    - target: {fileID: 670800570852190632, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 670800570852190632, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 849294206060677961, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: playerStats
       value: 
@@ -6093,22 +6089,6 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1307645927}
-    - target: {fileID: 2583493896794345592, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2583493896794345592, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3380321695757599344, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3380321695757599344, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3392260225644326160, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: playerStats
       value: 
