@@ -61,6 +61,10 @@ MonoBehaviour:
   orcAttack: {fileID: 8300000, guid: f9cfc0e6ef7909a4fa3f8663ac5f3034, type: 3}
   bearFootstep: {fileID: 8300000, guid: ba6466c0db2d12649a51ba73749902d3, type: 3}
   bearAttack: {fileID: 8300000, guid: fcd896cebcfc7ef40abc379522db9266, type: 3}
+  knightFootstep: {fileID: 0}
+  knightAttack: {fileID: 0}
+  archerFootstep: {fileID: 0}
+  archerAttack: {fileID: 0}
 --- !u!82 &1922146145340738165
 AudioSource:
   m_ObjectHideFlags: 0

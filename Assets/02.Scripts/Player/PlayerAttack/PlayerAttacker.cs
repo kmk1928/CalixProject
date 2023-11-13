@@ -105,7 +105,8 @@ public class PlayerAttacker : MonoBehaviour {
             ExitAttack(attackPatterns_void_Skill_1);
         }
         if (Input.GetKeyDown(KeyCode.R) && !cooldownActive && !isNAing && !isSkill_1ing &&!PlayerFlag.isInteracting && !playerParryG.isHitted
-                                        && playerController.isGrounded && !UIManager.isOpenUI && !playerController.isDodge) 
+                                        && playerController.isGrounded && !UIManager.isOpenUI && !playerController.isDodge
+                                        && SkillManager.isSkill_R_ready) 
         {
             Attack(attackPatterns_void_Skill_2);
             isSkill_2ing = true;
@@ -232,8 +233,11 @@ public class PlayerAttacker : MonoBehaviour {
     }
 
     void ExitAttack(SOAttackPattern[] attackPatterns) {     //애니메이션 시간이 90%가 넘으면
-
-        if((anim.GetCurrentAnimatorStateInfo(0).IsTag(attackPatterns[currentAttackIndex].AnimTag) 
+        if (isSkill_2ing)
+        {
+            SkillManager.isSkill_R_ready = false;
+        }
+        if ((anim.GetCurrentAnimatorStateInfo(0).IsTag(attackPatterns[currentAttackIndex].AnimTag) 
             && anim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8f) || anim.GetBool("isDamaged")==true
             || anim.GetCurrentAnimatorStateInfo(0).IsName("StandingDodge")) {
             if(endCount == 0) {

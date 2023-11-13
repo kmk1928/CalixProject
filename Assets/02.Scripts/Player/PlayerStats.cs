@@ -8,7 +8,7 @@ public class PlayerStats : CharStats
 
     [Header("�÷��̾�� ġ��Ÿ ����")]
     [Tooltip("ġ��Ÿ Ȯ�� 0.0~1.0")]
-    public float criticalChance = 0.5f; // 50%�� ũ��Ƽ�� Ȯ��
+    public float criticalChance = 0.0f; // 50%�� ũ��Ƽ�� Ȯ��
     [Tooltip("ġ��Ÿ ���� ������ �⺻ 1.5��")]
     public float criticalDamage = 1.5f;
     public float curDamageCal = 1.0f;       //������ ���
@@ -33,7 +33,7 @@ public class PlayerStats : CharStats
     public void ApplyItemModifiers(Item item)
     {
         maxHealth += item.healthEnergy;
-        attackDamage += item.attackEnergy;
+        attackDamage += item.attackEnergy * 0.1f;
         defense += item.defenseEnergy;
 
         PlusStatBonus1();
@@ -43,7 +43,7 @@ public class PlayerStats : CharStats
     public void RemoveItemModifiers(Item item)
     {
         maxHealth -= item.healthEnergy;
-        attackDamage -= item.attackEnergy;
+        attackDamage -= item.attackEnergy * 0.1f;
         defense -= item.defenseEnergy;
 
         MinusStatBonus1();
@@ -62,7 +62,11 @@ public class PlayerStats : CharStats
             attackDamage = attackDamage + 10;
 
         else if (blueCount == 3)
+        {
             defense = defense + 10;
+            criticalChance += 0.2f;
+        }
+
     }
 
     public void PlusStatBonus2()
@@ -74,7 +78,10 @@ public class PlayerStats : CharStats
             attackDamage = attackDamage + 10;
 
         else if (blueCount == 6)
+        {
             defense = defense + 10;
+            criticalChance += 0.5f;
+        }
     }
 
 
@@ -88,7 +95,10 @@ public class PlayerStats : CharStats
             attackDamage = attackDamage - 10;
 
         else if (blueCount == 3)
+        {
+            criticalChance -= 0.2f;
             defense = defense - 10;
+        }
     }
 
     public void MinusStatBonus2()
@@ -100,7 +110,10 @@ public class PlayerStats : CharStats
             attackDamage = attackDamage - 10;
 
         else if (blueCount == 6)
+        {
+            criticalChance -= 0.5f;
             defense = defense - 10;
+        }
     }
 
 

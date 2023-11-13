@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a543dcaa7eef81c4fa1a794dc55bb223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNanoCount: 10
-  debug_isGameover: 0
+  playerNanoCount: 500
+  isBossBattle: 0
+  playerStats: {fileID: 0}
 --- !u!114 &5008904292754908769
 MonoBehaviour:
   m_ObjectHideFlags: 0
