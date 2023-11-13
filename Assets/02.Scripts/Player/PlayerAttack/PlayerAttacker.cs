@@ -95,7 +95,8 @@ public class PlayerAttacker : MonoBehaviour {
             ExitAttack(attackPatterns_void_normalAk);
         }
         if (Input.GetKeyDown(KeyCode.F) && !cooldownActive && !isNAing && !isSkill_2ing && !PlayerFlag.isInteracting && !playerParryG.isHitted
-                                        && playerController.isGrounded && !UIManager.isOpenUI && !playerController.isDodge) 
+                                        && playerController.isGrounded && !UIManager.isOpenUI && !playerController.isDodge
+                                        && SkillManager.isSkill_F_ready) 
         {
             Attack(attackPatterns_void_Skill_1);
             isSkill_1ing = true;
@@ -248,6 +249,10 @@ public class PlayerAttacker : MonoBehaviour {
     }
     void EndCombo() {       //ÄÞº¸ Á¾·á
         Debug.Log("EndCombo------------");
+        if (isSkill_1ing)
+        {
+            SkillManager.isSkill_F_ready = false;
+        }
         isNAing = false;
         isSkill_1ing = false;
         isSkill_2ing = false;

@@ -31,5 +31,6 @@ public class SkillManager : MonoBehaviour
     public static int bloodRain_Lv = 1;
 
     public static bool isSkill_R_ready = true;
+    public static bool isSkill_F_ready = true;
 
 }
