@@ -8,7 +8,9 @@ public class CharStats : MonoBehaviour
     [Header("캐릭터들이 공통으로 가질 수 있는 스탯")] 
     public int maxHealth = 1000;
     public float curHealth; // { get; private set; } 쓰면 다른 클래스에서 변수에 접근가능하지만 값 변경은 현재 클래스에서만 가능
-    public float defense = 0.5f;
+    public float defense = 10f;
+    private float damageReductionPercentage;
+
     public float maxHardness = 10f;        //강인도 수치
     public float curHardness;
     public float hardnessDamage = 10f;  //강인도 데미지
@@ -73,7 +75,8 @@ public class CharStats : MonoBehaviour
     }
 
     public void GuardDamage(float damage) {
-        curHealth -= (damage * defense);
+        damageReductionPercentage = (defense - 10) / 10.0f;
+        curHealth -= (damage * damageReductionPercentage);
         DeadCheck();
     }
     private void DeadCheck() {

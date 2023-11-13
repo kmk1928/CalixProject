@@ -11785,6 +11785,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 481479664}
     m_Modifications:
+    - target: {fileID: 3589724534143613698, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
+      propertyPath: maxHealth
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3589724534143613702, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
       propertyPath: m_Name
       value: Skeleton2 (3)
@@ -28610,6 +28614,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4158904968317868622, guid: adb2c12b23d4d054ba81f82f6e051d88, type: 3}
+      propertyPath: maxHealth
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 4158904968317868626, guid: adb2c12b23d4d054ba81f82f6e051d88, type: 3}
       propertyPath: m_Name
       value: SkeletonBoss
@@ -33490,6 +33498,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5260211592171216886, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
+      propertyPath: maxHealth
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 5260211592171216887, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -36393,6 +36405,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 481479664}
     m_Modifications:
+    - target: {fileID: 3589724534143613698, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
+      propertyPath: maxHealth
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3589724534143613702, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
       propertyPath: m_Name
       value: Skeleton2 (4)
@@ -36559,6 +36575,10 @@ PrefabInstance:
     - target: {fileID: 5260211592171216881, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260211592171216886, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
+      propertyPath: maxHealth
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 5260211592171216887, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
       propertyPath: m_RootOrder
@@ -37389,6 +37409,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 481479664}
     m_Modifications:
+    - target: {fileID: 3589724534143613698, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
+      propertyPath: maxHealth
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3589724534143613702, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
       propertyPath: m_Name
       value: Skeleton2 (2)
@@ -41884,6 +41908,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 481479664}
     m_Modifications:
+    - target: {fileID: 3589724534143613698, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
+      propertyPath: maxHealth
+      value: 160
+      objectReference: {fileID: 0}
     - target: {fileID: 3589724534143613702, guid: 050a8d598d272ea4aa294facddc60eb8, type: 3}
       propertyPath: m_Name
       value: Skeleton2 (1)
@@ -42055,6 +42083,10 @@ PrefabInstance:
     - target: {fileID: 5260211592171216881, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260211592171216886, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
+      propertyPath: maxHealth
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 5260211592171216887, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
       propertyPath: m_RootOrder
@@ -42474,6 +42506,10 @@ PrefabInstance:
     - target: {fileID: 5260211592171216881, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260211592171216886, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
+      propertyPath: maxHealth
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 5260211592171216887, guid: 18c47739e682cdf44895afa7b50273ce, type: 3}
       propertyPath: m_RootOrder

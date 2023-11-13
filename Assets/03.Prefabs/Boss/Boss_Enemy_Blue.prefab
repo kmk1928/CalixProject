@@ -5147,7 +5147,7 @@ MonoBehaviour:
   hrizon_move: 0
   detectionDistance: 20
   isInteracting: 0
-  debugingPatten: 4
+  debugingPatten: 1
   skill_Particle_blood: {fileID: 1996079926692674, guid: 492b3e123b58f62468c377cd510efa10, type: 3}
 --- !u!95 &1541277563749876444
 Animator:

@@ -52556,6 +52556,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6944455507011936750, guid: a56a8fbc92e6e0f42bd67762c41251a1, type: 3}
+      propertyPath: maxHealth
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 6944455507011936758, guid: a56a8fbc92e6e0f42bd67762c41251a1, type: 3}
       propertyPath: m_RootOrder
       value: 9

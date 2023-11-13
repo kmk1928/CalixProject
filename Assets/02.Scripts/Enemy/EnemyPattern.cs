@@ -22,6 +22,9 @@ public class EnemyPattern : MonoBehaviour
     private float detectionRange = 10f; //후퇴용 이동속도
     private float distanceToPlayer;
 
+    private bool isInSecondPhase = false;       // 반피일때 2페이즈 돌입
+    private bool isSecondPhaseFirstPatten = true;
+
     private bool canEnemyRotate = true;
 
     public float detectionDistance = 20f; // 플레이어 감지 범위 = 공격시작 범위
@@ -52,7 +55,10 @@ public class EnemyPattern : MonoBehaviour
     void Update()
     {
         isCombo = animator.GetBool("isCombo");
-        
+        if(charStats.curHealth < charStats.maxHealth / 2)
+        {
+            isInSecondPhase = true;
+        }
         // if(agent.velocity.sqrMagnitude >= 0.1f * 0.1f && agent.remainingDistance < 0.1f) {
         //    //걷는 애니메이션 중지 -- 자연스러운 회전을 위함
         //}
@@ -99,8 +105,26 @@ public class EnemyPattern : MonoBehaviour
             {
                 agent.isStopped = true;
                 canEnemyRotate = false;
-                int pattern = 2;//Random.Range(1, 5); // 예를 들어, 1에서 3 중에서 랜덤 선택
+                int pattern;
+                if (!isInSecondPhase)
+                {
+                    pattern = Random.Range(1, 4); // 예를 들어, 1에서 3 중에서 랜덤 선택
+                }
+                else
+                {
+                    if (isSecondPhaseFirstPatten)
+                    {
+                        pattern = 4;
+                        isSecondPhaseFirstPatten = false;
+                    }
+                    else
+                    {
+                        pattern = Random.Range(1, 6);
+                    }
+                }
+
                 pattern = debugingPatten;
+                //debugingPatten = pattern;
                 switch (pattern)
                 {
                     case 1:
@@ -187,7 +211,7 @@ public class EnemyPattern : MonoBehaviour
         isAttacking = true;
 
         animator.SetTrigger("Attack1");
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(3f);
 
         //agent.SetDestination(player.position);
         isAttacking = false;
