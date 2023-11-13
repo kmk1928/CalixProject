@@ -277,27 +277,30 @@ public class PlayerController : MonoBehaviour
     }
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap && !isDodge && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 1 && !isDashing && !isSwap && !isDodge)
         {
             PlayerFlag.isInteracting = true;
-            // 만약 스페이스 바를 누르고, 아직 점프 횟수가 1 미만이며 대시 중이 아니며, 무기 교체나 회피 중이 아니라면:
-            anim.SetTrigger("JumpTrigger"); // JumpTrigger
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // 점프 힘을 Rigidbody에 추가
-            jumpCount++; // 점프 횟수를 증가
+            anim.SetTrigger("JumpTrigger");
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            jumpCount++;
             Invoke("JumptoFallen", 0.1f);
+            StartCoroutine(DelayedJumpCountReset(0.7f)); // 필요에 따라 지연 시간 조절
         }
-        if (isGrounded) //땅에 닿을 시 jumpCount = 0;
-        {
-            jumpCount = 0;
+    }
 
-            anim.SetBool("isJumping", false);//Jump to Land animation
-            PlayerFlag.isInteracting = false;
-        }
+    IEnumerator DelayedJumpCountReset(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        jumpCount = 0;
+        anim.SetBool("isJumping", false);
+        PlayerFlag.isInteracting = false;
     }
     void JumptoFallen()
     {
         anim.SetBool("isJumping", true);
     }
+
     //weapon
     void Swap()
     {

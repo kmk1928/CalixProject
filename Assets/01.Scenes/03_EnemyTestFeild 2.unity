@@ -4473,6 +4473,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1491743077}
     - target: {fileID: 1191465245011681575, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: jumpForce
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1191465245011681575, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
       propertyPath: portalText
       value: 
       objectReference: {fileID: 1458408130}
