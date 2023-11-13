@@ -75,8 +75,9 @@ public class CharStats : MonoBehaviour
     }
 
     public void GuardDamage(float damage) {
-        damageReductionPercentage = (defense - 10) / 10.0f;
-        curHealth -= (damage * damageReductionPercentage);
+        damageReductionPercentage = defense / 100.0f;
+        float finalDamage = damage - (damage * damageReductionPercentage);
+        curHealth -= finalDamage;
         DeadCheck();
     }
     private void DeadCheck() {
