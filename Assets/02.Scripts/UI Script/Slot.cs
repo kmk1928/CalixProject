@@ -128,18 +128,25 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
 
     private void ChangeSlot()
     {
-        Item _tempItem = item;
-        int _tempItemCount = itemCount;
-
-        AddItem(DragSlot.instance.dragSlot.item, DragSlot.instance.dragSlot.itemCount);
-
-        if(_tempItem != null)
+        if (DragSlot.instance != null && DragSlot.instance.dragSlot != null)
         {
-            DragSlot.instance.dragSlot.AddItem(_tempItem, _tempItemCount);
-        }
-        else
-        {
-            DragSlot.instance.dragSlot.ClearSlot();
+            Item _tempItem = item;
+            int _tempItemCount = itemCount;
+
+            // AddItem 호출 시 null 체크
+            if (DragSlot.instance.dragSlot.item != null && DragSlot.instance.dragSlot.itemImage != null)
+            {
+                AddItem(DragSlot.instance.dragSlot.item, DragSlot.instance.dragSlot.itemCount);
+            }
+
+            if (_tempItem != null)
+            {
+                DragSlot.instance.dragSlot.AddItem(_tempItem, _tempItemCount);
+            }
+            else
+            {
+                DragSlot.instance.dragSlot.ClearSlot();
+            }
         }
     }
 

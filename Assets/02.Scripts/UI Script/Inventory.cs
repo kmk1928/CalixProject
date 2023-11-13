@@ -85,7 +85,7 @@ public class Inventory : MonoBehaviour
     }
 
     // 인벤토리가 가득 찼는지 여부를 확인하는 함수
-    private bool IsInventoryFull()
+    public bool IsInventoryFull()
     {
         for (int i = 0; i < slots.Length; i++)
         {

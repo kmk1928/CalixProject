@@ -360,24 +360,32 @@ public class PlayerController : MonoBehaviour
             if (itemPickUp != null)
             {
                 Item item = itemPickUp.item;
-                
+
                 if (item != null) // 아이템이 Null이 아닌 경우에만 처리
                 {
-                    // theInventory 변수를 통해 아이템을 인벤토리에 추가
-                    theInventory.AcquireItem(item);
+                    // 인벤토리가 가득 찼으면 획득할 수 없도록 처리
+                    if (!theInventory.IsInventoryFull())
+                    {
+                        // theInventory 변수를 통해 아이템을 인벤토리에 추가
+                        theInventory.AcquireItem(item);
 
-                    // 아이템을 주웠을 때 능력치 증가
-                    playerStats.ApplyItemModifiers(item);
+                        // 아이템을 주웠을 때 능력치 증가
+                        playerStats.ApplyItemModifiers(item);
 
-                    if (item.itemType == Item.ItemType.Red)
-                        playerStats.redCount += 1;
-                    else if (item.itemType == Item.ItemType.Yellow)
-                        playerStats.yellowCount += 1;
+                        if (item.itemType == Item.ItemType.Red)
+                            playerStats.redCount += 1;
+                        else if (item.itemType == Item.ItemType.Yellow)
+                            playerStats.yellowCount += 1;
+                        else
+                            playerStats.blueCount += 1;
+
+                        // GameObject 파괴
+                        Destroy(nearObject);
+                    }
                     else
-                        playerStats.blueCount += 1;
-                    
-                    // GameObject 파괴
-                    Destroy(nearObject);
+                    {
+                        Debug.LogWarning("인벤토리가 가득 찼습니다. 더 이상 아이템을 획득할 수 없습니다.");
+                    }
                 }
                 else
                 {
