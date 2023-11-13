@@ -75,6 +75,12 @@ public class GameManager : MonoBehaviour
         }
 
 
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            SceneManager.LoadScene("02_restartScene");
+        }
+
+
 
         /* 게임 리스타트
 
@@ -89,10 +95,10 @@ public class GameManager : MonoBehaviour
         if (isGameover && Input.GetKeyDown("p")) 
         { 
             Gameover_Display.SetActive(false);
-            SceneManager.LoadScene("00_MainMenu 1");
+            SceneManager.LoadScene("02_restartScene");
+
+            playerStats.curHealth = playerStats.maxHealth;
         }
-
-
 
 
         if (isPause || isInventory)

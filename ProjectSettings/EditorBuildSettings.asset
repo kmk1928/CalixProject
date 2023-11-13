@@ -89,4 +89,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/03__01_tutorial.unity
     guid: ac8b5fb3241dfb8448446bc3ecfd707b
+  - enabled: 1
+    path: Assets/01.Scenes/02_restartScene.unity
+    guid: 42762a0b8248038449e3db8ba8153b6d
   m_configObjects: {}
