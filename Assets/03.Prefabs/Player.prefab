@@ -5495,7 +5495,7 @@ MonoBehaviour:
   maxHardness: 10
   curHardness: 0
   hardnessDamage: 10
-  attackDamage: 10
+  attackDamage: 100000
   abillityPower: 10
   isDead: 0
   t_damage: 1

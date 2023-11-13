@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameoverUI: {fileID: 0}
+  gameClearUI: {fileID: 0}
   nanoText: {fileID: 0}
   player_HPBar: {fileID: 0}
   hpText: {fileID: 0}
