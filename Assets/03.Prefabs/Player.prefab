@@ -5439,7 +5439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSpeed: 5
   speed: 5
-  jumpForce: 8
+  jumpForce: 4
   dashSpeed: 10
   dashDuration: 0.5
   maxJumpAngle: 30
@@ -5459,7 +5459,6 @@ MonoBehaviour:
   hasWeapons: 010100
   canDoCombo: 0
   isHitted_pc: 0
-  isDead: 0
   canMovePlayer: 1
   canPlayerRotate: 0
   dropText: {fileID: 0}

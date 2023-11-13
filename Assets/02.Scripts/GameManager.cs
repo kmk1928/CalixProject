@@ -12,9 +12,11 @@ public class GameManager : MonoBehaviour
     public static bool isGameover; // 플레이어 사망 여부 
     public static bool isPause = false; // 메뉴가 호출되면 true
     public static bool isInventory = false; // 인벤토리가 호출되면 true
+    public static bool isGameclear; 
     [SerializeField] public int playerNanoCount = 10; // 플레이어 나노 카운트
 
     [SerializeField] public GameObject Gameover_Display;
+    [SerializeField] public GameObject GameClear_Display;
 
     public bool isBossBattle = false; //보스전투돌입
 
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
         isPause = false;
         isInventory = false;
         isGameover = false;
+        isGameclear = false;
 
         if (SceneManager.GetActiveScene().name == "01_StartScene") {
             // 모든 DontDestroyOnLoad 오브젝트 파괴
@@ -75,13 +78,6 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            SceneManager.LoadScene("02_restartScene");
-        }
-
-
-
         /* 게임 리스타트
 
         if (Input.GetKeyDown("l"))
@@ -99,8 +95,25 @@ public class GameManager : MonoBehaviour
 
             playerStats.curHealth = playerStats.maxHealth;
 
-        
+            UIManager.isOpenUI = false;
+            isGameover = false;
+            canPlayerMove = true;
         }
+
+        
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            GameClear_Display.SetActive(false);
+            SceneManager.LoadScene("02_restartScene");
+
+            playerStats.curHealth = playerStats.maxHealth;
+
+            UIManager.isOpenUI = false;
+            isGameover = false;
+            canPlayerMove = true;
+            isGameclear = false;
+        }
+
 
 
         if (isPause || isInventory)
@@ -147,6 +160,12 @@ public class GameManager : MonoBehaviour
     public void OnPlayerDead() {    
         isGameover = true;      //플레이어 사망
         UIManager.instance.SetActiveGameoverUI(true);
+    }
+
+    public void GameClear()
+    {
+        isGameclear = true;
+        UIManager.instance.SetActiveGameclearUI(true);
     }
 
     #region 씬 관련 함수들 - 포탈, 사망, 메인메뉴

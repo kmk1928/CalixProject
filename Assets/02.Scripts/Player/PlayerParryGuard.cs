@@ -10,11 +10,11 @@ public class PlayerParryGuard : MonoBehaviour {
 
     [SerializeField]
     private float parryTimer = 0f;
-    private bool isBlocked = false;     //¿ìÅ¬¸¯ °¡µå È®ÀÎ¿ë
-    private bool isParried = false;     //ÆÐ¸® °¡´É »óÅÂ È®ÀÎ¿ë
-    public bool isHitted = false;      //µ¥¹ÌÁö¸¦ ¿¬¼ÓÀ¸·Î ÀÔ´Â °ÍÀ» ¹æÁöÇÏ±â À§ÇÑ bool Æ®¸®°Å, OnDamageÄÚ·çÆ¾¿¡ »ç¿ë
-    private bool isHittedMotioning = false;     //¸Â´Â ¸ð¼ÇÁß ÆÐ¸µ ¹æÁö
-    private float parryRecovery_Time = 0.3f;        //ÀÌµ¿°¡´É±îÁö °É¸®´Â ½Ã°£
+    private bool isBlocked = false;     //ï¿½ï¿½Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½Î¿ï¿½
+    private bool isParried = false;     //ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½Î¿ï¿½
+    public bool isHitted = false;      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ bool Æ®ï¿½ï¿½ï¿½ï¿½, OnDamageï¿½Ú·ï¿½Æ¾ï¿½ï¿½ ï¿½ï¿½ï¿½
+    private bool isHittedMotioning = false;     //ï¿½Â´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+    private float parryRecovery_Time = 0.3f;        //ï¿½Ìµï¿½ï¿½ï¿½ï¿½É±ï¿½ï¿½ï¿½ ï¿½É¸ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
     private float hitRecovery_Time = 0.5f;
     private float powerHitRecovery_Time = 1.0f;
 
@@ -24,14 +24,14 @@ public class PlayerParryGuard : MonoBehaviour {
     GameObject nearObject;
 
     [Header("Parry")]
-    [Tooltip("ÇÃ·¹ÀÌ¾î ÆÐ¸µÆÇÁ¤ ¹üÀ§")]
+    [Tooltip("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     public BoxCollider parryArea;
-    [Tooltip("ÆÐ¸µ ¼º°ø ÀÌÆåÆ®")]
+    [Tooltip("ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®")]
     public ParticleSystem parryParticle;
     public ParticleSystem parryDistortion;
 
     [Header("Hit")]
-    [Tooltip("°­ÇÑ ÇÇ°Ý ÀÌÆåÆ®")]
+    [Tooltip("ï¿½ï¿½ï¿½ï¿½ ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®")]
     public ParticleSystem sparkParticle;
     public ParticleSystem hittedParticle;
     public ParticleSystem powerHittedParticle;
@@ -53,17 +53,17 @@ public class PlayerParryGuard : MonoBehaviour {
         if (!PlayerFlag.isAttacking)
         {
             if (Input.GetMouseButtonDown(1) && !isHittedMotioning)
-            {                  //¿ìÅ¬¸¯ Å° ´Ù¿î ½Ã ÆÐ¸µ
-                isParried = true;                   //ÆÐ¸®ÁßÀ» true·Î º¯°æ
-                isBlocked = true;                   //°¡µåÁßÀ» true·Î º¯°æ
+            {                  //ï¿½ï¿½Å¬ï¿½ï¿½ Å° ï¿½Ù¿ï¿½ ï¿½ï¿½ ï¿½Ð¸ï¿½
+                isParried = true;                   //ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½ trueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                isBlocked = true;                   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ trueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 anim.SetBool("isGuard", true);//able animation
                 playerController.speed /= 5;
             }
-            //if (Input.GetMouseButton(1)) {                       //¿ìÅ¬¸¯ ²Ú ´©¸¦ ½Ã °¡µå
+            //if (Input.GetMouseButton(1)) {                       //ï¿½ï¿½Å¬ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             //     
             // }
             if (isParried && !isHittedMotioning)
-            {                        //ÆÐ¸®ÁßÀÌ trueÀÏ¶§ ÆÐ¸® ¿µ¿ªÀ»È°¼ºÈ­ÇÏ°í ÆÐ¸®½Ã°£ÀÌ Áö³ª¸é ´Ù½Ã ²¨Áö´Â ÄÚµå
+            {                        //ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½ trueï¿½Ï¶ï¿½ ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È°ï¿½ï¿½È­ï¿½Ï°ï¿½ ï¿½Ð¸ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½
                 parryArea.enabled = true;
                 parryTimer += Time.deltaTime;
                 if (parryTimer > 0.3f)
@@ -74,7 +74,7 @@ public class PlayerParryGuard : MonoBehaviour {
                 }
             }
             if (Input.GetMouseButtonUp(1))
-            {         //¿ìÅ¬¸¯ ÇØÁ¦ ½Ã °¡µåÇØÁ¦
+            {         //ï¿½ï¿½Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 isBlocked = false;
                 anim.SetBool("isGuard", false);//able animation
                 playerController.speed = playerController.defaultSpeed;
@@ -87,21 +87,21 @@ public class PlayerParryGuard : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (!isHitted && (other.tag == "EnemyAttack" || other.tag == "EnemyPowerAttack" || other.tag == "EnemyParticleAttack") 
-                      && !playerController.isDodge && !playerController.isDead) 
+                      && !playerController.isDodge && !GameManager.isGameover) 
         {
-            Debug.Log("1"); //ÃßÀûÃßÀûÃßÀûÃßÀû
+            Debug.Log("1"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             nearObject = other.gameObject;
-            playerController.LockPlayerInput();  //ÇÇ°ÝÁß ÀÌµ¿ Á¦ÇÑ
+            playerController.LockPlayerInput();  //ï¿½Ç°ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
             TestAnimationEndPlayerVelocityZero();
-            if(other.tag != "EnemyParticleAttack") //ÀÏ¹ÝÀûÀÎ ÇÇ°Ý
+            if(other.tag != "EnemyParticleAttack") //ï¿½Ï¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç°ï¿½
             {
                 if (isParried)
                 {
-                    Debug.Log("PARRY!!!");                          //ÆÐ¸µ ¼º°ø
+                    Debug.Log("PARRY!!!");                          //ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½
                     OnParried();
                 }
                 else if (isBlocked)
-                {                                    //¿ìÅ¬¸¯ °¡µå·Î ÀÎÇÑ µ©°¨ ½ÇÇè
+                {                                    //ï¿½ï¿½Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     CharStats targetStatus = other.GetComponentInParent<CharStats>();
                     if (targetStatus != null)
                     {
@@ -134,12 +134,12 @@ public class PlayerParryGuard : MonoBehaviour {
                     }
                 }
             }
-            else    //ÆÄÆ¼Å¬ °ø°Ý¿¡ ¸Â¾ÒÀ»¶§
+            else    //ï¿½ï¿½Æ¼Å¬ ï¿½ï¿½ï¿½Ý¿ï¿½ ï¿½Â¾ï¿½ï¿½ï¿½ï¿½ï¿½
             {
                 ParticleAttackCollider particleCol = other.GetComponent<ParticleAttackCollider>();
                 if (isParried)
                 {
-                    Debug.Log("PARRY!!!");                          //ÆÐ¸µ ¼º°ø
+                    Debug.Log("PARRY!!!");                          //ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½
                     OnParried();
                 }
                 else if (isBlocked)
@@ -164,22 +164,22 @@ public class PlayerParryGuard : MonoBehaviour {
             nearObject = null;
     }
     private void  OnParried() {
-        isHitted = true;                        //¿¬¼ÓÇÇ°Ý¹æÁö
+        isHitted = true;                        //ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ý¹ï¿½ï¿½ï¿½
         isParried = false;     
-        parryTimer = 0f;    //ÆÐ¸®°¡´É½Ã°£ ÃÊ±âÈ­
+        parryTimer = 0f;    //ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½É½Ã°ï¿½ ï¿½Ê±ï¿½È­
 
-        original = this.transform;      //ºÎµå·´°Ô ¹Ð·Á³²
+        original = this.transform;      //ï¿½Îµå·´ï¿½ï¿½ ï¿½Ð·ï¿½ï¿½ï¿½
         smoothMoved.SmoothMove_Parry(original, nearObject.transform);
 
-        parryParticle.Play();           //ÆÐ¸® ÀÌÆåÆ®
+        parryParticle.Play();           //ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
         parryDistortion.Play();
-        Invoke("HittedOut", 0.2f);              //¿¬¼ÓÇÇ°Ý¹æÁö   
+        Invoke("HittedOut", 0.2f);              //ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ý¹ï¿½ï¿½ï¿½   
         parryArea.enabled = false;
         playerController.Invoke("UnlockPlayerInput_ForAnimRootMotion", parryRecovery_Time);
     }
-    private void OnDamage() {              //°¡µå ¶Ç´Â ÇÇ°Ý ½Ã ¾²´Â µ¥¹ÌÁö ÄÚ·çÆ¾
-        isHitted = true;                        //¿¬¼ÓÇÇ°Ý¹æÁö
-        isHittedMotioning = true;           //ÇÇ°Ý Á÷ÈÄ 60ÇÁ·¹ÀÓ ³» ÆÐ¸µ °¡´É ¹æÁö
+    private void OnDamage() {              //ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½Ç°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½Æ¾
+        isHitted = true;                        //ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ý¹ï¿½ï¿½ï¿½
+        isHittedMotioning = true;           //ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½ï¿½ 60ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         original = this.transform;
         smoothMoved.SmoothMove_normalAttack(original, nearObject.transform);
 
@@ -188,9 +188,9 @@ public class PlayerParryGuard : MonoBehaviour {
         playerController.Invoke("UnlockPlayerInput_ForAnimRootMotion", hitRecovery_Time);
         TestAnimationEndPlayerVelocityZero();
     }
-    private void OnPowerDamage() {              //°­ÇÑ °ø°Ý ÇÇ°Ý ½Ã ¾²´Â µ¥¹ÌÁö ÄÚ·çÆ¾
-        isHitted = true;                        //¿¬¼ÓÇÇ°Ý¹æÁö
-        isHittedMotioning = true;           //ÇÇ°Ý Á÷ÈÄ 60ÇÁ·¹ÀÓ ³» ÆÐ¸µ °¡´É ¹æÁö
+    private void OnPowerDamage() {              //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½Æ¾
+        isHitted = true;                        //ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ý¹ï¿½ï¿½ï¿½
+        isHittedMotioning = true;           //ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½ï¿½ 60ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         powerHittedParticle.Play();
         original = this.transform;
         smoothMoved.SmoothMove_powerAttack(original, nearObject.transform);
@@ -200,11 +200,11 @@ public class PlayerParryGuard : MonoBehaviour {
         playerController.Invoke("UnlockPlayerInput_ForAnimRootMotion", powerHitRecovery_Time);
     }
     private void HittedOut() {
-        isHitted = false;    //¿¬¼ÓÇÇ°Ý¹æÁö
+        isHitted = false;    //ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ý¹ï¿½ï¿½ï¿½
     }
 
     private void HittedMotioningOut() {
-        isHittedMotioning = false;    // ÇÇ°Ý Á÷ÈÄ 60ÇÁ·¹ÀÓ ³» ÆÐ¸µ °¡´É ¹æÁö
+        isHittedMotioning = false;    // ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½ï¿½ 60ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ð¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
     private void TestAnimationEndPlayerVelocityZero() {

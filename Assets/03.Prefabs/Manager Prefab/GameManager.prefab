@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNanoCount: 500
+  Gameover_Display: {fileID: 0}
+  GameClear_Display: {fileID: 0}
   isBossBattle: 0
   playerStats: {fileID: 0}
 --- !u!114 &5008904292754908769

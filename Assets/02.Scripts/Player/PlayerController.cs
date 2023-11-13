@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
 
     //die
     PlayerStats playerStats;
-    public bool isDead = false;
 
     //movement Lock/Unlock
     public bool canMovePlayer = true; // 회전 가능 여부를 제어하는 플래그 (Dodge에서 연동해서 씀)
@@ -101,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!isDead)
+        if (!GameManager.isGameover)
         {
             #region Update속 이동입력을 받는 곳
             // WASD 키를 사용하여 캐릭터 이동
@@ -491,8 +490,9 @@ public class PlayerController : MonoBehaviour
         canDodge = true;
     }
     private void Die() {
-        isDead = true;
+        GameManager.isGameover = true;
         canMovePlayer = false;
+        UIManager.isOpenUI = true;
         //Destroy(this, 2f);
         anim.SetTrigger("doDie");
         GameManager.instance.OnPlayerDead();

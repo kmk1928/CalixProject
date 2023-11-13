@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 83401c3d87a7f4a42a6ee09fdcce7cc4, type: 2}
---- !u!198 &3071823 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4119555624947960601, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-  m_PrefabInstance: {fileID: 423206505}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &32650833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,30 +1077,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1191465243520282958}
-    - target: {fileID: -6394708201667358274, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 2195726465694210025, guid: 3160afc7e3e24ce479654ec52ff06e3c, type: 3}
-    - target: {fileID: 1395432122248219535, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: hitBlood
-      value: 
-      objectReference: {fileID: 3071823}
-    - target: {fileID: 1485896560135908647, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.985
-      objectReference: {fileID: 0}
-    - target: {fileID: 2074357387500632705, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: eef3cfbfa85bdd044a9cf50f38abae2c, type: 2}
-    - target: {fileID: 3601721362599335167, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.03352947
-      objectReference: {fileID: 0}
-    - target: {fileID: 3601721362599335167, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.0016998232
-      objectReference: {fileID: 0}
     - target: {fileID: 4089431165432149859, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1153,46 +1124,6 @@ PrefabInstance:
     - target: {fileID: 4089431165432149881, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
       propertyPath: m_Name
       value: Archer Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 4089431165432149881, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4276438332583081214, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.026481368
-      objectReference: {fileID: 0}
-    - target: {fileID: 4276438332583081214, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.002049352
-      objectReference: {fileID: 0}
-    - target: {fileID: 5065675774005464106, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.026213361
-      objectReference: {fileID: 0}
-    - target: {fileID: 5065675774005464106, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.05782909
-      objectReference: {fileID: 0}
-    - target: {fileID: 5305215714515901286, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.007607099
-      objectReference: {fileID: 0}
-    - target: {fileID: 5305215714515901286, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.010918712
-      objectReference: {fileID: 0}
-    - target: {fileID: 6024519485979390814, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: m_Range
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6024519485979390814, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: m_Intensity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6024519486036561818, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3201091446c5b54ebfec7539ba87af8, type: 3}
@@ -1293,6 +1224,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436005162}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &497728532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8346339115057884453, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
+  m_PrefabInstance: {fileID: 2143278690401904540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &509343732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7664498896681746923, guid: f3d6a29e9468438468d538145167c617, type: 3}
@@ -2455,6 +2391,10 @@ PrefabInstance:
       propertyPath: gameoverUI
       value: 
       objectReference: {fileID: 1236315444}
+    - target: {fileID: 3953022460023994483, guid: fb4b10bc932e2de4ba3150154a99ab70, type: 3}
+      propertyPath: gameClearUI
+      value: 
+      objectReference: {fileID: 497728532}
     - target: {fileID: 3953022460023994483, guid: fb4b10bc932e2de4ba3150154a99ab70, type: 3}
       propertyPath: player_HPBar
       value: 
@@ -3922,10 +3862,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1491743077}
     - target: {fileID: 1191465245011681575, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
-      propertyPath: jumpForce
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1191465245011681575, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
       propertyPath: portalText
       value: 
       objectReference: {fileID: 1458408130}
@@ -3976,6 +3912,10 @@ PrefabInstance:
     - target: {fileID: 1191465245011681577, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408679433847319187, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
+      propertyPath: attackDamage
+      value: 100000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 579326447ea176244af2ace7d5f60a08, type: 3}
@@ -4168,13 +4108,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4758736895602181976, guid: 893f22579407db441944a54271e0116a, type: 3}
-      propertyPath: playerNanoCount
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 4758736895602181976, guid: 893f22579407db441944a54271e0116a, type: 3}
       propertyPath: Gameover_Display
       value: 
       objectReference: {fileID: 1236315444}
+    - target: {fileID: 4758736895602181976, guid: 893f22579407db441944a54271e0116a, type: 3}
+      propertyPath: GameClear_Display
+      value: 
+      objectReference: {fileID: 497728532}
     - target: {fileID: 4758736895602181977, guid: 893f22579407db441944a54271e0116a, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -5185,58 +5125,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
-    - target: {fileID: 1922146145340738170, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
-      propertyPath: bossDie
-      value: 
-      objectReference: {fileID: 8300000, guid: 035b7be8c3baff74db537c7710d081c4, type: 3}
-    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
-      propertyPath: stage1BGM
-      value: 
-      objectReference: {fileID: 8300000, guid: fe7ef27b7c1d72448a488cefc1c53bc0, type: 3}
-    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
-      propertyPath: stage2BGM
-      value: 
-      objectReference: {fileID: 8300000, guid: a66c12b3f8624204dac7440ac9396b0e, type: 3}
-    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
-      propertyPath: stage3BGM
-      value: 
-      objectReference: {fileID: 8300000, guid: 5ff28b79b204e164f921f545c43356c9, type: 3}
-    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
-      propertyPath: stage4BGM
-      value: 
-      objectReference: {fileID: 8300000, guid: 7860d1a07a21c994fb50d5df65978f1b, type: 3}
-    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
-      propertyPath: stage5BGM
-      value: 
-      objectReference: {fileID: 8300000, guid: 0a3bfc93b67faed44a07658ac52182cb, type: 3}
-    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
-      propertyPath: bgm_Source
-      value: 
-      objectReference: {fileID: 1037998014}
-    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
-      propertyPath: knightAttack
-      value: 
-      objectReference: {fileID: 8300000, guid: 70699b548e9f2a743a972f2259736cfd, type: 3}
-    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
-      propertyPath: stageBossBGM
-      value: 
-      objectReference: {fileID: 8300000, guid: 2aca47bf3c6565a419863eba0e9bce0b, type: 3}
-    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
-      propertyPath: stageShopBGM
-      value: 
-      objectReference: {fileID: 8300000, guid: 579f91653792a5442a4b430d12adf8a8, type: 3}
-    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
-      propertyPath: stageBonusBGM
-      value: 
-      objectReference: {fileID: 8300000, guid: 62f317780b1a56b4589d940f8bfecd20, type: 3}
-    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
-      propertyPath: knightFootstep
-      value: 
-      objectReference: {fileID: 8300000, guid: d2b2858ce5c7ca9428bfd0e424d5a82d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
 --- !u!1001 &2143278690401904540
@@ -5266,78 +5154,6 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 1191465243520282965}
-    - target: {fileID: 2143278690343572032, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Name
-      value: gameOver_Txt
-      objectReference: {fileID: 0}
-    - target: {fileID: 2143278690343572034, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_fontSize
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2143278690343572034, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 74705c86524883c45802ceda91fbc0b8, type: 2}
-    - target: {fileID: 2143278690343572034, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2143278690343572034, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -3050495990341931081, guid: 74705c86524883c45802ceda91fbc0b8, type: 2}
-    - target: {fileID: 2143278691517063861, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_Name
-      value: GameOver_Txt
-      objectReference: {fileID: 0}
-    - target: {fileID: 2143278691517063862, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 220.9675
-      objectReference: {fileID: 0}
-    - target: {fileID: 2143278691517063862, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 86.1085
-      objectReference: {fileID: 0}
-    - target: {fileID: 2143278691517063862, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 10.4837
-      objectReference: {fileID: 0}
-    - target: {fileID: 2143278691517063862, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -18.0543
-      objectReference: {fileID: 0}
-    - target: {fileID: 2143278691517063863, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_text
-      value: "restart? \nPress 'p' key"
-      objectReference: {fileID: 0}
-    - target: {fileID: 2143278691517063863, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 74705c86524883c45802ceda91fbc0b8, type: 2}
-    - target: {fileID: 2143278691517063863, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_fontColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2143278691517063863, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.6692901
-      objectReference: {fileID: 0}
-    - target: {fileID: 2143278691517063863, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_fontColor.r
-      value: 0.2028302
-      objectReference: {fileID: 0}
-    - target: {fileID: 2143278691517063863, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -3050495990341931081, guid: 74705c86524883c45802ceda91fbc0b8, type: 2}
-    - target: {fileID: 2143278691517063863, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294945588
-      objectReference: {fileID: 0}
-    - target: {fileID: 2143278691636038312, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2143278691776298319, guid: 4bb0a7c5e31f81f439054248d60f896a, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -6064,10 +5880,6 @@ PrefabInstance:
     - target: {fileID: 1541277563749876439, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
       propertyPath: m_Name
       value: Boss_Enemy_Blue
-      objectReference: {fileID: 0}
-    - target: {fileID: 1541277563749876439, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1541277563749876440, guid: 1026c7706ca79a648be172289786b4ce, type: 3}
       propertyPath: m_RootOrder

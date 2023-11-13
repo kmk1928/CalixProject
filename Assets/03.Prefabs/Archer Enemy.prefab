@@ -59,7 +59,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4089431165432149859
 Transform:
   m_ObjectHideFlags: 0
@@ -449,6 +449,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6063354155749413847, guid: ae3428956bd7431478270b4e9cb6d691, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.026481368
+      objectReference: {fileID: 0}
+    - target: {fileID: -6063354155749413847, guid: ae3428956bd7431478270b4e9cb6d691, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.002049352
+      objectReference: {fileID: 0}
     - target: {fileID: -5815229859160375557, guid: ae3428956bd7431478270b4e9cb6d691, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -468,6 +476,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ae3428956bd7431478270b4e9cb6d691, type: 3}
       propertyPath: m_Name
       value: Archer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412161367050800168, guid: ae3428956bd7431478270b4e9cb6d691, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.03352947
+      objectReference: {fileID: 0}
+    - target: {fileID: 2412161367050800168, guid: ae3428956bd7431478270b4e9cb6d691, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0016998232
       objectReference: {fileID: 0}
     - target: {fileID: 8235551846842608971, guid: ae3428956bd7431478270b4e9cb6d691, type: 3}
       propertyPath: m_Materials.Array.data[0]

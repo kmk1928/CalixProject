@@ -45,7 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82a7377f7d996f4faf05ef4820c44ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgm_Source: {fileID: 0}
+  stage1BGM: {fileID: 8300000, guid: fe7ef27b7c1d72448a488cefc1c53bc0, type: 3}
+  stage2BGM: {fileID: 8300000, guid: a66c12b3f8624204dac7440ac9396b0e, type: 3}
+  stage3BGM: {fileID: 8300000, guid: 5ff28b79b204e164f921f545c43356c9, type: 3}
+  stage4BGM: {fileID: 8300000, guid: 7860d1a07a21c994fb50d5df65978f1b, type: 3}
+  stage5BGM: {fileID: 8300000, guid: 0a3bfc93b67faed44a07658ac52182cb, type: 3}
+  stageBonusBGM: {fileID: 8300000, guid: 62f317780b1a56b4589d940f8bfecd20, type: 3}
+  stageShopBGM: {fileID: 8300000, guid: 579f91653792a5442a4b430d12adf8a8, type: 3}
+  stageBossBGM: {fileID: 8300000, guid: 2aca47bf3c6565a419863eba0e9bce0b, type: 3}
   playerFootstep: {fileID: 8300000, guid: c3f3efc1106f84643a38bd21f6826aaf, type: 3}
   playerAttack: {fileID: 8300000, guid: 9239799d3f98fb14ab41843a4113304f, type: 3}
   jump: {fileID: 8300000, guid: 7d65afb5fe7bb7e41a03b001f5acfbde, type: 3}
@@ -53,6 +60,7 @@ MonoBehaviour:
   dohon: {fileID: 8300000, guid: a0fa4e05bd3321f4e880340563928ca7, type: 3}
   bossFootstep: {fileID: 8300000, guid: 149e8ca9df68d744e9722158daa78ab1, type: 3}
   bossAttack: {fileID: 8300000, guid: 70c8952b02a8c924891a8951f67242e8, type: 3}
+  bossDie: {fileID: 8300000, guid: 035b7be8c3baff74db537c7710d081c4, type: 3}
   skeletonFootstep: {fileID: 8300000, guid: 8e001351cd7065543a068386cde4c960, type: 3}
   skeletonAttack: {fileID: 8300000, guid: 70699b548e9f2a743a972f2259736cfd, type: 3}
   minotaurosFootstep: {fileID: 8300000, guid: cb9aa4db4b3a12147bf2fe3d88fee270, type: 3}
@@ -61,8 +69,8 @@ MonoBehaviour:
   orcAttack: {fileID: 8300000, guid: f9cfc0e6ef7909a4fa3f8663ac5f3034, type: 3}
   bearFootstep: {fileID: 8300000, guid: ba6466c0db2d12649a51ba73749902d3, type: 3}
   bearAttack: {fileID: 8300000, guid: fcd896cebcfc7ef40abc379522db9266, type: 3}
-  knightFootstep: {fileID: 0}
-  knightAttack: {fileID: 0}
+  knightFootstep: {fileID: 8300000, guid: d2b2858ce5c7ca9428bfd0e424d5a82d, type: 3}
+  knightAttack: {fileID: 8300000, guid: 70699b548e9f2a743a972f2259736cfd, type: 3}
   archerFootstep: {fileID: 0}
   archerAttack: {fileID: 0}
 --- !u!82 &1922146145340738165

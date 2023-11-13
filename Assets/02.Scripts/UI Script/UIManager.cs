@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager instance; 
 
     public GameObject gameoverUI;   // ���� ������ Ȱ��ȭ �� UI ���� ������Ʈ
+    public GameObject gameClearUI;
     public TMP_Text nanoText;          // ������ ���븦 ����� UI �ؽ�Ʈ
     public Slider player_HPBar;
     public TMP_Text hpText;
@@ -40,6 +41,10 @@ public class UIManager : MonoBehaviour
 
     public void SetActiveGameoverUI(bool active) {
         gameoverUI.SetActive(true);     //���ӿ��� UI Ȱ��ȭ
+    }
+
+    public void SetActiveGameclearUI(bool active) {
+        gameClearUI.SetActive(true);     //���ӿ��� UI Ȱ��ȭ
     }
 
     public void UpdateHpText(float curHp, float maxHp)

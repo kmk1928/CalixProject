@@ -10,5 +10,8 @@ public class BossHit : EnemyHit
     {
             GameObject particleInstance = Instantiate(BossDieParticle, this.transform.position, this.transform.rotation);
             Destroy(particleInstance, 3f);
+
+            GameManager.isGameclear = true;
+            GameManager.instance.GameClear();
     }
 }
