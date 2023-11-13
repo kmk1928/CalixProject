@@ -200,6 +200,10 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Stage7_Boss");
         }
+        else if (portalNum == 8)
+        {
+            SceneManager.LoadScene("03__01_tutorial");
+        }
     }
     #endregion
 }
