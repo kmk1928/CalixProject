@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: RapidAssault 1
   m_EditorClassIdentifier: 
   attackName: RapidAssault
-  damageMultiplier: 6
+  damageMultiplier: 3
   cooldown: 0.3
   attackCollider_ActiveTime: 0.3
+  hardness_Damage: 10
   animatorOV: {fileID: 22100000, guid: 5f80a5b6505ef7d4fa061dc0e5b188cf, type: 2}
   AnimTag: RapidAssault
   particleEffectPrefab: {fileID: 1044528419629608, guid: 3be98662c9e7ef5468cb9c4e11010dc7, type: 3}

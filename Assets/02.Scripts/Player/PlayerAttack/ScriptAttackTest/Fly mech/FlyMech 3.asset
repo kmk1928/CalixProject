@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: FlyMech 3
   m_EditorClassIdentifier: 
   attackName: FlyMech
-  damageMultiplier: 6
+  damageMultiplier: 7
   cooldown: 0.32
   attackCollider_ActiveTime: 0.12
+  hardness_Damage: 10
   animatorOV: {fileID: 22100000, guid: bd3621f4b5863be4dacb2912a2f67170, type: 2}
   AnimTag: FlyMech
   particleEffectPrefab: {fileID: 1130446560849736, guid: c4d564b5d4682ad46b8621f0fa6f40d9, type: 3}

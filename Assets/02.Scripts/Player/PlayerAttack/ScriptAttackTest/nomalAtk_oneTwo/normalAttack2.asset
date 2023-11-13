@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: normalAttack2
   m_EditorClassIdentifier: 
   attackName: 
-  damageMultiplier: 2
+  damageMultiplier: 4
   cooldown: 0.3
   attackCollider_ActiveTime: 0.3
+  hardness_Damage: 10
   animatorOV: {fileID: 22100000, guid: b4bb7562fe91aae4aab13a65de597b6f, type: 2}
   AnimTag: NormalAttack
   particleEffectPrefab: {fileID: 0}
