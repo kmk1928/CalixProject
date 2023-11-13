@@ -28,6 +28,7 @@ public class SoundManager : MonoBehaviour
     //보스
     public AudioClip bossFootstep;
     public AudioClip bossAttack;
+    public AudioClip bossDie;
     //해골
     public AudioClip skeletonFootstep;
     public AudioClip skeletonAttack;
@@ -162,6 +163,10 @@ public class SoundManager : MonoBehaviour
     public void BossFootstepSound()
     {
         EffectSource.PlayOneShot(bossFootstep);
+    }
+    public void BossDieSound()
+    {
+        EffectSource.PlayOneShot(bossDie);
     }
     //해골
     public void SkeletonAttackSound()

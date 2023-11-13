@@ -5961,6 +5961,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
+      propertyPath: bossDie
+      value: 
+      objectReference: {fileID: 8300000, guid: 035b7be8c3baff74db537c7710d081c4, type: 3}
+    - target: {fileID: 1922146145340738171, guid: 4d0dbe6c286701244a8e6219337f301b, type: 3}
       propertyPath: stage1BGM
       value: 
       objectReference: {fileID: 8300000, guid: fe7ef27b7c1d72448a488cefc1c53bc0, type: 3}
