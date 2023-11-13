@@ -1,13 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
     AudioSource EffectSource;
-    public AudioSource bgm_Source;
+    public AudioClip stage1BGM;
+    public AudioClip stage2BGM;
+    public AudioClip stage3BGM;
+    public AudioClip stage4BGM;
+    public AudioClip stage5BGM;
+    public AudioClip stageBonusBGM;
+    public AudioClip stageShopBGM;
+    public AudioClip stageBossBGM;
+
+    private AudioSource bgmSource;
     
     //플레이어
     public AudioClip playerFootstep;
@@ -43,6 +53,7 @@ public class SoundManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject); //씬 옮겨도 노파괴
+            bgmSource = GetComponent<AudioSource>();
         }
         else
         {
@@ -53,17 +64,74 @@ public class SoundManager : MonoBehaviour
     public void Start()
     {
         EffectSource = GetComponent<AudioSource>();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        PlaySceneBGM(); // 초기 씬에 배경 음악을 플레이할 수도 있습니다.
     }
 
     public void SetBgmVolume(float volume)
     {
-        bgm_Source.volume = volume;
+        bgmSource.volume = volume;
     }
 
     public void SetEffectVolume(float volume)
     {
         EffectSource.volume = volume;
     }
+
+    // 씬 전환 시 호출되는 이벤트 핸들러
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        PlaySceneBGM();
+    }
+
+    // 씬에 따른 배경 음악 재생
+    private void PlaySceneBGM()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        // 씬 이름에 따라 다른 배경 음악을 설정
+        switch (sceneName)
+        {
+            case "Stage1":
+                bgmSource.clip = stage1BGM;
+                break;
+            case "Stage2":
+                bgmSource.clip = stage2BGM;
+                break;
+            case "Stage3_1":
+                bgmSource.clip = stage3BGM;
+                break;
+            case "Stage3_2":
+                bgmSource.clip = stageBonusBGM;
+                break;
+            case "Stage3_3":
+                bgmSource.clip = stage3BGM;
+                break;
+            case "Stage4_1":
+                bgmSource.clip = stage4BGM;
+                break;
+            case "Stage4_2":
+                bgmSource.clip = stageBonusBGM;
+                break;
+            case "Stage4_3":
+                bgmSource.clip = stage4BGM;
+                break;
+            case "Stage5":
+                bgmSource.clip = stage5BGM;
+                break;
+            case "Stage6_shop":
+                bgmSource.clip = stageShopBGM;
+                break;
+            case "Stage7_Boss":
+                bgmSource.clip = stageBossBGM;
+                break;
+                
+            // 추가 씬에 대한 처리 추가...
+        }
+        bgmSource.Play();
+    }
+
+        
     
     //플레이어
     public void PlayerAttackSound()
